@@ -80,7 +80,7 @@
 
 ### Expo Go kuralları (en kritik kısıt)
 - Mac olmadığı için Xcode, iOS simülatörü ve özel "development build" yok. **Her şey Expo Go içinde çalışmak zorunda.**
-- App Store'daki Expo Go yalnızca **en güncel Expo SDK'yı** destekler. Proje `npx create-expo-app@latest` ile açılır, SDK sürümü elle değiştirilmez.
+- App Store'daki Expo Go yalnızca **en güncel Expo SDK'yı** destekler. `create-expo-app@latest` bazen Expo Go'dan önce yeni SDK'ya geçer (Ekim 2026: şablon SDK 58, Expo Go SDK 57). Proje Expo Go'nun desteklediği SDK ile kurulur: `npx create-expo-app@latest --template default@sdk-57`.
 - Paketler `npx expo install` ile eklenir (SDK ile uyumlu sürümü seçer).
 - **Yerel bildirimler Expo Go'da çalışır**, push bildirimler çalışmaz. Bu proje için yalnızca yerel bildirim gerekiyor.
 - Kullanılacak paketlerin hepsi Expo Go'da hazır gelir: `expo-notifications`, `expo-speech`, `expo-clipboard`, `expo-haptics`, `expo-linking`, `@react-native-async-storage/async-storage`, (P2) `expo-location`, `expo-contacts`.
@@ -120,7 +120,7 @@ yanimda/
 │  └─ exports/parity_vectors.json
 └─ app/
    ├─ app.json
-   ├─ app/                   # expo-router ekranları (SDK 58 şablonunda fiilen src/app/ altında)
+   ├─ app/                   # expo-router ekranları (SDK 57 şablonunda fiilen src/app/ altında)
    │  ├─ _layout.tsx
    │  ├─ index.tsx           # ana ekran
    │  ├─ kurulum.tsx
