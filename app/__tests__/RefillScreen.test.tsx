@@ -57,7 +57,7 @@ describe('Randevu ekranı', () => {
     await fireEvent.press(await screen.findByRole('button', { name: /ALO 182/ }));
     expect(openURL).toHaveBeenCalledWith('tel:182');
     await fireEvent.press(screen.getByRole('button', { name: /MHRS'yi aç/ }));
-    expect(openURL).toHaveBeenCalledWith('https://www.mhrs.gov.tr/vatandas/');
+    expect(openURL).toHaveBeenCalledWith('https://mhrs.gov.tr/vatandas/');
   });
 
   it('ilaçta seçili yakını önceden seçer, hazır metinle Mesajlar\'ı açar (kendisi göndermez)', async () => {

@@ -12,10 +12,11 @@ import { borderWidth, colors, radius, spacing } from '@/theme';
 /**
  * MHRS'nin evrensel bağlantısı (universal link): mhrs.gov.tr/.well-known/apple-app-site-association
  * yalnızca `/vatandas/*` yollarını MHRS uygulamasına (tr.gov.saglik.MHRSMOBIL) bağlıyor. Bu adres,
- * uygulama yüklüyse uygulamada, değilse Safari'de "Randevu Al" sayfasında açılır. Kök adres
- * (https://www.mhrs.gov.tr) her zaman Safari'de açılıyordu.
+ * uygulama yüklüyse uygulamada, değilse Safari'de "Randevu Al" sayfasında açılır.
+ * Uygulama yalnızca `www`'SUZ alan adını sahipleniyor (iPhone'da denendi): kök adres ve
+ * `www.mhrs.gov.tr/vatandas/` uygulama yüklüyken de Safari'de açılıyordu.
  */
-export const MHRS_URL = 'https://www.mhrs.gov.tr/vatandas/';
+export const MHRS_URL = 'https://mhrs.gov.tr/vatandas/';
 export const MHRS_PHONE = '182';
 
 async function open(url: string, failTitle: string) {

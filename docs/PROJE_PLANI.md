@@ -246,7 +246,7 @@ yanimda/
 ### B7 — Randevu yönlendirmesi
 Uyarı satırına veya ilaç detayına dokununca "İlacınız bitmeden reçete için randevu alın" ekranı. Üç büyük seçenek:
 1. **📞 ALO 182'yi ara** (MHRS çağrı merkezi) → `tel:182`. Telefonla randevu, yaşlı kullanıcı için en kolay yol.
-2. **🌐 MHRS'yi aç** → `Linking.openURL('https://www.mhrs.gov.tr/vatandas/')`. MHRS'nin apple-app-site-association dosyası yalnızca `/vatandas/*` yollarını uygulamaya bağlar: uygulama yüklüyse MHRS uygulaması, değilse Safari'de "Randevu Al" sayfası açılır (kök adres her zaman Safari'de açılır). Uygulamanın kendisi ağ isteği atmaz.
+2. **🌐 MHRS'yi aç** → `Linking.openURL('https://mhrs.gov.tr/vatandas/')`. MHRS'nin apple-app-site-association dosyası yalnızca `/vatandas/*` yollarını uygulamaya bağlar ve uygulama yalnızca **www'suz** alan adını sahiplenir (iPhone'da Notlar'da basılı tutma ile doğrulandı): uygulama yüklüyse MHRS uygulaması, değilse Safari'de "Randevu Al" sayfası açılır. Kök adres ve www'li adres her zaman Safari'de açılır. Uygulamanın kendisi ağ isteği atmaz.
 3. **👨‍👩‍👧 Yakınımdan randevu iste** → kayıtlı yakınlardan biri seçilir (ilacın `refill.contactId`'si varsa o önceden seçili), `sms:{telefon}&body=...` ile mesaj uygulaması **hazır metinle açılır**; gönder tuşuna kullanıcı kendisi basar (uygulama SMS'i kendiliğinden göndermez). Örnek metin:
    > Merhaba Ayşe, ben Fatma. Tansiyon ilacım yaklaşık 8 gün sonra bitecek. Reçete yazdırmak için Kardiyoloji bölümünden Dr. Mehmet Yılmaz'a (Manisa Şehir Hastanesi) MHRS'den randevu alabilir misin? Teşekkürler.
    - Bölüm/doktor/hastane girilmemişse ilgili kısım cümleden çıkarılır ("...reçete için doktorumdan randevu alabilir misin?").
