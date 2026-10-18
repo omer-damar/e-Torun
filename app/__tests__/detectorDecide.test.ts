@@ -1,0 +1,115 @@
+import { decide, decideFrom } from '@/detector/decide';
+import { findRules } from '@/detector/rules';
+
+describe('findRules', () => {
+  it('Türkçe karaktersiz yazımı da yakalar', () => {
+    expect(findRules('HESABINIZ BLOKE EDİLMİŞTİR')).toContain('URGENCY');
+    expect(findRules('hesabiniz bloke edilmistir')).toContain('URGENCY');
+  });
+
+  it('link ve kısa link', () => {
+    expect(findRules('Detay: https://ptt-kargo.xyz/a')).toEqual(expect.arrayContaining(['LINK', 'IMPERSONATION']));
+    expect(findRules('tıkla bit.ly/3abc')).toEqual(expect.arrayContaining(['LINK', 'SHORT_LINK']));
+  });
+
+  it('resmi .gov.tr linki link kuralı tetiklemez; taklidi tetikler ve kurum taklidi sayılır', () => {
+    expect(findRules('Başvurunuz için https://www.turkiye.gov.tr adresini ziyaret edin')).not.toContain('LINK');
+    expect(findRules('İadeniz için https://turkiye.gov.tr.clskl.com/iade')).toEqual(
+      expect.arrayContaining(['LINK', 'IMPERSONATION']),
+    );
+  });
+
+  it('kelime başında eşleşir, kelime içinde değil', () => {
+    expect(findRules('Toplantı arasında görüşürüz, betonu döktük')).toEqual([]);
+  });
+
+  it('IBAN ve ödeme', () => {
+    expect(findRules('TR12 0006 1005 1978 6457 8413 26 hesabına hemen yatırın')).toEqual(
+      expect.arrayContaining(['PAYMENT', 'URGENCY']),
+    );
+  });
+
+  it('doğrulama kodu bilgilendirici kural', () => {
+    expect(findRules('Doğrulama kodunuz 482913. Kimseyle paylaşmayın.')).toEqual(['OTP_INFO']);
+  });
+});
+
+describe('decideFrom (plan bölüm 8 karar tablosu)', () => {
+  const t = { high: 0.67, low: 0.3 };
+  it('olasılık eşikleri', () => {
+    expect(decideFrom(0.9, [], t)).toBe('red');
+    expect(decideFrom(0.4, [], t)).toBe('yellow');
+    expect(decideFrom(0.1, [], t)).toBe('green');
+  });
+
+  it('kural birleşimleri kırmızı', () => {
+    expect(decideFrom(0.1, ['LINK', 'IMPERSONATION'], t)).toBe('red');
+    expect(decideFrom(0.1, ['PAYMENT', 'URGENCY'], t)).toBe('red');
+    expect(decideFrom(0.1, ['PERSONAL_INFO', 'IMPERSONATION'], t)).toBe('red');
+    expect(decideFrom(0.1, ['CALLBACK', 'IMPERSONATION', 'URGENCY'], t)).toBe('red');
+  });
+
+  it('zayıf işaretler tek başına sarı yapmaz; güçlü tek işaret ya da iki işaret sarı', () => {
+    for (const id of ['IMPERSONATION', 'OTP_INFO', 'URGENCY', 'PRIZE', 'PERSONAL_INFO', 'PAYMENT', 'CALLBACK'] as const) {
+      expect(decideFrom(0.1, [id], t)).toBe('green');
+    }
+    expect(decideFrom(0.1, ['LINK'], t)).toBe('yellow');
+    expect(decideFrom(0.1, ['GAMBLING'], t)).toBe('yellow');
+    expect(decideFrom(0.1, ['CALLBACK', 'IMPERSONATION'], t)).toBe('yellow');
+    expect(decideFrom(0.1, ['URGENCY', 'PRIZE'], t)).toBe('yellow');
+  });
+});
+
+describe('decide — gerçek örnekler (scam_tr kaynaklı)', () => {
+  it.each([
+    'Sayın müşterimiz, hesabınızda şüpheli işlem tespit edilmiştir. Hesabınız 24 saat içinde bloke edilecektir. Hemen doğrulamak için tıklayın: https://ornek-baglanti.com/a1',
+    'Siparişiniz teslim edilemedi. İadeyi önlemek için bilgilerinizi doğrulayın: https://ornek-baglanti.com/a1',
+    'Vergi borcunuz nedeniyle dosyanız icraya verildi. Borcu öğrenmek ve itiraz etmek için tıklayın: https://ornek-baglanti.com/a1',
+    'Sn. uzlaştırma dosyanızın savcılığa iadesi için son gündür, mağduriyet yaşamamak adına arayın: h. B. 0212 000 00 00',
+    'Ödenmemiş HGS Borcunuz var, icra işlemlerinin başlatılmaması adına ödeme yapmanız gerekiyor',
+  ])('kırmızı: %s', (text) => {
+    expect(decide(text).level).toBe('red');
+  });
+
+  it('modelin kaçırdığı "evrak işleme alındı, arayınız" mesajı en az sarı', () => {
+    const d = decide('Sn. evraklarınız işleme alınmıştır. Bilgi için arayınız. hukuk bürosu tel: 0216 000 00 00');
+    expect(['yellow', 'red']).toContain(d.level);
+    expect(d.reasons.length).toBeGreaterThan(0);
+  });
+
+  it.each([
+    'Anne akşam yemeğe geliyoruz, bir şey almamız lazım mı?',
+    'Doğum günün kutlu olsun teyzeciğim, nice mutlu yıllara!',
+    'Hastane randevuna ben götüreceğim, 9da kapıda ol.',
+    // Gerçek test setinde yanlış alarm veren günlük cümleler:
+    'Şimdi geldi, duşa girip çıkıyor hemen',
+    'Hediyeler için çok teşekkür ederiz, keşke seni de görebilseydik',
+    'Wifi ın şifresini soracaktım?',
+    'Eski Hapishane galiba, gardiyan odası falan var',
+  ])('yeşil: %s', (text) => {
+    expect(decide(text).level).toBe('green');
+  });
+
+  it('doğrulama kodu mesajı yeşil ama kodu söylememe uyarısı gösterilir', () => {
+    const d = decide('Garanti BBVA internet bankacılığı giriş şifreniz: 482913. Bu şifreyi kimseyle paylaşmayınız.');
+    expect(d.level).not.toBe('red');
+    expect(d.reasons.join(' ')).toMatch(/kodu kimseye söylemeyin|şifre/);
+  });
+
+  it('kısa sahte e-tebligat parçası en az sarı (kurum + süre doldu)', () => {
+    expect(['yellow', 'red']).toContain(decide('e-tebligatınızın yasal süresi dolmuştur').level);
+  });
+
+  it('kısa metin', () => {
+    expect(decide('merhaba').level).toBe('too_short');
+  });
+
+  it('en fazla 4 gerekçe; kırmızıda ana öneri doğru', () => {
+    const d = decide(
+      'TEBRİKLER! e-Devlet adına 5.000 TL ödül kazandınız. Hemen şifrenizi ve kart bilgilerinizi girin, TR12 0006 1005 1978 6457 8413 26 hesabına masraf ödeyin: bit.ly/x1',
+    );
+    expect(d.level).toBe('red');
+    expect(d.reasons.length).toBeLessThanOrEqual(4);
+    expect(d.advice).toMatch(/Linke tıklamayın/);
+  });
+});

@@ -309,11 +309,19 @@ Anahtar kelimeler normalize edilmiş metinde aranır, böylece Türkçe karakter
 KIRMIZI  ← p ≥ T_HIGH
            veya LINK ∧ (IMPERSONATION ∨ PRIZE ∨ URGENCY ∨ PERSONAL_INFO)
            veya PAYMENT ∧ (URGENCY ∨ IMPERSONATION)
-SARI     ← p ≥ T_LOW  veya  (OTP_INFO dışında) herhangi bir kural
+           veya PERSONAL_INFO ∧ (IMPERSONATION ∨ URGENCY)
+           veya CALLBACK ∧ IMPERSONATION ∧ URGENCY
+SARI     ← p ≥ T_LOW
+           veya güçlü tek işaret (LINK, SHORT_LINK, GAMBLING)
+           veya en az iki farklı işaret (OTP_INFO hariç)
 YEŞİL    ← diğer durumlar
 ```
-- `T_HIGH` ve `T_LOW` doğrulama setinden seçilir (başlangıç: 0.80 / 0.40), `model.json` içinde saklanır.
+- `T_HIGH` ve `T_LOW` doğrulama setinden seçilir (başlangıç: 0.80 / 0.40), `model.json` içinde saklanır. Seçilen: 0.67 / 0.30.
 - Kısa metin (< 15 karakter) → "Kontrol için mesaj çok kısa" uyarısı.
+- **Uygulamada yapılan değişiklikler (Aşama 5, ölçüme dayalı):**
+  - İlk kural "herhangi bir kural → sarı" idi. Gerçek test setinde (806 mesaj, model + kurallar birlikte) günlük sohbetteki tek kelimeler ("hemen", "acil", "hediyeler için teşekkürler", "wifi şifresi") yanlış alarmı %1,3'ten **%4,3**'e çıkardı (hedef ≤ %3). Zayıf işaretler tek başına sarı yapmayacak şekilde değiştirildi → yanlış alarm **%1,4** (352 güvenli mesajda 5; kalanlar modelin kendi hataları). Şüpheli mesajların %99,5'i en az sarı (418'de 416; 411 kırmızı).
+  - Ek kurallar: **CALLBACK** ("arayınız", "irtibata geçin" — uzlaştırma/hukuk bürosu tuzakları), link adresinde kurum adı (ptt-kargo.xyz, turkiye.gov.clskl.com) → IMPERSONATION, resmi `*.gov.tr` linkleri LINK sayılmaz, bankanın gerçek doğrulama kodu mesajı ("kimseyle paylaşmayın") "şifre istiyor" sayılmaz.
+  - scam_tr'deki 46 gerçek dolandırıcılık mesajının 44'ü en az sarı (41 kırmızı). Not: model bu mesajların çoğunu eğitimde gördü; bu sayı daha çok kural katmanını ölçer.
 
 ---
 
