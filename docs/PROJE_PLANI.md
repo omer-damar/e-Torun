@@ -55,6 +55,8 @@
 | B3 | "Bugünkü ilaçlarım" listesi ve "ALDIM" işaretleme | P0 |
 | B4 | Son 7 günün geçmişi (alındı/atlandı) | P1 |
 | B5 | 15 dk içinde işaretlenmezse tekrar hatırlatma | P2 |
+| B6 | İlaç stoğu takibi: kullanıma göre kaç gün kaldığını hesaplama, bitmeden uyarma | P1 |
+| B7 | İlaç bitmek üzereyken randevu yönlendirmesi: MHRS / ALO 182 veya yakına hazır SMS | P1 |
 | C1 | En fazla 3 yakın kişi, tek dokunuşla arama | P0 |
 | C2 | 112 butonu (onay pencereli) | P0 |
 | C3 | Konumumu SMS ile gönder | P2 |
@@ -159,8 +161,11 @@ yanimda/
 **Depolama şeması** (AsyncStorage, anahtar başına JSON, `schemaVersion` alanıyla):
 - `settings` → `{ schemaVersion, userName, fontScale: 'buyuk'|'cokBuyuk', speechEnabled, onboardingDone }`
 - `contacts` → `Contact[]` → `{ id, name, relation, phone }` (en fazla 3)
-- `medications` → `Medication[]` → `{ id, name, dose, times: "HH:mm"[], days: 'everyday' | number[] /*1=Pzt..7=Paz*/, note?, color, active, notificationIds: string[] }`
-- `doseLog` → `DoseLogEntry[]` → `{ medicationId, scheduledAt /*ISO*/, status: 'taken'|'skipped', recordedAt }` (30 günden eskisi silinir)
+- `medications` → `Medication[]` → `{ id, name, dose, times: "HH:mm"[], days: 'everyday' | number[] /*1=Pzt..7=Paz*/, note?, color, active, notificationIds: string[], stock?: MedicationStock, refill?: RefillInfo }`
+  - `MedicationStock` → `{ unitsPerDose /*her alımda kaç adet, ör. 1 tablet*/, remainingUnits, updatedAt /*ISO*/, lowStockNotificationId? }`
+  - `RefillInfo` → `{ department? /*ör. "Kardiyoloji"*/, doctor?, hospital?, contactId? /*SMS gidecek yakın*/ }`
+- `doseLog` → `DoseLogEntry[]` → `{ medicationId, scheduledAt /*ISO*/, status: 'taken'|'skipped', recordedAt }` (30 günden eskisi silinir; bu yüzden stok, geçmişten hesaplanmaz, `stock.remainingUnits` üzerinde tutulur)
+- `settings` içine: `refillWarningDays` (varsayılan 10)
 
 ---
 
@@ -169,7 +174,7 @@ yanimda/
 ### A1 Ana ekran
 - Üstte "Merhaba, {isim}" ve tarih (ör. "18 Ekim Pazar").
 - Alt alta 3 büyük kart-buton, her biri ikon + iki satır metin:
-  - 💊 **İlaçlarım** — altında "Sıradaki: 20:00 Tansiyon ilacı" (yoksa "Bugün başka ilaç yok").
+  - 💊 **İlaçlarım** — altında "Sıradaki: 20:00 Tansiyon ilacı" (yoksa "Bugün başka ilaç yok"). Stoğu azalan ilaç varsa altında ⚠️ "Tansiyon ilacınız 8 gün sonra bitecek" satırı (B6).
   - 📞 **Acil Yardım** — "Yakınınızı veya 112'yi arayın".
   - ✉️ **Mesajı Kontrol Et** — "Şüpheli mesajı kontrol edin".
 - Sağ üstte küçük değil, en az 64pt "Ayarlar" butonu.
@@ -222,7 +227,34 @@ yanimda/
 - `getNextDose(medications, now) → Dose | null`
 - `getDoseStatus(dose, log, now) → 'taken' | 'skipped' | 'pending' | 'missed'` (saatinden 60 dk sonra işaretlenmemişse `missed`)
 - `toExpoWeekday(isoWeekday)`
-- `countTriggers(medications)`
+- `countTriggers(medications)` (B6'nın tek seferlik "ilacınız bitiyor" bildirimleri de sayılır)
+- `getDailyUnits(med)`: günlük tüketim = `unitsPerDose × times.length × (her gün ? 1 : days.length / 7)`
+- `getDaysLeft(med) → number | null` (stok girilmemişse `null`) ve `getRunOutDate(med, now)`
+- `getRefillStatus(med, now, warningDays) → 'ok' | 'soon' | 'critical' | 'empty' | 'unknown'` (soon: ≤ warningDays, critical: ≤ 3 gün)
+- `buildRefillSms(med, contact, userName, daysLeft) → string`
+
+### B6 — İlaç stoğu ve bitiş tahmini
+- İlaç ekleme sihirbazına isteğe bağlı bir adım: "Elinizde kaç tablet/kapsül var?" ve "Her seferinde kaç tane alıyorsunuz?" (varsayılan 1). Atlanabilir; atlanırsa stok takibi yapılmaz.
+- **Kullanıma bağlı hesap:** ALDIM'a basılınca `remainingUnits -= unitsPerDose`, Geri al'da geri eklenir. Atlanan doz stoktan düşmez; böylece tahmin, kullanıcının gerçek alışkanlığına göre uzar/kısalır.
+- Kalan gün = `remainingUnits / getDailyUnits(med)`, aşağı yuvarlanır. Ekranda yaklaşık dille: "Yaklaşık 12 gün yetecek kadar ilacınız var (30 Ekim'e kadar)".
+- **"Yeni kutu aldım"** butonu: kutudaki adet girilir, `remainingUnits`'e eklenir (yanlış girişe karşı "Düzelt" ile doğrudan da yazılabilir).
+- Uyarı: kalan gün `refillWarningDays` (varsayılan 10; MHRS randevusu birkaç gün sürebildiği için) ve altına düşünce:
+  - "Bugünkü ilaçlarım" ve ana ekrandaki İlaçlarım kartında kalıcı, sakin bir uyarı satırı (⚠️ ikon + metin, yalnızca renk değil): "Tansiyon ilacınız yaklaşık 8 gün sonra bitecek."
+  - Tahmini bitişten `refillWarningDays` gün önceye **tek seferlik yerel bildirim** (her stok değişiminde iptal edilip yeniden planlanır; 64 sınırına dahil).
+- Stok 0'a inerse ALDIM yine çalışır (stok negatif olmaz, 0'da kalır) ve "İlacınız bitmiş olabilir" uyarısı gösterilir — uygulama doz almayı asla engellemez.
+
+### B7 — Randevu yönlendirmesi
+Uyarı satırına veya ilaç detayına dokununca "İlacınız bitmeden reçete için randevu alın" ekranı. Üç büyük seçenek:
+1. **📞 ALO 182'yi ara** (MHRS çağrı merkezi) → `tel:182`. Telefonla randevu, yaşlı kullanıcı için en kolay yol.
+2. **🌐 MHRS'yi aç** → `Linking.openURL('https://www.mhrs.gov.tr')` (Safari'de ya da yüklüyse MHRS uygulamasında açılır; uygulamanın kendisi ağ isteği atmaz). iOS'ta MHRS uygulamasının evrensel link davranışı gerçek cihazda denenecek.
+3. **👨‍👩‍👧 Yakınımdan randevu iste** → kayıtlı yakınlardan biri seçilir (ilacın `refill.contactId`'si varsa o önceden seçili), `sms:{telefon}&body=...` ile mesaj uygulaması **hazır metinle açılır**; gönder tuşuna kullanıcı kendisi basar (uygulama SMS'i kendiliğinden göndermez). Örnek metin:
+   > Merhaba Ayşe, ben Fatma. Tansiyon ilacım yaklaşık 8 gün sonra bitecek. Reçete yazdırmak için Kardiyoloji bölümünden Dr. Mehmet Yılmaz'a (Manisa Şehir Hastanesi) MHRS'den randevu alabilir misin? Teşekkürler.
+   - Bölüm/doktor/hastane girilmemişse ilgili kısım cümleden çıkarılır ("...reçete için doktorumdan randevu alabilir misin?").
+   - **T.C. kimlik numarası mesaja asla eklenmez** (gizlilik; randevuyu alan yakın bunu zaten bilir veya sorar).
+- Bölüm/doktor/hastane ve SMS gidecek yakın, ilaç ekleme sihirbazında isteğe bağlı "Reçete bilgisi" adımında ya da sonradan ilaç detayında girilir. Bölüm için sık kullanılanlardan büyük butonlu liste (Dahiliye, Kardiyoloji, Nöroloji, Endokrinoloji, Göğüs Hastalıkları, Aile Hekimi...) + serbest metin.
+- **Tıbbi sorumluluk:** Uygulama doz veya ilaç değişikliği önermez; yalnızca "bitmeden doktorunuza görünün" hatırlatması yapar. Hakkında ekranındaki not geçerlidir.
+
+**B6/B7 kabul kriterleri:** 10 tablet + günde 2 doz girilen ilaç 5 gün olarak gösterilir; 3 kez ALDIM sonrası 3.5 → "yaklaşık 3 gün". Geri al stoğu geri getirir. Uyarı eşiğinin altına düşünce ana ekranda uyarı görünür ve tek seferlik bildirim planlanır; "Yeni kutu aldım" sonrası uyarı kalkar ve bildirim yeniden planlanır. SMS ekranı doğru yakının numarası ve eksiksiz metinle açılır; uygulama SMS'i kendiliğinden göndermez. Stok girilmemiş ilaçta hiçbir stok uyarısı çıkmaz.
 
 **Kabul kriterleri:** 2 dk sonrasına kurulan ilaç bildirimi uygulama kapalıyken gelir. Düzenleme sonrası eski saatte bildirim gelmez. ALDIM ve Geri al doğru çalışır. Gece yarısı geçişinde "bugün" listesi yenilenir (uygulama ön plana geldiğinde `AppState` ile).
 
@@ -380,6 +412,8 @@ Python'da `\d` ve `\s` yerine açık karakter sınıfları kullanılır. `ml/tes
   - [ ] 2 dk sonraya kurulan bildirim uygulama kapalıyken geliyor
   - [ ] Bildirime dokununca doğru ekran açılıyor
   - [ ] İlaç silinince bildirimi de siliniyor
+  - [ ] Stok uyarısı ve "ilacınız bitiyor" bildirimi doğru günde geliyor; "Yeni kutu aldım" sonrası kalkıyor
+  - [ ] "Yakınımdan randevu iste" SMS uygulamasını doğru numara ve hazır metinle açıyor (iOS `sms:` gövde biçimi)
   - [ ] Çok büyük yazı + iOS en büyük metin ayarında taşma yok
   - [ ] VoiceOver ile 3 ana görev tamamlanabiliyor
   - [ ] Uçak modunda her şey çalışıyor
@@ -413,7 +447,7 @@ Hocanın istediği "projenin nerede ve ne zaman gerçekleştiği" kısmı burada
 | 1 | 19–25 Eki | Ortam kurulumu, repo, Expo iskeleti, tema ve bileşenler; veri setlerini indirme; dolandırıcılık SMS'i toplamaya başlama | Expo Go'da açılan ana ekran |
 | 2 | 26 Eki–1 Kas | ML: normalize, veri birleştirme, model karşılaştırma, eşik, export, parity vektörleri | `model.json`, `reports/` |
 | 3 | 2–8 Kas | Kurulum sihirbazı, ayarlar, depolama katmanı, Acil Yardım modülü | A1–A3, C1–C2 |
-| 4 | 9–15 Kas | İlaç modülü + bildirimler + senkronizasyon | B1–B4 |
+| 4 | 9–15 Kas | İlaç modülü + bildirimler + senkronizasyon + stok takibi ve randevu yönlendirmesi | B1–B4, B6–B7 |
 | 5 | 16–22 Kas | Dedektör TS (normalize, n-gram, tfidf, classify, rules, decide), parity testi, sonuç ekranı, sesli okuma, Yakınıma sor | D1–D6 |
 | 6 | 23–29 Kas | Erişilebilirlik cilası, elle test listesi, hata durumları, kullanıcı testi materyalleri | Test edilebilir sürüm |
 | 7 | 30 Kas–6 Ara | **Saha uygulaması**, fotoğraflar, geri bildirim, düzeltmeler | Test sonuçları |
@@ -445,7 +479,7 @@ Hocanın 3 maddesine birebir karşılık gelecek şekilde, tek PDF dosyası:
 - *Aşama 1:* "docs/PROJE_PLANI.md bölüm 3, 4 ve 10'u oku. `app/` altında en güncel Expo şablonuyla TypeScript + expo-router projesi kur, tema dosyalarını ve BigButton, ScreenContainer, ConfirmDialog bileşenlerini oluştur, ana ekranı (A1) sahte verilerle yap. Jest'i jest-expo ile kur."
 - *Aşama 2:* "Bölüm 9'u oku. `ml/` klasörünü kur, normalize.py'yi ve testlerini yaz, veri yükleme ve train.py'yi hazırla. Veri dosyalarını ben `ml/data/raw/` içine koyacağım; beklenen dosya formatlarını README'ye yaz."
 - *Aşama 3:* "Bölüm 5 ve 7: kurulum sihirbazı, ayarlar, depolama katmanı ve Acil Yardım modülü."
-- *Aşama 4:* "Bölüm 6: ilaç modülü. Önce saf fonksiyonları ve testlerini yaz, sonra bildirimleri, sonra ekranları."
+- *Aşama 4:* "Bölüm 6: ilaç modülü. Önce saf fonksiyonları ve testlerini yaz, sonra bildirimleri, sonra ekranları; ardından B6 stok takibi ve B7 randevu yönlendirmesi."
 - *Aşama 5:* "Bölüm 8 ve 9.5: dedektörün TS tarafı, parity testi ve sonuç ekranı."
 - *Aşama 6:* "Bölüm 10 ve 12'deki kontrol listesine göre tüm ekranları denetle ve düzelt."
 
