@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { AppText, BigButton, ConfirmDialog, ScreenContainer } from '@/components';
 import { callNumber, EMERGENCY_NUMBER } from '@/features/emergency/call';
-import { contactTitle, MAX_CONTACTS } from '@/features/emergency/contacts';
+import { contactTitle } from '@/features/emergency/contacts';
 import { formatPhone, phoneForSpeech } from '@/features/emergency/phone';
 import { useAppData } from '@/storage/AppDataProvider';
 import { colors } from '@/theme';
@@ -15,15 +15,16 @@ export default function EmergencyScreen() {
 
   return (
     <ScreenContainer title="Acil Yardım">
+      {/* Bu ekran yalnızca arama içindir; yakınlar Ayarlar > Yakınlarım'dan yönetilir. */}
       {contacts.length === 0 ? (
         <>
-          <AppText>Henüz kimse eklenmedi.</AppText>
+          <AppText>Henüz yakın eklenmedi. Yakınlarınızı Ayarlar ekranından ekleyebilirsiniz.</AppText>
           <BigButton
-            icon="➕"
-            title="Kişi ekle"
+            icon="⚙️"
+            title="Ayarlar'a git"
             variant="neutral"
-            onPress={() => router.push('/kisi')}
-            accessibilityHint="Acil durumda arayacağınız bir yakınınızı ekler"
+            onPress={() => router.push('/ayarlar')}
+            accessibilityHint="Yakınlarım bölümünden kişi ekleyebilirsiniz"
           />
         </>
       ) : (
@@ -40,10 +41,6 @@ export default function EmergencyScreen() {
           />
         ))
       )}
-
-      {contacts.length > 0 && contacts.length < MAX_CONTACTS ? (
-        <BigButton icon="➕" title="Başka kişi ekle" variant="neutral" onPress={() => router.push('/kisi')} />
-      ) : null}
 
       <AppText color={colors.textSecondary}>Hayati tehlike varsa:</AppText>
       <BigButton

@@ -52,10 +52,18 @@ describe('Acil Yardım', () => {
     expect(openURL).toHaveBeenCalledWith('tel:05550000001');
   });
 
-  it('kimse yoksa bunu söyler ve kişi eklemeyi önerir', async () => {
+  it('kimse yoksa Ayarlar\'a yönlendirir; bu ekranda kişi ekleme yoktur', async () => {
     await renderWithContacts([]);
 
-    expect(await screen.findByText('Henüz kimse eklenmedi.')).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Kişi ekle' })).toBeTruthy();
+    expect(await screen.findByText(/Henüz yakın eklenmedi/)).toBeTruthy();
+    expect(screen.getByRole('button', { name: "Ayarlar'a git" })).toBeTruthy();
+    expect(screen.queryByRole('button', { name: /Kişi ekle/ })).toBeNull();
+  });
+
+  it('kişi varken de ekleme/düzenleme butonu göstermez', async () => {
+    await renderWithContacts([{ id: 'a', name: 'Ayşe', relation: 'Kızım', phone: '05550000001' }]);
+
+    await screen.findByText('Ayşe (Kızım)');
+    expect(screen.queryByRole('button', { name: /ekle|düzenle|sil/i })).toBeNull();
   });
 });
