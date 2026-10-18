@@ -1,16 +1,24 @@
-import { router } from 'expo-router';
+import { Redirect, router } from 'expo-router';
+import { Linking } from 'react-native';
 
-import { AppText, BigButton, ScreenContainer } from '@/components';
-import { getGreeting, getNextDoseText, MOCK_HOME_DATA } from '@/features/home/homeSummary';
+import { AppText, BigButton, Notice, ScreenContainer } from '@/components';
+import { getGreeting, getNextDoseText } from '@/features/home/homeSummary';
+import { useNotificationPermission } from '@/features/notifications/permission';
+import { useAppData } from '@/storage/AppDataProvider';
 import { colors } from '@/theme';
 import { formatTurkishDate } from '@/utils/date';
 
 export default function HomeScreen() {
-  const { userName, nextDose } = MOCK_HOME_DATA;
+  const { ready, settings } = useAppData();
+  const permission = useNotificationPermission();
+
+  // Depo okunana kadar boş: açılış ekranı görünür, yanlışlıkla kuruluma atlanmaz.
+  if (!ready) return null;
+  if (!settings.onboardingDone) return <Redirect href="/kurulum" />;
 
   return (
     <ScreenContainer
-      title={getGreeting(userName)}
+      title={getGreeting(settings.userName)}
       showHomeButton={false}
       headerRight={
         <BigButton
@@ -27,10 +35,22 @@ export default function HomeScreen() {
         {formatTurkishDate(new Date())}
       </AppText>
 
+      {permission === 'denied' ? (
+        <Notice title="Bildirimler kapalı" message="İlaç saatlerinde size haber veremiyoruz.">
+          <BigButton
+            title="Ayarları aç"
+            variant="neutral"
+            onPress={() => Linking.openSettings()}
+            accessibilityHint="Telefonun ayarlarında bu uygulamanın bildirim iznini açabilirsiniz"
+          />
+        </Notice>
+      ) : null}
+
       <BigButton
         icon="💊"
         title="İlaçlarım"
-        subtitle={getNextDoseText(nextDose)}
+        // İlaç modülü Aşama 4'te gelene kadar kayıtlı ilaç yok.
+        subtitle={getNextDoseText(null)}
         onPress={() => router.push('/ilaclar')}
         accessibilityHint="Bugünkü ilaçlarınızı gösterir"
       />

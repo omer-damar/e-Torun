@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import type { ReactNode } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { colors, spacing } from '@/theme';
@@ -14,6 +14,8 @@ type Props = {
   showHomeButton?: boolean;
   /** Başlığın üstünde, sağa yaslı öğe (ör. Ayarlar butonu). */
   headerRight?: ReactNode;
+  /** Altta sabit duran özel içerik (ör. kurulumdaki İleri/Geri). Verilirse Ana Sayfa butonunun yerini alır. */
+  footer?: ReactNode;
 };
 
 export function goHome() {
@@ -29,18 +31,24 @@ export function goHome() {
  * Her ekranın ortak çerçevesi: güvenli alan + büyük başlık + içerik + altta büyük "Ana Sayfa" butonu.
  * İçerik kaydırılabilir, böylece çok büyük yazıda taşma olmaz; ancak Ana Sayfa butonu her zaman görünür.
  */
-export function ScreenContainer({ title, children, showHomeButton = true, headerRight }: Props) {
+export function ScreenContainer({ title, children, showHomeButton = true, headerRight, footer }: Props) {
   return (
     <SafeAreaView style={styles.safeArea} edges={['top', 'bottom', 'left', 'right']}>
-      <View style={styles.header}>
-        {/* Sağdaki öğe başlıkla aynı satırı paylaşmaz: büyük yazıda ikisi de sıkışıp harf harf kırılıyordu. */}
-        {headerRight ? <View style={styles.headerRight}>{headerRight}</View> : null}
-        <AppText variant="title" accessibilityRole="header">
-          {title}
-        </AppText>
-      </View>
-      <ScrollView contentContainerStyle={styles.content}>{children}</ScrollView>
-      {showHomeButton ? (
+      {/* Klavye açılınca metin kutuları ve alttaki butonlar klavyenin altında kalmasın. */}
+      <KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <View style={styles.header}>
+          {/* Sağdaki öğe başlıkla aynı satırı paylaşmaz: büyük yazıda ikisi de sıkışıp harf harf kırılıyordu. */}
+          {headerRight ? <View style={styles.headerRight}>{headerRight}</View> : null}
+          <AppText variant="title" accessibilityRole="header">
+            {title}
+          </AppText>
+        </View>
+        <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+          {children}
+        </ScrollView>
+        {footer ? <View style={styles.footer}>{footer}</View> : null}
+      </KeyboardAvoidingView>
+      {!footer && showHomeButton ? (
         <View style={styles.footer}>
           <BigButton
             title="Ana Sayfa"
@@ -60,6 +68,9 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: colors.background,
+  },
+  flex: {
+    flex: 1,
   },
   header: {
     gap: spacing.sm,
