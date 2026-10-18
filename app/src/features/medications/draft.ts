@@ -7,8 +7,10 @@ import {
   type IsoWeekday,
   type MedColorId,
   type Medication,
+  type RefillInfo,
 } from './model';
 import { formatTime, normalizeTimes, parseTime } from './schedule';
+import { parseUnits } from './stock';
 
 export type MedicationDraft = {
   name: string;
@@ -16,15 +18,58 @@ export type MedicationDraft = {
   times: string[];
   days: 'everyday' | IsoWeekday[];
   color: MedColorId;
+  /** B6: stok takibi yapılsın mı? */
+  trackStock: boolean;
+  /** Metin kutusundaki hâliyle (ör. "30", "1,5"). */
+  stockUnits: string;
+  unitsPerDose: string;
+  /** B7: reçete bilgisi; boş alanlar kaydedilmez. */
+  refill: Required<Record<keyof RefillInfo, string>>;
 };
 
-export const WIZARD_STEPS = ['name', 'dose', 'times', 'days', 'color', 'summary'] as const;
+export const WIZARD_STEPS = ['name', 'dose', 'times', 'days', 'color', 'stock', 'refill', 'summary'] as const;
 export type WizardStep = (typeof WIZARD_STEPS)[number];
 
-export const EMPTY_DRAFT: MedicationDraft = { name: '', dose: '', times: ['08:00'], days: 'everyday', color: 'beyaz' };
+const EMPTY_REFILL = { department: '', doctor: '', hospital: '', contactId: '' };
+
+export const EMPTY_DRAFT: MedicationDraft = {
+  name: '',
+  dose: '',
+  times: ['08:00'],
+  days: 'everyday',
+  color: 'beyaz',
+  trackStock: false,
+  stockUnits: '',
+  unitsPerDose: '1',
+  refill: EMPTY_REFILL,
+};
+
+const unitsText = (n: number) => String(n).replace('.', ',');
 
 export function draftFromMedication(med: Medication): MedicationDraft {
-  return { name: med.name, dose: med.dose, times: [...med.times], days: med.days === 'everyday' ? 'everyday' : [...med.days], color: med.color };
+  return {
+    name: med.name,
+    dose: med.dose,
+    times: [...med.times],
+    days: med.days === 'everyday' ? 'everyday' : [...med.days],
+    color: med.color,
+    trackStock: Boolean(med.stock),
+    stockUnits: med.stock ? unitsText(med.stock.remainingUnits) : '',
+    unitsPerDose: med.stock ? unitsText(med.stock.unitsPerDose) : '1',
+    refill: { ...EMPTY_REFILL, ...med.refill },
+  };
+}
+
+/** Reçete adımı yalnızca stok takibi açıkken sorulur (bitmeden randevu hatırlatması için). */
+export function isStepVisible(step: WizardStep, draft: MedicationDraft): boolean {
+  return step !== 'refill' || draft.trackStock;
+}
+
+/** Görünür adımlar arasında bir sonraki / önceki adımın sırası. */
+export function adjacentStep(index: number, direction: 1 | -1, draft: MedicationDraft): number {
+  let i = index + direction;
+  while (i > 0 && i < WIZARD_STEPS.length - 1 && !isStepVisible(WIZARD_STEPS[i], draft)) i += direction;
+  return Math.min(Math.max(i, 0), WIZARD_STEPS.length - 1);
 }
 
 /** Adımdan ileri geçmeden önce kontrol; sorun varsa kullanıcıya gösterilecek cümle. */
@@ -42,6 +87,13 @@ export function validateStep(step: WizardStep, draft: MedicationDraft): string |
       return null;
     case 'days':
       return draft.days !== 'everyday' && draft.days.length === 0 ? 'En az bir gün seçin.' : null;
+    case 'stock': {
+      if (!draft.trackStock) return null;
+      if (parseUnits(draft.stockUnits) === null) return 'Elinizdeki ilaç sayısını rakamla yazın. Örnek: 30';
+      const perDose = parseUnits(draft.unitsPerDose);
+      if (perDose === null || perDose <= 0 || perDose > 20) return 'Her seferinde kaç tane aldığınızı yazın. Örnek: 1';
+      return null;
+    }
     default:
       return null;
   }
@@ -63,8 +115,31 @@ export function toggleDay(days: MedicationDraft['days'], day: IsoWeekday): IsoWe
   return current.includes(day) ? current.filter((d) => d !== day) : [...current, day].sort();
 }
 
-export function draftToMedication(draft: MedicationDraft, id: string, existing?: Medication): Medication {
+function refillFromDraft(refill: MedicationDraft['refill']): RefillInfo | undefined {
+  const cleaned: RefillInfo = {};
+  for (const key of Object.keys(refill) as (keyof RefillInfo)[]) {
+    const value = refill[key].trim();
+    if (value) cleaned[key] = value;
+  }
+  return Object.keys(cleaned).length > 0 ? cleaned : undefined;
+}
+
+export function draftToMedication(draft: MedicationDraft, id: string, existing?: Medication, now = new Date()): Medication {
   const days = draft.days === 'everyday' || draft.days.length === 7 ? 'everyday' : [...draft.days].sort();
+  const remainingUnits = parseUnits(draft.stockUnits);
+  const unitsPerDose = parseUnits(draft.unitsPerDose);
+  const stock =
+    draft.trackStock && remainingUnits !== null && unitsPerDose !== null && unitsPerDose > 0
+      ? {
+          unitsPerDose,
+          remainingUnits,
+          // Değişmediyse eski zaman damgası korunur.
+          updatedAt:
+            existing?.stock?.remainingUnits === remainingUnits && existing.stock.unitsPerDose === unitsPerDose
+              ? existing.stock.updatedAt
+              : now.toISOString(),
+        }
+      : undefined;
   return {
     id,
     name: draft.name.trim(),
@@ -75,6 +150,9 @@ export function draftToMedication(draft: MedicationDraft, id: string, existing?:
     note: existing?.note,
     active: existing?.active ?? true,
     notificationIds: existing?.notificationIds ?? [],
+    stock,
+    // Stok takibi kapalıyken reçete bilgisi de saklanmaz (o adım gösterilmez).
+    refill: draft.trackStock ? refillFromDraft(draft.refill) : undefined,
   };
 }
 

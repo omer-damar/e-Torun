@@ -75,6 +75,28 @@ describe('Bugünkü ilaçlarım', () => {
     expect(await storedLog()).toEqual([]);
   });
 
+  it('stok takibinde ALDIM stoktan düşer, Geri al geri ekler', async () => {
+    await store(STORAGE_KEYS.medications, [{ ...med, stock: { unitsPerDose: 1, remainingUnits: 10, updatedAt: '' } }]);
+    await renderToday();
+    const remaining = async () => JSON.parse((await AsyncStorage.getItem(STORAGE_KEYS.medications))!).data[0].stock.remainingUnits;
+
+    await fireEvent.press(await screen.findByRole('button', { name: '23:59 Tansiyon ilacı ilacını aldım' }));
+    await screen.findByText(/✅ Alındı/);
+    expect(await remaining()).toBe(9);
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Tansiyon ilacı için Aldım işaretini geri al' }));
+    await screen.findByText('⏳ Bekliyor');
+    expect(await remaining()).toBe(10);
+  });
+
+  it('stoğu azalan ilaç için kalıcı uyarı ve randevu düğmesi gösterir', async () => {
+    await store(STORAGE_KEYS.medications, [{ ...med, stock: { unitsPerDose: 1, remainingUnits: 3, updatedAt: '' } }]);
+    await renderToday();
+    expect(await screen.findByText(/Tansiyon ilacı yaklaşık 3 gün yetecek/)).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Tansiyon ilacı için randevu al' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Tansiyon ilacı için yeni kutu aldım' })).toBeTruthy();
+  });
+
   it('Geri al 10 saniye sonra kaybolur, işaret kalır', async () => {
     jest.useFakeTimers({ doNotFake: ['nextTick', 'setImmediate'] });
     try {

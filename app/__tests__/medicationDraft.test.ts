@@ -1,5 +1,6 @@
 import { stepHour, stepMinute } from '@/components/TimePickerBig';
 import {
+  adjacentStep,
   draftToMedication,
   EMPTY_DRAFT,
   suggestNextTime,
@@ -61,10 +62,51 @@ describe('toggleDay', () => {
 describe('draftToMedication', () => {
   it('temizler; 7 gün seçildiyse "her gün" olur; düzenlemede bildirim kimliklerini korur', () => {
     const med = draftToMedication(
-      { name: ' Tansiyon ', dose: ' 1 tablet ', times: ['20:00', '08:00'], days: [7, 6, 5, 4, 3, 2, 1], color: 'mavi' },
+      { ...EMPTY_DRAFT, name: ' Tansiyon ', dose: ' 1 tablet ', times: ['20:00', '08:00'], days: [7, 6, 5, 4, 3, 2, 1], color: 'mavi' },
       'm1',
       { id: 'm1', name: 'x', dose: '', times: [], days: 'everyday', color: 'beyaz', active: true, notificationIds: ['n1'] },
     );
     expect(med).toMatchObject({ name: 'Tansiyon', dose: '1 tablet', times: ['08:00', '20:00'], days: 'everyday', notificationIds: ['n1'] });
+  });
+});
+
+describe('stok ve reçete adımları', () => {
+  it('reçete adımı yalnızca stok takibi açıkken görünür', () => {
+    const steps = ['name', 'dose', 'times', 'days', 'color', 'stock', 'refill', 'summary'];
+    const off = { ...EMPTY_DRAFT, trackStock: false };
+    const on = { ...EMPTY_DRAFT, trackStock: true };
+    expect(steps[adjacentStep(steps.indexOf('stock'), 1, off)]).toBe('summary');
+    expect(steps[adjacentStep(steps.indexOf('summary'), -1, off)]).toBe('stock');
+    expect(steps[adjacentStep(steps.indexOf('stock'), 1, on)]).toBe('refill');
+  });
+
+  it('stok açıkken sayılar zorunlu ve geçerli olmalı', () => {
+    expect(validateStep('stock', { ...EMPTY_DRAFT, trackStock: true, stockUnits: '' })).toMatch(/rakamla/);
+    expect(validateStep('stock', { ...EMPTY_DRAFT, trackStock: true, stockUnits: '30', unitsPerDose: '0' })).toMatch(/kaç tane/);
+    expect(validateStep('stock', { ...EMPTY_DRAFT, trackStock: true, stockUnits: '30', unitsPerDose: '0,5' })).toBeNull();
+    expect(validateStep('stock', { ...EMPTY_DRAFT, trackStock: false, stockUnits: 'x' })).toBeNull();
+  });
+
+  it('kayıtta stok ve dolu reçete alanları saklanır; stok kapalıyken ikisi de yok', () => {
+    const now = new Date(2026, 9, 19);
+    const on = draftToMedication(
+      {
+        ...EMPTY_DRAFT,
+        name: 'Tansiyon',
+        trackStock: true,
+        stockUnits: '30',
+        unitsPerDose: '0,5',
+        refill: { department: 'Kardiyoloji', doctor: ' ', hospital: '', contactId: 'c1' },
+      },
+      'm1',
+      undefined,
+      now,
+    );
+    expect(on.stock).toEqual({ unitsPerDose: 0.5, remainingUnits: 30, updatedAt: now.toISOString() });
+    expect(on.refill).toEqual({ department: 'Kardiyoloji', contactId: 'c1' });
+
+    const off = draftToMedication({ ...EMPTY_DRAFT, name: 'X', refill: { department: 'Dahiliye', doctor: '', hospital: '', contactId: '' } }, 'm2');
+    expect(off.stock).toBeUndefined();
+    expect(off.refill).toBeUndefined();
   });
 });

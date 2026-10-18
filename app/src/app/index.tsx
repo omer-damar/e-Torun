@@ -2,6 +2,7 @@ import { Redirect, router } from 'expo-router';
 import { Linking } from 'react-native';
 
 import { AppText, BigButton, Notice, ScreenContainer } from '@/components';
+import { lowStockMedications, RefillWarnings } from '@/components/RefillWarnings';
 import { getGreeting, getNextDoseText } from '@/features/home/homeSummary';
 import { getNextDose } from '@/features/medications/schedule';
 import { useNow } from '@/features/medications/useNow';
@@ -14,6 +15,7 @@ export default function HomeScreen() {
   const { ready, settings, medications, doseLog } = useAppData();
   const permission = useNotificationPermission();
   const now = useNow();
+  const lowStock = lowStockMedications(medications, settings.refillWarningDays);
 
   // Depo okunana kadar boş: açılış ekranı görünür, yanlışlıkla kuruluma atlanmaz.
   if (!ready) return null;
@@ -52,7 +54,16 @@ export default function HomeScreen() {
       <BigButton
         icon="💊"
         title="İlaçlarım"
-        subtitle={medications.length === 0 ? 'İlaç ekleyin' : getNextDoseText(getNextDose(medications, doseLog, now))}
+        subtitle={
+          medications.length === 0
+            ? 'İlaç ekleyin'
+            : [
+                getNextDoseText(getNextDose(medications, doseLog, now)),
+                lowStock.length > 0 ? `⚠️ ${lowStock.length} ilacınız bitmek üzere` : '',
+              ]
+                .filter(Boolean)
+                .join('\n')
+        }
         onPress={() => router.push('/ilaclar')}
         accessibilityHint="Bugünkü ilaçlarınızı gösterir"
       />
@@ -71,6 +82,8 @@ export default function HomeScreen() {
         onPress={() => router.push('/mesaj')}
         accessibilityHint="Mesaj kontrol ekranını açar"
       />
+      {/* Üç ana buton yerinden oynamasın diye stok uyarıları en altta. */}
+      <RefillWarnings medications={medications} warningDays={settings.refillWarningDays} now={now} />
     </ScreenContainer>
   );
 }

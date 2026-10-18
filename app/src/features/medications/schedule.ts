@@ -94,11 +94,14 @@ export function getNextDose(medications: Medication[], log: DoseLogEntry[], now:
   return getDosesForDate(medications, now).find((d) => getDoseStatus(d, log, now) === 'pending') ?? null;
 }
 
-/** Planlanacak bildirim sayısı: her saat × (her gün ? 1 : seçili gün sayısı). */
+/**
+ * Planlanacak bildirim sayısı: her saat × (her gün ? 1 : seçili gün sayısı),
+ * stok takibi olan ilaçta +1 ("ilacınız bitiyor" bildirimi, B6).
+ */
 export function countTriggers(medications: Medication[]): number {
   return medications
     .filter((m) => m.active)
-    .reduce((sum, m) => sum + m.times.length * (m.days === 'everyday' ? 1 : m.days.length), 0);
+    .reduce((sum, m) => sum + m.times.length * (m.days === 'everyday' ? 1 : m.days.length) + (m.stock ? 1 : 0), 0);
 }
 
 /** `id`'li ilaç `candidate` ile değiştirilirse (ya da eklenirse) toplam bildirim sınırı aşılır mı? */

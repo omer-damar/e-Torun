@@ -3,10 +3,11 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { AppState } from 'react-native';
 
 import { parseContacts, removeContact, upsertContact, type Contact } from '@/features/emergency/contacts';
-import type { Dose, DoseLogEntry, Medication } from '@/features/medications/model';
+import type { Dose, DoseLogEntry, Medication, MedicationStock } from '@/features/medications/model';
 import { syncMedicationNotifications } from '@/features/medications/notifications';
 import { parseDoseLog, parseMedications } from '@/features/medications/parse';
-import { pruneLog, recordDose, undoDose, wouldExceedTriggerLimit } from '@/features/medications/schedule';
+import { findLogEntry, pruneLog, recordDose, undoDose, wouldExceedTriggerLimit } from '@/features/medications/schedule';
+import { applyTaken, applyUndo } from '@/features/medications/stock';
 import { DEFAULT_SETTINGS, parseSettings, type Settings } from '@/features/settings/settings';
 import { FontScaleContext } from '@/theme';
 import { clearAll, readJson, STORAGE_KEYS, writeJson } from './storage';
@@ -29,6 +30,8 @@ type AppData = {
   deleteMedication: (id: string) => Promise<void>;
   markDose: (dose: Dose, status: 'taken' | 'skipped') => Promise<void>;
   unmarkDose: (dose: Dose) => Promise<void>;
+  /** "Yeni kutu aldım" / "Düzelt" / stok takibini kapat (`undefined`). */
+  setStock: (medicationId: string, stock: MedicationStock | undefined) => Promise<void>;
   /** Tüm kayıtları ve planlı bildirimleri siler. */
   resetAll: () => Promise<void>;
 };
@@ -63,7 +66,10 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
   const syncNotifications = useCallback(async () => {
     let ids: Record<string, string[]>;
     try {
-      ids = await syncMedicationNotifications(medicationsRef.current);
+      ids = await syncMedicationNotifications(medicationsRef.current, {
+        now: new Date(),
+        refillWarningDays: settingsRef.current.refillWarningDays,
+      });
     } catch {
       return; // Bildirim izni yoksa ya da sistem reddederse ilaç kaydı yine de geçerli.
     }
@@ -152,18 +158,43 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
     [commitMedications, commitDoseLog, syncNotifications],
   );
 
+  /** B6: stok takibi olan ilaçta stoğu değiştirir ve "ilacınız bitiyor" bildirimini yeniden planlar. */
+  const changeStock = useCallback(
+    async (medicationId: string, change: (stock: MedicationStock) => MedicationStock) => {
+      const med = medicationsRef.current.find((m) => m.id === medicationId);
+      if (!med?.stock) return;
+      const stock = change(med.stock);
+      await commitMedications(medicationsRef.current.map((m) => (m.id === medicationId ? { ...m, stock } : m)));
+      syncNotifications();
+    },
+    [commitMedications, syncNotifications],
+  );
+
   const markDose = useCallback(
     async (dose: Dose, status: 'taken' | 'skipped') => {
-      await commitDoseLog(recordDose(doseLogRef.current, dose, status, new Date()));
+      const wasTaken = findLogEntry(dose, doseLogRef.current)?.status === 'taken';
+      const now = new Date();
+      await commitDoseLog(recordDose(doseLogRef.current, dose, status, now));
+      if (status === 'taken' && !wasTaken) await changeStock(dose.medicationId, (s) => applyTaken(s, now));
     },
-    [commitDoseLog],
+    [commitDoseLog, changeStock],
   );
 
   const unmarkDose = useCallback(
     async (dose: Dose) => {
+      const wasTaken = findLogEntry(dose, doseLogRef.current)?.status === 'taken';
       await commitDoseLog(undoDose(doseLogRef.current, dose));
+      if (wasTaken) await changeStock(dose.medicationId, (s) => applyUndo(s, new Date()));
     },
-    [commitDoseLog],
+    [commitDoseLog, changeStock],
+  );
+
+  const setStock = useCallback(
+    async (medicationId: string, stock: MedicationStock | undefined) => {
+      await commitMedications(medicationsRef.current.map((m) => (m.id === medicationId ? { ...m, stock } : m)));
+      await syncNotifications();
+    },
+    [commitMedications, syncNotifications],
   );
 
   const resetAll = useCallback(async () => {
@@ -193,6 +224,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       deleteMedication,
       markDose,
       unmarkDose,
+      setStock,
       resetAll,
     }),
     [
@@ -208,6 +240,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       deleteMedication,
       markDose,
       unmarkDose,
+      setStock,
       resetAll,
     ],
   );

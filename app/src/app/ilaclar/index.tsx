@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { AppText, BigButton, Notice, ScreenContainer } from '@/components';
 import { DoseCard } from '@/components/DoseCard';
+import { RefillWarnings } from '@/components/RefillWarnings';
 import type { Dose } from '@/features/medications/model';
 import { findLogEntry, getDoseStatus, getDosesForDate } from '@/features/medications/schedule';
 import { useNow } from '@/features/medications/useNow';
@@ -25,7 +26,7 @@ function hhmm(iso: string): string {
 export default function MedicationsTodayScreen() {
   // Bildirime dokunulunca: ?highlight=<ilaç id>&time=HH:mm
   const { highlight, time } = useLocalSearchParams<{ highlight?: string; time?: string }>();
-  const { medications, doseLog, markDose, unmarkDose } = useAppData();
+  const { medications, doseLog, settings, markDose, unmarkDose } = useAppData();
   const now = useNow();
   const permission = useNotificationPermission();
   const [recentlyTaken, setRecentlyTaken] = useState<Record<string, number>>({});
@@ -68,6 +69,8 @@ export default function MedicationsTodayScreen() {
           message="İlaç saatinde telefonunuz size haber veremez. Ana ekrandaki uyarıdan açabilirsiniz."
         />
       ) : null}
+
+      <RefillWarnings medications={medications} warningDays={settings.refillWarningDays} now={now} />
 
       {medications.length === 0 ? (
         <>

@@ -12,10 +12,13 @@ import {
   ScreenContainer,
 } from '@/components';
 import { TimePickerBig } from '@/components/TimePickerBig';
+import { contactTitle } from '@/features/emergency/contacts';
 import {
+  adjacentStep,
   draftFromMedication,
   draftToMedication,
   EMPTY_DRAFT,
+  isStepVisible,
   newMedicationId,
   suggestNextTime,
   toggleDay,
@@ -26,6 +29,7 @@ import {
 } from '@/features/medications/draft';
 import {
   ALL_WEEKDAYS,
+  COMMON_DEPARTMENTS,
   MAX_DOSE_LENGTH,
   MAX_NAME_LENGTH,
   MED_COLORS,
@@ -33,6 +37,7 @@ import {
   WEEKDAY_NAMES,
 } from '@/features/medications/model';
 import { countTriggers, describeDays, MAX_TRIGGERS, wouldExceedTriggerLimit } from '@/features/medications/schedule';
+import { describeDaysLeft, formatUnits } from '@/features/medications/stock';
 import { useAppData } from '@/storage/AppDataProvider';
 import { colors, spacing } from '@/theme';
 
@@ -42,13 +47,15 @@ const STEP_TITLES: Record<WizardStep, string> = {
   times: 'Hangi saatlerde?',
   days: 'Hangi günlerde?',
   color: 'İlacın rengi',
+  stock: 'Elinizde ne kadar var?',
+  refill: 'Reçete bilgisi',
   summary: 'Kontrol edin',
 };
 
 /** B1 — İlaç ekle (`/ilaclar/duzenle`) veya düzenle (`?id=`), adım adım. */
 export default function MedicationEditScreen() {
   const { id } = useLocalSearchParams<{ id?: string }>();
-  const { medications, saveMedication, deleteMedication } = useAppData();
+  const { medications, contacts, saveMedication, deleteMedication } = useAppData();
   const existing = id ? medications.find((m) => m.id === id) : undefined;
 
   const [draft, setDraft] = useState<MedicationDraft>(() => (existing ? draftFromMedication(existing) : EMPTY_DRAFT));
@@ -82,13 +89,15 @@ export default function MedicationEditScreen() {
       return;
     }
     setError(null);
-    setStepIndex((i) => Math.min(i + 1, WIZARD_STEPS.length - 1));
+    setStepIndex((i) => adjacentStep(i, 1, draft));
   };
   const back = () => {
     setError(null);
     if (stepIndex === 0) close();
-    else setStepIndex((i) => i - 1);
+    else setStepIndex((i) => adjacentStep(i, -1, draft));
   };
+  const visibleSteps = WIZARD_STEPS.filter((s) => isStepVisible(s, draft));
+  const updateRefill = (patch: Partial<MedicationDraft['refill']>) => update({ refill: { ...draft.refill, ...patch } });
 
   const save = async () => {
     for (const s of WIZARD_STEPS) {
@@ -218,6 +227,104 @@ export default function MedicationEditScreen() {
         </>
       );
       break;
+    case 'stock':
+      body = (
+        <>
+          <AppText>İlacınız bitmeden size haber verelim mi? Bunun için elinizde kaç tane kaldığını bilmemiz gerekiyor.</AppText>
+          <OptionButton
+            label="Evet, takip edilsin"
+            description="Her ALDIM'da sayı azalır, bitmeye yakın uyarırız."
+            selected={draft.trackStock}
+            onPress={() => update({ trackStock: true })}
+          />
+          <OptionButton label="Hayır, gerek yok" selected={!draft.trackStock} onPress={() => update({ trackStock: false })} />
+          {draft.trackStock ? (
+            <>
+              <AppTextInput
+                label="Elinizde kaç tane var?"
+                hint="Açık kutular dahil, tablet ya da kapsül sayısı."
+                value={draft.stockUnits}
+                onChangeText={(stockUnits) => update({ stockUnits })}
+                keyboardType="decimal-pad"
+                placeholder="Örn. 30"
+                maxLength={6}
+              />
+              <AppTextInput
+                label="Her seferinde kaç tane alıyorsunuz?"
+                hint="Yarım tablet için 0,5 yazın."
+                value={draft.unitsPerDose}
+                onChangeText={(unitsPerDose) => update({ unitsPerDose })}
+                keyboardType="decimal-pad"
+                placeholder="1"
+                maxLength={4}
+              />
+            </>
+          ) : null}
+          {error ? <Notice title={error} /> : null}
+        </>
+      );
+      break;
+    case 'refill':
+      body = (
+        <>
+          <AppText>
+            İlacınız bitmeye yakın, reçete için randevu almanıza yardımcı oluruz. Bu bilgiler isteğe bağlıdır.
+          </AppText>
+          <AppText variant="bodyBold">Hangi bölüm yazıyor?</AppText>
+          {COMMON_DEPARTMENTS.map((department) => (
+            <OptionButton
+              key={department}
+              label={department}
+              selected={draft.refill.department === department}
+              onPress={() => updateRefill({ department: draft.refill.department === department ? '' : department })}
+            />
+          ))}
+          <AppTextInput
+            label="Bölüm (listede yoksa)"
+            value={(COMMON_DEPARTMENTS as readonly string[]).includes(draft.refill.department) ? '' : draft.refill.department}
+            onChangeText={(department) => updateRefill({ department })}
+            placeholder="Örn. Romatoloji"
+            maxLength={40}
+          />
+          <AppTextInput
+            label="Doktorun adı"
+            value={draft.refill.doctor}
+            onChangeText={(doctor) => updateRefill({ doctor })}
+            placeholder="Örn. Mehmet Yılmaz"
+            autoCapitalize="words"
+            maxLength={40}
+          />
+          <AppTextInput
+            label="Hastane"
+            value={draft.refill.hospital}
+            onChangeText={(hospital) => updateRefill({ hospital })}
+            placeholder="Örn. Şehir Hastanesi"
+            autoCapitalize="words"
+            maxLength={60}
+          />
+          <AppText variant="bodyBold">Randevuyu kimden isteyelim?</AppText>
+          {contacts.length === 0 ? (
+            <AppText color={colors.textSecondary}>Henüz yakın eklenmedi. Ayarlar'dan ekleyebilirsiniz.</AppText>
+          ) : (
+            <>
+              {contacts.map((c) => (
+                <OptionButton
+                  key={c.id}
+                  label={contactTitle(c)}
+                  selected={draft.refill.contactId === c.id}
+                  onPress={() => updateRefill({ contactId: c.id })}
+                />
+              ))}
+              <OptionButton
+                label="Şimdi seçmeyeyim"
+                selected={!contacts.some((c) => c.id === draft.refill.contactId)}
+                onPress={() => updateRefill({ contactId: '' })}
+              />
+            </>
+          )}
+        </>
+      );
+      break;
     case 'summary':
       body = (
         <>
@@ -230,6 +337,32 @@ export default function MedicationEditScreen() {
             onChange={() => goTo('days')}
           />
           <SummaryRow label="Renk" value={medColor(draft.color).label} onChange={() => goTo('color')} />
+          <SummaryRow
+            label="Stok takibi"
+            value={
+              candidate.stock
+                ? `${formatUnits(candidate.stock.remainingUnits)} var, her seferinde ${formatUnits(candidate.stock.unitsPerDose)}. ${describeDaysLeft(candidate, new Date()) ?? ''}`
+                : 'Yapılmıyor'
+            }
+            onChange={() => goTo('stock')}
+          />
+          {draft.trackStock ? (
+            <SummaryRow
+              label="Reçete bilgisi"
+              value={
+                [
+                  candidate.refill?.department,
+                  candidate.refill?.doctor && `Dr. ${candidate.refill.doctor.replace(/^dr\.?\s*/i, '')}`,
+                  candidate.refill?.hospital,
+                  contacts.find((c) => c.id === candidate.refill?.contactId)?.name &&
+                    `Randevu: ${contacts.find((c) => c.id === candidate.refill?.contactId)!.name}`,
+                ]
+                  .filter(Boolean)
+                  .join(' · ') || 'Girilmedi'
+              }
+              onChange={() => goTo('refill')}
+            />
+          ) : null}
           {overLimit ? (
             <Notice
               title="Hatırlatma sınırı aşılıyor"
@@ -276,8 +409,8 @@ export default function MedicationEditScreen() {
 
   return (
     <ScreenContainer title={STEP_TITLES[step]} footer={footer}>
-      <AppText color={colors.textSecondary} accessibilityLabel={`${stepIndex + 1}. adım, toplam ${WIZARD_STEPS.length}`}>
-        {existing ? 'İlacı düzenle' : 'İlaç ekle'} · Adım {stepIndex + 1} / {WIZARD_STEPS.length}
+      <AppText color={colors.textSecondary} accessibilityLabel={`${visibleSteps.indexOf(step) + 1}. adım, toplam ${visibleSteps.length}`}>
+        {existing ? 'İlacı düzenle' : 'İlaç ekle'} · Adım {visibleSteps.indexOf(step) + 1} / {visibleSteps.length}
       </AppText>
       {body}
       {existing ? (

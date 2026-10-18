@@ -29,6 +29,15 @@ export function phoneForSpeech(phone: string): string {
     .join(', ');
 }
 
+/**
+ * Mesajlar uygulamasını numara ve hazır metinle açan bağlantı. iOS biçimi `sms:NUMARA&body=...`
+ * (`?body=` iOS'ta gövdeyi doldurmaz). Gönder tuşuna kullanıcı kendisi basar.
+ */
+export function smsUrl(phone: string, body: string): string {
+  const number = normalizePhone(phone) ?? phone.replace(SEPARATORS, '');
+  return `sms:${number}&body=${encodeURIComponent(body)}`;
+}
+
 export function telUrl(phone: string): string {
   return `tel:${normalizePhone(phone) ?? phone.replace(SEPARATORS, '')}`;
 }

@@ -3,11 +3,14 @@
 import {
   MAX_DOSE_LENGTH,
   MAX_NAME_LENGTH,
+  MAX_STOCK_UNITS,
   MED_COLORS,
   type DoseLogEntry,
   type IsoWeekday,
   type MedColorId,
   type Medication,
+  type MedicationStock,
+  type RefillInfo,
 } from './model';
 import { normalizeTimes } from './schedule';
 
@@ -19,6 +22,30 @@ function parseDays(raw: unknown): Medication['days'] | null {
   if (!Array.isArray(raw)) return null;
   const days = [...new Set(raw.filter((d): d is IsoWeekday => Number.isInteger(d) && d >= 1 && d <= 7))].sort();
   return days.length > 0 ? days : null;
+}
+
+function parseStock(raw: unknown): MedicationStock | undefined {
+  if (!isRecord(raw)) return undefined;
+  const { unitsPerDose, remainingUnits, updatedAt } = raw;
+  if (typeof unitsPerDose !== 'number' || unitsPerDose <= 0 || unitsPerDose > 20) return undefined;
+  if (typeof remainingUnits !== 'number' || remainingUnits < 0) return undefined;
+  return {
+    unitsPerDose,
+    remainingUnits: Math.min(remainingUnits, MAX_STOCK_UNITS),
+    updatedAt: typeof updatedAt === 'string' ? updatedAt : '',
+  };
+}
+
+function parseRefill(raw: unknown): RefillInfo | undefined {
+  if (!isRecord(raw)) return undefined;
+  const text = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim().slice(0, 60) : undefined);
+  const refill: RefillInfo = {
+    department: text(raw.department),
+    doctor: text(raw.doctor),
+    hospital: text(raw.hospital),
+    contactId: text(raw.contactId),
+  };
+  return Object.values(refill).some(Boolean) ? refill : undefined;
 }
 
 export function parseMedications(raw: unknown): Medication[] | null {
@@ -41,6 +68,8 @@ export function parseMedications(raw: unknown): Medication[] | null {
       notificationIds: Array.isArray(item.notificationIds)
         ? item.notificationIds.filter((x): x is string => typeof x === 'string')
         : [],
+      stock: parseStock(item.stock),
+      refill: parseRefill(item.refill),
     });
   }
   return meds;

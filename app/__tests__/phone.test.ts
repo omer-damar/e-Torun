@@ -1,4 +1,4 @@
-import { formatPhone, normalizePhone, phoneForSpeech, telUrl } from '@/features/emergency/phone';
+import { formatPhone, normalizePhone, phoneForSpeech, smsUrl, telUrl } from '@/features/emergency/phone';
 
 describe('normalizePhone', () => {
   it.each([
@@ -36,5 +36,13 @@ describe('phoneForSpeech', () => {
 describe('telUrl', () => {
   it('normalize edilmiş numarayla tel: bağlantısı üretir', () => {
     expect(telUrl('0555 123 45 67')).toBe('tel:05551234567');
+  });
+});
+
+describe('smsUrl', () => {
+  it('iOS biçimi: sms:NUMARA&body=kodlanmış metin', () => {
+    expect(smsUrl('0555 000 00 01', "Merhaba Ayşe, ilacım 8 gün sonra bitecek?")).toBe(
+      'sms:05550000001&body=Merhaba%20Ay%C5%9Fe%2C%20ilac%C4%B1m%208%20g%C3%BCn%20sonra%20bitecek%3F',
+    );
   });
 });

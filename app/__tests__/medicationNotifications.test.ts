@@ -107,6 +107,32 @@ describe('syncMedicationNotifications', () => {
     expect(await scheduledFor('m2')).toHaveLength(0);
   });
 
+  it('stok takibinde "ilacınız bitiyor" bildirimi bitişten uyarı günü kadar önceye planlanır', async () => {
+    const now = new Date(2026, 9, 19, 12, 0);
+    const stocked = med({ stock: { unitsPerDose: 1, remainingUnits: 40, updatedAt: '' } }); // 20 gün
+    await syncMedicationNotifications([stocked], { now, refillWarningDays: 10 });
+    const all = (await scheduledFor('m1')) as unknown as { content: { data: { type: string } }; trigger: { type: string; date: Date } }[];
+    const refill = all.filter((n) => n.content.data.type === 'refill');
+    expect(all).toHaveLength(3);
+    expect(refill).toHaveLength(1);
+    expect(refill[0].trigger.date.getDate()).toBe(29); // 8 Kasım − 10 gün = 29 Ekim
+  });
+
+  it('stok değişince yalnızca stok bildirimi tarihi güncellenir, doz bildirimleri tek takım kalır', async () => {
+    const now = new Date(2026, 9, 19, 12, 0);
+    await syncMedicationNotifications([med({ stock: { unitsPerDose: 1, remainingUnits: 40, updatedAt: '' } })], { now, refillWarningDays: 10 });
+    await syncMedicationNotifications([med({ stock: { unitsPerDose: 1, remainingUnits: 60, updatedAt: '' } })], { now, refillWarningDays: 10 });
+    const all = (await scheduledFor('m1')) as unknown as { content: { data: { type: string } }; trigger: { date?: Date } }[];
+    expect(all).toHaveLength(3);
+    expect(all.find((n) => n.content.data.type === 'refill')!.trigger.date!.getDate()).toBe(8); // 18 Kasım − 10 = 8 Kasım
+  });
+
+  it('uyarı zamanı geçmişse stok bildirimi planlanmaz', async () => {
+    const now = new Date(2026, 9, 19, 12, 0);
+    await syncMedicationNotifications([med({ stock: { unitsPerDose: 1, remainingUnits: 4, updatedAt: '' } })], { now, refillWarningDays: 10 });
+    expect(await scheduledFor('m1')).toHaveLength(2);
+  });
+
   it('dışarıdan silinmiş bir bildirimi fark edip tamamlar', async () => {
     const ids = await syncMedicationNotifications([med()]);
     await Notifications.cancelScheduledNotificationAsync(ids.m1[0]);

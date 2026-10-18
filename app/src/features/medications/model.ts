@@ -32,6 +32,37 @@ export function medColor(id: MedColorId) {
   return MED_COLORS.find((c) => c.id === id) ?? MED_COLORS[0];
 }
 
+/** B6 — stok takibi (isteğe bağlı). Stok, doz geçmişinden değil ALDIM / Geri al ile güncellenir. */
+export type MedicationStock = {
+  /** Her alımda kaç adet (ör. 1 tablet, 0.5 tablet). */
+  unitsPerDose: number;
+  remainingUnits: number;
+  /** ISO */
+  updatedAt: string;
+};
+
+/** B7 — reçete / randevu bilgisi (hepsi isteğe bağlı). */
+export type RefillInfo = {
+  department?: string;
+  doctor?: string;
+  hospital?: string;
+  /** "Yakınımdan randevu iste" SMS'inin gideceği kişi. */
+  contactId?: string;
+};
+
+export const COMMON_DEPARTMENTS = [
+  'Aile Hekimi',
+  'Dahiliye',
+  'Kardiyoloji',
+  'Endokrinoloji',
+  'Nöroloji',
+  'Göğüs Hastalıkları',
+  'Psikiyatri',
+  'Üroloji',
+] as const;
+
+export const MAX_STOCK_UNITS = 1000;
+
 export type Medication = {
   id: string;
   name: string;
@@ -45,6 +76,8 @@ export type Medication = {
   active: boolean;
   /** Planlı bildirimlerin kimlikleri (senkronizasyon ile güncel tutulur). */
   notificationIds: string[];
+  stock?: MedicationStock;
+  refill?: RefillInfo;
 };
 
 export type DoseStatus = 'taken' | 'skipped' | 'pending' | 'missed';
