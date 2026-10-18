@@ -52,11 +52,13 @@ beforeEach(async () => {
 });
 
 describe('Randevu ekranı', () => {
-  it("ALO 182'yi arar ve MHRS'yi açar", async () => {
+  it("ALO 182'yi arar; MHRS'yi App Store'dan ya da internetten açar", async () => {
     await renderRefill([]);
     await fireEvent.press(await screen.findByRole('button', { name: /ALO 182/ }));
     expect(openURL).toHaveBeenCalledWith('tel:182');
-    await fireEvent.press(screen.getByRole('button', { name: /MHRS'yi aç/ }));
+    await fireEvent.press(screen.getByRole('button', { name: /MHRS uygulamasını aç/ }));
+    expect(openURL).toHaveBeenCalledWith('https://apps.apple.com/tr/app/id1539508996');
+    await fireEvent.press(screen.getByRole('button', { name: /MHRS internet sitesi/ }));
     expect(openURL).toHaveBeenCalledWith('https://mhrs.gov.tr/vatandas/');
   });
 

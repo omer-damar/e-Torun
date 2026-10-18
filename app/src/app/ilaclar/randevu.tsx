@@ -10,13 +10,16 @@ import { useAppData } from '@/storage/AppDataProvider';
 import { borderWidth, colors, radius, spacing } from '@/theme';
 
 /**
- * MHRS'nin evrensel bağlantısı (universal link): mhrs.gov.tr/.well-known/apple-app-site-association
- * yalnızca `/vatandas/*` yollarını MHRS uygulamasına (tr.gov.saglik.MHRSMOBIL) bağlıyor. Bu adres,
- * uygulama yüklüyse uygulamada, değilse Safari'de "Randevu Al" sayfasında açılır.
- * Uygulama yalnızca `www`'SUZ alan adını sahipleniyor (iPhone'da denendi): kök adres ve
- * `www.mhrs.gov.tr/vatandas/` uygulama yüklüyken de Safari'de açılıyordu.
+ * MHRS uygulamasını doğrudan açmanın güvenilir bir yolu yok: mhrs.gov.tr'de apple-app-site-association
+ * dosyası olsa da uygulama evrensel bağlantıları fiilen sahiplenmiyor (iPhone'da, www'li ve www'suz
+ * adreste Notlar'da basılı tutunca "MHRS'de Aç" çıkmıyor) ve belgelenmiş bir URL şeması da yok.
+ * Bu yüzden uygulama, App Store sayfası üzerinden açılır: yüklüyse "Aç", değilse "Al" görünür.
+ * Kimlik (id) kullanılır, ad değil: mağazadaki adı "MHRS"ten "CDAS"a değişti
+ * (paket tr.gov.saglik.MHRSMOBIL, yayıncı T.C. Sağlık Bakanlığı; itunes lookup ile doğrulandı).
  */
-export const MHRS_URL = 'https://mhrs.gov.tr/vatandas/';
+export const MHRS_APP_STORE_URL = 'https://apps.apple.com/tr/app/id1539508996';
+/** İnternetteki "MHRS | Randevu Al" sayfası. */
+export const MHRS_WEB_URL = 'https://mhrs.gov.tr/vatandas/';
 export const MHRS_PHONE = '182';
 
 async function open(url: string, failTitle: string) {
@@ -75,13 +78,22 @@ export default function RefillAppointmentScreen() {
         testID="call-182"
       />
       <BigButton
-        icon="🌐"
-        title="MHRS'yi aç"
-        subtitle="Uygulama yüklüyse orada, değilse internette"
+        icon="📱"
+        title="MHRS uygulamasını aç"
+        subtitle="App Store açılır: yüklüyse “Aç”a dokunun (adı CDAS olarak görünebilir)"
         variant="neutral"
-        onPress={() => open(MHRS_URL, 'MHRS açılamadı')}
-        accessibilityHint="MHRS uygulaması yüklüyse uygulamada, değilse internet sayfasında açılır"
-        testID="open-mhrs"
+        onPress={() => open(MHRS_APP_STORE_URL, 'App Store açılamadı')}
+        accessibilityHint="App Store'da MHRS sayfası açılır. Uygulama yüklüyse Aç düğmesine dokunun, değilse Al ile indirebilirsiniz"
+        testID="open-mhrs-app"
+      />
+      <BigButton
+        icon="🌐"
+        title="MHRS internet sitesi"
+        subtitle="Randevu sayfası tarayıcıda açılır"
+        variant="neutral"
+        onPress={() => open(MHRS_WEB_URL, 'MHRS açılamadı')}
+        accessibilityHint="Safari'de MHRS randevu sayfası açılır"
+        testID="open-mhrs-web"
       />
 
       <AppText variant="button" accessibilityRole="header">
