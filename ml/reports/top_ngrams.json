@@ -1,0 +1,166 @@
+{
+  "supheli_yonunde": [
+    {
+      "ngram": " num ",
+      "coef": 4.1098
+    },
+    {
+      "ngram": " nu",
+      "coef": 4.106
+    },
+    {
+      "ngram": "num ",
+      "coef": 4.0914
+    },
+    {
+      "ngram": " num",
+      "coef": 4.0788
+    },
+    {
+      "ngram": "num",
+      "coef": 4.0415
+    },
+    {
+      "ngram": " tl",
+      "coef": 3.895
+    },
+    {
+      "ngram": " tl ",
+      "coef": 3.8626
+    },
+    {
+      "ngram": "tl ",
+      "coef": 3.8626
+    },
+    {
+      "ngram": " ur",
+      "coef": 3.3106
+    },
+    {
+      "ngram": "tok",
+      "coef": 3.2835
+    },
+    {
+      "ngram": "oke",
+      "coef": 3.2331
+    },
+    {
+      "ngram": "oken ",
+      "coef": 3.1574
+    },
+    {
+      "ngram": "token",
+      "coef": 3.1574
+    },
+    {
+      "ngram": "toke",
+      "coef": 3.1574
+    },
+    {
+      "ngram": "oken",
+      "coef": 3.1574
+    },
+    {
+      "ngram": "lto",
+      "coef": 3.1229
+    },
+    {
+      "ngram": "ltoke",
+      "coef": 3.1078
+    },
+    {
+      "ngram": "ltok",
+      "coef": 3.1078
+    },
+    {
+      "ngram": "um ",
+      "coef": 3.0694
+    },
+    {
+      "ngram": "rlt",
+      "coef": 3.0156
+    }
+  ],
+  "guvenli_yonunde": [
+    {
+      "ngram": "im ",
+      "coef": -2.306
+    },
+    {
+      "ngram": " mi ",
+      "coef": -2.0535
+    },
+    {
+      "ngram": "mis",
+      "coef": -1.6686
+    },
+    {
+      "ngram": " mu ",
+      "coef": -1.5574
+    },
+    {
+      "ngram": "am ",
+      "coef": -1.5388
+    },
+    {
+      "ngram": " ol",
+      "coef": -1.5158
+    },
+    {
+      "ngram": "bi ",
+      "coef": -1.4889
+    },
+    {
+      "ngram": " ab",
+      "coef": -1.4887
+    },
+    {
+      "ngram": " ben",
+      "coef": -1.4362
+    },
+    {
+      "ngram": "ben",
+      "coef": -1.4362
+    },
+    {
+      "ngram": " bi ",
+      "coef": -1.3312
+    },
+    {
+      "ngram": "dim",
+      "coef": -1.3247
+    },
+    {
+      "ngram": " abi",
+      "coef": -1.3093
+    },
+    {
+      "ngram": "dim ",
+      "coef": -1.2778
+    },
+    {
+      "ngram": "cam ",
+      "coef": -1.2491
+    },
+    {
+      "ngram": " bi",
+      "coef": -1.237
+    },
+    {
+      "ngram": "ihi ",
+      "coef": -1.2106
+    },
+    {
+      "ngram": "rihi ",
+      "coef": -1.2106
+    },
+    {
+      "ngram": "turan",
+      "coef": -1.2079
+    },
+    {
+      "ngram": "mu ",
+      "coef": -1.1607
+    }
+  ]
+}

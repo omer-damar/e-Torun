@@ -1,0 +1,992 @@
+[
+ {
+  "text": "Kargonuz adres hatası nedeniyle teslim edilemedi. Güncellemek için tıklayın.",
+  "normalized": "kargonuz adres hatasi nedeniyle teslim edilemedi guncellemek icin tiklayin",
+  "probability": 0.89801576
+ },
+ {
+  "text": "Merhaba, 1 paketiniz var ancak adresiniz doğrulanamadı. Ek bilgi için bağlantıya tıklayın veya kargonuzu onaylamak için 0555 000 00 00 numarasını arayın.",
+  "normalized": "merhaba num paketiniz var ancak adresiniz dogrulanamadi ek bilgi icin baglantiya tiklayin veya kargonuzu onaylamak icin teltoken numarasini arayin",
+  "probability": 0.97979097
+ },
+ {
+  "text": "Yurtiçi Kargo: Siparişiniz teslim edilemedi, iadeyi önlemek için bilgilerinizi doğrulayın",
+  "normalized": "yurtici kargo siparisiniz teslim edilemedi iadeyi onlemek icin bilgilerinizi dogrulayin",
+  "probability": 0.89993492
+ },
+ {
+  "text": "Siparişiniz teslim edilemedi. İadeyi önlemek için bilgilerinizi doğrulayın: https://ornek-baglanti.com/a1",
+  "normalized": "siparisiniz teslim edilemedi iadeyi onlemek icin bilgilerinizi dogrulayin urltoken",
+  "probability": 0.98961244
+ },
+ {
+  "text": "sn Müşterimiz mcd2026006616534 numaralı ve 56,74 TL faturaya https://ornek-baglanti.com/a1 adresinden ulaşabilirsiniz.",
+  "normalized": "sn musterimiz mcd num numarali ve num num tl faturaya urltoken adresinden ulasabilirsiniz",
+  "probability": 0.96978009
+ },
+ {
+  "text": "Gönderiniz işleme alındı, teslimat için bilgilerinizi onaylayın",
+  "normalized": "gonderiniz isleme alindi teslimat icin bilgilerinizi onaylayin",
+  "probability": 0.96752276
+ },
+ {
+  "text": "Yurtiçi Kargo: siparişiniz hazır. Teslimat bilgilerinizi onaylayın: https://ornek-baglanti.com/a1",
+  "normalized": "yurtici kargo siparisiniz hazir teslimat bilgilerinizi onaylayin urltoken",
+  "probability": 0.96743259
+ },
+ {
+  "text": "PTT teslimat hatırlatıcısı Değerli müşterimiz, paketinizi birçok kez teslim etmeye çalıştık ancak adres bilgilerinizin hatalı olması nedeniyle teslimat gerçekleştirilemedi! Lütfen bilgileri 6 saat içinde düzeltin:",
+  "normalized": "ptt teslimat hatirlaticisi degerli musterimiz paketinizi bircok kez teslim etmeye calistik ancak adres bilgilerinizin hatali olmasi nedeniyle teslimat gerceklestirilemedi lutfen bilgileri num saat icinde duzeltin",
+  "probability": 0.86602231
+ },
+ {
+  "text": "Paketiniz depomuza ulaştı, ancak eksik adres nedeniyle teslim edemiyoruz. Lütfen teslimat bilgilerinizi",
+  "normalized": "paketiniz depomuza ulasti ancak eksik adres nedeniyle teslim edemiyoruz lutfen teslimat bilgilerinizi",
+  "probability": 0.85028621
+ },
+ {
+  "text": "PTT ekspres teslimat hatırlatması; paketiniz kurye depomuzda kaldı.",
+  "normalized": "ptt ekspres teslimat hatirlatmasi paketiniz kurye depomuzda kaldi",
+  "probability": 0.69206279
+ },
+ {
+  "text": "PTT bilgilendirme. Sn ilgili tebligatınız teslim edilememiştir. Detaylı bilgi için arayınız. 0555 000 00 00",
+  "normalized": "ptt bilgilendirme sn ilgili tebligatiniz teslim edilememistir detayli bilgi icin arayiniz teltoken",
+  "probability": 0.72810871
+ },
+ {
+  "text": "Ziraat Bankası 2709659538381 barkod numaralı gönderiniz dağıtıma çıkarılmıştır, gün içinde 0312 000 00 00 numaralı",
+  "normalized": "ziraat bankasi num barkod numarali gonderiniz dagitima cikarilmistir gun icinde num num num num numarali",
+  "probability": 0.27420576
+ },
+ {
+  "text": "Kargonuz teslim edilemedi, adres bilginizi güncelleyin",
+  "normalized": "kargonuz teslim edilemedi adres bilginizi guncelleyin",
+  "probability": 0.7069674
+ },
+ {
+  "text": "Kartınız güvenlik nedeniyle bloke edildi, açmak için tıklayın.",
+  "normalized": "kartiniz guvenlik nedeniyle bloke edildi acmak icin tiklayin",
+  "probability": 0.86368897
+ },
+ {
+  "text": "Sayın müşterimiz, hesabınızda şüpheli işlem tespit edilmiştir. Hesabınız 24 saat içinde bloke edilecektir. Hemen doğrulamak için tıklayın: https://ornek-baglanti.com/a1",
+  "normalized": "sayin musterimiz hesabinizda supheli islem tespit edilmistir hesabiniz num saat icinde bloke edilecektir hemen dogrulamak icin tiklayin urltoken",
+  "probability": 0.99394872
+ },
+ {
+  "text": "Acil: Hızlı kâr fırsatı — hesabınıza 3 gün içinde %30 getiri. Başlamak için kimliğinizi ve IBAN'ınızı gönderin.",
+  "normalized": "acil hizli kar firsati hesabiniza num gun icinde num getiri baslamak icin kimliginizi ve iban inizi gonderin",
+  "probability": 0.99801337
+ },
+ {
+  "text": "Bilgisayarınız virüs kapladı. Uzaktan yardım için bu bağlantıyı indirip çalıştırın: https://ornek-baglanti.com/a1",
+  "normalized": "bilgisayariniz virus kapladi uzaktan yardim icin bu baglantiyi indirip calistirin urltoken",
+  "probability": 0.87559912
+ },
+ {
+  "text": "e-Devlet şifreniz askıya alındı",
+  "normalized": "e devlet sifreniz askiya alindi",
+  "probability": 0.57395656
+ },
+ {
+  "text": "e-Devlet şifreniz iptal edilecek",
+  "normalized": "e devlet sifreniz iptal edilecek",
+  "probability": 0.4658037
+ },
+ {
+  "text": "Vergi borcunuz nedeniyle dosyanız icraya verildi. Borcu öğrenmek ve itiraz etmek için tıklayın: https://ornek-baglanti.com/a1",
+  "normalized": "vergi borcunuz nedeniyle dosyaniz icraya verildi borcu ogrenmek ve itiraz etmek icin tiklayin urltoken",
+  "probability": 0.99414643
+ },
+ {
+  "text": "Mahkeme kararına göre hakkınızda 7 gün içinde hapis cezası uygulanacaktır. Kararı ve itiraz haklarınızı görmek için tıklayın: https://ornek-baglanti.com/a1",
+  "normalized": "mahkeme kararina gore hakkinizda num gun icinde hapis cezasi uygulanacaktir karari ve itiraz haklarinizi gormek icin tiklayin urltoken",
+  "probability": 0.9914175
+ },
+ {
+  "text": "Hakkınızda icra takibi başlatılmıştır, detaylar için e-Devlet linkine tıklayın",
+  "normalized": "hakkinizda icra takibi baslatilmistir detaylar icin e devlet linkine tiklayin",
+  "probability": 0.95383901
+ },
+ {
+  "text": "Hakkınızda icra takibi başlatıldı, 24 saat içinde ödeme yapmanız gerekiyor, aksi takdirde haciz işlemi uygulanacaktır. Detaylar",
+  "normalized": "hakkinizda icra takibi baslatildi num saat icinde odeme yapmaniz gerekiyor aksi takdirde haciz islemi uygulanacaktir detaylar",
+  "probability": 0.62665026
+ },
+ {
+  "text": "e-tebligatınızın yasal süresi dolmuştur",
+  "normalized": "e tebligatinizin yasal suresi dolmustur",
+  "probability": 0.14430394
+ },
+ {
+  "text": "Sayın , uzlaştırma dosyanızın son günüdür, bilgi almak için iletişime geçiniz",
+  "normalized": "sayin uzlastirma dosyanizin son gunudur bilgi almak icin iletisime geciniz",
+  "probability": 0.93522925
+ },
+ {
+  "text": "Sayın, adil ceza dosyanız uzlaştırma kapsamına alınmıştır, bilgi için iletişime geçiniz",
+  "normalized": "sayin adil ceza dosyaniz uzlastirma kapsamina alinmistir bilgi icin iletisime geciniz",
+  "probability": 0.80445824
+ },
+ {
+  "text": "Sn.  uzlaştırma dosyanızın savcılığa iadesi için son gündür, mağduriyet yaşamamak adına arayın:  h. B. 0212 000 00 00",
+  "normalized": "sn uzlastirma dosyanizin savciliga iadesi icin son gundur magduriyet yasamamak adina arayin h b num num num num",
+  "probability": 0.92630037
+ },
+ {
+  "text": "Hakkınızda açılmış uzlaştırma dosyanızın bugün bizdeki son günüdür, lütfen en kısa sürede dönüş sağlayın",
+  "normalized": "hakkinizda acilmis uzlastirma dosyanizin bugun bizdeki son gunudur lutfen en kisa surede donus saglayin",
+  "probability": 0.81635461
+ },
+ {
+  "text": "Sn. Müvekkilimiz, uzlaşma dosyanızın son günüdür. Lütfen irtibata geçiniz.  Hukuk 0312 000 00 00",
+  "normalized": "sn muvekkilimiz uzlasma dosyanizin son gunudur lutfen irtibata geciniz hukuk num num num num",
+  "probability": 0.90020738
+ },
+ {
+  "text": "Sn.  Uzlaştırma dosyanızın Savcılığa iadesi için son günüdür. Mağduriyet yaşamamak adına arayın:  h. B. 0312 000 00 01",
+  "normalized": "sn uzlastirma dosyanizin savciliga iadesi icin son gunudur magduriyet yasamamak adina arayin h b num num num num",
+  "probability": 0.93491321
+ },
+ {
+  "text": "evraklarınız uzlaştırmaya gitmekte",
+  "normalized": "evraklariniz uzlastirmaya gitmekte",
+  "probability": 0.0966838
+ },
+ {
+  "text": "Sn. , uzlaşma dosyanız büromuza devredilmiştir. Bugün 17:00'ye kadar aramazsanız hakkınızda ağır ceza",
+  "normalized": "sn uzlasma dosyaniz buromuza devredilmistir bugun num num ye kadar aramazsaniz hakkinizda agir ceza",
+  "probability": 0.8339545
+ },
+ {
+  "text": "Hakkınızda yasadışı bahis oynadığınız tespit edilmiştir",
+  "normalized": "hakkinizda yasadisi bahis oynadiginiz tespit edilmistir",
+  "probability": 0.67850105
+ },
+ {
+  "text": "Sipariş verip teslim almadığınız kargo yüzünden firmamız zarara uğradı. 3.000 TL icra masrafı ödememek için",
+  "normalized": "siparis verip teslim almadiginiz kargo yuzunden firmamiz zarara ugradi num num tl icra masrafi odememek icin",
+  "probability": 0.79081368
+ },
+ {
+  "text": "Adınız bir terör soruşturmasına karıştı, parayı güvenli hesaba aktarın",
+  "normalized": "adiniz bir teror sorusturmasina karisti parayi guvenli hesaba aktarin",
+  "probability": 0.67296074
+ },
+ {
+  "text": "Tarım kredisi borcunuz icraya düştü",
+  "normalized": "tarim kredisi borcunuz icraya dustu",
+  "probability": 0.70649244
+ },
+ {
+  "text": "0555 000 00 00 nolu numarayı hemen arayın, yoksa evinize haciz gelir.",
+  "normalized": "teltoken nolu numarayi hemen arayin yoksa evinize haciz gelir",
+  "probability": 0.47669596
+ },
+ {
+  "text": "Sayın  dosyanız işleme alınmıştır. Bilgi için irtibata geçiniz.  Hukuk Bürosu 0212 000 00 02",
+  "normalized": "sayin dosyaniz isleme alinmistir bilgi icin irtibata geciniz hukuk burosu num num num num",
+  "probability": 0.89974243
+ },
+ {
+  "text": "Sn.  evraklarınız işleme alınmıştır. Bilgi için arayınız.  hukuk bürosu tel: 0216 000 00 00",
+  "normalized": "sn evraklariniz isleme alinmistir bilgi icin arayiniz hukuk burosu tel num num num num",
+  "probability": 0.76411724
+ },
+ {
+  "text": "Sn.  evraklarınız işleme alınmıştır. Bilgi almak için ulaşın.  Hukuk Bürosu Tel: 0312 000 00 03",
+  "normalized": "sn evraklariniz isleme alinmistir bilgi almak icin ulasin hukuk burosu tel num num num num",
+  "probability": 0.76030041
+ },
+ {
+  "text": "Geçiş borcunuz var, ceza uygulanmadan ödeyin.",
+  "normalized": "gecis borcunuz var ceza uygulanmadan odeyin",
+  "probability": 0.76033316
+ },
+ {
+  "text": "Ödenmemiş HGS Borcunuz var, icra işlemlerinin başlatılmaması adına ödeme yapmanız gerekiyor",
+  "normalized": "odenmemis hgs borcunuz var icra islemlerinin baslatilmamasi adina odeme yapmaniz gerekiyor",
+  "probability": 0.69637806
+ },
+ {
+  "text": "Borcunuzu ödemek için linke tıklayın",
+  "normalized": "borcunuzu odemek icin linke tiklayin",
+  "probability": 0.89394592
+ },
+ {
+  "text": "HGS borcunuz var, icra işlemi başlatılacaktır",
+  "normalized": "hgs borcunuz var icra islemi baslatilacaktir",
+  "probability": 0.71184614
+ },
+ {
+  "text": "Tebrikler, telefon kazandınız.",
+  "normalized": "tebrikler telefon kazandiniz",
+  "probability": 0.65184069
+ },
+ {
+  "text": "Tebrikler! 1.500 TL para kazandınız. Ödülü almak için banka bilgilerinizi veya kimlik bilgilerinizi doğrulayın.",
+  "normalized": "tebrikler num num tl para kazandiniz odulu almak icin banka bilgilerinizi veya kimlik bilgilerinizi dogrulayin",
+  "probability": 0.98970032
+ },
+ {
+  "text": "PTT: Gönderiniz gümrükte bekletilmektedir. 1.500 TL gümrük ücretini ödemezseniz iade edilecektir: https://ornek-baglanti.com/a1",
+  "normalized": "ptt gonderiniz gumrukte bekletilmektedir num num tl gumruk ucretini odemezseniz iade edilecektir urltoken",
+  "probability": 0.9291304
+ },
+ {
+  "text": "Aras Kargo: Teslimat adresiniz eksik. 24 saat icinde guncellemezseniz paketiniz iade edilecek https://ornek-baglanti.com/a1",
+  "normalized": "aras kargo teslimat adresiniz eksik num saat icinde guncellemezseniz paketiniz iade edilecek urltoken",
+  "probability": 0.9711818
+ },
+ {
+  "text": "MNG Kargo bilgilendirme: paketiniz dagitim merkezinde, teslimat ucreti odenmedi. Odeme: https://ornek-baglanti.com/a1",
+  "normalized": "mng kargo bilgilendirme paketiniz dagitim merkezinde teslimat ucreti odenmedi odeme urltoken",
+  "probability": 0.88281869
+ },
+ {
+  "text": "Sayın alıcı, kargonuz için ek ücret gereklidir. Ödeme yapılmazsa gönderi iptal olacaktır. https://ornek-baglanti.com/a1",
+  "normalized": "sayin alici kargonuz icin ek ucret gereklidir odeme yapilmazsa gonderi iptal olacaktir urltoken",
+  "probability": 0.89522837
+ },
+ {
+  "text": "Paketiniz teslim edilemedi. Yeni teslimat tarihi secmek icin tiklayin https://ornek-baglanti.com/a1",
+  "normalized": "paketiniz teslim edilemedi yeni teslimat tarihi secmek icin tiklayin urltoken",
+  "probability": 0.94670672
+ },
+ {
+  "text": "Yurtici Kargo: Adresinize ulasilamadi. Kargonuz 2 gun sonra iade edilecek, hemen guncelleyin https://ornek-baglanti.com/a1",
+  "normalized": "yurtici kargo adresinize ulasilamadi kargonuz num gun sonra iade edilecek hemen guncelleyin urltoken",
+  "probability": 0.94628187
+ },
+ {
+  "text": "Gönderiniz yurt dışından geldi, teslim için kimlik doğrulaması yapmanız gerekiyor: https://ornek-baglanti.com/a1",
+  "normalized": "gonderiniz yurt disindan geldi teslim icin kimlik dogrulamasi yapmaniz gerekiyor urltoken",
+  "probability": 0.87291188
+ },
+ {
+  "text": "PTT Kargo: 1.500 TL eksik posta ucreti bulunmaktadir. Bugun odenmezse gonderiniz imha edilecektir https://ornek-baglanti.com/a1",
+  "normalized": "ptt kargo num num tl eksik posta ucreti bulunmaktadir bugun odenmezse gonderiniz imha edilecektir urltoken",
+  "probability": 0.95655627
+ },
+ {
+  "text": "Trendyol siparişiniz depoda bekliyor. Teslimat için kart bilgilerinizi onaylayın https://ornek-baglanti.com/a1",
+  "normalized": "trendyol siparisiniz depoda bekliyor teslimat icin kart bilgilerinizi onaylayin urltoken",
+  "probability": 0.98345408
+ },
+ {
+  "text": "Kargonuz şubede, teslim almak için 1,99 TL hizmet bedelini ödeyin: https://ornek-baglanti.com/a1",
+  "normalized": "kargonuz subede teslim almak icin num num tl hizmet bedelini odeyin urltoken",
+  "probability": 0.98582009
+ },
+ {
+  "text": "Surat Kargo: Paketinizin teslimati askiya alindi. Bilgilerinizi dogrulayin https://ornek-baglanti.com/a1",
+  "normalized": "surat kargo paketinizin teslimati askiya alindi bilgilerinizi dogrulayin urltoken",
+  "probability": 0.99182088
+ },
+ {
+  "text": "Değerli müşterimiz, siparişinizin teslimatı adres hatası nedeniyle başarısız oldu. Son gün bugün https://ornek-baglanti.com/a1",
+  "normalized": "degerli musterimiz siparisinizin teslimati adres hatasi nedeniyle basarisiz oldu son gun bugun urltoken",
+  "probability": 0.96740205
+ },
+ {
+  "text": "Ziraat Bankası: Hesabınız güvenlik nedeniyle askıya alınmıştır. Açmak için bilgilerinizi güncelleyin https://ornek-baglanti.com/a1",
+  "normalized": "ziraat bankasi hesabiniz guvenlik nedeniyle askiya alinmistir acmak icin bilgilerinizi guncelleyin urltoken",
+  "probability": 0.97626874
+ },
+ {
+  "text": "Sayin musterimiz kartiniz yurt disinda kullanildi. Islemi siz yapmadiysaniz hemen iptal edin https://ornek-baglanti.com/a1",
+  "normalized": "sayin musterimiz kartiniz yurt disinda kullanildi islemi siz yapmadiysaniz hemen iptal edin urltoken",
+  "probability": 0.9552579
+ },
+ {
+  "text": "Garanti BBVA: Mobil bankacılık şifrenizin süresi doldu. Yenilemek için tıklayın https://ornek-baglanti.com/a1",
+  "normalized": "garanti bbva mobil bankacilik sifrenizin suresi doldu yenilemek icin tiklayin urltoken",
+  "probability": 0.93084044
+ },
+ {
+  "text": "İş Bankası: hesabınıza 1.500 TL bloke konuldu. Kaldırmak için kimlik doğrulaması yapın https://ornek-baglanti.com/a1",
+  "normalized": "is bankasi hesabiniza num num tl bloke konuldu kaldirmak icin kimlik dogrulamasi yapin urltoken",
+  "probability": 0.97996645
+ },
+ {
+  "text": "Kredi kartı aidatınız iade edilecektir. İade için kart bilgilerinizi girin https://ornek-baglanti.com/a1",
+  "normalized": "kredi karti aidatiniz iade edilecektir iade icin kart bilgilerinizi girin urltoken",
+  "probability": 0.96259676
+ },
+ {
+  "text": "Akbank: Kartınız bloke olmuştur. Müşteri temsilcimiz sizi arayacak, gelen kodu kendisine iletiniz.",
+  "normalized": "akbank kartiniz bloke olmustur musteri temsilcimiz sizi arayacak gelen kodu kendisine iletiniz",
+  "probability": 0.64803499
+ },
+ {
+  "text": "Banka hesabiniz 12 saat icinde kapatilacak. Engellemek icin dogrulama yapin https://ornek-baglanti.com/a1",
+  "normalized": "banka hesabiniz num saat icinde kapatilacak engellemek icin dogrulama yapin urltoken",
+  "probability": 0.95788915
+ },
+ {
+  "text": "Halkbank: Bonus puanlarınızın süresi bugün doluyor, 1.500 TL puanı nakde çevirmek için tıklayın https://ornek-baglanti.com/a1",
+  "normalized": "halkbank bonus puanlarinizin suresi bugun doluyor num num tl puani nakde cevirmek icin tiklayin urltoken",
+  "probability": 0.98680229
+ },
+ {
+  "text": "Sayın müşterimiz, internet bankacılığı girişiniz engellendi. Doğrulama kodunu 0555 000 00 00 numarasına iletin.",
+  "normalized": "sayin musterimiz internet bankaciligi girisiniz engellendi dogrulama kodunu teltoken numarasina iletin",
+  "probability": 0.94094065
+ },
+ {
+  "text": "Yapi Kredi: Hesabinizdan supheli para transferi yapildi. Itiraz icin https://ornek-baglanti.com/a1",
+  "normalized": "yapi kredi hesabinizdan supheli para transferi yapildi itiraz icin urltoken",
+  "probability": 0.87895251
+ },
+ {
+  "text": "Vakıfbank: Kart limitiniz 1.500 TL artırıldı, onaylamak için tıklayınız https://ornek-baglanti.com/a1",
+  "normalized": "vakifbank kart limitiniz num num tl artirildi onaylamak icin tiklayiniz urltoken",
+  "probability": 0.98496284
+ },
+ {
+  "text": "Kartınızın güvenlik kodu sistemde eksik görünüyor, işlemleriniz durdurulacaktır. Tamamlayın: https://ornek-baglanti.com/a1",
+  "normalized": "kartinizin guvenlik kodu sistemde eksik gorunuyor islemleriniz durdurulacaktir tamamlayin urltoken",
+  "probability": 0.87054183
+ },
+ {
+  "text": "e-Devlet: Adınıza 1.500 TL destek ödemesi tanımlanmıştır. Başvuru için son gün bugün https://ornek-baglanti.com/a1",
+  "normalized": "e devlet adiniza num num tl destek odemesi tanimlanmistir basvuru icin son gun bugun urltoken",
+  "probability": 0.98536731
+ },
+ {
+  "text": "T.C. e-Devlet Kapısı: Elektrik fatura iadeniz hesaplandı. İade almak için tıklayın https://ornek-baglanti.com/a1",
+  "normalized": "t c e devlet kapisi elektrik fatura iadeniz hesaplandi iade almak icin tiklayin urltoken",
+  "probability": 0.97919852
+ },
+ {
+  "text": "Sayın vatandaşımız, adınıza e-tebligat gönderilmiştir. Görüntülemek için giriş yapın https://ornek-baglanti.com/a1",
+  "normalized": "sayin vatandasimiz adiniza e tebligat gonderilmistir goruntulemek icin giris yapin urltoken",
+  "probability": 0.88510364
+ },
+ {
+  "text": "e-Devlet: Emekli ikramiyeniz yatırılmak üzere onay beklemektedir. Onay için https://ornek-baglanti.com/a1",
+  "normalized": "e devlet emekli ikramiyeniz yatirilmak uzere onay beklemektedir onay icin urltoken",
+  "probability": 0.91001747
+ },
+ {
+  "text": "Gelir İdaresi: Vergi iadeniz bulunmaktadır. IBAN bilgilerinizi girerek iadenizi alın https://ornek-baglanti.com/a1",
+  "normalized": "gelir idaresi vergi iadeniz bulunmaktadir iban bilgilerinizi girerek iadenizi alin urltoken",
+  "probability": 0.86272823
+ },
+ {
+  "text": "SGK: Prim borcunuz nedeniyle sağlık hizmetleriniz durdurulacaktır. Ödeme için https://ornek-baglanti.com/a1",
+  "normalized": "sgk prim borcunuz nedeniyle saglik hizmetleriniz durdurulacaktir odeme icin urltoken",
+  "probability": 0.93700254
+ },
+ {
+  "text": "e-devlet sifreniz 24 saat icinde iptal edilecektir. Yenilemek icin tiklayin https://ornek-baglanti.com/a1",
+  "normalized": "e devlet sifreniz num saat icinde iptal edilecektir yenilemek icin tiklayin urltoken",
+  "probability": 0.99428663
+ },
+ {
+  "text": "Aile Bakanlığı: Yaşlı aylığı başvurunuz onaylandı. Ödeme için kart bilgilerinizi doğrulayın https://ornek-baglanti.com/a1",
+  "normalized": "aile bakanligi yasli ayligi basvurunuz onaylandi odeme icin kart bilgilerinizi dogrulayin urltoken",
+  "probability": 0.92139307
+ },
+ {
+  "text": "Trafik cezanız bulunmaktadır. 3 gün içinde ödenmezse ehliyetinize el konulacaktır https://ornek-baglanti.com/a1",
+  "normalized": "trafik cezaniz bulunmaktadir num gun icinde odenmezse ehliyetinize el konulacaktir urltoken",
+  "probability": 0.92863356
+ },
+ {
+  "text": "Nüfus Müdürlüğü: Kimlik kartınızın geçerlilik süresi dolmuştur. Randevu ve ücret için https://ornek-baglanti.com/a1",
+  "normalized": "nufus mudurlugu kimlik kartinizin gecerlilik suresi dolmustur randevu ve ucret icin urltoken",
+  "probability": 0.89013656
+ },
+ {
+  "text": "turkiye.gov.tr: Hakkınızda düzenlenen ihtarnameyi görmek için tıklayınız https://ornek-baglanti.com/a1",
+  "normalized": "urltoken hakkinizda duzenlenen ihtarnameyi gormek icin tiklayiniz urltoken",
+  "probability": 0.98757339
+ },
+ {
+  "text": "Sayin vatandas, deprem yardimi hesabiniza aktarilmak uzere bekliyor. Onaylayin https://ornek-baglanti.com/a1",
+  "normalized": "sayin vatandas deprem yardimi hesabiniza aktarilmak uzere bekliyor onaylayin urltoken",
+  "probability": 0.94556949
+ },
+ {
+  "text": "Sn. , hakkınızda başlatılan icra dosyası bugün kesinleşecektir. Bilgi için acil arayın 0212 000 00 10",
+  "normalized": "sn hakkinizda baslatilan icra dosyasi bugun kesinlesecektir bilgi icin acil arayin num num num num",
+  "probability": 0.96201273
+ },
+ {
+  "text": "Avukatlık Bürosu: Ödenmemiş borcunuz nedeniyle maaşınıza haciz konulacaktır. Görüşme için 0555 000 00 00",
+  "normalized": "avukatlik burosu odenmemis borcunuz nedeniyle maasiniza haciz konulacaktir gorusme icin teltoken",
+  "probability": 0.87088684
+ },
+ {
+  "text": "Hakkınızda açılan ceza davası ile ilgili ifadeniz alınacaktır. Dosyanız e-Devlette görünmez, bizi arayın 0555 000 00 00",
+  "normalized": "hakkinizda acilan ceza davasi ile ilgili ifadeniz alinacaktir dosyaniz e devlette gorunmez bizi arayin teltoken",
+  "probability": 0.97941055
+ },
+ {
+  "text": "Sayın , arabuluculuk dosyanız gizli statüdedir. Son gün bugün, büromuzla iletişime geçin 0312 000 00 11",
+  "normalized": "sayin arabuluculuk dosyaniz gizli statudedir son gun bugun buromuzla iletisime gecin num num num num",
+  "probability": 0.91141382
+ },
+ {
+  "text": "Icra dairesi: Borcunuz 1.500 TL. Bugun odenmezse evinize haciz memuru gelecektir. Odeme https://ornek-baglanti.com/a1",
+  "normalized": "icra dairesi borcunuz num num tl bugun odenmezse evinize haciz memuru gelecektir odeme urltoken",
+  "probability": 0.9354542
+ },
+ {
+  "text": "Sn.  dosyanız savcılığa sevk edilmek üzeredir. Mağdur olmamak için en geç 16:00'ya kadar arayınız.",
+  "normalized": "sn dosyaniz savciliga sevk edilmek uzeredir magdur olmamak icin en gec num num ya kadar arayiniz",
+  "probability": 0.84200011
+ },
+ {
+  "text": "Hakkınızda dolandırıcılık suçlamasıyla soruşturma başlatılmıştır. Detay için https://ornek-baglanti.com/a1",
+  "normalized": "hakkinizda dolandiricilik suclamasiyla sorusturma baslatilmistir detay icin urltoken",
+  "probability": 0.90270125
+ },
+ {
+  "text": "Karayolları geçiş ihlali nedeniyle hakkınızda icra takibi başlatıldı. Av.  https://ornek-baglanti.com/a1",
+  "normalized": "karayollari gecis ihlali nedeniyle hakkinizda icra takibi baslatildi av urltoken",
+  "probability": 0.96192075
+ },
+ {
+  "text": "HGS: Ödenmemiş geçiş ücretiniz bulunmaktadır. 10 kat ceza uygulanmadan ödeyin https://ornek-baglanti.com/a1",
+  "normalized": "hgs odenmemis gecis ucretiniz bulunmaktadir num kat ceza uygulanmadan odeyin urltoken",
+  "probability": 0.97014302
+ },
+ {
+  "text": "OGS/HGS gecis ihlal borcunuz 1.500 TL. Son odeme tarihi bugun https://ornek-baglanti.com/a1",
+  "normalized": "ogs hgs gecis ihlal borcunuz num num tl son odeme tarihi bugun urltoken",
+  "probability": 0.93080051
+ },
+ {
+  "text": "İSPARK: Ödenmemiş otopark borcunuz icraya devredilecektir. Hemen ödeyin https://ornek-baglanti.com/a1",
+  "normalized": "ispark odenmemis otopark borcunuz icraya devredilecektir hemen odeyin urltoken",
+  "probability": 0.93313083
+ },
+ {
+  "text": "KGM: Köprü ve otoyol geçiş borcunuz bulunmaktadır, ceza almamak için tıklayın https://ornek-baglanti.com/a1",
+  "normalized": "kgm kopru ve otoyol gecis borcunuz bulunmaktadir ceza almamak icin tiklayin urltoken",
+  "probability": 0.98853549
+ },
+ {
+  "text": "Plakaniza kayitli gecis ihlali tespit edildi. Itiraz veya odeme icin https://ornek-baglanti.com/a1",
+  "normalized": "plakaniza kayitli gecis ihlali tespit edildi itiraz veya odeme icin urltoken",
+  "probability": 0.90671394
+ },
+ {
+  "text": "Turkcell: 20 yıllık müşterimiz olarak 1.500 TL hediye kazandınız! Almak için tıklayın https://ornek-baglanti.com/a1",
+  "normalized": "turkcell num yillik musterimiz olarak num num tl hediye kazandiniz almak icin tiklayin urltoken",
+  "probability": 0.99979107
+ },
+ {
+  "text": "Tebrikler! Çekilişimizde iPhone kazandınız. Kargo ücretini ödeyerek hediyenizi alın https://ornek-baglanti.com/a1",
+  "normalized": "tebrikler cekilisimizde iphone kazandiniz kargo ucretini odeyerek hediyenizi alin urltoken",
+  "probability": 0.98440007
+ },
+ {
+  "text": "Vodafone puanlarınız bugün sona eriyor! 1.500 TL değerindeki puanınızı hemen kullanın https://ornek-baglanti.com/a1",
+  "normalized": "vodafone puanlariniz bugun sona eriyor num num tl degerindeki puaninizi hemen kullanin urltoken",
+  "probability": 0.98875203
+ },
+ {
+  "text": "Migros müşterisi olarak 500 TL alışveriş çeki kazandınız. Son gün: bugün https://ornek-baglanti.com/a1",
+  "normalized": "migros musterisi olarak num tl alisveris ceki kazandiniz son gun bugun urltoken",
+  "probability": 0.9908663
+ },
+ {
+  "text": "Sayın abonemiz, hattınıza 50 GB hediye internet tanımlandı. Aktif etmek için https://ornek-baglanti.com/a1",
+  "normalized": "sayin abonemiz hattiniza num gb hediye internet tanimlandi aktif etmek icin urltoken",
+  "probability": 0.96760118
+ },
+ {
+  "text": "TEBRIKLER! Sansli numaralar arasindasiniz, 1.500 TL odulunuzu almak icin bilgilerinizi girin https://ornek-baglanti.com/a1",
+  "normalized": "tebrikler sansli numaralar arasindasiniz num num tl odulunuzu almak icin bilgilerinizi girin urltoken",
+  "probability": 0.99134009
+ },
+ {
+  "text": "Türk Telekom: faturanızdan 1.500 TL iade hakkı kazandınız, IBAN girin https://ornek-baglanti.com/a1",
+  "normalized": "turk telekom faturanizdan num num tl iade hakki kazandiniz iban girin urltoken",
+  "probability": 0.96972604
+ },
+ {
+  "text": "Bayram hediyeniz hazır! Ücretsiz kahve makinesi için sadece kargo bedeli ödeyin https://ornek-baglanti.com/a1",
+  "normalized": "bayram hediyeniz hazir ucretsiz kahve makinesi icin sadece kargo bedeli odeyin urltoken",
+  "probability": 0.98619996
+ },
+ {
+  "text": "Deneme bonusu 500 TL! Yatırımsız freespin için hemen üye ol https://ornek-baglanti.com/a1",
+  "normalized": "deneme bonusu num tl yatirimsiz freespin icin hemen uye ol urltoken",
+  "probability": 0.99041883
+ },
+ {
+  "text": "Canli bahis ve casinoda %200 hosgeldin bonusu. Yeni adresimiz: https://ornek-baglanti.com/a1",
+  "normalized": "canli bahis ve casinoda num hosgeldin bonusu yeni adresimiz urltoken",
+  "probability": 0.94528246
+ },
+ {
+  "text": "Günde 1.500 TL kazanmak ister misiniz? Uzman ekibimizle kripto yatırımına başlayın https://ornek-baglanti.com/a1",
+  "normalized": "gunde num num tl kazanmak ister misiniz uzman ekibimizle kripto yatirimina baslayin urltoken",
+  "probability": 0.99330061
+ },
+ {
+  "text": "Borsa sinyal grubumuza katilin, hafta sonuna kadar %40 garanti kazanc. WhatsApp: 0555 000 00 00",
+  "normalized": "borsa sinyal grubumuza katilin hafta sonuna kadar num garanti kazanc whatsapp teltoken",
+  "probability": 0.91893083
+ },
+ {
+  "text": "Altın yatırımında kaçırılmayacak fırsat! Devlet destekli fon, hemen başvurun https://ornek-baglanti.com/a1",
+  "normalized": "altin yatiriminda kacirilmayacak firsat devlet destekli fon hemen basvurun urltoken",
+  "probability": 0.99370472
+ },
+ {
+  "text": "Binance TR: hesabınızdan çekim talebi oluşturuldu. Siz değilseniz iptal edin https://ornek-baglanti.com/a1",
+  "normalized": "binance tr hesabinizdan cekim talebi olusturuldu siz degilseniz iptal edin urltoken",
+  "probability": 0.85012273
+ },
+ {
+  "text": "Yasal bahis degil ama kazandirir: deneme bonusu ve sinirsiz cevrim https://ornek-baglanti.com/a1",
+  "normalized": "yasal bahis degil ama kazandirir deneme bonusu ve sinirsiz cevrim urltoken",
+  "probability": 0.91153592
+ },
+ {
+  "text": "Anne telefonum bozuldu, bu yeni numaram. Acil para lazım, şu IBAN'a gönderir misin TR12 0006 1000 0000 0000 0000 01",
+  "normalized": "anne telefonum bozuldu bu yeni numaram acil para lazim su iban a gonderir misin ibantoken",
+  "probability": 0.83967972
+ },
+ {
+  "text": "Baba ben, numaramı değiştirdim. Okulda bir sorun oldu, acil 1.500 TL lazım. Kimseye söyleme.",
+  "normalized": "baba ben numarami degistirdim okulda bir sorun oldu acil num num tl lazim kimseye soyleme",
+  "probability": 0.42328993
+ },
+ {
+  "text": "Merhaba, yanlışlıkla size doğrulama kodu gönderildi, lütfen gelen 6 haneli kodu bana iletir misiniz?",
+  "normalized": "merhaba yanlislikla size dogrulama kodu gonderildi lutfen gelen num haneli kodu bana iletir misiniz",
+  "probability": 0.75946602
+ },
+ {
+  "text": "WhatsApp hesabınız başka cihazda açılmak isteniyor. Engellemek için size gelen kodu bu numaraya yazın.",
+  "normalized": "whatsapp hesabiniz baska cihazda acilmak isteniyor engellemek icin size gelen kodu bu numaraya yazin",
+  "probability": 0.851873
+ },
+ {
+  "text": "Teyze ben komşunun oğlu, annem hastanede, bankadan para çekemiyorum. Hesabıma 1.500 TL atar mısın?",
+  "normalized": "teyze ben komsunun oglu annem hastanede bankadan para cekemiyorum hesabima num num tl atar misin",
+  "probability": 0.58984823
+ },
+ {
+  "text": "Garanti BBVA internet bankacılığı giriş şifreniz: 482913. Bu şifreyi kimseyle paylaşmayınız. B002",
+  "normalized": "garanti bbva internet bankaciligi giris sifreniz num bu sifreyi kimseyle paylasmayiniz b num",
+  "probability": 0.12760322
+ },
+ {
+  "text": "İş Bankası: 1234 ile biten kartınızla yapılan 245,00 TL harcama onaylanmıştır.",
+  "normalized": "is bankasi num ile biten kartinizla yapilan num num tl harcama onaylanmistir",
+  "probability": 0.15986039
+ },
+ {
+  "text": "Ziraat Bankasi: Hesabiniza 3.500,00 TL maas odemesi yapilmistir. Iyi gunler dileriz.",
+  "normalized": "ziraat bankasi hesabiniza num num num tl maas odemesi yapilmistir iyi gunler dileriz",
+  "probability": 0.176159
+ },
+ {
+  "text": "Akbank: Kartınızın son ödeme tarihi 25.10.2026, ödenecek tutar 1.250,40 TL.",
+  "normalized": "akbank kartinizin son odeme tarihi num num num odenecek tutar num num num tl",
+  "probability": 0.18394214
+ },
+ {
+  "text": "Doğrulama kodunuz 718204. Banka çalışanları bu kodu asla sizden istemez.",
+  "normalized": "dogrulama kodunuz num banka calisanlari bu kodu asla sizden istemez",
+  "probability": 0.14921535
+ },
+ {
+  "text": "Yapı Kredi: Otomatik ödeme talimatınızla elektrik faturanız ödenmiştir.",
+  "normalized": "yapi kredi otomatik odeme talimatinizla elektrik faturaniz odenmistir",
+  "probability": 0.05529387
+ },
+ {
+  "text": "Halkbank: 15.10.2026 tarihli 500 TL para transferiniz alıcı hesabına geçmiştir.",
+  "normalized": "halkbank num num num tarihli num tl para transferiniz alici hesabina gecmistir",
+  "probability": 0.18096341
+ },
+ {
+  "text": "QNB: Hesap ekstreniz hazırlanmıştır. Mobil uygulamadan görüntüleyebilirsiniz.",
+  "normalized": "qnb hesap ekstreniz hazirlanmistir mobil uygulamadan goruntuleyebilirsiniz",
+  "probability": 0.05093874
+ },
+ {
+  "text": "Yurtiçi Kargo: 3XY123456 nolu gönderiniz dağıtıma çıkmıştır. Takip: yurticikargo.com",
+  "normalized": "yurtici kargo num xy num nolu gonderiniz dagitima cikmistir takip urltoken",
+  "probability": 0.35754596
+ },
+ {
+  "text": "PTT: RR123456789TR barkodlu gönderiniz şubemize ulaşmıştır. Kimliğinizle teslim alabilirsiniz.",
+  "normalized": "ptt rr num tr barkodlu gonderiniz subemize ulasmistir kimliginizle teslim alabilirsiniz",
+  "probability": 0.13701633
+ },
+ {
+  "text": "Aras Kargo: Gönderiniz bugün 18:00'e kadar teslim edilecektir.",
+  "normalized": "aras kargo gonderiniz bugun num num e kadar teslim edilecektir",
+  "probability": 0.47366273
+ },
+ {
+  "text": "Trendyol siparişiniz teslim edildi. Bizi tercih ettiğiniz için teşekkürler.",
+  "normalized": "trendyol siparisiniz teslim edildi bizi tercih ettiginiz icin tesekkurler",
+  "probability": 0.09747053
+ },
+ {
+  "text": "MNG Kargo: Paketiniz teslim alındı. Teslim alan: kendisi.",
+  "normalized": "mng kargo paketiniz teslim alindi teslim alan kendisi",
+  "probability": 0.15709125
+ },
+ {
+  "text": "Hepsiburada: Siparişiniz kargoya verildi, uygulamadan takip edebilirsiniz.",
+  "normalized": "hepsiburada siparisiniz kargoya verildi uygulamadan takip edebilirsiniz",
+  "probability": 0.11684941
+ },
+ {
+  "text": "MHRS: 22.10.2026 09:30 tarihinde Dahiliye randevunuz oluşturulmuştur. Gelemeyecekseniz iptal ediniz.",
+  "normalized": "mhrs num num num num num tarihinde dahiliye randevunuz olusturulmustur gelemeyecekseniz iptal ediniz",
+  "probability": 0.15346641
+ },
+ {
+  "text": "e-Nabız: Tahlil sonuçlarınız sisteme yüklenmiştir.",
+  "normalized": "e nabiz tahlil sonuclariniz sisteme yuklenmistir",
+  "probability": 0.01322352
+ },
+ {
+  "text": "Sayın vatandaşımız, grip aşınız için aile hekiminize başvurabilirsiniz.",
+  "normalized": "sayin vatandasimiz grip asiniz icin aile hekiminize basvurabilirsiniz",
+  "probability": 0.22265269
+ },
+ {
+  "text": "Eczane: Reçeteli ilaçlarınız hazırdır, gün içinde teslim alabilirsiniz.",
+  "normalized": "eczane receteli ilaclariniz hazirdir gun icinde teslim alabilirsiniz",
+  "probability": 0.10895522
+ },
+ {
+  "text": "E-Devlet Kapısı şifreniz değiştirilmiştir. Bu işlemi siz yapmadıysanız ALO 160'ı arayınız.",
+  "normalized": "e devlet kapisi sifreniz degistirilmistir bu islemi siz yapmadiysaniz alo num i arayiniz",
+  "probability": 0.13506291
+ },
+ {
+  "text": "Nüfus Müdürlüğü randevunuz 28.10.2026 saat 10:15 olarak kaydedilmiştir.",
+  "normalized": "nufus mudurlugu randevunuz num num num saat num num olarak kaydedilmistir",
+  "probability": 0.07309239
+ },
+ {
+  "text": "Aile hekiminiz Dr. randevunuz yarın saat 11:00'dedir.",
+  "normalized": "aile hekiminiz dr randevunuz yarin saat num num dedir",
+  "probability": 0.06977692
+ },
+ {
+  "text": "SGK: Emekli aylığınız hesabınıza yatırılmıştır.",
+  "normalized": "sgk emekli ayliginiz hesabiniza yatirilmistir",
+  "probability": 0.14582235
+ },
+ {
+  "text": "Turkcell: Ekim ayı faturanız 289,90 TL, son ödeme tarihi 30.10.2026.",
+  "normalized": "turkcell ekim ayi faturaniz num num tl son odeme tarihi num num num",
+  "probability": 0.1947755
+ },
+ {
+  "text": "Vodafone: Paketinizin 5 GB internet hakkının %80'ini kullandınız.",
+  "normalized": "vodafone paketinizin num gb internet hakkinin num ini kullandiniz",
+  "probability": 0.56996763
+ },
+ {
+  "text": "Türk Telekom: Arıza kaydınız kapatılmıştır. Memnuniyet için teşekkür ederiz.",
+  "normalized": "turk telekom ariza kaydiniz kapatilmistir memnuniyet icin tesekkur ederiz",
+  "probability": 0.0717261
+ },
+ {
+  "text": "İGDAŞ: Doğalgaz faturanız 845,60 TL. Son ödeme 05.11.2026.",
+  "normalized": "igdas dogalgaz faturaniz num num tl son odeme num num num",
+  "probability": 0.17206696
+ },
+ {
+  "text": "Elektrik kesintisi: 20.10.2026 10:00-14:00 arası mahallenizde planlı bakım yapılacaktır.",
+  "normalized": "elektrik kesintisi num num num num num num num arasi mahallenizde planli bakim yapilacaktir",
+  "probability": 0.1391324
+ },
+ {
+  "text": "ISKI: Su faturaniz 210,50 TL olarak tahakkuk etmistir.",
+  "normalized": "iski su faturaniz num num tl olarak tahakkuk etmistir",
+  "probability": 0.0470046
+ },
+ {
+  "text": "Anne akşam yemeğe geliyoruz, bir şey almamız lazım mı?",
+  "normalized": "anne aksam yemege geliyoruz bir sey almamiz lazim mi",
+  "probability": 0.01307375
+ },
+ {
+  "text": "İlacını içtin mi baba? Akşam ararım.",
+  "normalized": "ilacini ictin mi baba aksam ararim",
+  "probability": 0.01557783
+ },
+ {
+  "text": "Toplantı yarına ertelendi, saat 10'da görüşelim.",
+  "normalized": "toplanti yarina ertelendi saat num da goruselim",
+  "probability": 0.03513485
+ },
+ {
+  "text": "Doğum günün kutlu olsun teyzeciğim, nice mutlu yıllara!",
+  "normalized": "dogum gunun kutlu olsun teyzecigim nice mutlu yillara",
+  "probability": 0.03758041
+ },
+ {
+  "text": "Pazardan domates ve biber aldım, kapıya bıraktım.",
+  "normalized": "pazardan domates ve biber aldim kapiya biraktim",
+  "probability": 0.01764522
+ },
+ {
+  "text": "Hastane randevuna ben götüreceğim, 9'da kapıda ol.",
+  "normalized": "hastane randevuna ben goturecegim num da kapida ol",
+  "probability": 0.02648783
+ },
+ {
+  "text": "Merhaba",
+  "normalized": "merhaba",
+  "probability": 0.01150468
+ },
+ {
+  "text": "İSTANBUL",
+  "normalized": "istanbul",
+  "probability": 0.04642408
+ },
+ {
+  "text": "ISPARTA ışık",
+  "normalized": "isparta isik",
+  "probability": 0.07413371
+ },
+ {
+  "text": "Iğdır'a gidiyorum",
+  "normalized": "igdir a gidiyorum",
+  "probability": 0.00308859
+ },
+ {
+  "text": "ÇOK ÖNEMLİ ŞÜPHELİ ÜRÜN",
+  "normalized": "cok onemli supheli urun",
+  "probability": 0.03567378
+ },
+ {
+  "text": "Ağaç, gölge, şeker, üzüm",
+  "normalized": "agac golge seker uzum",
+  "probability": 0.01786252
+ },
+ {
+  "text": "Hâlâ kâr, îtiraf, ûmumi",
+  "normalized": "hala kar itiraf umumi",
+  "probability": 0.03287853
+ },
+ {
+  "text": "hesabınız bloke edilmiştir",
+  "normalized": "hesabiniz bloke edilmistir",
+  "probability": 0.13443868
+ },
+ {
+  "text": "HESABINIZ BLOKE EDİLMİŞTİR!!!",
+  "normalized": "hesabiniz bloke edilmistir",
+  "probability": 0.13443868
+ },
+ {
+  "text": "hesabiniz bloke edilmistir",
+  "normalized": "hesabiniz bloke edilmistir",
+  "probability": 0.13443868
+ },
+ {
+  "text": "Kargonuz teslim edilemedi: https://ptt-kargo.xyz/takip?id=123",
+  "normalized": "kargonuz teslim edilemedi urltoken",
+  "probability": 0.76488926
+ },
+ {
+  "text": "Detaylar icin www.e-devlet-iade.com/basvuru adresine girin",
+  "normalized": "detaylar icin urltoken adresine girin",
+  "probability": 0.9410106
+ },
+ {
+  "text": "Odul icin tikla edevlet-iade.top hemen",
+  "normalized": "odul icin tikla urltoken hemen",
+  "probability": 0.99318486
+ },
+ {
+  "text": "bit.ly/3abcD kisa link",
+  "normalized": "urltoken kisa link",
+  "probability": 0.95526857
+ },
+ {
+  "text": "Siteye gir: sahte-banka.com.tr/giris",
+  "normalized": "siteye gir urltoken",
+  "probability": 0.90067699
+ },
+ {
+  "text": "ali.trabzon'a gitti",
+  "normalized": "ali trabzon a gitti",
+  "probability": 0.02401805
+ },
+ {
+  "text": "IBAN: TR12 0006 1005 1978 6457 8413 26 adresine gönderin",
+  "normalized": "iban ibantoken adresine gonderin",
+  "probability": 0.61010741
+ },
+ {
+  "text": "TR120006100519786457841326 hesabına yatır",
+  "normalized": "ibantoken hesabina yatir",
+  "probability": 0.44187474
+ },
+ {
+  "text": "Bizi arayın 0555 123 45 67",
+  "normalized": "bizi arayin teltoken",
+  "probability": 0.90686943
+ },
+ {
+  "text": "+905551234567 numarasından ulaşın",
+  "normalized": "teltoken numarasindan ulasin",
+  "probability": 0.57825481
+ },
+ {
+  "text": "5551234567'yi ara",
+  "normalized": "teltoken yi ara",
+  "probability": 0.83915941
+ },
+ {
+  "text": "0 555 1234567 hattı",
+  "normalized": "teltoken hatti",
+  "probability": 0.64535209
+ },
+ {
+  "text": "Kodunuz 482913. Kimseyle paylaşmayın.",
+  "normalized": "kodunuz num kimseyle paylasmayin",
+  "probability": 0.15419184
+ },
+ {
+  "text": "2.500 TL iade hakkınız var",
+  "normalized": "num num tl iade hakkiniz var",
+  "probability": 0.73595879
+ },
+ {
+  "text": "%50 indirim 24 saat geçerli",
+  "normalized": "num indirim num saat gecerli",
+  "probability": 0.85420702
+ },
+ {
+  "text": "Toplam: 1.250,75 TL",
+  "normalized": "toplam num num num tl",
+  "probability": 0.77327899
+ },
+ {
+  "text": "Tarih 18/10/2026 saat 20:00",
+  "normalized": "tarih num num num saat num num",
+  "probability": 0.17962704
+ },
+ {
+  "text": "Emoji 🎁🎉 hediye kazandınız",
+  "normalized": "emoji hediye kazandiniz",
+  "probability": 0.47541054
+ },
+ {
+  "text": "   çok    fazla   boşluk",
+  "normalized": "cok fazla bosluk",
+  "probability": 0.03611728
+ },
+ {
+  "text": "satır",
+  "normalized": "satir",
+  "probability": 0.03099431
+ },
+ {
+  "text": "sonu\tve\ttab",
+  "normalized": "sonu ve tab",
+  "probability": 0.09361576
+ },
+ {
+  "text": "e-Devlet şifrenizi doğrulayın",
+  "normalized": "e devlet sifrenizi dogrulayin",
+  "probability": 0.58880907
+ },
+ {
+  "text": "Kullanıcı adı: ömer_123",
+  "normalized": "kullanici adi omer num",
+  "probability": 0.20331527
+ },
+ {
+  "text": "\"Tırnak\" ve (parantez) [köşeli]",
+  "normalized": "tirnak ve parantez koseli",
+  "probability": 0.20345299
+ },
+ {
+  "text": "Café crème résumé",
+  "normalized": "caf cr me r sum",
+  "probability": 0.0226101
+ },
+ {
+  "text": "ﬁnans ligature",
+  "normalized": "nans ligature",
+  "probability": 0.04219611
+ },
+ {
+  "text": "ＴＡＭ genişlik",
+  "normalized": "genislik",
+  "probability": 0.0261344
+ },
+ {
+  "text": "Ä Ö Ü Alman",
+  "normalized": "o u alman",
+  "probability": 0.01875358
+ },
+ {
+  "text": "",
+  "normalized": "",
+  "probability": 0.01322689
+ },
+ {
+  "text": "123",
+  "normalized": "num",
+  "probability": 0.99504095
+ },
+ {
+  "text": "https://",
+  "normalized": "https",
+  "probability": 0.014594
+ },
+ {
+  "text": "www.",
+  "normalized": "www",
+  "probability": 0.01322689
+ },
+ {
+  "text": "http://a.b/c?d=e&f=g ve devam",
+  "normalized": "urltoken ve devam",
+  "probability": 0.99467918
+ },
+ {
+  "text": "t.co/xYz12 kısa",
+  "normalized": "urltoken kisa",
+  "probability": 0.98776286
+ },
+ {
+  "text": "cutt.ly/abc ve tinyurl.com/q1",
+  "normalized": "urltoken ve urltoken",
+  "probability": 0.99996696
+ },
+ {
+  "text": "Saat 10.30'da görüşelim",
+  "normalized": "saat num num da goruselim",
+  "probability": 0.02912986
+ },
+ {
+  "text": "Fiyatı 3.5 TL oldu",
+  "normalized": "fiyati num num tl oldu",
+  "probability": 0.79575991
+ },
+ {
+  "text": "Sn.Ahmet Bey",
+  "normalized": "sn ahmet bey",
+  "probability": 0.01051915
+ },
+ {
+  "text": "SAHTE-BANKA.COM.TR/GIRIS",
+  "normalized": "urltoken",
+  "probability": 0.99993711
+ }
+]

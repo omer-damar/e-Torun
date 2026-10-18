@@ -1,0 +1,198 @@
+[
+ {
+  "input": "Merhaba",
+  "expected": "merhaba"
+ },
+ {
+  "input": "İSTANBUL",
+  "expected": "istanbul"
+ },
+ {
+  "input": "ISPARTA ışık",
+  "expected": "isparta isik"
+ },
+ {
+  "input": "Iğdır'a gidiyorum",
+  "expected": "igdir a gidiyorum"
+ },
+ {
+  "input": "ÇOK ÖNEMLİ ŞÜPHELİ ÜRÜN",
+  "expected": "cok onemli supheli urun"
+ },
+ {
+  "input": "Ağaç, gölge, şeker, üzüm",
+  "expected": "agac golge seker uzum"
+ },
+ {
+  "input": "Hâlâ kâr, îtiraf, ûmumi",
+  "expected": "hala kar itiraf umumi"
+ },
+ {
+  "input": "hesabınız bloke edilmiştir",
+  "expected": "hesabiniz bloke edilmistir"
+ },
+ {
+  "input": "HESABINIZ BLOKE EDİLMİŞTİR!!!",
+  "expected": "hesabiniz bloke edilmistir"
+ },
+ {
+  "input": "hesabiniz bloke edilmistir",
+  "expected": "hesabiniz bloke edilmistir"
+ },
+ {
+  "input": "Kargonuz teslim edilemedi: https://ptt-kargo.xyz/takip?id=123",
+  "expected": "kargonuz teslim edilemedi urltoken"
+ },
+ {
+  "input": "Detaylar icin www.e-devlet-iade.com/basvuru adresine girin",
+  "expected": "detaylar icin urltoken adresine girin"
+ },
+ {
+  "input": "Odul icin tikla edevlet-iade.top hemen",
+  "expected": "odul icin tikla urltoken hemen"
+ },
+ {
+  "input": "bit.ly/3abcD kisa link",
+  "expected": "urltoken kisa link"
+ },
+ {
+  "input": "Siteye gir: sahte-banka.com.tr/giris",
+  "expected": "siteye gir urltoken"
+ },
+ {
+  "input": "ali.trabzon'a gitti",
+  "expected": "ali trabzon a gitti"
+ },
+ {
+  "input": "IBAN: TR12 0006 1005 1978 6457 8413 26 adresine gönderin",
+  "expected": "iban ibantoken adresine gonderin"
+ },
+ {
+  "input": "TR120006100519786457841326 hesabına yatır",
+  "expected": "ibantoken hesabina yatir"
+ },
+ {
+  "input": "Bizi arayın 0555 123 45 67",
+  "expected": "bizi arayin teltoken"
+ },
+ {
+  "input": "+905551234567 numarasından ulaşın",
+  "expected": "teltoken numarasindan ulasin"
+ },
+ {
+  "input": "5551234567'yi ara",
+  "expected": "teltoken yi ara"
+ },
+ {
+  "input": "0 555 1234567 hattı",
+  "expected": "teltoken hatti"
+ },
+ {
+  "input": "Kodunuz 482913. Kimseyle paylaşmayın.",
+  "expected": "kodunuz num kimseyle paylasmayin"
+ },
+ {
+  "input": "2.500 TL iade hakkınız var",
+  "expected": "num num tl iade hakkiniz var"
+ },
+ {
+  "input": "%50 indirim 24 saat geçerli",
+  "expected": "num indirim num saat gecerli"
+ },
+ {
+  "input": "Toplam: 1.250,75 TL",
+  "expected": "toplam num num num tl"
+ },
+ {
+  "input": "Tarih 18/10/2026 saat 20:00",
+  "expected": "tarih num num num saat num num"
+ },
+ {
+  "input": "Emoji 🎁🎉 hediye kazandınız",
+  "expected": "emoji hediye kazandiniz"
+ },
+ {
+  "input": "   çok    fazla   boşluk",
+  "expected": "cok fazla bosluk"
+ },
+ {
+  "input": "satır",
+  "expected": "satir"
+ },
+ {
+  "input": "sonu\tve\ttab",
+  "expected": "sonu ve tab"
+ },
+ {
+  "input": "e-Devlet şifrenizi doğrulayın",
+  "expected": "e devlet sifrenizi dogrulayin"
+ },
+ {
+  "input": "Kullanıcı adı: ömer_123",
+  "expected": "kullanici adi omer num"
+ },
+ {
+  "input": "\"Tırnak\" ve (parantez) [köşeli]",
+  "expected": "tirnak ve parantez koseli"
+ },
+ {
+  "input": "Café crème résumé",
+  "expected": "caf cr me r sum"
+ },
+ {
+  "input": "ﬁnans ligature",
+  "expected": "nans ligature"
+ },
+ {
+  "input": "ＴＡＭ genişlik",
+  "expected": "genislik"
+ },
+ {
+  "input": "Ä Ö Ü Alman",
+  "expected": "o u alman"
+ },
+ {
+  "input": "",
+  "expected": ""
+ },
+ {
+  "input": "123",
+  "expected": "num"
+ },
+ {
+  "input": "https://",
+  "expected": "https"
+ },
+ {
+  "input": "www.",
+  "expected": "www"
+ },
+ {
+  "input": "http://a.b/c?d=e&f=g ve devam",
+  "expected": "urltoken ve devam"
+ },
+ {
+  "input": "t.co/xYz12 kısa",
+  "expected": "urltoken kisa"
+ },
+ {
+  "input": "cutt.ly/abc ve tinyurl.com/q1",
+  "expected": "urltoken ve urltoken"
+ },
+ {
+  "input": "Saat 10.30'da görüşelim",
+  "expected": "saat num num da goruselim"
+ },
+ {
+  "input": "Fiyatı 3.5 TL oldu",
+  "expected": "fiyati num num tl oldu"
+ },
+ {
+  "input": "Sn.Ahmet Bey",
+  "expected": "sn ahmet bey"
+ },
+ {
+  "input": "SAHTE-BANKA.COM.TR/GIRIS",
+  "expected": "urltoken"
+ }
+]

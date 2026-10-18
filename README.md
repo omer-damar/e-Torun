@@ -54,4 +54,30 @@ npx expo install <paket>  # paket ekleme (npm install değil)
 
 ### Model (ml/)
 
-Henüz kurulmadı, Aşama 2'de eklenecek. Komutlar için `CLAUDE.md` dosyasına bakın.
+Python 3.11+ gerekir. Ham veri setleri lisansları belirsiz olduğu için repoda **yoktur**,
+aşağıdaki adlarla `ml/data/raw/` içine indirilmelidir:
+
+| Dosya | Kaynak | İçerik |
+|---|---|---|
+| `TurkishSMSCollection.csv` | [onrkrsy/TurkishSMS-Collection](https://github.com/onrkrsy/TurkishSMS-Collection) (Karasoy & Ballı, 2021) | 4.751 mesaj; `Message;Group;GroupText`, Group 1 = Spam, 2 = Normal |
+| `uysal_train.parquet`, `uysal_validation.parquet` | [akuysal/turkishSMS-ds](https://huggingface.co/datasets/akuysal/turkishSMS-ds) `data/` klasörü (Uysal vd., 2013) | 850 mesaj; `text`, `label` (spam / legitimate) |
+
+`ml/data/scam_tr.csv` repodadır: haber, Şikayetvar ve hukuk bürosu uyarı sayfalarında
+yayımlanmış gerçek dolandırıcılık SMS'leri (anonimleştirilmiş, kaynak adresiyle) ve
+belgelenen kalıplardan yazılmış sentetik örnekler. Sentetik satırlar (`synthetic=True`)
+yalnızca eğitim setine girer; test seti yalnızca gerçek mesajlardan oluşur.
+Dosya `ml/scripts/build_scam_tr.py` ile üretilir.
+
+```bash
+cd ml
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+python -m src.load_data     # birleştir, tekilleştir, %70/%15/%15 böl
+python -m src.train         # model karşılaştırma, eşik seçimi, reports/
+python -m src.export_model  # app/src/detector/model.json + exports/parity_vectors.json
+python -m pytest
+```
+
+Sonuçlar `ml/reports/` altında: `metrics.json`, `cv_comparison.csv`,
+`confusion_matrix.png`, `pr_curve.png`, `top_ngrams.json`, `data_summary.json`.

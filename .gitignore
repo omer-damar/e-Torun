@@ -28,6 +28,12 @@ __pycache__/
 # Lisansı belirsiz ham veri setleri
 ml/data/raw/*
 !ml/data/raw/.gitkeep
+ml/data/processed/*
+!ml/data/processed/.gitkeep
+
+# Eğitilmiş model (export_model.py girdisi) ve gerçek SMS içeren hata analizi
+ml/artifacts/
+ml/reports/misclassified.csv
 
 # Test kapsamı
 coverage/

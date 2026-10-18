@@ -1,0 +1,50 @@
+{
+  "raw_rows_by_source": {
+    "turkish_sms_collection": 4751,
+    "uysal_2013": 850,
+    "scam_tr:sentetik": 69,
+    "scam_tr:gercek": 46,
+    "scam_tr:sentetik_guvenli": 34
+  },
+  "raw_class_counts": {
+    "guvenli": 2679,
+    "supheli": 3071
+  },
+  "deduplication": {
+    "empty_after_normalize": 2,
+    "conflicting_label_groups": 1,
+    "rows_dropped_for_conflict": 2,
+    "duplicates_removed": 271
+  },
+  "after_dedup": 5475,
+  "after_dedup_by_source": {
+    "turkish_sms_collection": 4594,
+    "uysal_2013": 732,
+    "scam_tr:sentetik": 69,
+    "scam_tr:gercek": 46,
+    "scam_tr:sentetik_guvenli": 34
+  },
+  "test_rows_by_source": {
+    "turkish_sms_collection": 694,
+    "uysal_2013": 104,
+    "scam_tr:gercek": 8
+  },
+  "synthetic_rows": 103,
+  "splits": {
+    "train": {
+      "rows": 3863,
+      "guvenli": 1843,
+      "supheli": 2020
+    },
+    "val": {
+      "rows": 806,
+      "guvenli": 387,
+      "supheli": 419
+    },
+    "test": {
+      "rows": 806,
+      "guvenli": 388,
+      "supheli": 418
+    }
+  }
+}
