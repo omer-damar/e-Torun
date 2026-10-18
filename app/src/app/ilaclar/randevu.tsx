@@ -9,7 +9,13 @@ import { buildRefillSms, describeDaysLeft, getDaysLeft } from '@/features/medica
 import { useAppData } from '@/storage/AppDataProvider';
 import { borderWidth, colors, radius, spacing } from '@/theme';
 
-export const MHRS_URL = 'https://www.mhrs.gov.tr';
+/**
+ * MHRS'nin evrensel bağlantısı (universal link): mhrs.gov.tr/.well-known/apple-app-site-association
+ * yalnızca `/vatandas/*` yollarını MHRS uygulamasına (tr.gov.saglik.MHRSMOBIL) bağlıyor. Bu adres,
+ * uygulama yüklüyse uygulamada, değilse Safari'de "Randevu Al" sayfasında açılır. Kök adres
+ * (https://www.mhrs.gov.tr) her zaman Safari'de açılıyordu.
+ */
+export const MHRS_URL = 'https://www.mhrs.gov.tr/vatandas/';
 export const MHRS_PHONE = '182';
 
 async function open(url: string, failTitle: string) {
@@ -70,10 +76,10 @@ export default function RefillAppointmentScreen() {
       <BigButton
         icon="🌐"
         title="MHRS'yi aç"
-        subtitle="İnternetten randevu"
+        subtitle="Uygulama yüklüyse orada, değilse internette"
         variant="neutral"
         onPress={() => open(MHRS_URL, 'MHRS açılamadı')}
-        accessibilityHint="Tarayıcıda veya MHRS uygulamasında açılır"
+        accessibilityHint="MHRS uygulaması yüklüyse uygulamada, değilse internet sayfasında açılır"
         testID="open-mhrs"
       />
 
