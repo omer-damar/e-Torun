@@ -12,7 +12,7 @@ type Props = {
   children: ReactNode;
   /** Ana ekranın kendisinde gizlenir; diğer her ekranda zorunlu. */
   showHomeButton?: boolean;
-  /** Başlık satırının sağına yerleşen öğe (ör. Ayarlar butonu). */
+  /** Başlığın üstünde, sağa yaslı öğe (ör. Ayarlar butonu). */
   headerRight?: ReactNode;
 };
 
@@ -33,10 +33,11 @@ export function ScreenContainer({ title, children, showHomeButton = true, header
   return (
     <SafeAreaView style={styles.safeArea} edges={['top', 'bottom', 'left', 'right']}>
       <View style={styles.header}>
-        <AppText variant="title" accessibilityRole="header" style={styles.title}>
+        {/* Sağdaki öğe başlıkla aynı satırı paylaşmaz: büyük yazıda ikisi de sıkışıp harf harf kırılıyordu. */}
+        {headerRight ? <View style={styles.headerRight}>{headerRight}</View> : null}
+        <AppText variant="title" accessibilityRole="header">
           {title}
         </AppText>
-        {headerRight}
       </View>
       <ScrollView contentContainerStyle={styles.content}>{children}</ScrollView>
       {showHomeButton ? (
@@ -61,15 +62,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
+    gap: spacing.sm,
     paddingHorizontal: spacing.screen,
     paddingTop: spacing.md,
     paddingBottom: spacing.sm,
   },
-  title: {
-    flex: 1,
+  headerRight: {
+    alignSelf: 'flex-end',
   },
   content: {
     paddingHorizontal: spacing.screen,

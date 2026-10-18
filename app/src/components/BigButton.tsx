@@ -116,7 +116,8 @@ const styles = StyleSheet.create({
     lineHeight: 44,
   },
   textBox: {
-    flex: 1,
+    // flex: 1 değil: genişliği içeriğe göre belirlenen butonlarda (ör. Ayarlar) metin kutusu 0'a çöküyordu.
+    flexShrink: 1,
     gap: spacing.xs,
   },
 });

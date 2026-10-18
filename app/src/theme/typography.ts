@@ -5,9 +5,19 @@ export type FontScale = 'buyuk' | 'cokBuyuk';
 
 /**
  * iOS Dynamic Type büyütmesine izin verilir, ama taşmayı önlemek için en fazla 1.4 kat.
- * Her `<Text>` bileşenine `maxFontSizeMultiplier={MAX_FONT_SIZE_MULTIPLIER}` verilmeli.
+ * Büyütmeyi `AppText` kendisi uygular (bkz. `scaleFontSize`).
  */
 export const MAX_FONT_SIZE_MULTIPLIER = 1.4;
+
+/**
+ * Sistemin yazı ölçeğini (`useWindowDimensions().fontScale`) uygular.
+ * 1'in altına inmez (gövde yazısı hiçbir zaman 20pt'nin altına düşmesin),
+ * `MAX_FONT_SIZE_MULTIPLIER`'ın üstüne çıkmaz.
+ */
+export function scaleFontSize(size: number, fontScale: number): number {
+  const multiplier = Math.min(Math.max(fontScale, 1), MAX_FONT_SIZE_MULTIPLIER);
+  return Math.round(size * multiplier);
+}
 
 export const fontSizes: Record<FontScale, { body: number; title: number; button: number; buttonSub: number }> = {
   buyuk: { body: 20, title: 30, button: 24, buttonSub: 20 },

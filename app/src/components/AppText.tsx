@@ -1,6 +1,6 @@
-import { Text, type TextProps } from 'react-native';
+import { Text, useWindowDimensions, type TextProps } from 'react-native';
 
-import { colors, MAX_FONT_SIZE_MULTIPLIER, typography } from '@/theme';
+import { colors, scaleFontSize, typography } from '@/theme';
 
 type Variant = keyof typeof typography;
 
@@ -11,14 +11,28 @@ type Props = TextProps & {
 
 /**
  * Uygulamadaki tüm metinler bunu kullanır: varsayılan 20pt gövde yazısı,
- * Dynamic Type açık ama en fazla 1.4 kat büyütme.
+ * iOS yazı boyutu ayarına göre en fazla 1.4 kat büyür.
+ *
+ * Büyütme sisteme (`allowFontScaling`) bırakılmaz, burada hesaplanır: uygulama açıkken
+ * yazı boyutu değiştirilince iOS'ta metinler yeniden ölçülmüyor, yandan ve alttan
+ * kırpılıyordu. `fontScale` değişince bileşen yeni boyutla yeniden çizilir.
  */
 export function AppText({ variant = 'body', color = colors.text, style, ...rest }: Props) {
+  const { fontScale } = useWindowDimensions();
+  const base = typography[variant];
+
   return (
     <Text
-      allowFontScaling
-      maxFontSizeMultiplier={MAX_FONT_SIZE_MULTIPLIER}
-      style={[typography[variant], { color }, style]}
+      allowFontScaling={false}
+      style={[
+        base,
+        {
+          fontSize: scaleFontSize(base.fontSize, fontScale),
+          lineHeight: scaleFontSize(base.lineHeight, fontScale),
+          color,
+        },
+        style,
+      ]}
       {...rest}
     />
   );

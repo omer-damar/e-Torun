@@ -14,6 +14,7 @@ export default function HomeScreen() {
       showHomeButton={false}
       headerRight={
         <BigButton
+          icon="⚙️"
           title="Ayarlar"
           variant="neutral"
           onPress={() => router.push('/ayarlar')}
