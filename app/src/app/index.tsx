@@ -3,14 +3,17 @@ import { Linking } from 'react-native';
 
 import { AppText, BigButton, Notice, ScreenContainer } from '@/components';
 import { getGreeting, getNextDoseText } from '@/features/home/homeSummary';
+import { getNextDose } from '@/features/medications/schedule';
+import { useNow } from '@/features/medications/useNow';
 import { useNotificationPermission } from '@/features/notifications/permission';
 import { useAppData } from '@/storage/AppDataProvider';
 import { colors } from '@/theme';
 import { formatTurkishDate } from '@/utils/date';
 
 export default function HomeScreen() {
-  const { ready, settings } = useAppData();
+  const { ready, settings, medications, doseLog } = useAppData();
   const permission = useNotificationPermission();
+  const now = useNow();
 
   // Depo okunana kadar boş: açılış ekranı görünür, yanlışlıkla kuruluma atlanmaz.
   if (!ready) return null;
@@ -32,7 +35,7 @@ export default function HomeScreen() {
       }
     >
       <AppText variant="bodyBold" color={colors.textSecondary}>
-        {formatTurkishDate(new Date())}
+        {formatTurkishDate(now)}
       </AppText>
 
       {permission === 'denied' ? (
@@ -49,8 +52,7 @@ export default function HomeScreen() {
       <BigButton
         icon="💊"
         title="İlaçlarım"
-        // İlaç modülü Aşama 4'te gelene kadar kayıtlı ilaç yok.
-        subtitle={getNextDoseText(null)}
+        subtitle={medications.length === 0 ? 'İlaç ekleyin' : getNextDoseText(getNextDose(medications, doseLog, now))}
         onPress={() => router.push('/ilaclar')}
         accessibilityHint="Bugünkü ilaçlarınızı gösterir"
       />

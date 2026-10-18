@@ -11,13 +11,26 @@ type Props = {
   description?: string;
   accessibilityHint?: string;
   testID?: string;
+  /** Tek seçim için 'radio' (varsayılan), çoklu seçim (ör. günler) için 'checkbox'. */
+  role?: 'radio' | 'checkbox';
+  /** Metnin solunda gösterilecek renk örneği (ör. ilaç rengi). Bilgi yine metinle de verilir. */
+  swatch?: string;
 };
 
 /**
  * Seçeneklerden biri (ör. Büyük / Çok büyük). Seçili olduğu yalnızca renkle değil,
  * ✓ işareti ve "Seçili" yazısıyla da belirtilir.
  */
-export function OptionButton({ label, selected, onPress, description, accessibilityHint, testID }: Props) {
+export function OptionButton({
+  label,
+  selected,
+  onPress,
+  description,
+  accessibilityHint,
+  testID,
+  role = 'radio',
+  swatch,
+}: Props) {
   return (
     <Pressable
       testID={testID}
@@ -25,7 +38,7 @@ export function OptionButton({ label, selected, onPress, description, accessibil
         Haptics.selectionAsync().catch(() => {});
         onPress();
       }}
-      accessibilityRole="radio"
+      accessibilityRole={role}
       accessibilityLabel={description ? `${label}. ${description}` : label}
       accessibilityHint={accessibilityHint}
       accessibilityState={{ selected, checked: selected }}
@@ -38,6 +51,13 @@ export function OptionButton({ label, selected, onPress, description, accessibil
           </AppText>
         ) : null}
       </View>
+      {swatch ? (
+        <View
+          style={[styles.swatch, { backgroundColor: swatch }]}
+          importantForAccessibility="no-hide-descendants"
+          accessibilityElementsHidden
+        />
+      ) : null}
       <View style={styles.textBox}>
         <AppText variant="button">{label}</AppText>
         {description ? <AppText color={colors.textSecondary}>{description}</AppText> : null}
@@ -86,6 +106,13 @@ const styles = StyleSheet.create({
   markSelected: {
     backgroundColor: colors.primary,
     borderColor: colors.primary,
+  },
+  swatch: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    borderWidth,
+    borderColor: colors.border,
   },
   textBox: {
     flexShrink: 1,

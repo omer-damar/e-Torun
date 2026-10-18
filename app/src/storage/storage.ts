@@ -9,6 +9,8 @@ export const SCHEMA_VERSION = 1;
 export const STORAGE_KEYS = {
   settings: 'settings',
   contacts: 'contacts',
+  medications: 'medications',
+  doseLog: 'doseLog',
 } as const;
 
 export type StorageKey = (typeof STORAGE_KEYS)[keyof typeof STORAGE_KEYS];
