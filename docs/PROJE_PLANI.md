@@ -1,0 +1,471 @@
+# Yanımda — Proje Planı ve Gereksinim Dokümanı
+
+> Ders: Sosyal Sorumluluk · Prof. Dr. Akın Özçift · Teslim: **30 Aralık 2026** · Hedef bitiş: **13 Aralık 2026**
+> Geliştirici: Ömer Faruk Damar · Ortam: Windows + iPhone (Expo Go) · Araç: Claude Code
+
+---
+
+## 0. İçindekiler
+1. Problem, amaç, hedef kitle
+2. Kapsam (MVP / ekstra / kapsam dışı)
+3. Geliştirme ortamı ve kısıtlar (Windows + iPhone)
+4. Mimari ve klasör yapısı
+5. Modül A — Ana ekran, kurulum, ayarlar
+6. Modül B — İlaç hatırlatıcı
+7. Modül C — Acil yardım
+8. Modül D — Mesaj kontrolü (ML + kurallar)
+9. Makine öğrenmesi hattı (ml/)
+10. Erişilebilirlik ve tasarım sistemi
+11. Gizlilik, etik, güvenlik
+12. Test stratejisi
+13. Saha uygulaması (kullanıcı testi) — "nerede, ne zaman"
+14. Zaman planı (haftalık)
+15. Rapor (PDF) içeriği ve toplanacak görseller
+16. Claude Code ile çalışma akışı ve ilk komutlar
+17. Riskler ve B planları
+
+---
+
+## 1. Problem, amaç, hedef kitle
+
+**Problem.** Yaşlı bireyler üç alanda dijital olarak savunmasız kalıyor:
+- **İlaç takibi:** Birden fazla ilaç ve saat; unutma ya da çift doz riski.
+- **Acil durum:** Akıllı telefonda rehbere girip doğru kişiyi bulmak stres anında zor.
+- **SMS dolandırıcılığı:** e-Devlet, kargo, banka, icra, "ödül kazandınız" gibi sahte mesajlar en çok bu yaş grubunu hedef alıyor.
+
+**Amaç.** Bu üç ihtiyacı, yaşlı kullanıcıya göre tasarlanmış **tek, sade, çevrimdışı ve gizliliği koruyan** bir mobil uygulamada toplamak.
+
+**Hedef kitle.** 60+ yaş, akıllı telefonu temel düzeyde kullanan (arama yapabilen, WhatsApp kullanan) bireyler. İkincil kullanıcı: uygulamayı ilk kurulumda ayarlayan yakın (çocuk/torun).
+
+**Rapor için istatistik:** Problem bölümüne Emniyet Genel Müdürlüğü, BTK, USOM veya bankaların yayımladığı resmi uyarı ve verilerden 1–2 güncel kaynak eklenecek (hafta 8'de araştırılır, uydurma rakam kullanılmaz).
+
+---
+
+## 2. Kapsam
+
+Öncelik: **P0** = olmazsa olmaz, **P1** = MVP'de olmalı, **P2** = vakit kalırsa.
+
+| ID | Özellik | Öncelik |
+|---|---|---|
+| A1 | 3 büyük butonlu ana ekran | P0 |
+| A2 | İlk kurulum sihirbazı (isim, yakın kişi, bildirim izni) | P0 |
+| A3 | Ayarlar: yazı boyutu, sesli okuma, kişiler, tüm verileri sil | P1 |
+| B1 | İlaç ekle / düzenle / sil (ad, doz, saatler, günler) | P0 |
+| B2 | Saatinde yerel bildirim | P0 |
+| B3 | "Bugünkü ilaçlarım" listesi ve "ALDIM" işaretleme | P0 |
+| B4 | Son 7 günün geçmişi (alındı/atlandı) | P1 |
+| B5 | 15 dk içinde işaretlenmezse tekrar hatırlatma | P2 |
+| C1 | En fazla 3 yakın kişi, tek dokunuşla arama | P0 |
+| C2 | 112 butonu (onay pencereli) | P0 |
+| C3 | Konumumu SMS ile gönder | P2 |
+| D1 | Mesaj yapıştır / panodan al | P0 |
+| D2 | ML modeli ile risk skoru (cihaz içinde) | P0 |
+| D3 | Kural tabanlı, anlaşılır gerekçeler | P0 |
+| D4 | Yeşil / sarı / kırmızı sonuç ekranı + öneriler | P0 |
+| D5 | Sonucu sesli okuma | P1 |
+| D6 | "Yakınıma sor" → mesajı yakına SMS ile iletme | P1 |
+| D7 | Dolandırıcılık türleri hakkında kısa bilgi kartları | P2 |
+
+**Kapsam dışı (bilinçli):** gelen SMS'leri otomatik okuma (iOS izin vermez), sunucu/bulut, kullanıcı hesabı, App Store yayını, Android'e özel özellikler, push bildirim.
+
+---
+
+## 3. Geliştirme ortamı ve kısıtlar
+
+### Kurulacaklar (Windows)
+- Node.js LTS, Git for Windows, VS Code
+- Python 3.11 veya 3.12 (kurulumda "Add to PATH" işaretli)
+- Claude Code
+- iPhone'a App Store'dan **Expo Go**
+
+### Expo Go kuralları (en kritik kısıt)
+- Mac olmadığı için Xcode, iOS simülatörü ve özel "development build" yok. **Her şey Expo Go içinde çalışmak zorunda.**
+- App Store'daki Expo Go yalnızca **en güncel Expo SDK'yı** destekler. Proje `npx create-expo-app@latest` ile açılır, SDK sürümü elle değiştirilmez.
+- Paketler `npx expo install` ile eklenir (SDK ile uyumlu sürümü seçer).
+- **Yerel bildirimler Expo Go'da çalışır**, push bildirimler çalışmaz. Bu proje için yalnızca yerel bildirim gerekiyor.
+- Kullanılacak paketlerin hepsi Expo Go'da hazır gelir: `expo-notifications`, `expo-speech`, `expo-clipboard`, `expo-haptics`, `expo-linking`, `@react-native-async-storage/async-storage`, (P2) `expo-location`, `expo-contacts`.
+
+### Bağlantı sorunları
+- iPhone ve bilgisayar **aynı Wi-Fi**'da olmalı. Windows Güvenlik Duvarı ilk çalıştırmada Node için izin ister → "Özel ağlar" için izin ver.
+- Yurt veya kampüs ağı cihazlar arası trafiği engelleyebilir → `npx expo start --tunnel`.
+- Sessiz modda iOS bildirim sesini çalmaz. Kullanıcı testinde bunu not et.
+
+---
+
+## 4. Mimari ve klasör yapısı
+
+```
+yanimda/
+├─ CLAUDE.md
+├─ README.md
+├─ .gitignore
+├─ docs/
+│  ├─ PROJE_PLANI.md
+│  ├─ rapor/                 # ekran görüntüleri, saha fotoğrafları, diyagramlar
+│  └─ kullanici-testi/       # onam metni, görev senaryoları, anket (kişisel veri yok)
+├─ ml/
+│  ├─ requirements.txt
+│  ├─ data/
+│  │  ├─ raw/                # indirilen veri setleri (lisans belirsizse .gitignore)
+│  │  ├─ scam_tr.csv         # elle toplanan dolandırıcılık SMS'leri (anonim)
+│  │  └─ processed/
+│  ├─ src/
+│  │  ├─ normalize.py        # TS ile birebir aynı
+│  │  ├─ load_data.py
+│  │  ├─ train.py            # model karşılaştırma + seçim
+│  │  ├─ evaluate.py         # metrikler, karışıklık matrisi, eşik analizi
+│  │  └─ export_model.py     # model.json + parity_vectors.json
+│  ├─ tests/test_normalize.py
+│  ├─ reports/               # metrics.json, confusion_matrix.png, pr_curve.png
+│  └─ exports/parity_vectors.json
+└─ app/
+   ├─ app.json
+   ├─ app/                   # expo-router ekranları (SDK 58 şablonunda fiilen src/app/ altında)
+   │  ├─ _layout.tsx
+   │  ├─ index.tsx           # ana ekran
+   │  ├─ kurulum.tsx
+   │  ├─ ayarlar.tsx
+   │  ├─ ilaclar/index.tsx   # bugünkü ilaçlar
+   │  ├─ ilaclar/liste.tsx   # tüm ilaçlar
+   │  ├─ ilaclar/duzenle.tsx # ekle/düzenle (?id=)
+   │  ├─ ilaclar/gecmis.tsx
+   │  ├─ acil.tsx
+   │  ├─ mesaj/index.tsx     # yapıştır + kontrol et
+   │  └─ mesaj/sonuc.tsx
+   ├─ src/
+   │  ├─ theme/              # colors.ts, typography.ts, spacing.ts
+   │  ├─ components/         # BigButton, ScreenContainer, HomeButton, TimePickerBig, ConfirmDialog, RiskBadge
+   │  ├─ storage/            # tip güvenli AsyncStorage sarmalayıcı + şema sürümü
+   │  ├─ features/
+   │  │  ├─ medications/     # model, schedule.ts (saf), notifications.ts, store.ts
+   │  │  ├─ emergency/       # contacts store, call.ts
+   │  │  └─ settings/
+   │  └─ detector/
+   │     ├─ normalize.ts
+   │     ├─ ngrams.ts        # sklearn char_wb birebir
+   │     ├─ tfidf.ts
+   │     ├─ classify.ts      # olasılık
+   │     ├─ rules.ts         # açıklanabilir kurallar
+   │     ├─ decide.ts        # olasılık + kurallar → yeşil/sarı/kırmızı
+   │     └─ model.json       # ml/ tarafından üretilir, elle düzenlenmez
+   └─ __tests__/
+```
+
+**Veri akışı (Mesaj kontrolü):**
+`metin → normalize → char n-gram → TF-IDF (idf, sublinear, L2) → lojistik regresyon → p`
+`ham metin → rules → tetiklenen kurallar + gerekçeler`
+`(p, kurallar) → decide → {seviye, başlık, gerekçeler[], öneriler[]}`
+
+**Depolama şeması** (AsyncStorage, anahtar başına JSON, `schemaVersion` alanıyla):
+- `settings` → `{ schemaVersion, userName, fontScale: 'buyuk'|'cokBuyuk', speechEnabled, onboardingDone }`
+- `contacts` → `Contact[]` → `{ id, name, relation, phone }` (en fazla 3)
+- `medications` → `Medication[]` → `{ id, name, dose, times: "HH:mm"[], days: 'everyday' | number[] /*1=Pzt..7=Paz*/, note?, color, active, notificationIds: string[] }`
+- `doseLog` → `DoseLogEntry[]` → `{ medicationId, scheduledAt /*ISO*/, status: 'taken'|'skipped', recordedAt }` (30 günden eskisi silinir)
+
+---
+
+## 5. Modül A — Ana ekran, kurulum, ayarlar
+
+### A1 Ana ekran
+- Üstte "Merhaba, {isim}" ve tarih (ör. "18 Ekim Pazar").
+- Alt alta 3 büyük kart-buton, her biri ikon + iki satır metin:
+  - 💊 **İlaçlarım** — altında "Sıradaki: 20:00 Tansiyon ilacı" (yoksa "Bugün başka ilaç yok").
+  - 📞 **Acil Yardım** — "Yakınınızı veya 112'yi arayın".
+  - ✉️ **Mesajı Kontrol Et** — "Şüpheli mesajı kontrol edin".
+- Sağ üstte küçük değil, en az 64pt "Ayarlar" butonu.
+
+### A2 Kurulum sihirbazı (ilk açılışta, 4 adım)
+1. Hoş geldiniz + uygulamanın 3 işlevini anlatan tek ekran.
+2. "Size nasıl hitap edelim?" (isim, isteğe bağlı).
+3. Yakın kişi ekle (ad, yakınlık, telefon; en az 1 önerilir, atlanabilir).
+4. Bildirim izni: önce **kendi açıklama ekranımız** ("İlaç saatlerinde size haber verebilmemiz için izin vermeniz gerekiyor"), sonra sistem izni. Reddedilirse ana ekranda kalıcı, sakin bir uyarı + "Ayarları aç" (`Linking.openSettings()`).
+
+### A3 Ayarlar
+- Yazı boyutu: Büyük / Çok büyük (önizlemeli).
+- Sesli okuma: Açık / Kapalı.
+- Yakın kişileri düzenle.
+- "Tüm verilerimi sil" (2 aşamalı onay, bildirimleri de iptal eder).
+- Hakkında: sürüm, "Verileriniz yalnızca bu telefonda saklanır."
+
+**Kabul kriterleri:** Kurulum bir kez gösterilir. Uygulama kapatılıp açılınca veriler durur. "Tüm verilerimi sil" sonrası planlı bildirim sayısı 0 olur.
+
+---
+
+## 6. Modül B — İlaç hatırlatıcı
+
+### Ekranlar
+- **Bugünkü ilaçlarım:** Bugünün tüm dozları saat sırasıyla. Her satırda saat, ilaç adı, doz ve durum (⏳ Bekliyor / ✅ Alındı / ⚠️ Saati geçti). Bekleyen doz için büyük **ALDIM** butonu. Yanlışlıkla basılırsa 10 sn boyunca görünür "Geri al" butonu (toast değil, satırda).
+- **Tüm ilaçlar:** Liste + "İlaç ekle".
+- **İlaç ekle/düzenle:** Adım adım form (tek ekranda uzun form yerine):
+  1. İlacın adı (serbest metin, ör. "Tansiyon ilacı").
+  2. Doz (serbest metin, ör. "1 tablet").
+  3. Saat(ler): büyük +/− düğmeli saat seçici (saat ve dakika 5'er dk adımla). Birden fazla saat eklenebilir.
+  4. Günler: "Her gün" (varsayılan) veya gün seçimi.
+  5. Renk/ikon seçimi (kutudaki ilacı tanımaya yardım).
+  6. Özet + Kaydet.
+- **Geçmiş:** Son 7 gün, gün gün alındı/atlandı.
+
+### Bildirim mantığı (`features/medications/notifications.ts`)
+- Her (ilaç × saat) için:
+  - Her gün → `DAILY` tetikleyici (hour, minute).
+  - Belirli günler → her gün için `WEEKLY` tetikleyici (weekday, hour, minute). **Dikkat:** Expo'da `weekday` 1 = Pazar. İç modelde 1 = Pazartesi, dönüştürme fonksiyonu yaz ve test et.
+- Bildirim içeriği: başlık "💊 İlaç saati", gövde "{ad} – {doz}", `data: { medicationId, time }`, varsayılan ses.
+- Dönen `notificationId`'ler ilaca kaydedilir. Düzenleme/silmede önce eskiler iptal edilir, sonra yenileri planlanır.
+- Uygulama her açıldığında **senkronizasyon**: `getAllScheduledNotificationsAsync()` ile depodaki beklenen liste karşılaştırılır. Eksikse yeniden planlanır, fazlaysa iptal edilir (tek doğruluk kaynağı = depo).
+- iOS 64 sınırı: planlanacak toplam tetikleyici > 60 ise kaydetme ve kullanıcıya sade bir uyarı göster.
+- Bildirime dokunulunca `addNotificationResponseReceivedListener` → "Bugünkü ilaçlarım" ekranı açılır, ilgili satır vurgulanır.
+- Ön plandayken de görünmesi için `setNotificationHandler` (alert + ses).
+- (P2) B5: Doz zamanında bugüne özel tek seferlik +15 dk bildirimi planla, ALDIM'a basılınca iptal et.
+
+### Saf fonksiyonlar (testli)
+- `getDosesForDate(medications, date) → Dose[]`
+- `getNextDose(medications, now) → Dose | null`
+- `getDoseStatus(dose, log, now) → 'taken' | 'skipped' | 'pending' | 'missed'` (saatinden 60 dk sonra işaretlenmemişse `missed`)
+- `toExpoWeekday(isoWeekday)`
+- `countTriggers(medications)`
+
+**Kabul kriterleri:** 2 dk sonrasına kurulan ilaç bildirimi uygulama kapalıyken gelir. Düzenleme sonrası eski saatte bildirim gelmez. ALDIM ve Geri al doğru çalışır. Gece yarısı geçişinde "bugün" listesi yenilenir (uygulama ön plana geldiğinde `AppState` ile).
+
+---
+
+## 7. Modül C — Acil yardım
+
+- Ekranda kayıtlı yakınlar için büyük kartlar: "📞 {Ad} ({yakınlık})". Tek dokunuş → `Linking.openURL('tel:...')`. iOS kendi arama onayını da gösterir.
+- En altta ayrı renkte **112 ACİL** butonu → önce uygulama içi onay ("112 Acil Çağrı Merkezi aranacak. Emin misiniz?" — Evet/Hayır), sonra `tel:112`.
+- Kişi yoksa: "Henüz kimse eklenmedi" + "Kişi ekle" butonu.
+- Telefon doğrulaması: boşluk/tire temizle; `05XXXXXXXXX`, `5XXXXXXXXX` veya `+905XXXXXXXXX` kabul et, ekranda okunaklı biçimde göster (`0555 123 45 67`).
+- (P2) C3 **Konumumu gönder**: `expo-location` ile tek konum al → `sms:{telefon}&body=Acil durumdayım, konumum: https://maps.google.com/?q=lat,lng`. iOS'ta `sms:` gövde formatını gerçek cihazda test et.
+
+**Kabul kriterleri:** Hiçbir test 112'yi gerçekten aramaz (geliştirme sırasında 112 yerine kendi numaranla dene). Geçersiz numara kaydedilemez.
+
+---
+
+## 8. Modül D — Mesaj kontrolü
+
+### Akış
+1. Ekranda büyük metin kutusu + **"📋 Panodan yapıştır"** butonu (`expo-clipboard`). Altta kısa yönerge: "Şüphelendiğiniz mesajı basılı tutup Kopyala deyin, sonra bu butona basın."
+2. **Kontrol Et** → sonuç ekranı (cihaz içinde, internet gerekmez, < 200 ms).
+
+### Sonuç ekranı
+| Seviye | Görünüm | Başlık | Ana öneri |
+|---|---|---|---|
+| Kırmızı | ⛔ + kırmızı zemin | "DİKKAT! Bu mesaj büyük ihtimalle dolandırıcılık." | "Linke tıklamayın, kimseye şifre veya kod söylemeyin, para göndermeyin." |
+| Sarı | ⚠️ + sarı zemin | "Bu mesajda şüpheli işaretler var." | "Emin olmadan işlem yapmayın, yakınınıza danışın." |
+| Yeşil | ✅ + yeşil zemin | "Belirgin bir tehlike işareti bulunmadı." | "Yine de para veya şifre isteyen mesajlara dikkat edin." |
+
+- Altında **"Neden?"** listesi: tetiklenen kuralların sade açıklamaları (en fazla 4).
+- Butonlar: **🔊 Sesli oku** (`expo-speech`, `language: 'tr-TR'`, yavaş hız ~0.85), **👨‍👩‍👧 Yakınıma sor** (mesaj metnini kayıtlı yakına `sms:` ile gönderme ekranı açar), **Ana Sayfa**.
+- Model olasılığı yüzde olarak gösterilmez (yaşlı kullanıcıya anlam ifade etmez). Rapordaki geliştirici bölümünde anlatılır.
+
+### Kurallar (`rules.ts`) — ham metin üzerinde, normalize edilmiş kopyayla eşleşir
+| Kural | Örnek tetikleyiciler | Kullanıcıya açıklama |
+|---|---|---|
+| `LINK` | http, www, alan adı kalıbı | "Mesajda bir internet bağlantısı var. Bankalar ve devlet kurumları SMS'teki bağlantıdan bilgi girmenizi istemez." |
+| `SHORT_LINK` | bit.ly, tinyurl, cutt.ly, t.ly, rebrand.ly | "Bağlantı kısaltılmış; nereye gittiği gizleniyor." |
+| `URGENCY` | hemen, son gün, 24 saat, aksi takdirde, bloke, askıya, iptal edilecek | "Sizi acele ettirmeye çalışıyor. Dolandırıcılar düşünmenize fırsat vermek istemez." |
+| `IMPERSONATION` | e-devlet, ptt, kargo, banka adları, vergi, icra, sgk, emniyet, savcılık, masak, turkcell/vodafone/türk telekom | "Resmi bir kurum veya şirket adına yazılmış gibi görünüyor." |
+| `PRIZE` | kazandınız, hediye, ödül, çekiliş, iade, bonus, ücretsiz | "Ödül veya para iadesi vaat ediyor." |
+| `PERSONAL_INFO` | şifre, kart bilgi, cvv, tc kimlik, doğrulama/onay kodu | "Kişisel bilgilerinizi veya kodunuzu istiyor." |
+| `PAYMENT` | IBAN kalıbı, ödeme yapın, gümrük ücreti, borç | "Para göndermenizi veya ödeme yapmanızı istiyor." |
+| `GAMBLING` | bahis, casino, deneme bonusu, freespin | "Yasa dışı bahis reklamı olabilir." |
+| `OTP_INFO` (bilgilendirici) | "doğrulama kodunuz" + rakam | "Bu bir doğrulama kodu. Sizi arayan kişi banka görevlisi olsa bile bu kodu kimseye söylemeyin." |
+
+Anahtar kelimeler normalize edilmiş metinde aranır, böylece Türkçe karaktersiz yazımlar da yakalanır ("hesabiniz bloke").
+
+### Karar mantığı (`decide.ts`)
+```
+KIRMIZI  ← p ≥ T_HIGH
+           veya LINK ∧ (IMPERSONATION ∨ PRIZE ∨ URGENCY ∨ PERSONAL_INFO)
+           veya PAYMENT ∧ (URGENCY ∨ IMPERSONATION)
+SARI     ← p ≥ T_LOW  veya  (OTP_INFO dışında) herhangi bir kural
+YEŞİL    ← diğer durumlar
+```
+- `T_HIGH` ve `T_LOW` doğrulama setinden seçilir (başlangıç: 0.80 / 0.40), `model.json` içinde saklanır.
+- Kısa metin (< 15 karakter) → "Kontrol için mesaj çok kısa" uyarısı.
+
+---
+
+## 9. Makine öğrenmesi hattı (`ml/`)
+
+### 9.1 Veri
+- **TurkishSMSCollection:** Türkçe istenmeyen/meşru etiketli SMS veri seti (2024 MDPI makalesinde kullanılan). Kaggle/GitHub'dan indirilecek, lisansı kontrol edilecek.
+- **Uysal vd. (2013) Türkçe SMS koleksiyonu:** 425 spam + 450 meşru mesaj. Hugging Face'te `akuysal/turkishSMS-ds` olarak mevcut.
+- **`scam_tr.csv` (kendi toplayacağın):** Gerçek dolandırıcılık SMS'leri (ailenin telefonları, kurumların paylaştığı uyarı örnekleri). Hedef ≥ 150 mesaj. İsim, telefon, link ve kod gibi kişisel kısımlar `[İSİM]` vb. ile anonimleştirilir. Kolonlar: `text, label(1), source, collected_at`.
+- (İsteğe bağlı) Sentetik örnekler: yalnızca **eğitim** setine girer. Test seti yalnızca gerçek mesajlardan oluşur. Raporda dürüstçe belirtilir.
+- Etiket: `0 = güvenli`, `1 = şüpheli` (spam + dolandırıcılık birleşik).
+- Tekrarlar: normalize edilmiş metne göre tekilleştir (aynı mesajın hem eğitimde hem testte olmasını engeller).
+- Bölme: %70 eğitim / %15 doğrulama / %15 test, stratified, `random_state=42`.
+
+### 9.2 Normalizasyon (Python ↔ TS birebir)
+Sırayla:
+1. Unicode NFC.
+2. `İ`, `I`, `ı` → `i` (**`lower()`'dan önce**; Python'da `'İ'.lower()` iki karakter üretir).
+3. Küçük harfe çevir.
+4. Aksan katlama: `ç→c, ğ→g, ö→o, ş→s, ü→u, â→a, î→i, û→u`.
+5. URL → ` urltoken ` (regex: `https?://[^ \t\n\r]+`, `www\.[^ \t\n\r]+`, ve `[a-z0-9-]+\.(com|net|org|xyz|top|info|tr|link|site|online|shop|click|live|app)(/[^ \t\n\r]*)?`).
+6. IBAN → ` ibantoken ` (`tr[0-9]{2}( ?[0-9]{4}){5} ?[0-9]{2}`).
+7. Telefon → ` teltoken ` (`(\+?90|0)? ?5[0-9]{2} ?[0-9]{3} ?[0-9]{2} ?[0-9]{2}`).
+8. Kalan rakam grupları → ` num `.
+9. `[a-z0-9]` dışındaki her karakter → boşluk.
+10. Birden fazla boşluğu teke indir, baştan ve sondan kırp.
+
+Python'da `\d` ve `\s` yerine açık karakter sınıfları kullanılır. `ml/tests/test_normalize.py` ve `app/__tests__/normalize.test.ts` aynı ≥ 30 örnek girdi/çıktı çiftini paylaşır (`ml/exports/parity_vectors.json`).
+
+### 9.3 Öznitelik ve model
+- `TfidfVectorizer(analyzer='char_wb', ngram_range=(3,5), min_df=2, max_features=20000, sublinear_tf=True, lowercase=False)`, metin önceden normalize edilmiş halde verilir.
+  - Neden karakter n-gram: Türkçe eklemeli bir dil ("hesabınız/hesabınızın"), dolandırıcılar da kasıtlı yazım hatası yapar. Karakter n-gramı ikisine de dayanıklıdır.
+- Karşılaştırılacak modeller (5-katlı stratified CV, F1 ve ROC-AUC): MultinomialNB, LogisticRegression(`class_weight='balanced'`, C ∈ {0.1, 1, 10}), LinearSVC.
+- **Seçim: Lojistik Regresyon.** Olasılık verir, TS'te 20 satırla çalıştırılabilir. Diğerleri raporda karşılaştırma tablosu olarak yer alır.
+- Raporlanacaklar (`ml/reports/`): sınıf dağılımı, CV tablosu, test seti precision/recall/F1/ROC-AUC, karışıklık matrisi PNG, precision-recall eğrisi, eşik seçim gerekçesi, yanlış sınıflanan 10 örnek analizi, en etkili 20 n-gram (her iki yönde).
+- Hedef: test F1 ≥ 0.95, yanlış pozitif oranı ≤ %3 (yaşlıyı gereksiz korkutmamak için).
+
+### 9.4 Dışa aktarma (`export_model.py`)
+`app/src/detector/model.json`:
+```json
+{
+  "version": "1.0.0",
+  "createdAt": "...",
+  "ngramRange": [3, 5],
+  "intercept": -1.23,
+  "thresholds": { "high": 0.8, "low": 0.4 },
+  "features": { "ngram": [idf, coef], "...": [0, 0] }
+}
+```
+- Sayılar 6 basamağa yuvarlanır. Hedef dosya boyutu < 1.5 MB (aşarsa `max_features` düşürülür).
+- `ml/exports/parity_vectors.json`: 200 test mesajı için `{ text, normalized, probability }`.
+
+### 9.5 TS tarafı (birebir sklearn)
+- **`char_wb` n-gram:** Metin boşluklara göre bölünür. Her kelime `" " + w + " "` yapılır. Her n için kaydırarak n-gram alınır. sklearn'deki "kelime n'den kısaysa bir kez say" (`if offset == 0: break`) davranışı aynen uygulanır. Uzunluk hesabında `Array.from(w)` kullanılır.
+- **TF:** `1 + ln(count)` → `× idf` → L2 normalizasyon (yalnızca modelde olan n-gramlar üzerinden).
+- **Olasılık:** `z = intercept + Σ x_j·coef_j`, `p = 1 / (1 + e^(−z))`.
+- **Parity testi:** 200 vektörde `|p_ts − p_py| < 1e-4` ve `normalized` metinler birebir aynı.
+
+---
+
+## 10. Erişilebilirlik ve tasarım sistemi
+
+**İlkeler:** Ekran başına tek ana görev; büyük, net, yüksek kontrast; okunur dil; hata yapmaya dayanıklı (onay + geri al).
+
+| Öğe | Değer |
+|---|---|
+| Gövde yazısı | 20pt (Çok büyük: 24pt) |
+| Başlık | 28–32pt, kalın |
+| Buton yazısı | 24pt, kalın |
+| Dokunma alanı | ≥ 64×64pt, butonlar arası ≥ 16pt boşluk |
+| Kontrast | ≥ 7:1 (WCAG AAA) |
+| Renk paleti | Arka plan `#FFFFFF`, metin `#111111`, birincil `#0B4F9C`, tehlike `#B00020`, uyarı arka planı `#FFF3C4` + metin `#5C4300`, başarı `#1B5E20` |
+| Dynamic Type | `allowFontScaling` açık, `maxFontSizeMultiplier` 1.4 (taşmaları önlemek için) |
+| VoiceOver | Tüm butonlarda Türkçe `accessibilityLabel` ve `accessibilityHint` |
+| Dokunsal geri bildirim | Her ana butonda `expo-haptics` hafif titreşim |
+| Yasaklar | Küçük ikon-buton, yalnızca renkle anlam, kaydırma zorunluluğu, kaybolan uyarı, İngilizce terim |
+
+**Ortak bileşenler:** `BigButton` (ikon + başlık + alt metin, varyantlar: primary/danger/neutral), `ScreenContainer` (güvenli alan + başlık + Ana Sayfa butonu), `ConfirmDialog` (büyük Evet/Hayır, yanlışlıkla basmayı önlemek için aralı), `TimePickerBig`, `RiskBadge`.
+
+---
+
+## 11. Gizlilik, etik, güvenlik
+- Tüm veriler yalnızca cihazda. Ağ isteği yok, analitik yok, reklam yok (KVKK açısından en temiz yaklaşım; raporda vurgulanır).
+- SMS içerikleri saklanmaz. Kontrol edilen mesaj ekrandan çıkınca bellekten atılır.
+- Uygulama tıbbi tavsiye vermez. Hakkında ekranına "İlaç dozunu doktorunuz belirler, bu uygulama yalnızca hatırlatır." notu konur.
+- Dolandırıcılık tespiti %100 değildir. Yeşil sonuçta da dikkat uyarısı bulunur.
+- Kullanıcı testinde: bilgilendirilmiş onam, isim yerine "K1, K2" kodu, fotoğraflarda yüz yok ya da açık izin var, test için uygulamaya gerçek ilaç bilgisi değil örnek veri girilir.
+
+---
+
+## 12. Test stratejisi
+- **Birim (Jest, `jest-expo`):** normalize, ngrams, tfidf, classify, rules, decide, schedule fonksiyonları, telefon doğrulama, weekday dönüşümü.
+- **Parity:** Python ↔ TS (bölüm 9.5).
+- **Python (pytest):** normalize örnekleri, export edilen JSON'un şeması.
+- **Elle test kontrol listesi (iPhone):**
+  - [ ] 2 dk sonraya kurulan bildirim uygulama kapalıyken geliyor
+  - [ ] Bildirime dokununca doğru ekran açılıyor
+  - [ ] İlaç silinince bildirimi de siliniyor
+  - [ ] Çok büyük yazı + iOS en büyük metin ayarında taşma yok
+  - [ ] VoiceOver ile 3 ana görev tamamlanabiliyor
+  - [ ] Uçak modunda her şey çalışıyor
+  - [ ] 10 gerçek dolandırıcılık + 10 gerçek normal SMS doğru seviyede
+  - [ ] Bildirim izni reddedilince uygulama çökmüyor, uyarı gösteriyor
+
+---
+
+## 13. Saha uygulaması — "nerede, hangi zaman diliminde"
+Hocanın istediği "projenin nerede ve ne zaman gerçekleştiği" kısmı buradan çıkar.
+
+- **Yer:** Gebze/Kocaeli. Aile büyükleri, komşular veya bir semt/cami derneği, muhtarlık ya da yaşlı merkezi.
+- **Zaman:** 30 Kasım – 6 Aralık 2026 haftası. Rapora net tarihler yazılır.
+- **Katılımcı:** 3–5 kişi, 60+ yaş.
+- **Hazırlık (`docs/kullanici-testi/`):** 1 sayfalık onam metni, görev kâğıdı, 5 soruluk anket (gülen yüz ölçekli, 1–5).
+- **Görevler** (uygulama senin iPhone'unda, örnek verilerle):
+  1. "Her akşam 20:00'de alınan 'Tansiyon ilacı'nı ekleyin."
+  2. "Gelen hatırlatmayı açıp 'Aldım' deyin." (2 dk sonrasına kurulmuş örnek bildirim)
+  3. "Kızınızı arayın." (kayıtlı kişi = senin numaran)
+  4. "Size gösterdiğim 3 mesajı kontrol edin." (1 normal, 2 dolandırıcılık)
+- **Ölçülecekler:** görev tamamlandı mı, süre, yardım gerekti mi, anket puanları, akılda kalan cümleler (anonim).
+- **Belgeler:** Fotoğraflar (eller + ekran, yüz yok), mümkünse kurum veya muhtarlıktan teşekkür/katılım yazısı, sonuç tablosu.
+- Test sonrası en az 2 iyileştirme yapılır ve raporda "geri bildirimle yapılan değişiklikler" olarak yer alır (sosyal sorumluluk projesinin güçlü kanıtı).
+
+---
+
+## 14. Zaman planı
+
+| Hafta | Tarih | İş | Çıktı |
+|---|---|---|---|
+| 1 | 19–25 Eki | Ortam kurulumu, repo, Expo iskeleti, tema ve bileşenler; veri setlerini indirme; dolandırıcılık SMS'i toplamaya başlama | Expo Go'da açılan ana ekran |
+| 2 | 26 Eki–1 Kas | ML: normalize, veri birleştirme, model karşılaştırma, eşik, export, parity vektörleri | `model.json`, `reports/` |
+| 3 | 2–8 Kas | Kurulum sihirbazı, ayarlar, depolama katmanı, Acil Yardım modülü | A1–A3, C1–C2 |
+| 4 | 9–15 Kas | İlaç modülü + bildirimler + senkronizasyon | B1–B4 |
+| 5 | 16–22 Kas | Dedektör TS (normalize, n-gram, tfidf, classify, rules, decide), parity testi, sonuç ekranı, sesli okuma, Yakınıma sor | D1–D6 |
+| 6 | 23–29 Kas | Erişilebilirlik cilası, elle test listesi, hata durumları, kullanıcı testi materyalleri | Test edilebilir sürüm |
+| 7 | 30 Kas–6 Ara | **Saha uygulaması**, fotoğraflar, geri bildirim, düzeltmeler | Test sonuçları |
+| 8 | 7–13 Ara | README, ekran görüntüleri, mimari diyagram, PDF rapor | **Teslim** |
+| Tampon | 14–30 Ara | Gecikmeler için | — |
+
+Hızlı ilerlersen 3–5. haftalar sıkıştırılabilir ve saha testi Kasım ortasına çekilebilir.
+
+---
+
+## 15. Rapor (PDF) içeriği
+Hocanın 3 maddesine birebir karşılık gelecek şekilde, tek PDF dosyası:
+
+1. **Kapak:** Manisa Celal Bayar Üniversitesi · Hasan Ferdi Turgutlu Teknoloji Fakültesi · Yazılım Mühendisliği · Sosyal Sorumluluk Dersi · Proje adı ("Yanımda: Yaşlı Bireyler için Dijital Yardımcı Uygulama") · Ad Soyad · Öğrenci No: ______ · Dersi veren: Prof. Dr. Akın Özçift · Aralık 2026.
+2. **Projenin kısa tanıtımı:** problem ve kaynaklı istatistik, amaç, hedef kitle, özellikler, kullanılan teknolojiler, **nerede** (Gebze/Kocaeli, geliştirme + saha uygulaması yeri) ve **zaman dilimi** (Ekim–Aralık 2026, saha testi tarihleri).
+3. **Resimler ve belgeler:** ana ekran ve her modülden ekran görüntüleri, kırmızı/sarı/yeşil sonuç örnekleri, mimari diyagram, model karşılaştırma tablosu ve karışıklık matrisi, saha fotoğrafları, kullanıcı testi sonuç tablosu, varsa teşekkür yazısı, GitHub QR kodu.
+4. Sonuç, kazanımlar, geliştirme önerileri, kaynakça.
+
+**Toplanacaklar listesi (süreç boyunca `docs/rapor/` içine):** her modülün ekran görüntüsü (iPhone yan tuş + ses açma) · ML grafikleri · saha fotoğrafları · anket sonuçları · kaynak linkleri.
+
+---
+
+## 16. Claude Code ile çalışma akışı
+1. `yanimda/` klasörünü aç. `CLAUDE.md` köke, bu dosya `docs/PROJE_PLANI.md` olarak gider. `git init` yap ve GitHub'da `omer-damar/yanimda` reposunu oluştur.
+2. Her aşamayı **ayrı bir oturumda/görevde** ver. Büyük işlerde önce plan modunda plan iste, onaylayınca kodlat.
+3. Her aşama sonunda: testler + tip kontrolü + iPhone'da deneme + commit.
+
+**Sırayla verilecek komut örnekleri:**
+- *Aşama 1:* "docs/PROJE_PLANI.md bölüm 3, 4 ve 10'u oku. `app/` altında en güncel Expo şablonuyla TypeScript + expo-router projesi kur, tema dosyalarını ve BigButton, ScreenContainer, ConfirmDialog bileşenlerini oluştur, ana ekranı (A1) sahte verilerle yap. Jest'i jest-expo ile kur."
+- *Aşama 2:* "Bölüm 9'u oku. `ml/` klasörünü kur, normalize.py'yi ve testlerini yaz, veri yükleme ve train.py'yi hazırla. Veri dosyalarını ben `ml/data/raw/` içine koyacağım; beklenen dosya formatlarını README'ye yaz."
+- *Aşama 3:* "Bölüm 5 ve 7: kurulum sihirbazı, ayarlar, depolama katmanı ve Acil Yardım modülü."
+- *Aşama 4:* "Bölüm 6: ilaç modülü. Önce saf fonksiyonları ve testlerini yaz, sonra bildirimleri, sonra ekranları."
+- *Aşama 5:* "Bölüm 8 ve 9.5: dedektörün TS tarafı, parity testi ve sonuç ekranı."
+- *Aşama 6:* "Bölüm 10 ve 12'deki kontrol listesine göre tüm ekranları denetle ve düzelt."
+
+---
+
+## 17. Riskler ve B planları
+
+| Risk | Etki | B planı |
+|---|---|---|
+| Expo Go yeni SDK'ya güncellenir, proje açılmaz | Yüksek | `npx expo install expo@latest --fix` ile SDK yükseltilir. Ders süresince büyük yükseltme beklenmez |
+| Aynı ağda bağlantı yok | Orta | `--tunnel` |
+| Türkçe veri seti yetersiz veya ulaşılamıyor | Orta | Uysal vd. (HF) + kendi `scam_tr.csv` + sınırlı sentetik veri; kurallar katmanı tek başına da çalışır |
+| Model JS'te farklı sonuç veriyor | Orta | Parity testi. Gerekirse word n-gram + daha basit normalizasyon |
+| Bildirimler gelmiyor | Yüksek | İzin durumu kontrolü, Odaklanma/Sessiz modu notu, `getAllScheduledNotificationsAsync` ile hata ayıklama ekranı (yalnızca geliştirme) |
+| Saha testine katılımcı bulunamaz | Orta | Aile büyükleri + komşular. En az 3 kişi yeterli |
+| Zaman | Düşük | P2 maddeleri atılır, P0+P1 ile proje tamdır |
+
+---
+
+### Kaynaklar
+- Expo Notifications dokümanı: https://docs.expo.dev/versions/latest/sdk/notifications/
+- Uysal, A. K., Gunal, S., Ergin, S., & Gunal, E. S. (2013). The impact of feature extraction and selection on SMS spam filtering. *Elektronika ir Elektrotechnika*, 19(5), 67–72. — https://huggingface.co/datasets/akuysal/turkishSMS-ds
+- SMS Spam Detection System Based on Deep Learning Architectures for Turkish and English Messages (2024), *Applied Sciences* — https://www.mdpi.com/2076-3417/14/24/11804

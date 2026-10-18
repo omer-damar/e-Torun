@@ -1,0 +1,39 @@
+# Node / Expo
+node_modules/
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Native klasörler (Expo Go kullanıldığı için üretilmez)
+app/ios/
+app/android/
+
+# Ortam değişkenleri
+.env
+.env*.local
+
+# Python
+ml/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Lisansı belirsiz ham veri setleri
+ml/data/raw/*
+!ml/data/raw/.gitkeep
+
+# Test kapsamı
+coverage/
+
+# İşletim sistemi / editör
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
