@@ -3,6 +3,7 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { APP_NAME, NOT_OFFICIAL_NOTICE } from '@/appInfo';
 import { AppText, BigButton, ConfirmDialog, OptionButton, ScreenContainer } from '@/components';
 import { contactTitle, MAX_CONTACTS, type Contact } from '@/features/emergency/contacts';
 import { formatPhone } from '@/features/emergency/phone';
@@ -87,7 +88,10 @@ export default function SettingsScreen() {
       </Section>
 
       <Section title="Hakkında">
-        <AppText>Yanımda, sürüm {Constants.expoConfig?.version ?? '1.0.0'}</AppText>
+        <AppText>
+          {APP_NAME}, sürüm {Constants.expoConfig?.version ?? '1.0.0'}
+        </AppText>
+        <AppText>ℹ️ {NOT_OFFICIAL_NOTICE}</AppText>
         <AppText>🔒 Verileriniz yalnızca bu telefonda saklanır. İnternete gönderilmez.</AppText>
         <AppText>💊 İlaç dozunu doktorunuz belirler, bu uygulama yalnızca hatırlatır.</AppText>
       </Section>

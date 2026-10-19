@@ -1,4 +1,4 @@
-# Yanımda — Proje Planı ve Gereksinim Dokümanı
+# e-Torun — Proje Planı ve Gereksinim Dokümanı
 
 > Ders: Sosyal Sorumluluk · Prof. Dr. Akın Özçift · Teslim: **30 Aralık 2026** · Hedef bitiş: **13 Aralık 2026**
 > Geliştirici: Ömer Faruk Damar · Ortam: Windows + iPhone (Expo Go) · Araç: Claude Code
@@ -407,6 +407,7 @@ Python'da `\d` ve `\s` yerine açık karakter sınıfları kullanılır. `ml/tes
 - Tüm veriler yalnızca cihazda. Ağ isteği yok, analitik yok, reklam yok (KVKK açısından en temiz yaklaşım; raporda vurgulanır).
 - SMS içerikleri saklanmaz. Kontrol edilen mesaj ekrandan çıkınca bellekten atılır.
 - Uygulama tıbbi tavsiye vermez. Hakkında ekranına "İlaç dozunu doktorunuz belirler, bu uygulama yalnızca hatırlatır." notu konur.
+- **Ad ve resmiyet:** Uygulamanın adı "e-Torun" (önceki çalışma adı "Yanımda"). "e-" ön eki yasal olarak devlete ayrılmış değildir, ancak e-Devlet / e-Nabız'ı çağrıştırdığı için resmi kurum izlenimi verilmez: T.C. ibaresi, ay-yıldız, devlet logosu veya renkleri kullanılmaz; kurulumun ilk ekranında ve Hakkında'da "e-Torun bir devlet uygulaması değildir; gönüllü bir öğrenci projesidir" notu yer alır. Ticari yayın planlanırsa TÜRKPATENT'te 9. ve 42. sınıflarda marka araması yapılmalı (Ekim 2026 itibarıyla App Store TR'de aynı adlı uygulama yok).
 - Dolandırıcılık tespiti %100 değildir. Yeşil sonuçta da dikkat uyarısı bulunur.
 - Kullanıcı testinde: bilgilendirilmiş onam, isim yerine "K1, K2" kodu, fotoğraflarda yüz yok ya da açık izin var, test için uygulamaya gerçek ilaç bilgisi değil örnek veri girilir.
 
@@ -469,7 +470,7 @@ Hızlı ilerlersen 3–5. haftalar sıkıştırılabilir ve saha testi Kasım or
 ## 15. Rapor (PDF) içeriği
 Hocanın 3 maddesine birebir karşılık gelecek şekilde, tek PDF dosyası:
 
-1. **Kapak:** Manisa Celal Bayar Üniversitesi · Hasan Ferdi Turgutlu Teknoloji Fakültesi · Yazılım Mühendisliği · Sosyal Sorumluluk Dersi · Proje adı ("Yanımda: Yaşlı Bireyler için Dijital Yardımcı Uygulama") · Ad Soyad · Öğrenci No: ______ · Dersi veren: Prof. Dr. Akın Özçift · Aralık 2026.
+1. **Kapak:** Manisa Celal Bayar Üniversitesi · Hasan Ferdi Turgutlu Teknoloji Fakültesi · Yazılım Mühendisliği · Sosyal Sorumluluk Dersi · Proje adı ("e-Torun: Yaşlı Bireyler için Dijital Yardımcı Uygulama") · Ad Soyad · Öğrenci No: ______ · Dersi veren: Prof. Dr. Akın Özçift · Aralık 2026.
 2. **Projenin kısa tanıtımı:** problem ve kaynaklı istatistik, amaç, hedef kitle, özellikler, kullanılan teknolojiler, **nerede** (Gebze/Kocaeli, geliştirme + saha uygulaması yeri) ve **zaman dilimi** (Ekim–Aralık 2026, saha testi tarihleri).
 3. **Resimler ve belgeler:** ana ekran ve her modülden ekran görüntüleri, kırmızı/sarı/yeşil sonuç örnekleri, mimari diyagram, model karşılaştırma tablosu ve karışıklık matrisi, saha fotoğrafları, kullanıcı testi sonuç tablosu, varsa teşekkür yazısı, GitHub QR kodu.
 4. Sonuç, kazanımlar, geliştirme önerileri, kaynakça.

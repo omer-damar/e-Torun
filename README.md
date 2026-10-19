@@ -1,4 +1,4 @@
-# Yanımda — Yaşlılar için Dijital Yardımcı
+# e-Torun — Yaşlılar için Dijital Yardımcı
 
 Yaşlı bireyler için tek, sade, çevrimdışı ve gizliliği koruyan bir mobil uygulama:
 
@@ -7,6 +7,8 @@ Yaşlı bireyler için tek, sade, çevrimdışı ve gizliliği koruyan bir mobil
 - ✉️ **Mesaj kontrolü:** şüpheli SMS'i cihaz içindeki bir ML modeli ve anlaşılır kurallarla değerlendirme
 
 Manisa CBÜ Yazılım Mühendisliği, Sosyal Sorumluluk dersi bireysel projesidir.
+**e-Torun bir devlet uygulaması değildir**; "e-" ön eki yalnızca adın parçasıdır.
+(Önceki çalışma adı "Yanımda"; repo klasörü ve Expo proje kimliği `yanimda` olarak kaldı.)
 Tüm veriler yalnızca telefonda saklanır. Uygulamanın sunucusu, hesabı ve analitiği yoktur.
 Ayrıntılı plan için: [docs/PROJE_PLANI.md](docs/PROJE_PLANI.md)
 

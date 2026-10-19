@@ -8,6 +8,7 @@ import { formatPhone } from '@/features/emergency/phone';
 import { requestNotificationPermission } from '@/features/notifications/permission';
 import { MAX_NAME_LENGTH } from '@/features/settings/settings';
 import { useAppData } from '@/storage/AppDataProvider';
+import { APP_NAME, NOT_OFFICIAL_NOTICE } from '@/appInfo';
 import { colors, spacing } from '@/theme';
 
 const STEP_TITLES = ['Hoş geldiniz', 'Size nasıl hitap edelim?', 'Yakınınızı ekleyin', 'Bildirim izni'];
@@ -46,11 +47,12 @@ export default function OnboardingScreen() {
   if (step === 0) {
     body = (
       <>
-        <AppText>Yanımda, günlük hayatınızı kolaylaştırmak için üç şey yapar:</AppText>
+        <AppText>{APP_NAME}, günlük hayatınızı kolaylaştırmak için üç şey yapar:</AppText>
         <Feature icon="💊" title="İlaçlarınızı hatırlatır" text="İlaç saatinde telefonunuz size haber verir." />
         <Feature icon="📞" title="Tek dokunuşla yardım çağırır" text="Yakınınızı veya 112'yi hızlıca arayabilirsiniz." />
         <Feature icon="✉️" title="Şüpheli mesajları kontrol eder" text="Dolandırıcılık olabilecek mesajlar için sizi uyarır." />
         <AppText color={colors.textSecondary}>Bilgileriniz yalnızca bu telefonda saklanır.</AppText>
+        <AppText color={colors.textSecondary}>ℹ️ {NOT_OFFICIAL_NOTICE}</AppText>
       </>
     );
     footer = <BigButton title="Başlayalım" icon="▶️" onPress={next} testID="onboarding-next" />;
