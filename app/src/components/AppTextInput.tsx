@@ -17,7 +17,12 @@ type Props = Omit<TextInputProps, 'style'> & {
  */
 export const AppTextInput = forwardRef<TextInput, Props>(function AppTextInput({ label, error, hint, ...rest }, ref) {
   const { fontScale } = useWindowDimensions();
-  const fontSize = scaleFontSize(getTypography(useFontScale()).button.fontSize, fontScale);
+  const typography = getTypography(useFontScale());
+  // Çok satırlı kutu (ör. SMS metni) gövde yazısıyla; tek satırlık kutu buton yazısı boyutunda.
+  const fontSize = scaleFontSize((rest.multiline ? typography.body : typography.button).fontSize, fontScale);
+  const sizeStyle = rest.multiline
+    ? { fontSize, minHeight: Math.round(fontSize * 8), paddingVertical: 12, textAlignVertical: 'top' as const }
+    : { fontSize, height: Math.max(MIN_TOUCH_SIZE, Math.round(fontSize * 2.4)) };
 
   return (
     <View style={styles.wrapper}>
@@ -31,7 +36,7 @@ export const AppTextInput = forwardRef<TextInput, Props>(function AppTextInput({
         placeholderTextColor={colors.textSecondary}
         style={[
           styles.input,
-          { fontSize, height: Math.max(MIN_TOUCH_SIZE, Math.round(fontSize * 2.4)) },
+          sizeStyle,
           error ? styles.inputError : null,
         ]}
         {...rest}
