@@ -1,0 +1,79 @@
+{
+  "classes": [
+    "normal",
+    "reklam",
+    "dolandiricilik"
+  ],
+  "origin_weight": {
+    "gercek": 1.0,
+    "ceviri": 0.5,
+    "sentetik": 0.5
+  },
+  "raw": {
+    "rows": 6761,
+    "by_label": {
+      "normal": 3083,
+      "reklam": 2970,
+      "dolandiricilik": 708
+    },
+    "by_origin": {
+      "gercek": 5637,
+      "ceviri": 621,
+      "sentetik": 503
+    }
+  },
+  "deduplication": {
+    "empty_after_normalize": 2,
+    "conflicting_label_groups": 0,
+    "rows_dropped_for_conflict": 0,
+    "duplicates_removed": 270
+  },
+  "template_groups": {
+    "real_rows": 5365,
+    "groups": 4885,
+    "largest_group": 16,
+    "similarity_threshold": 0.8
+  },
+  "splits": {
+    "train": {
+      "rows": 4955,
+      "by_label": {
+        "normal": 2283,
+        "reklam": 1991,
+        "dolandiricilik": 681
+      },
+      "by_origin": {
+        "gercek": 3831,
+        "ceviri": 621,
+        "sentetik": 503
+      }
+    },
+    "val": {
+      "rows": 767,
+      "by_label": {
+        "normal": 369,
+        "reklam": 386,
+        "dolandiricilik": 12
+      },
+      "by_origin": {
+        "gercek": 767
+      }
+    },
+    "test": {
+      "rows": 767,
+      "by_label": {
+        "normal": 370,
+        "reklam": 385,
+        "dolandiricilik": 12
+      },
+      "by_origin": {
+        "gercek": 767
+      }
+    }
+  },
+  "test_fraud_by_source": {
+    "turkish_sms_collection": 6,
+    "scam_tr:gercek": 5,
+    "uysal_2013": 1
+  }
+}
