@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+smishtank:1383,atla,,,şablon tekrarı (smishtank:1033)
+smishtank:1384,atla,,,ABD'ye özgü emlak ilanı
+smishtank:1385,dolandiricilik,banka_hesap,"Papara hesabınızdan 6.129,80 TL tutarında ödeme başlatıldı. Bu işlemi siz onaylamadıysanız lütfen 0850 515 10 08 numarasını arayın. Siz yaptıysanız lütfen dikkate almayın","Cash App→Papara; $612.98→6.129,80 TL; sahte numara"
+smishtank:1386,atla,,,şablon tekrarı (smishtank:1033)
+smishtank:1390,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1391,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1392,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1394,atla,,,şablona yakın (smishtank:950)
+smishtank:1395,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1396,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1397,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1398,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1399,dolandiricilik,is_ilani,"Merhaba canım, özgeçmişiniz onaylandı, günlük 2.000 TL maaş alacaksınız. İletişim: https://wa.me/message/PRUITT27 Pruitt Grup İşletme Hesabı",2000 Taka→2.000 TL
+smishtank:1402,atla,,,şablon tekrarı (smishtank:950)
+smishtank:1403,atla,,,şablon tekrarı (smishtank:950)
+smishtank:1405,atla,,,şablona yakın (smishtank:618)
+smishtank:1406,dolandiricilik,kargo,"PTT paketiniz depoya ulaştı ancak adres bilgileri eksik olduğu için teslim edilemiyor. Lütfen bağlantıdan adresinizi değiştirin ve 3 TL ödeme yapın, aksi halde gönderi iade edilecektir",USPS→PTT; 0.3 USD→3 TL küçük ödeme tuzağı; metin orijinalde kesik
+smishtank:1407,dolandiricilik,is_ilani,"Merhaba! Otel rezervasyonlarını puanlayacak birine ihtiyacımız var. 3.000-8.000 TL ödüyoruz. İşimiz basit, sadece rezervasyon yaptığımız oteli puanlamanız ya da beğenmeniz gerekiyor. Katılmak isterseniz WhatsApp'tan ayrıntılar: 0555 000 48 16 (20 yaş altı kabul edilmez)",US$300-800→3.000-8.000 TL; sahte numara
+smishtank:1408,atla,,,şablon tekrarı (smishtank:1407)
+smishtank:1409,atla,,,şablon tekrarı (smishtank:1407)
+smishtank:1410,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1414,dolandiricilik,edevlet_vergi,"[ GİB ] 2023 yılı beyannamenizde tutarsızlık ve eksik bilgi bulunmaktadır. 5.730,00 TL iadeniz var. Gecikme ve cezalardan kaçınmak için gerekli belgeleri hemen gönderin. Lütfen bilgilerinizi bağlantıdan onaylayın","IRS→GİB; $573→5.730 TL; metin orijinalde kesik"
+smishtank:1419,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1427,dolandiricilik,odul,"Not: Ödülünüzü Kadıköy'de teslim almazsanız göndericiye iade edilecek: hqwr.link/77Taj8F",Ashland→Kadıköy
+smishtank:1428,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1438,dolandiricilik,edevlet_vergi,"[G.İ.B] 5.730,00 TL vergi iadesi alacaksınız ancak kişisel bilgileriniz eksik olduğu için işlem yapılamıyor. Lütfen bilgilerinizi bağlantıdan onaylayın. https://gib.gov.tr.dogrudan-odeme.com (Lütfen ""E"" yazıp yanıtlayın, ardından SMS'ten çıkıp etkinleştirme bağlantısını yeniden açın ya da bağlantıyı kopyalayıp Safari tarayıcısında açın)","IRS→GİB; $573→5.730 TL; alan adı ön eki taklidi ve link etkinleştirme hilesi korundu"
+smishtank:1440,dolandiricilik,kargo,"PTT pa-ketiniz depoya ulaştı ancak ad-res bil- gileri eksik olduğu için tes-lim edilemiyor. Lütfen ad- resinizi bağlantıdan onaylayın. https://pt-t.takipsorgu.top",USPS→PTT; tireli yazım hilesi korundu
+smishtank:1447,atla,,,yalnızca link + talimat
+smishtank:1450,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1451,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1455,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1457,dolandiricilik,edevlet_vergi,"GÖN:PTT BİLDİRİMİ MSJ: Depomuzda adınıza gelen vergi iadesi çekiniz bulunuyor. Yeniden teslimat için mevcut adresinizi ibii.me/JA9wQ3 adresinden doğrulayın",USPS/IRS→PTT/vergi iadesi
+smishtank:1459,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1463,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1468,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1469,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1476,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1477,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1480,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1484,dolandiricilik,edevlet_vergi,"(MSJ#812711) BEY4NN4MENİZ G!B TARAFINDAN ENG3LLENDİ. END!ŞELENMEYİN, düzeltmenize yardım edeceğiz, Tıklayın> //sl.ut.ac.id/1spp",IRS→GİB; harf/rakam yazım hilesi korundu
+smishtank:1485,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1487,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1488,atla,,,şablon tekrarı (smishtank:1484)
+smishtank:1489,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1493,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1495,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1503,dolandiricilik,banka_hesap,"(DOĞRULAMA) Sahibinden'de 19.895,00 TL tutarındaki ödeme için. Bu siz değilseniz ""REDDET"" için dokunun mastermulticentro.com/ss","eBay→Sahibinden; $1,989.50→19.895 TL; orijinaldeki tekrar atıldı"
+smishtank:1504,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1508,atla,,,şablon tekrarı (smishtank:1484)
+smishtank:1510,atla,,,şablona yakın (smishtank:1399)
