@@ -108,9 +108,10 @@ const PATTERNS = Object.fromEntries(
 ) as Record<keyof typeof KEYWORDS, RegExp>;
 
 const SHORT_LINK = /(?:^|[^a-z0-9.])(?:bit\.ly|tinyurl\.com|cutt\.ly|t\.ly|rebrand\.ly|goo\.gl|t\.co|qrsu\.io|is\.gd|ow\.ly|shorturl\.at|s\.id|rb\.gy|tiny\.cc)(?:\/|$|[^a-z0-9])/i;
-const OTP = /(?:^| )(?:dogrulama|onay|guvenlik|sms|giris|tek kullanimlik) (?:kodu|kodunuz|sifre|sifreniz)/;
-/** Kodu veren gerçek kurum mesajlarındaki uyarı: "kimseyle paylaşmayın". */
-const DO_NOT_SHARE = /(?:^| )(?:kimseyle|kimseye|paylasmayin|paylasmayiniz|vermeyin|vermeyiniz|soylemeyin|soylemeyiniz)/;
+// "onay kod 388403" gibi kısa biçim de (Kariyer.net).
+const OTP = /(?:^| )(?:dogrulama|onay|guvenlik|sms|giris|tek kullanimlik) (?:kodu|kodunuz|kod|sifre|sifreniz) /;
+/** Kodu veren gerçek kurum mesajlarındaki uyarı: "kimseyle paylaşmayın", "kimseyle paylaşma". */
+const DO_NOT_SHARE = /(?:^| )(?:kimseyle|kimseye|paylasma|vermeyin|vermeyiniz|soylemeyin|soylemeyiniz)/;
 
 /**
  * Link adresinde kurum adı ("ptt-kargo.xyz", "e-devlet-iade.com", "turkiye.gov.clskl.com").
@@ -121,9 +122,15 @@ const URL_IN_RAW = /(?:https?:\/\/|www\.)[^ \t\n\r]+|[a-z0-9-]+(?:\.[a-z0-9-]+)*
 const IMPERSONATING_HOST =
   /e-?devlet|turkiye|gov|ptt|kargo|yurtici|aras|mng|banka|bank|ziraat|garanti|akbank|isbank|yapikredi|halkbank|vakif|vergi|gib|icra|sgk|hgs|ogs|kgm|ispark|uyap|tebligat|mhrs|enabiz|turkcell|vodafone|telekom/;
 
+/**
+ * E-posta adresi ("donotreply@vodafone.com") link değildir. Önünde "/" veya ":" olan "x@y" ise bir linkin
+ * kullanıcı bilgisi kısmıdır ("https://ptt.gov.tr@bit.ly", "ptt.gov.tr:911@sahte.com") ve korunur.
+ */
+const EMAIL = /(?<![/:\w.@-])[a-z0-9._%+-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,}(?![\w/])/g;
+
 function linksIn(raw: string): string[] {
   const folded = raw.toLowerCase().replace(/[çğıöşü]/g, (ch) => ({ ç: 'c', ğ: 'g', ı: 'i', ö: 'o', ş: 's', ü: 'u' })[ch]!);
-  return folded.match(URL_IN_RAW) ?? [];
+  return folded.replace(EMAIL, ' ').match(URL_IN_RAW) ?? [];
 }
 
 /**
@@ -147,10 +154,12 @@ export const OFFICIAL_DOMAINS = [
   // Kargo
   'yurticikargo.com', 'araskargo.com.tr', 'mngkargo.com.tr', 'suratkargo.com.tr', 'hepsijet.com', 'trendyolexpress.com',
   // Operatörler
-  'turkcell.com.tr', 'vodafone.com.tr', 'turktelekom.com.tr',
+  'turkcell.com.tr', 'vodafone.com.tr', 'vodafone.com', 'turktelekom.com.tr',
   // Alışveriş ve market
   'trendyol.com', 'hepsiburada.com', 'n11.com', 'amazon.com.tr', 'migros.com.tr', 'a101.com.tr', 'bim.com.tr',
-  'sokmarket.com.tr', 'getir.com', 'yemeksepeti.com',
+  'sokmarket.com.tr', 'getir.com', 'yemeksepeti.com', 'sahibinden.com',
+  // Doğrulama kodu gönderen yaygın hizmetler
+  'kariyer.net',
   // Yakınların paylaştığı video, konum ve fotoğraf bağlantıları (adresler yalnızca bu şirketlere ait)
   'youtube.com', 'youtu.be', 'google.com', 'maps.app.goo.gl', 'instagram.com', 'apple.com',
 ] as const;
@@ -173,10 +182,9 @@ function hasImpersonatingLink(raw: string): boolean {
   return linksIn(raw).some((url) => !isOfficialLink(url) && IMPERSONATING_HOST.test(url));
 }
 
-/** Mesajdaki bütün linkler resmi adresse link kuralı uygulanmaz. */
-function onlyOfficialLinks(raw: string): boolean {
-  const links = linksIn(raw);
-  return links.length > 0 && links.every(isOfficialLink);
+/** Resmi olmayan en az bir link var mı? (E-posta adresleri ve resmi adresler sayılmaz.) */
+function hasUnofficialLink(raw: string): boolean {
+  return linksIn(raw).some((url) => !isOfficialLink(url));
 }
 
 /**
@@ -198,7 +206,9 @@ export function findRules(raw: string, normalized: string = normalize(raw)): Rul
   const found = new Set<RuleId>();
   const text = ` ${normalized} `;
 
-  if (normalized.includes('urltoken') && !onlyOfficialLinks(raw)) found.add('LINK');
+  // Normalize yalnızca bilinen uzantılı adresleri "urltoken" yapar ("geldi.Yarın" link sayılmaz);
+  // ham metindeki kontrol de e-posta adreslerini ve resmi adresleri ayıklar.
+  if (normalized.includes('urltoken') && hasUnofficialLink(raw)) found.add('LINK');
   if (SHORT_LINK.test(raw)) {
     found.add('SHORT_LINK');
     found.add('LINK');

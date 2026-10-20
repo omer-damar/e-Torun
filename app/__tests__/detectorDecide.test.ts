@@ -108,6 +108,31 @@ describe('decideFrom (plan bölüm 8 karar tablosu)', () => {
   });
 });
 
+describe('decide — telefonda yanlış alarm veren gerçek mesajlar', () => {
+  it('kısa biçimli doğrulama kodu ("onay kod", "paylaşma") yeşil ve kod uyarısı gösterilir', () => {
+    const d = decide('Lütfen bu kodu kimseyle paylasma. Kariyer.net onay kod 482913');
+    expect(d.level).toBe('green');
+    expect(d.rules).toContain('OTP_INFO');
+    expect(d.reasons.join(' ')).toMatch(/kodu kimseye söylemeyin/);
+  });
+
+  it('e-posta adresi link sayılmaz; kurumun kendi adresinden gelen bilgilendirme kırmızı değil', () => {
+    const text =
+      'Başvurduğunuz programın değerlendirme testi noreply@vodafone.com adresinden gönderildi. Henüz tamamlamadıysanız şimdi tam zamanı! Vodafone İnsan Kaynakları';
+    expect(findRules(text)).not.toContain('LINK');
+    expect(findRules(text)).not.toContain('FAKE_LINK');
+    expect(decide(text).level).not.toBe('red');
+  });
+
+  it('e-posta değil link içindeki "@" hilesi yine yakalanır', () => {
+    expect(findRules('Gönderiniz için https://ptt.gov.tr@bit.ly/3Yy29Ws')).toContain('LINK');
+  });
+
+  it('kod veren ama bilinmeyen link de içeren mesaj yeşile çekilmez', () => {
+    expect(decide('Doğrulama kodunuz 482913. Kimseyle paylaşmayın. İşlemi iptal için: iptal-islem.xyz').level).not.toBe('green');
+  });
+});
+
 describe('decide — kurumsal meşru mesajlar (v2 karar katmanı)', () => {
   it.each([
     'QNB: Kredi kartı ekstreniz kesildi. Dönem borcu: 7.842,30 TL, asgari ödeme: 3.136,92 TL, son ödeme tarihi: 25.03.2024.',

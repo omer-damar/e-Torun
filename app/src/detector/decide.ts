@@ -3,6 +3,7 @@
  *
  * Model (v2) 3 sınıf verir: normal, reklam, dolandırıcılık. pD = dolandırıcılık, pR = reklam olasılığı.
  *
+ *   YEŞİL   ← doğrulama kodu veren (istemeyen), bilinmeyen link içermeyen mesaj ∧ kural birleşimi yok
  *   REKLAM  ← yasal reklam işareti (RET/İYS/Mersis) ∧ pD < T_LOW ∧ tehlike işareti yok
  *   KIRMIZI ← pD ≥ T_HIGH
  *             veya kural birleşimi ∧ model reklam demiyor (pR < 0,5) ∧ (pD ≥ 0,1 ∨ kurum taklitli link)
@@ -147,6 +148,9 @@ export function decideFrom(
   const modelSaysAd = ad >= AD_PROBABILITY;
   const combination = hasRuleCombination(rules);
 
+  // Kod VEREN (istemeyen), bilinmeyen link içermeyen mesaj: doğrulama kodu. Model şüphelense de yeşil;
+  // ekranda "kodu kimseye söylemeyin" uyarısı gösterilir. (Telefonda: "Kariyer.net onay kod 388403".)
+  if (has(rules, 'OTP_INFO') && !has(rules, 'PERSONAL_INFO') && !has(rules, 'LINK') && !combination) return 'green';
   if (isLegalAd(rules) && fraud < thresholds.low) return 'ad';
   if (
     fraud >= thresholds.high ||
