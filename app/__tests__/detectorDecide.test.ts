@@ -19,6 +19,13 @@ describe('findRules', () => {
     );
   });
 
+  it('@ ile gizlenen adres resmi sayılmaz (asıl hedef @ işaretinden sonrası)', () => {
+    expect(findRules('Gönderiniz için https://ptt.gov.tr@bit.ly/3Yy29Ws')).toContain('LINK');
+    expect(findRules('Üyeliğiniz için http://www.ptt.gov.tr:911@s955054819.onlinehome.us/mo')).toEqual(
+      expect.arrayContaining(['LINK', 'IMPERSONATION']),
+    );
+  });
+
   it('kelime başında eşleşir, kelime içinde değil', () => {
     expect(findRules('Toplantı arasında görüşürüz, betonu döktük')).toEqual([]);
   });

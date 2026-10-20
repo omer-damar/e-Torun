@@ -115,9 +115,13 @@ function linksIn(raw: string): string[] {
   return folded.match(URL_IN_RAW) ?? [];
 }
 
-/** "https://www.turkiye.gov.tr/x" → "www.turkiye.gov.tr" */
+/**
+ * "https://www.turkiye.gov.tr/x" → "www.turkiye.gov.tr". "@" öncesi kullanıcı bilgisidir, tarayıcı
+ * "@" sonrasına gider: "https://ptt.gov.tr:911@sahte.com" → "sahte.com".
+ */
 function hostOf(url: string): string {
-  return url.replace(/^https?:\/\//, '').split(/[/?#:]/)[0];
+  const authority = url.replace(/^https?:\/\//, '').split(/[/?#]/)[0];
+  return authority.slice(authority.lastIndexOf('@') + 1).split(':')[0];
 }
 
 /**
