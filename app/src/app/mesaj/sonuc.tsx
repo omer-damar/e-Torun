@@ -15,7 +15,7 @@ import { borderWidth, colors, radius, spacing } from '@/theme';
 /** Türkçe, yaşlı kullanıcı için biraz yavaş. */
 export const SPEECH_OPTIONS = { language: 'tr-TR', rate: 0.85 } as const;
 
-const LEVEL_STYLE: Record<Exclude<RiskLevel, 'too_short'>, { icon: string; label: string; background: string; text: string }> = {
+export const LEVEL_STYLE: Record<Exclude<RiskLevel, 'too_short'>, { icon: string; label: string; background: string; text: string }> = {
   red: { icon: '⛔', label: 'Yüksek risk', background: colors.danger, text: colors.textOnColor },
   yellow: { icon: '⚠️', label: 'Dikkat', background: colors.warningBackground, text: colors.warningText },
   green: { icon: '✅', label: 'Belirgin risk yok', background: colors.success, text: colors.textOnColor },
