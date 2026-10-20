@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+syn:0101,normal,,"e-Devlet Kapısı'na 14.03.2024 21:07 tarihinde giriş yapılmıştır. Bu giriş size ait değilse şifrenizi turkiye.gov.tr üzerinden değiştiriniz.",kamu_edevlet
+syn:0102,normal,,"e-Devlet şifreniz başarıyla değiştirilmiştir. Bu işlemi siz yapmadıysanız en yakın PTT şubesinden yeni şifre alınız.",kamu_edevlet
+syn:0103,normal,,"Adınıza e-Tebligat gönderilmiştir. Tebligatınızı e-Devlet Kapısı (turkiye.gov.tr) üzerinden görüntüleyebilirsiniz.",kamu_tebligat
+syn:0104,normal,,"MHRS: Sayın AHMET YILMAZ, 18.03.2024 10:20 tarihinde Ankara Şehir Hastanesi Kardiyoloji polikliniğine randevunuz oluşturulmuştur. İptal için mhrs.gov.tr veya ALO 182.",saglik_randevu
+syn:0105,normal,,"MHRS: Yarın saat 09:40'taki Göz Hastalıkları randevunuzu hatırlatırız. Gelemeyecekseniz lütfen randevunuzu iptal ediniz.",saglik_randevu
+syn:0106,normal,,"e-Nabız: Tahlil sonuçlarınız sisteme yüklenmiştir. Sonuçlarınızı enabiz.gov.tr adresinden ya da e-Nabız uygulamasından görüntüleyebilirsiniz.",saglik_sonuc
+syn:0107,normal,,"SGK: 2024/03 dönemine ait emekli aylığınız 15.03.2024 tarihinde bankanıza yatırılacaktır.",kamu_sgk
+syn:0108,normal,,"GİB: 2024 yılı Motorlu Taşıtlar Vergisi 1. taksit son ödeme tarihi 31 Ocak'tır. Ödemelerinizi dijital.gib.gov.tr veya bankalar aracılığıyla yapabilirsiniz.",kamu_vergi
+syn:0109,normal,,"KGM: 34 ABC 123 plakalı aracınızın HGS bakiyesi 50 TL'nin altına düşmüştür. Bakiye yüklemesini bankanızdan veya PTT'den yapabilirsiniz.",kamu_hgs
+syn:0110,normal,,"Nüfus ve Vatandaşlık İşleri: Kimlik kartı başvurunuz için 21.03.2024 saat 14:30'da Kadıköy Nüfus Müdürlüğü'nde randevunuz bulunmaktadır.",kamu_randevu
+syn:0111,normal,,"UYAP: 2024/1187 esas sayılı dosyanızda 22.04.2024 saat 10:00 için duruşma günü belirlenmiştir. Ayrıntılar için uyap.gov.tr Vatandaş Portal.",kamu_yargi
+syn:0112,normal,,"Eczane Şifa: Reçetenizdeki ilaçlarınız hazırdır. Mesai saatleri içinde eczanemizden teslim alabilirsiniz.",saglik_eczane
+syn:0113,normal,,"Sağlık Bakanlığı: Grip aşısı için aile hekiminizden randevu alabilirsiniz. 65 yaş üstü vatandaşlarımız için aşı ücretsizdir.",saglik_bilgi
+syn:0114,normal,,"Aile Hekiminiz Dr. Selma Er: Kontrol muayeneniz için 20 Mart Çarşamba sabah 10:00'da sağlık merkezimize bekleriz.",saglik_randevu
+syn:0115,normal,,"Acıbadem Hastanesi: 19.03.2024 tarihli randevunuz onaylanmıştır. Randevu saatinden 15 dakika önce hastanemizde olmanızı rica ederiz.",saglik_randevu
+syn:0116,normal,,"Turkcell: Mart 2024 faturanız 429,50 TL'dir. Son ödeme tarihi 28.03.2024. Faturanızı Turkcell Uygulaması'ndan ödeyebilirsiniz.",operator_fatura
+syn:0117,normal,,"Vodafone: Paketinizdeki 20 GB internetin %80'ini kullandınız. Ek paket almak için Vodafone Yanımda uygulamasını kullanabilirsiniz.",operator_paket
+syn:0118,normal,,"Türk Telekom: İnternet hizmetinizde bölgesel arıza giderilmiştir. Yaşadığınız aksaklık için özür dileriz.",operator_bilgi
+syn:0119,normal,,"Turkcell: Yurt dışına çıkışınız algılandı. Bulunduğunuz ülkede dakikası 25 TL'dir. Yurt dışı paketleri için Turkcell Uygulaması'na göz atabilirsiniz.",operator_bilgi
+syn:0120,normal,,"Vodafone: 0532 *** ** 18 numaralı hattınızın SIM kart değişikliği 14.03.2024 tarihinde mağazamızda yapılmıştır. Bu işlemi siz yapmadıysanız 542'yi arayın.",operator_bilgi
+syn:0121,normal,,"Türk Telekom: Faturanızın son ödeme tarihi geçmiştir. 312,00 TL tutarındaki borcunuzu ödemeniz halinde hizmetiniz kesintisiz devam edecektir.",operator_fatura
+syn:0122,normal,,"Turkcell: Hattınıza 100 TL yükleme yapılmıştır. Güncel bakiyeniz: 134,80 TL",operator_bakiye
+syn:0123,normal,,"İSKİ: Kadıköy Caferağa Mahallesi'nde 15.03.2024 tarihinde 09:00-17:00 saatleri arasında ana hat arızası nedeniyle su kesintisi yapılacaktır.",belediye_kesinti
+syn:0124,normal,,"BEDAŞ: Planlı bakım çalışması nedeniyle 16.03.2024 tarihinde 10:00-15:00 saatleri arasında bölgenizde elektrik kesintisi olacaktır.",belediye_kesinti
+syn:0125,normal,,"İGDAŞ: Doğalgaz faturanız 1.240,60 TL'dir. Son ödeme tarihi: 25.03.2024. Online işlemler: igdas.istanbul",belediye_fatura
+syn:0126,normal,,"AFAD: Bölgenizde 4,2 büyüklüğünde deprem meydana gelmiştir. Sakin olunuz, binalardan çıkarken asansör kullanmayınız. Bilgi: afad.gov.tr",kamu_afad
+syn:0127,normal,,"Meteoroloji: İstanbul için yarın kuvvetli rüzgar ve fırtına uyarısı yapılmıştır. Lütfen tedbirli olunuz.",kamu_uyari
+syn:0128,normal,,"Ankara Büyükşehir Belediyesi: Su faturanızın son ödeme tarihi 20.03.2024'tür. Tutar: 287,40 TL. Ödeme: ankara.bel.tr",belediye_fatura
+syn:0129,normal,,"e-Devlet: Adınıza kayıtlı 1 adet aracın muayene süresi 30 gün içinde dolacaktır. Randevu için tuvturk.com.tr",kamu_arac
+syn:0130,normal,,"İŞKUR: Kurs başvurunuz kabul edilmiştir. Kursun başlangıç tarihi 01.04.2024'tür. Ayrıntılar için iskur.gov.tr",kamu_iskur
+syn:0131,normal,,"PTT: Adınıza gelen 3.000,00 TL tutarındaki sosyal yardım ödemesini kimliğinizle herhangi bir PTT şubesinden alabilirsiniz.",kamu_yardim
+syn:0132,normal,,"Emniyet Genel Müdürlüğü: Pasaport başvurunuz onaylanmıştır. Pasaportunuz PTT aracılığıyla adresinize gönderilecektir.",kamu_randevu
+syn:0133,normal,,"Sağlık Bakanlığı: 70 yaş üstü vatandaşlarımız evde sağlık hizmetinden ücretsiz yararlanabilir. Başvuru için aile hekiminize ya da ALO 184'e başvurabilirsiniz.",saglik_bilgi
+syn:0134,normal,,"MHRS: 14.03.2024 tarihli Dahiliye randevunuza gelmediğiniz tespit edilmiştir. Randevuya gelmemeniz halinde 15 gün süreyle aynı klinikten randevu alamazsınız.",saglik_randevu
+syn:0135,normal,,"Medicana Hastanesi: Sayın Hasta Yakını, ameliyat sonrası kontrol randevunuz 22.03.2024 saat 11:00 olarak planlanmıştır.",saglik_randevu
+syn:0136,normal,,"Vodafone: Talebiniz üzerine yurt dışı aramalar hattınızda kapatılmıştır.",operator_bilgi
+syn:0137,normal,,"Turkcell: Faturanız ödenmiştir. Ödeme için teşekkür ederiz.",operator_fatura
+syn:0138,normal,,"Türk Telekom: Fiber internet kurulum randevunuz 18 Mart 13:00-17:00 arasında oluşturuldu. Teknisyenimiz gelmeden önce sizi arayacaktır.",operator_bilgi
+syn:0139,normal,,"GİB: Kira gelirinize ilişkin beyannamenizin 31 Mart'a kadar verilmesi gerekmektedir. Hazır beyan sistemi: hazirbeyan.gib.gov.tr",kamu_vergi
+syn:0140,normal,,"e-Devlet: Tapu Kadastro Genel Müdürlüğü işlem randevunuz 25.03.2024 saat 10:15'te Üsküdar Tapu Müdürlüğü'nde oluşturulmuştur.",kamu_randevu
+syn:0141,normal,,"Eczane: Kullandığınız tansiyon ilacınızın raporunun süresi 15 gün içinde dolacaktır. Rapor yenilemek için doktorunuza başvurunuz.",saglik_eczane
+syn:0142,normal,,"UYAP Bilgi: Adınıza kayıtlı dosyada yeni bir evrak eklenmiştir. Görüntülemek için e-Devlet üzerinden UYAP Vatandaş Portal'a giriş yapınız.",kamu_yargi
+syn:0143,normal,,"SGK: Genel sağlık sigortası prim borcunuz bulunmamaktadır. Hizmet dökümünüzü e-Devlet'ten görüntüleyebilirsiniz.",kamu_sgk
+syn:0144,normal,,"ALO 182: Sayın Vatandaşımız, randevu talebiniz kaydedilmiştir. Uygun randevu açıldığında SMS ile bilgilendirileceksiniz.",saglik_randevu
+syn:0145,normal,,"İzmir Büyükşehir Belediyesi: 65 yaş üstü ücretsiz ulaşım kartınız hazırdır. Kimliğinizle Konak Kart Merkezi'nden teslim alabilirsiniz.",belediye_bilgi
+syn:0146,normal,,"Türk Telekom: Ev telefonu hattınıza ait 2 adet cevapsız arama bulunmaktadır.",operator_bilgi
+syn:0147,normal,,"İSKİ: Su sayacınızın okuma tarihi 18.03.2024'tür. Sayaç okuyucu personelimiz kimlik kartı taşımaktadır.",belediye_bilgi
+syn:0148,normal,,"Diş Hastanesi: Yarın 14:30'daki diş çekimi randevunuz öncesinde ağır yemek yememenizi rica ederiz. Geçmiş olsun.",saglik_randevu
+syn:0149,normal,,"e-Devlet: Mernis kaydınızda adres değişikliği yapılmıştır. Bu işlem size ait değilse en yakın nüfus müdürlüğüne başvurunuz.",kamu_edevlet
+syn:0150,normal,,"Bağ-Kur emeklisi vatandaşlarımızın Mart ayı aylıkları 17-26 Mart tarihleri arasında hesaplarına yatırılacaktır. SGK",kamu_sgk
