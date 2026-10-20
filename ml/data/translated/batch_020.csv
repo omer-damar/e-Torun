@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+smishtank:1627,atla,,,şablona yakın (smishtank:1550)
+smishtank:1632,atla,,,şablona yakın (smishtank:1438)
+smishtank:1633,atla,,,şablona yakın (smishtank:1438)
+smishtank:1635,atla,,,şablona yakın (smishtank:1000)
+smishtank:1636,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1640,atla,,,yalnızca dosya eki adı
+smishtank:1645,dolandiricilik,banka_hesap,"GÖN:00031 MSJ:(Ziraat Uyarı) İşlemlerinizi onaylayın ve doğrulayın: propertyacademy.net/na.html#23 Her şey yolundaysa bir şey yapmanıza gerek yok. Ziraat Bankası.",USAA→Ziraat
+smishtank:1646,atla,,,şablona yakın (smishtank:1438)
+smishtank:1647,atla,,,şablona yakın (smishtank:1000)
+smishtank:1648,dolandiricilik,banka_hesap,"Hesabınızdan 7.140,20 TL kesinti yapıldı mı? Siz değilseniz iptal etmek için cesbc.us/ adresine tıklayın.","$714.02→7.140,20 TL"
+smishtank:1649,atla,,,yalnızca dosya eki adı
+smishtank:1657,atla,,,şablona yakın (smishtank:1000)
+smishtank:1658,atla,,,şablona yakın (smishtank:1438)
+smishtank:1665,atla,,,şablona yakın (smishtank:1438)
+smishtank:1667,atla,,,şablona yakın (smishtank:1438)
+smishtank:1674,atla,,,şablona yakın (smishtank:1438)
+smishtank:1675,atla,,,ABD'ye özgü federal yardım programı
+smishtank:1676,atla,,,şablona yakın (smishtank:1438)
+smishtank:1677,atla,,,ABD'ye özgü federal yardım programı
+smishtank:1681,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1682,atla,,,şablon tekrarı (smishtank:950)
+smishtank:1686,dolandiricilik,kargo,"İPTAL: Ödemesi tamamlanmış siparişinizin iptal edilmemesi için teslimat bilgilerinizi 07.11'e kadar onaylayın gpnmxqy.com/D1GN3RBE",
+smishtank:1697,atla,,,şablona yakın (smishtank:333)
+smishtank:1698,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1700,dolandiricilik,kargo,"PTT İmza için evde kimse yoktu (1007647-73TR), yeni bir teslimat zamanı seçmek için Randevu.Teslimat-35.com adresini kullanın.",Royal Mail→PTT
+smishtank:1701,atla,,,şablona yakın (smishtank:1000)
+smishtank:1702,atla,,,şablona yakın (smishtank:1438)
+smishtank:1703,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1706,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1707,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1708,atla,,,şablon tekrarı (smishtank:950)
+smishtank:1711,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1714,atla,,,şablona yakın (smishtank:1438)
+smishtank:1715,atla,,,Hindistan'a özgü yasal reklam olabilir
+smishtank:1716,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1717,atla,,,şablon tekrarı (smishtank:1438)
+smishtank:1720,atla,,,şablon tekrarı (smishtank:1126)
+smishtank:1723,atla,,,içeriksiz mesaj
+smishtank:1725,atla,,,şablon tekrarı (smishtank:422)
+smishtank:1726,dolandiricilik,yatirim,"MetaMask?bvs2y.mk 11:Olağandışı işlemler nedeniyle kripto cüzdanınız kilitlendi.ziyaret edin https://iepsantodomingosavio.edu.pe/metamask",
+smishtank:1729,atla,,,içeriksiz mesaj
+smishtank:1731,atla,,,şablon tekrarı (smishtank:1126)
+smishtank:1732,dolandiricilik,banka_hesap,"#KuveytTürk: ATM-2'den 8.700 TL çekildi. İtiraz etmek için bit.ly/ktonay adresine gidin",Navy Federal→Kuveyt Türk; $870→8.700 TL
+smishtank:1735,dolandiricilik,icra_dava,"UYARI: (Vergi Suçları Soruşturma Birimi) GİB hakkınızda dava açıyor, ayrıntılı bilgi için acilen 0850 879 87 80 numarasını arayın, aksi halde yakalama kararınız bölgenizdeki karakola iletilecektir",IRS CID→GİB; sahte numara; tutuklama tehdidi kalıbı
+smishtank:1736,atla,,,dolandırıcılık uyarısı; gerçek banka bilgilendirmesi olabilir
+smishtank:1737,dolandiricilik,banka_hesap,"GÖN:BONUS@Mesaj KONU:Kart Uyarısı MSJ:Kart Uyarısı;Kart Uyarısı http://www.bonuskart-mesaj.com",American Express→Bonus kart
+smishtank:1738,atla,,,şablona yakın (smishtank:338)
+smishtank:1741,atla,,,şablona yakın (smishtank:481)
+smishtank:1743,atla,,,şablon tekrarı (smishtank:757)
+smishtank:1744,atla,,,içeriksiz link
