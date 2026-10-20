@@ -4,6 +4,7 @@
  * Model (v2) 3 sınıf verir: normal, reklam, dolandırıcılık. pD = dolandırıcılık, pR = reklam olasılığı.
  *
  *   YEŞİL   ← doğrulama kodu veren (istemeyen), bilinmeyen link içermeyen mesaj ∧ kural birleşimi yok
+ *   YEŞİL   ← bütün linkleri kamu kurumu adresi (gov.tr …) ∧ para / şifre / arama / bahis / ödül yok
  *   REKLAM  ← yasal reklam işareti (RET/İYS/Mersis) ∧ pD < T_LOW ∧ tehlike işareti yok
  *   KIRMIZI ← pD ≥ T_HIGH
  *             veya kural birleşimi ∧ model reklam demiyor (pR < 0,5) ∧ (pD ≥ 0,1 ∨ kurum taklitli link)
@@ -128,12 +129,30 @@ export function hasRuleCombination(rules: RuleId[]): boolean {
   );
 }
 
+/**
+ * Bütün linkleri kamu kurumu adresi (…gov.tr, …bel.tr, …edu.tr) olan ve para, şifre/kod, ödül istemeyen,
+ * "şu numarayı arayın" demeyen bilgilendirme. Dolandırıcılığın asıl yolu kapalı olduğu için model şüphelense
+ * de yeşil. (Telefonda: İŞKUR'un esube.iskur.gov.tr linkli iş ilanı bildirimi modelden kırmızı alıyordu; iş
+ * ilanı dili eğitimdeki sahte iş ilanlarına benziyor.) Şirket ve platform adresleri bu istisnayı almaz:
+ * çeviri dolandırıcılık mesajlarında YouTube videosu ya da Kariyer.net adı geçen örnekler vardı.
+ */
+export function isOnlyOfficialLinkNotice(rules: RuleId[]): boolean {
+  return (
+    has(rules, 'OFFICIAL_LINK') &&
+    !['LINK', 'PERSONAL_INFO', 'PAYMENT', 'CALLBACK', 'GAMBLING', 'PRIZE'].some((id) => has(rules, id as RuleId))
+  );
+}
+
 /** Sarı sayımındaki zayıf işaretler. Kurum adı yalnızca bir talep ya da iletişim kanalıyla birlikte sayılır. */
 function weakSignals(rules: RuleId[]): RuleId[] {
   const institutionCounts = ['LINK', 'CALLBACK', 'PERSONAL_INFO', 'PAYMENT'].some((id) => has(rules, id as RuleId));
   return rules.filter(
     (id) =>
-      id !== 'OTP_INFO' && id !== 'SHORT_LINK' && id !== 'AD_MARKER' && (id !== 'IMPERSONATION' || institutionCounts),
+      id !== 'OTP_INFO' &&
+      id !== 'OFFICIAL_LINK' &&
+      id !== 'SHORT_LINK' &&
+      id !== 'AD_MARKER' &&
+      (id !== 'IMPERSONATION' || institutionCounts),
   );
 }
 
@@ -151,6 +170,7 @@ export function decideFrom(
   // Kod VEREN (istemeyen), bilinmeyen link içermeyen mesaj: doğrulama kodu. Model şüphelense de yeşil;
   // ekranda "kodu kimseye söylemeyin" uyarısı gösterilir. (Telefonda: "Kariyer.net onay kod 482913".)
   if (has(rules, 'OTP_INFO') && !has(rules, 'PERSONAL_INFO') && !has(rules, 'LINK') && !combination) return 'green';
+  if (isOnlyOfficialLinkNotice(rules)) return 'green';
   if (isLegalAd(rules) && fraud < thresholds.low) return 'ad';
   if (
     fraud >= thresholds.high ||
@@ -190,9 +210,13 @@ export function decide(text: string): Decision {
   // Yeşilde yalnızca bilgilendirici kural (doğrulama kodu uyarısı) gösterilir;
   // kurum adı tek başına "Neden?" listesine girmez.
   let shown: RuleId[];
-  if (level === 'green') shown = rules.filter((id) => id === 'OTP_INFO');
+  if (level === 'green') shown = rules.filter((id) => id === 'OTP_INFO' || id === 'OFFICIAL_LINK');
   else if (level === 'ad') shown = has(rules, 'AD_MARKER') ? ['AD_MARKER'] : [];
-  else shown = rules.filter((id) => id !== 'AD_MARKER' && (id !== 'OTP_INFO' || rules.length === 1));
+  else {
+    shown = rules.filter(
+      (id) => id !== 'AD_MARKER' && id !== 'OFFICIAL_LINK' && (id !== 'OTP_INFO' || rules.length === 1),
+    );
+  }
   const reasons = shown.map((id) => RULE_EXPLANATIONS[id]);
   if (level === 'ad' && reasons.length === 0) reasons.push(MODEL_AD_REASON);
   if ((level === 'red' || level === 'yellow') && probability >= model.thresholds.low && reasons.length < MAX_REASONS) {

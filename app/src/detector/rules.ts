@@ -20,6 +20,7 @@ export type RuleId =
   | 'GAMBLING'
   | 'CALLBACK'
   | 'OTP_INFO'
+  | 'OFFICIAL_LINK'
   | 'AD_MARKER';
 
 /** Kullanıcıya gösterilecek sade açıklamalar ("Neden?" listesi). */
@@ -37,6 +38,8 @@ export const RULE_EXPLANATIONS: Record<RuleId, string> = {
     'Sizden mesajdaki numarayı aramanızı istiyor. Kurumu aramanız gerekiyorsa numarayı mesajdan değil, resmi sitesinden bulun.',
   OTP_INFO:
     'Bu bir doğrulama kodu. Sizi arayan kişi banka görevlisi olsa bile bu kodu kimseye söylemeyin.',
+  OFFICIAL_LINK:
+    'Mesajdaki bağlantı bir kamu kurumunun resmi adresi. Yine de bilgi girmeden önce adresin tam olarak aynı olduğunu kontrol edin.',
   AD_MARKER: 'Mesajda yasal reklam işaretleri var (reklamı durdurma yöntemi veya şirket sicil numarası).',
 };
 
@@ -53,11 +56,15 @@ export const RULE_PRIORITY: RuleId[] = [
   'PRIZE',
   'GAMBLING',
   'OTP_INFO',
+  'OFFICIAL_LINK',
   'AD_MARKER',
 ];
 
 // Normalize edilmiş biçimde (küçük harf, Türkçe karaktersiz, rakamlar "num").
-const KEYWORDS: Record<Exclude<RuleId, 'LINK' | 'FAKE_LINK' | 'SHORT_LINK' | 'OTP_INFO' | 'AD_MARKER'>, string[]> = {
+const KEYWORDS: Record<
+  Exclude<RuleId, 'LINK' | 'FAKE_LINK' | 'SHORT_LINK' | 'OTP_INFO' | 'OFFICIAL_LINK' | 'AD_MARKER'>,
+  string[]
+> = {
   URGENCY: [
     'hemen', 'acil', 'derhal', 'son gun', 'son gunu', 'son gundur', 'bugun son', 'num saat icinde', 'saat icinde',
     'aksi takdirde', 'aksi halde', 'bloke', 'askiya', 'iptal edil', 'kapatil', 'kapanacak', 'son uyari', 'haciz',
@@ -169,10 +176,18 @@ export const OFFICIAL_DOMAINS = [
  * alamaz) ya da OFFICIAL_DOMAINS'ten biri veya onun alt alan adı.
  */
 export function isOfficialLink(url: string): boolean {
+  if (isPublicInstitutionLink(url)) return true;
   const host = hostOf(url).replace(/^www\./, '');
-  // Bu uzantılar yalnızca ilgili kuruma verilir: devlet, belediye, üniversite, okul, emniyet, TSK.
-  if (/(?:^|\.)(?:gov|bel|edu|k12|pol|tsk)\.tr$/.test(host)) return true;
   return OFFICIAL_DOMAINS.some((domain) => host === domain || host.endsWith(`.${domain}`));
+}
+
+/**
+ * Kamu kurumu adresi: bu uzantılar yalnızca ilgili kuruma verilir (devlet, belediye, üniversite, okul,
+ * emniyet, TSK). Şirket ve platform adreslerinden farklı olarak içerik de kurumun kendisinindir
+ * (YouTube'da dolandırıcı video, Kariyer.net'te sahte ilan olabilir).
+ */
+export function isPublicInstitutionLink(url: string): boolean {
+  return /(?:^|\.)(?:gov|bel|edu|k12|pol|tsk)\.tr$/.test(hostOf(url).replace(/^www\./, ''));
 }
 
 /** Geriye dönük ad. */
@@ -208,7 +223,10 @@ export function findRules(raw: string, normalized: string = normalize(raw)): Rul
 
   // Normalize yalnızca bilinen uzantılı adresleri "urltoken" yapar ("geldi.Yarın" link sayılmaz);
   // ham metindeki kontrol de e-posta adreslerini ve resmi adresleri ayıklar.
-  if (normalized.includes('urltoken') && hasUnofficialLink(raw)) found.add('LINK');
+  if (normalized.includes('urltoken')) {
+    if (hasUnofficialLink(raw)) found.add('LINK');
+    else if (linksIn(raw).length > 0 && linksIn(raw).every(isPublicInstitutionLink)) found.add('OFFICIAL_LINK');
+  }
   if (SHORT_LINK.test(raw)) {
     found.add('SHORT_LINK');
     found.add('LINK');

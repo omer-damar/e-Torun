@@ -128,6 +128,26 @@ describe('decide — telefonda yanlış alarm veren gerçek mesajlar', () => {
     expect(findRules('Gönderiniz için https://ptt.gov.tr@bit.ly/3Yy29Ws')).toContain('LINK');
   });
 
+  it('yalnızca resmi (.gov.tr) linkli bilgilendirme yeşil ve "resmi adres" notu gösterilir', () => {
+    const d = decide(
+      'Sn ALTUN, Kaynakçı ilanına uygun niteliklerdesiniz. https://esube.iskur.gov.tr/Istihdam/AcikIsIlanAra.aspx 00001234567 numaralı ilanı inceleyiniz.',
+    );
+    expect(d.level).toBe('green');
+    expect(d.rules).toContain('OFFICIAL_LINK');
+    expect(d.reasons.join(' ')).toMatch(/resmi adresi/);
+  });
+
+  it('platform linki (YouTube) kamu adresi sayılmaz: ödül vaat eden mesaj yeşile çekilmez', () => {
+    const d = decide('Müjde, piyangoda büyük ikramiyeyi kazandık! 50 kişiye 150.000 TL bağışlıyoruz, videomuz: https://youtu.be/nZ3xuJwm824');
+    expect(d.rules).not.toContain('OFFICIAL_LINK');
+    expect(d.level).not.toBe('green');
+  });
+
+  it('resmi link olsa da para, şifre ya da arama isteyen mesaj bu istisnadan yararlanmaz', () => {
+    expect(decide('e-Devlet: Vergi borcunuzu hemen ödeyin, aksi halde haciz uygulanacak: turkiye.gov.tr').level).not.toBe('green');
+    expect(decide('Ziraat: kart şifrenizi bize iletin, bilgi için ziraatbank.com.tr').level).not.toBe('green');
+  });
+
   it('kod veren ama bilinmeyen link de içeren mesaj yeşile çekilmez', () => {
     expect(decide('Doğrulama kodunuz 482913. Kimseyle paylaşmayın. İşlemi iptal için: iptal-islem.xyz').level).not.toBe('green');
   });
