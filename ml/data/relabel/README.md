@@ -25,14 +25,17 @@ Betik: `python -m scripts.relabel_tr_spam` (testler: `tests/test_relabel_tr_spam
 ## Sonuç (2.743 tekil spam)
 | Etiket | TurkishSMSCollection | Uysal | Toplam |
 |---|---|---|---|
-| reklam | 2.370 | 326 | 2.696 |
-| dolandiricilik | 31 | 4 | 35 |
+| reklam | 2.368 | 326 | 2.694 |
+| dolandiricilik | 33 | 4 | 37 |
 | normal | 1 | 3 | 4 |
 | atla (müstehcen ima, belirsiz) | 8 | 0 | 8 |
 
 Dolandırıcılık türleri: bahis 14, odul 12 ("adınıza tanımlanan Samsung S6", "kol saati kazandınız, hemen
-arayın"), diger 5 (sahte cinsel sağlık ürünü, ücretli rehber hattı), icra_dava 2 ("hakkınızda dava var mı,
-11899'u arayın"), kredi 1, kargo 1.
+arayın"), diger 6 (sahte cinsel sağlık ürünü, ücretli rehber hattı), icra_dava 2 ("hakkınızda dava var mı,
+11899'u arayın"), kargo 2, kredi 1.
+
+5. Elle `reklam` dışı etiketlenen bir mesaja çok benzeyen (yalnızca isim/tarih/numara farklı) otomatik satırlar
+   yeniden incelemeye alınır (`aday_benzer`); v2 eğitiminin yanlış alarmlarında bulunan iki kopya böyle düzeltildi.
 
 **Sınırlılık:** Otomatik `reklam` grubunun tamamı okunmadı. İncelenen 80 mesajlık örneklemde bahis kuralı
 düzeltildikten sonra 2 hata kaldı (ikisi de düzeltildi); bu grupta yaklaşık %1-3 hatalı etiket beklenebilir.
