@@ -19,6 +19,17 @@ describe('findRules', () => {
     );
   });
 
+  it('tutar ve tarih link sayılmaz; resmi adresli banka bildirimi link kuralı tetiklemez', () => {
+    expect(findRules('Enpara.com: Kredi kartı limitiniz 25.000,00 TL olarak güncellendi.')).not.toContain('LINK');
+    expect(findRules('Başvurunuz 01.04.2024 tarihinde başlar. Ayrıntılar iskur.gov.tr')).not.toContain('LINK');
+    expect(findRules('Tutar 25.000,00 TL, ayrıntılar sahte-site.com')).toContain('LINK');
+  });
+
+  it('kargo mesajındaki "gönderiniz" para isteği sayılmaz; "para gönderin" sayılır', () => {
+    expect(findRules('Yurtiçi Kargo: gönderiniz bugün dağıtıma çıkmıştır.')).not.toContain('PAYMENT');
+    expect(findRules('Acil para lazım, şu hesaba hemen gönderin')).toContain('PAYMENT');
+  });
+
   it('@ ile gizlenen adres resmi sayılmaz (asıl hedef @ işaretinden sonrası)', () => {
     expect(findRules('Gönderiniz için https://ptt.gov.tr@bit.ly/3Yy29Ws')).toContain('LINK');
     expect(findRules('Üyeliğiniz için http://www.ptt.gov.tr:911@s955054819.onlinehome.us/mo')).toEqual(

@@ -80,7 +80,8 @@ const KEYWORDS: Record<Exclude<RuleId, 'LINK' | 'SHORT_LINK' | 'OTP_INFO' | 'AD_
   ],
   PAYMENT: [
     'ibantoken', 'odeme yap', 'odemeniz', 'odeyin', 'odeyiniz', 'odemezseniz', 'gumruk', 'borcunuz', 'borcu ',
-    'borc ', 'havale', 'eft', 'para gonder', 'gonderin', 'yatirin', 'aktarin', 'hizmet bedel', 'teslimat ucret',
+    // "gonderin " sonda boşlukla: kargo mesajlarındaki "gonderiniz" (sizin gönderiniz) para istemek değildir.
+    'borc ', 'havale', 'eft', 'para gonder', 'gonderin ', 'yatirin', 'aktarin', 'hizmet bedel', 'teslimat ucret',
     'kargo ucret', 'ucretini ode', 'masraf', 'icra masraf', 'guvenli hesap',
   ],
   GAMBLING: ['bahis', 'casino', 'deneme bonusu', 'freespin', 'free spin', 'slot', 'iddaa', 'jackpot', 'rulet', 'betting'],
@@ -106,7 +107,8 @@ const DO_NOT_SHARE = /(?:^| )(?:kimseyle|kimseye|paylasmayin|paylasmayiniz|verme
  * Link adresinde kurum adı ("ptt-kargo.xyz", "e-devlet-iade.com", "turkiye.gov.clskl.com").
  * Normalize, linkleri "urltoken" yaptığı için bu kontrol ham metindeki adreslerde yapılır.
  */
-const URL_IN_RAW = /(?:https?:\/\/|www\.)[^ \t\n\r]+|[a-z0-9-]+(?:\.[a-z0-9-]+)+(?:\/[^ \t\n\r]*)?/gi;
+// Çıplak adreste son parça harf olmalı: "25.000,00 TL" ve "14.03.2024" adres değildir.
+const URL_IN_RAW = /(?:https?:\/\/|www\.)[^ \t\n\r]+|[a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,}(?![a-z0-9-])(?:\/[^ \t\n\r]*)?/gi;
 const IMPERSONATING_HOST =
   /e-?devlet|turkiye|gov|ptt|kargo|yurtici|aras|mng|banka|bank|ziraat|garanti|akbank|isbank|yapikredi|halkbank|vakif|vergi|gib|icra|sgk|hgs|ogs|kgm|ispark|uyap|tebligat|mhrs|enabiz|turkcell|vodafone|telekom/;
 
