@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+smishtank:1291,atla,,,gerçek uygulama/sadakat programı mesajı olabilir; etiket belirsiz
+smishtank:1292,dolandiricilik,diger,"Bak kim kazada ölmüş, sanırım onu tanıyorsun çok üzgünüm... https://photo.a4d8.us/xnhbmikwu",sahte ölüm haberi tuzağı
+smishtank:1293,atla,,,şablon tekrarı (smishtank:950)
+smishtank:1294,dolandiricilik,yakin_romantik,"selam Ben Merve, nasılsın Aslı?",yanlış numara açılışı (linksiz); orijinaldeki karışık tekrar düzeltildi
+smishtank:1297,dolandiricilik,is_ilani,"Merhaba, ben Mimarlık A.Ş.'den Murat Hendek. İletişim bilgilerinizi Kariyer.net'teki özgeçmişinizde bulduk. Haftalık 7.500 TL ücretle uzaktan veri giriş elemanı / kişisel asistan arıyoruz. Ayrıntılar için tıklayın",Indeed→Kariyer.net; $750→7.500 TL; metin orijinalde kesik
+smishtank:1302,atla,,,şablona yakın (smishtank:358)
+smishtank:1303,atla,,,gerçek doğrulama kodu biçiminde; etiket belirsiz
+smishtank:1305,atla,,,şablona yakın (smishtank:292)
+smishtank:1306,atla,,,şablona yakın (smishtank:338)
+smishtank:1309,atla,,,şablona yakın (smishtank:305)
+smishtank:1310,atla,,,şablona yakın (smishtank:305)
+smishtank:1315,atla,,,şablona yakın (smishtank:305)
+smishtank:1321,atla,,,anlamsız içerik
+smishtank:1322,atla,,,şablona yakın (smishtank:338)
+smishtank:1323,atla,,,gerçek kamu sağlık bildirimi olabilir; ABD'ye özgü
+smishtank:1325,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1327,dolandiricilik,kargo,"Kargo_Takip: Merhaba, 767722YX2 takip numaralı paketiniz teslimat konumunu kontrol etmenizi bekliyor: packagetrace.biz/d54pv",
+smishtank:1328,atla,,,şablona yakın (smishtank:338)
+smishtank:1329,dolandiricilik,yatirim,"Donanım cüzdanınız devre dışı bırakıldı. Yeni KYC düzenlemeleri nedeniyle doğrulamadan geçmeniz gerekiyor: ledger.com.device.id.657377.a.p/dogrulama",alan adı ön eki taklidi korundu
+smishtank:1330,atla,,,şablona yakın (smishtank:338)
+smishtank:1331,atla,,,şablona yakın (smishtank:720)
+smishtank:1332,atla,,,yasal reklam olabilir; etiket belirsiz
+smishtank:1333,atla,,,şablona yakın (smishtank:1132)
+smishtank:1335,atla,,,İspanyolca gerçek operatör bilgilendirmesi
+smishtank:1339,atla,,,şablona yakın (smishtank:737)
+smishtank:1342,atla,,,şablona yakın (smishtank:737)
+smishtank:1349,atla,,,yasal reklam olabilir; etiket belirsiz
+smishtank:1350,atla,,,şablona yakın (smishtank:412)
+smishtank:1358,atla,,,şablona yakın (smishtank:401)
+smishtank:1359,atla,,,şablon tekrarı (smishtank:317)
+smishtank:1360,atla,,,şablon tekrarı (smishtank:317)
+smishtank:1361,atla,,,şablon tekrarı (smishtank:317)
+smishtank:1362,atla,,,şablon tekrarı (smishtank:339)
+smishtank:1363,dolandiricilik,icra_dava,"Gönderen: 0530 919 65 75 Msj: Burası Askerlik Şubesi Başkanlığı, size defalarca posta yoluyla ulaşmaya çalıştık ancak yanıt alamadık. Yoklama kaçağı olarak işaretlendiniz ve en yakın askerlik şubesine gelmeniz gerekmektedir",Army Draft→askerlik şubesi; sahte numara; metin orijinalde kesik
+smishtank:1364,atla,,,şablon tekrarı (smishtank:317)
+smishtank:1365,atla,,,şablon tekrarı (smishtank:317)
+smishtank:1366,atla,,,içeriksiz mesaj
+smishtank:1367,atla,,,ABD'ye özgü emlak ilanı
+smishtank:1369,atla,,,şablon tekrarı (smishtank:317)
+smishtank:1371,atla,,,ABD'ye özgü emlak ilanı
+smishtank:1372,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1373,atla,,,şablon tekrarı (smishtank:317)
+smishtank:1374,atla,,,ABD'ye özgü emlak ilanı
+smishtank:1375,atla,,,şablona yakın (smishtank:1033)
+smishtank:1376,atla,,,şablon tekrarı (smishtank:1033)
+smishtank:1378,atla,,,şablona yakın (smishtank:637)
+smishtank:1379,atla,,,şablon tekrarı (smishtank:1033)
+smishtank:1380,atla,,,şablon tekrarı (smishtank:950)
+smishtank:1381,atla,,,içeriksiz reklam; etiket belirsiz
+smishtank:1382,atla,,,İspanyolca müzik reklamı
