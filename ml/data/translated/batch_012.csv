@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+smishtank:867,dolandiricilik,is_ilani,"Hâlâ internetten iş mi arıyorsunuz? Ek gelire ihtiyacınız var mı? Satış platformumuz 23-68 yaş arası, cinsiyet fark etmeksizin, günlük 300-2.000 TL kazançla çalışacak satış elemanları arıyor. İlgileniyorsanız bana Telegram'dan yazın: t.me/+4478",$30-$200→300-2.000 TL
+smishtank:868,atla,,,müstehcen içerik
+smishtank:872,dolandiricilik,edevlet_vergi,"İşlem Gerekli: Ödenmemiş otoyol/köprü geçiş ihlali bildiriminiz bulunmaktadır. 30.03.2023 tarihinden önce https://hgs-ihlal.to/YOLA adresinden işlem yapın.",toll notice→HGS geçiş ihlali
+smishtank:875,dolandiricilik,yakin_romantik,"Anne selam, telefonum bozuldu arkadaşımın telefonundan yazıyorum, lütfen yeni numaramdan WhatsApp'tan bana yaz acil 0555 000 12 34",yakın taklidi (anne kalıbı); sahte numara
+smishtank:876,atla,,,şablona yakın (smishtank:866)
+smishtank:877,dolandiricilik,diger,"Merhaba Ceren, bu mesajı alıp almadığını bana bildirir misin? Teşekkürler, Selim Koç (Genel Müdür)",CEO taklidi açılışı (linksiz); isimler değiştirildi
+smishtank:879,dolandiricilik,edevlet_vergi,"Gecikmiş son otoyol geçiş faturanız askıya alındı, lütfen hemen ilgilenin, ayrıntılar: tinyurl.com/Rauchk",toll invoice→otoyol geçiş faturası
+smishtank:881,atla,,,şablon tekrarı (smishtank:757)
+smishtank:882,atla,,,şablon tekrarı (smishtank:650)
+smishtank:883,atla,,,şablon tekrarı (smishtank:606)
+smishtank:885,dolandiricilik,banka_hesap,"ICBC Turkey: Olağandışı işlemler nedeniyle hesabınızı engelledik, hesabınızı doğrulamak için lütfen (www.icbcdogrulama.com ) adresini ziyaret edin.",Citi→ICBC Turkey
+smishtank:886,atla,,,emlak alım teklifi; dolandırıcılık olduğu belirsiz
+smishtank:893,atla,,,şablona yakın (smishtank:408)
+smishtank:897,dolandiricilik,kargo,"Lojistik takip numarası 5892 ile biten paketinizin adresi ayrıntılı değil, güncellenmesi gerekiyor : l.ead.me/Vg8TrwQG",
+smishtank:898,atla,,,yalnızca link
+smishtank:902,dolandiricilik,banka_hesap,"n11 Hesabınız kilitlendi. Kısa süre önce hesabınıza çok sayıda başarısız giriş denemesi yapıldı. Hesabınızı hemen kurtarmak için aşağıdaki bağlantıya tıklayın: http://xn--80aaahorunoimsf3p.xn-p1ai/authcus/ Lütfen hesabınız için işlem yapın",Amazon→n11; punycode alan adı hilesi için tutuldu
+smishtank:903,atla,,,şablona yakın (smishtank:447)
+smishtank:904,atla,,,şablona yakın (smishtank:447)
+smishtank:905,atla,,,şablona yakın (smishtank:447)
+smishtank:906,dolandiricilik,banka_hesap,"15 Nis, 14:45 Migros hesabınızda şüpheli etkinlik var. Ayrıntıları görmek için buraya tıklayın: https://tki.lol/rd/c8095gMcsB282065YswP1678Ydc4104XBky417",Costco→Migros
+smishtank:907,dolandiricilik,diger,"Anadolu Sigorta: Hesabınız ele geçirilmiş olabilir. Lütfen buradan inceleyin http://pmbox.online/4UWqiD288PcPb7meokxwnhfo1YYRFWVNSQEUQXDH101630/79654a11",Geico→Anadolu Sigorta
+smishtank:908,dolandiricilik,kargo,"12 Mart Pazar 13:59 Sayın Yetkili, paketinizi teslim etmeye çalıştık ancak maalesef alıcıya ulaşılamadı. Lütfen güncelleyin: qrco.de/bdn5yo",
+smishtank:909,atla,,,müstehcen içerik
+smishtank:910,dolandiricilik,banka_hesap,"29 Nisan Cumartesi - 16:54 ZİRAAT UYARI: 105 ZEUS işyerindeki 6.890,00 TL harcamanız başarılı. Bu siz değilseniz iptal için https://onlineziraatdata.web.app adresine gidin.","Front Wave→Ziraat; $689→6.890 TL"
+smishtank:911,atla,,,şablona yakın (smishtank:740)
+smishtank:913,atla,,,şablon tekrarı (smishtank:422)
+smishtank:914,dolandiricilik,kargo,"Ayşe, 01.08.2020 tarihli 2D76A4 numaralı PTT paketinle ilgili acil bildirim. Tıkla: a4nrv.info/YCdfXPIKIp",USPS→PTT; isim değiştirildi
+smishtank:917,atla,,,şablona yakın (smishtank:459)
+smishtank:918,atla,,,yalnızca link
+smishtank:919,dolandiricilik,banka_hesap,"AKBANK: Uygulamanızda yeni bir alıcı tanımlandı. Bu işlemi siz yaptıysanız bu mesajı dikkate almayın. Siz değilseniz bilgilerinizi doğrulamak için https://ab.gl/CMSbi adresini ziyaret edin.",Chase→Akbank
+smishtank:920,atla,,,içeriksiz mesaj
+smishtank:921,dolandiricilik,banka_hesap,"11 Eylül 2021 Cumartesi 10:06 GARANTİ BBVA: hesabınız doğrulama için incelemeye alındı lütfen aşağıdaki bağlantıyı ziyaret edin bit.ly/3hmasAg",Chase→Garanti BBVA
+smishtank:923,dolandiricilik,banka_hesap,"YUO7RBOV15142461 AMZN: Dolandırıcılık Uyarısı - [ID: BAZEET] Destek Talebi -J11U7V- https://bit.ly/42GN8U0",
+smishtank:924,atla,,,şablona yakın (smishtank:713)
+smishtank:925,atla,,,şablona yakın (smishtank:412)
+smishtank:926,dolandiricilik,diger,"Kayıp iPhone'unuz internete bağlandı. Bu cihazı bulmak veya kilitlemek için ziyaret edin: https://wwww.destekappleid.ocppl-com.de/25t6r/ Kayıp modundaki iPhone 12 Pro Max'iniz %15 şarjla açıldı. Güncel konumu kontrol edin",sahte cihaz bulma bildirimi; metin orijinalde kesik
+smishtank:949,dolandiricilik,banka_hesap,"ZİRAAT BANKASI: Hesabınızda doğrulama gerekiyor wowgo.app.link/luAzIC",Wells Fargo→Ziraat
+smishtank:950,dolandiricilik,kargo,"P.T.T - Paketiniz depoya ulaştı ancak adres bilgileri eksik olduğu için teslim edilemiyor. Adresinizi bağlantıdan onaylayın. 7knfu.za.com (Bağlantıyı kopyalayıp Safari tarayıcınızda açın)",USPS→PTT
+smishtank:952,atla,,,şablon tekrarı (smishtank:384)
+smishtank:953,atla,,,şablona yakın (smishtank:656)
+smishtank:955,atla,,,yalnızca link
+smishtank:957,atla,,,şablona yakın (smishtank:386)
+smishtank:958,atla,,,şablona yakın (smishtank:386)
+smishtank:961,atla,,,yalnızca link
+smishtank:962,atla,,,şablon tekrarı (smishtank:950)
+smishtank:963,atla,,,gerçek askerlik/kariyer bilgilendirmesi olabilir; ABD'ye özgü
+smishtank:964,atla,,,gerçek askerlik/kariyer bilgilendirmesi olabilir; ABD'ye özgü
+smishtank:965,atla,,,şablona yakın (smishtank:387)
+smishtank:966,atla,,,şablona yakın (smishtank:287)
+smishtank:967,atla,,,şablona yakın (smishtank:235)
