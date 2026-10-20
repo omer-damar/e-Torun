@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+smishtank:1130,atla,,,şablona yakın (smishtank:813)
+smishtank:1132,dolandiricilik,diger,"Merhaba, fotoğraflarınızdan birini sanat projemin yüzü olarak kullanmak isterim, adınız da eserde geçecek ve bunun için mutlaka ödeme alacaksınız",sahte sanatçı (fazla ödeme dolandırıcılığı açılışı)
+smishtank:1133,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1134,dolandiricilik,diger,"Özel Mesaj Uyarısı - görmek için bu kodu kullanın vxma http://scoldrunner.services/up18iuL8",
+smishtank:1135,atla,,,şablona yakın (smishtank:1132)
+smishtank:1136,dolandiricilik,banka_hesap,"0532 177 77 80 yeni bir sesli mesaj bıraktı: ""Hepsiburada hesabınızda Apple MacBook Pro siparişi. Bu ödemeyi siz onaylamadıysanız müşteri temsilcimizle görüşmek için 1'e basın."" Dinlemek için buraya tıklayın: 0850 982 50 00",Amazon→Hepsiburada; sahte numaralar; metin orijinalde kesik
+smishtank:1137,atla,,,şablona yakın (smishtank:408)
+smishtank:1138,dolandiricilik,edevlet_vergi,"SGK- Emekli maaşınızın yatırılacağı hesap güncellendi, bu işlemi siz yapmadıysanız iptal etmek ve engellemek için https://guvenli-sgkislem3527.duckdns.org/ adresini ziyaret edin",EDD→SGK emekli maaşı
+smishtank:1139,atla,,,şablona yakın (smishtank:1132)
+smishtank:1141,atla,,,şablona yakın (smishtank:291)
+smishtank:1142,atla,,,şablona yakın (smishtank:412)
+smishtank:1143,dolandiricilik,is_ilani,"Tüketici Paneli Eleman Alıyor! Evden ürün test edin, saatte 450 TL'ye kadar kazanın. Deneyim gerekmez. Hemen başvurun! Uzaktan çalışma. Ziyaret edin: https://bit.ly/acpin",American Consumer→Tüketici Paneli; $45→450 TL
+smishtank:1144,dolandiricilik,yakin_romantik,"Selam, mesajlaşma arkadaşım olup haftada üç kez 3.000 TL almak ister misin, cinsel hiçbir şey yok, harçlığını almadan önce hiçbir ücret ödemene gerek yok. Ciddiysen ilk harçlığını bugün alırsın",$300→3.000 TL; metin orijinalde kesik
+smishtank:1145,atla,,,şablona yakın (smishtank:1132)
+smishtank:1151,dolandiricilik,odul,"Tebrikler, bu haftaki çekilişin 10 şanslı kazananı arasından seçildiniz. Devam eden Facebook piyango programında 2.000.000 TL kazandınız, paranızı doğrulamak için sorumlu temsilciye mesaj atın",200.000 USD→2.000.000 TL; metin orijinalde kesik
+smishtank:1154,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1155,atla,,,şablona yakın (smishtank:459)
+smishtank:1158,dolandiricilik,is_ilani,"TÜRK TELEKOM A.Ş.: Evden çalışma için saatlik 300 TL ücretli çevrimiçi mülakata davet edildiniz. APY4623 yazıp 0530 451 40 34 numarasına gönderin",Comcast→Türk Telekom; $30→300 TL; sahte numara
+smishtank:1161,atla,,,şablon tekrarı (smishtank:422)
+smishtank:1162,atla,,,yalnızca link
+smishtank:1163,atla,,,şablon tekrarı (smishtank:950)
+smishtank:1165,atla,,,şablona yakın (smishtank:531)
+smishtank:1166,atla,,,şablona yakın (smishtank:291)
+smishtank:1168,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1169,atla,,,gerçek doğrulama kodu biçiminde; etiket belirsiz
+smishtank:1170,atla,,,şablona yakın (smishtank:412)
+smishtank:1175,atla,,,şablon tekrarı (smishtank:950)
+smishtank:1176,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1181,atla,,,şablona yakın (smishtank:235)
+smishtank:1184,atla,,,şablona yakın (smishtank:737)
+smishtank:1186,atla,,,gerçek doğrulama kodu biçiminde; etiket belirsiz
+smishtank:1187,atla,,,şablona yakın (smishtank:531)
+smishtank:1190,atla,,,şablon tekrarı (smishtank:422)
+smishtank:1193,atla,,,şablon tekrarı (smishtank:422)
+smishtank:1194,atla,,,gerçek uygulama daveti olabilir (resmi alan adı)
+smishtank:1200,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1201,dolandiricilik,kargo,"PTT (Gönderiniz Gümrükten Çıktı) Yeniden planlayın:https://bit.ly/387Mzes",USPS→PTT
+smishtank:1209,dolandiricilik,banka_hesap,"<#>Y K: Banka kartı bilgilerinizi ve kayıtlı e-posta adresinizi onaylamanız gerekiyor. Aksi halde erişiminiz kilitlenebilir bit.ly/87VBJ987",BofA→Yapı Kredi; ayrık kısaltma korundu
+smishtank:1210,atla,,,şablon tekrarı (smishtank:1209)
+smishtank:1215,atla,,,yalnızca link
+smishtank:1217,atla,,,yalnızca link
+smishtank:1218,atla,,,yalnızca link
+smishtank:1219,dolandiricilik,edevlet_vergi,"GÖN:Sağlık Bakanlığı COVID-19 Bilgilendirme MSJ:Alınmamış 10.870 TL COVID-19 Destek ödemeniz bulunmaktadır : https://forms.gle/gxXAfiJ2Gc2GvDLs6?JSRAOJLDWYJS",WA COVID-19→Sağlık Bakanlığı; $1087→10.870 TL
+smishtank:1220,atla,,,şablona yakın (smishtank:1000)
+smishtank:1221,dolandiricilik,diger,"ek yardımlar burada. faturalar için endişelenme biz yardım için buradayız Mehmet....v41qle.jz4721.net...İptal için IPTAL yaz",isim değiştirildi
+smishtank:1222,dolandiricilik,odul,"Burak, hâlâ 1.000 TL Hepsiburada ödül bakiyen var: v4fzc.info/CKQpOZrVXi 27.03'te süresi dolmadan neler alabileceğine bak 21:33","Amazon→Hepsiburada; $100→1.000 TL; isim değiştirildi"
+smishtank:1223,dolandiricilik,odul,"Pandemi nedeniyle Netflix evde kalmanıza yardımcı olmak için herkese 1 yıllık ücretsiz üyelik veriyor. Sizinkini buradan alın mi08w.com/2kbKsPoeVQ 16:53",
+smishtank:1226,dolandiricilik,diger,"Aracınızın hasar kaydına (TRAMER) yeni bir giriş eklendi: https://t.co/o5v07fefr1?fmuxtuprck",car history→TRAMER hasar kaydı
+smishtank:1227,atla,,,şablona yakın (smishtank:1226)
+smishtank:1228,atla,,,anlamsız içerik
