@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+smishtank:608,dolandiricilik,banka_hesap,"[Ziraat Uyarı] Kartınızla 05.08.2022 saat 17:10'da *STEAM üzerinden 1.208,90 TL harcama denemesi yaptınız mı? İptal talebi için: ziraatkartuyari.com","Regions/GameStop→Ziraat/Steam; $120.89→1.208,90 TL"
+smishtank:611,atla,,,gerçek banka işlem onayı olabilir (linksiz evet/hayır); etiket belirsiz
+smishtank:612,dolandiricilik,banka_hesap,"Fibabanka Uyarı: Şüpheli işlemler nedeniyle internet şubesi hesabınız geçici olarak kilitlendi. Lütfen giriş yapıp bilgilerinizi doğrulayın. https://si-fibabanka-giris.com/",RBC→Fibabanka
+smishtank:613,atla,,,emlak alım teklifi; dolandırıcılık olduğu belirsiz
+smishtank:618,dolandiricilik,kargo,"Etiketteki sokak kodu eksik olduğu için gönderileriniz durduruldu. lütfen güncelleyin. pttdagitimguncel.info/Resd",
+smishtank:619,atla,,,pazarlama aboneliği onayı; etiket belirsiz
+smishtank:621,dolandiricilik,kargo,"/PTT/; Teslimat Adresinizin burada düzeltilmesi gerekiyor https://cya.nz/4UJQ iade edilen ürünlerinizin yeniden teslimatını etkinleştirin..",USPS→PTT
+smishtank:624,atla,,,şablon tekrarı (smishtank:412)
+smishtank:627,atla,,,şablon tekrarı (smishtank:358)
+smishtank:634,atla,,,şablon tekrarı (smishtank:317)
+smishtank:637,dolandiricilik,kargo,"Kime: 0555 000 00 00 GÖN: PTT Msj: Adres bilgileri eksik olduğu için paketiniz iade edilecek. Lütfen adresinizi zamanında güncelleyin: v4.hvg.in/.861G6 Saygılarımızla, PTT.",USPS→PTT; sahte numara
+smishtank:638,dolandiricilik,odul,"Tebrikler! iPad PRO kazanmak için seçtiğimiz 100 kullanıcıdan birisiniz. HEMEN alın https://groupme.prizeforyou.site/",
+smishtank:639,atla,,,şablon tekrarı (smishtank:640)
+smishtank:640,dolandiricilik,odul,"Tebrikler! Apple iPad Pro (2021) + Magic Keyboard kazanmak için seçtiğimiz 100 kullanıcıdan birisiniz. Hemen Alın ?? http://winner@3117711444/tpi23?id=2f57943 Ödülünüzü bugün almak için acele edin!",sayısal IP + @ hilesi korundu
+smishtank:645,dolandiricilik,kredi,"Merhaba, işletmenize bugün uygun faiz ve koşullarla 1.000.000 TL+ ticari finansman onayı almak istiyorum. Ne zaman görüşebiliriz, bana haber verir misiniz?","$100k→1.000.000 TL; orijinaldeki tekrar atıldı"
+smishtank:646,dolandiricilik,kredi,"Merhaba, ben Emre! İşletmenizin finansmanı aksamasın. İşinizi tıkır tıkır yürütmeye yetecek bir KOSGEB destek kredisinden yararlanabilirsiniz. Ne kadarına uygun olduğunuzu söyleyebilirim. İlgileniyor musunuz? EVET yazın",government credit→KOSGEB desteği; isim değiştirildi
+smishtank:647,dolandiricilik,edevlet_vergi,"Merhaba! Pandemi döneminde çalıştırdığınız personel sayısına göre vergi yükünüzü 1 milyon TL veya daha fazla azaltabilecek bir teşvikten yararlanmanıza yardımcı olabilirim. Bu fırsatı kaçırmayın! Daha fazla bilgi için EVET yazın. Ret için RET yazın",COVID tax credit→pandemi teşviki; sahte ret kalıbı
+smishtank:648,dolandiricilik,banka_hesap,"(Hesabınıza Bursa'dan giriş yapıldı. Yanıtlamak için dokunun yardim3720.hesapsorunu-destek.us/?id367 ~) 79F60","NC, US→Bursa"
+smishtank:650,dolandiricilik,abonelik_fatura,"NETFIX_ID.073455 ABONELİĞİNİZ ""BEKLEMEDE"", Faturanızı-hemen-yenileyin: // @@,supr.link/hrXyP",yazım hatası (NETFIX) korundu
+smishtank:651,dolandiricilik,yakin_romantik,"Murat, yarın için planların ne?",yanlış numara açılışı (linksiz)
+smishtank:654,dolandiricilik,odul,"Son hatırlatma! Ağustos Çekilişinde kazandığınız iPad Pro henüz teslim alınmadı! Buradan alın twistedcapsule.com/dRBILnD 12 saatiniz kaldı!",
+smishtank:656,dolandiricilik,diger,"Ünlü TV programında rekor yatırım alan cilt kremi ücretsiz kutu dağıtıyor! Kırışıklıklarınızı giderin, yüzünüzden 15 yıl silin! Şu araştırmalara ve kullanıcı yorumlarına bir bakın! geologypassive.com/PYNMIIL",Shark Tank→ünlü TV programı; sahte sağlık ürünü
+smishtank:657,dolandiricilik,diger,"Şeker hastalığını anında düzelten yeni mucize bitkisel şekerleme herkesi şaşırtıyor. Kan şekerini Anında Düşürür! Tip 2 Diyabetinizi Bugün Kontrol Altına Alın imperialautumn.com/QNmNNbJ",CBD→bitkisel; sahte sağlık ürünü; sondaki ilgisiz metin atıldı
+smishtank:660,dolandiricilik,kargo,"GÖN:PTT firmamızın kuryesi bugün kargonuzu adresinize teslim edemedi lütfen adresinizi tekrar girin: vpmEvening49tw.4k1pkmal.in/#?.fkz2 paketinizin geri gönderilmesi için saygılar, ptt - 61BX5B",USPS→PTT; bozuk dil kısmen korundu
+smishtank:661,dolandiricilik,kargo,"Bildirim: Gönderen: Yurtiçi Kargo İÇERİK: Size teslim edilecek bir kargo var ancak güncelleme bekliyor. Tercihlerinizi güncellemek için 83hm2uaj.kzra.in/?/OVA013 adresine gidin. Saygılarımızla. Gönderi#JYTHII1Z8381N4G4",USPS→Yurtiçi
+smishtank:670,atla,,,şablon tekrarı (smishtank:422)
+smishtank:671,atla,,,şablona yakın (smishtank:447)
+smishtank:673,atla,,,emlak alım teklifi; dolandırıcılık olduğu belirsiz
+smishtank:675,atla,,,şablona yakın (smishtank:637)
+smishtank:681,dolandiricilik,kargo,"(Sürat Kargo) siparişinize ait paket bildirimi: #SRT-IXZYJTSL Beklemede. posta kodunuzu onaylayın: https://is.gd/Ybkgm2",UPS→Sürat Kargo; zip code→posta kodu
+smishtank:682,atla,,,şablon tekrarı (smishtank:650)
+smishtank:700,dolandiricilik,banka_hesap,"Bilgi Msj Ziraat Bankası: Yakın zamanda hesabınızda yetkisiz olduğunu düşündüğümüz olağandışı işlemler veya güncellemeler tespit ettik. Güvenliğiniz için Ziraat Bankası, hesabınızı kötüye kullanıma karşı korumak amacıyla tüm işlemleri izler; ATM/Banka kartınızı kullanamayacaksınız",Wells Fargo→Ziraat; metin orijinalde kesik
+smishtank:712,dolandiricilik,banka_hesap,"Türkiye Finans güvenlik uyarısı: Hesabınızda sahte bir para çekme işlemi tespit ettik, hesabınızı korumak için aşağıdaki bağlantıya dokunun https://jenshade.com/tfinans/on/org",OnPoint CU→Türkiye Finans
+smishtank:713,dolandiricilik,banka_hesap,"Halkbank: Bursa'da CarrefourSA #589 mağazasında 4****** banka kartınızla 6.517,90 TL harcama. Onaylamak için ""EVET"" yazın, bu işlemi siz yapmadıysanız https://halkbnk-islem1.com adresini ziyaret edin","US Bank/Walmart→Halkbank/CarrefourSA; $651.79→6.517,90 TL"
+smishtank:714,atla,,,bozuk metin (karışık kelimeler)
+smishtank:715,atla,,,şablona yakın (smishtank:412)
+smishtank:716,atla,,,anlamsız içerik
+smishtank:717,atla,,,şablona yakın (smishtank:447)
+smishtank:719,atla,,,şablon tekrarı (smishtank:432)
+smishtank:720,dolandiricilik,abonelik_fatura,"Üyeliğiniz beklemede. Mevcut fatura bilgilerinizle ilgili sorun yaşıyoruz. Hesabınızı hemen kurtarmak için aşağıdaki bağlantıya tıklayın: http://uyeliknetflix:911@s955861601.onlinehome.us/mo Kalıcı olarak askıya alınmaması için lütfen 48 saat içinde işlem yapın.",@ ile alan adı gizleme hilesi korundu
+smishtank:721,atla,,,şablona yakın (smishtank:447)
+smishtank:722,atla,,,şablona yakın (smishtank:720)
+smishtank:723,atla,,,şablona yakın (smishtank:447)
+smishtank:724,atla,,,şablon tekrarı (smishtank:432)
+smishtank:725,atla,,,şablon tekrarı (smishtank:432)
+smishtank:726,dolandiricilik,banka_hesap,"J9TINO Şüpheli işlemler nedeniyle Trendyol hesabınız kilitlendi. Bu sorun giderilene kadar tüm son siparişleriniz ve abonelikleriniz beklemeye alındı. Hesabınızın kilidini açmak için aşağıdaki bağlantıya tıklayın: www.linkedin.com/slink?code=d8KfdKXY Doğrulamayı tamamlamazsanız",Amazon→Trendyol; metin orijinalde kesik
+smishtank:727,dolandiricilik,banka_hesap,"Apple Kimliğiniz kilitlendi. Sistemimiz iki yetkisiz cihaz tespit ettiği için Apple Kimliğinizi kilitledik. Kilidi açmak için Apple Kimliğinizi doğrulamanız gerekiyor. Apple Kimliğinizin kilidini açmak için aşağıdaki bağlantıya tıklayın. http://s948917531.onlinehome.us/",
+smishtank:728,atla,,,şablona yakın (smishtank:399)
+smishtank:729,atla,,,şablona yakın (smishtank:399)
+smishtank:730,dolandiricilik,banka_hesap,"Yeni Bilgi! Başka bir cihazdan olağandışı yeni bir giriş tespit ettik. Güvenlik nedeniyle hesabınızı kilitlemek zorunda kaldık. Hesabınıza erişmek için aşağıdaki bağlantıdan 24 saat içinde fatura adresinizi doğrulamanız gerekiyor: http://unbouncepages.com/papara-hesap-giris",PayPal→Papara
