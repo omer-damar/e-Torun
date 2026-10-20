@@ -552,7 +552,7 @@ Her düzeltmeden sonra yukarıdaki gruplarla gerileme ölçümü yapıldı; ilk 
 |---|---|
 | VoiceOver emojileri adıyla okuyordu ("kum saati Bekliyor", "uyarı işareti 1 ilacınız bitmek üzere") | `spokenText`: düz metinde ve buton etiketinde süs karakterleri atılır; sesli okuma da aynı kuralı kullanır (eski kural ⏳ ⏭️ ↩️ • ℹ️ işaretlerini kaçırıyordu) |
 | Doğrulama hatası, "mesaj bulunamadı", stok onayı, rehberden doldurma bilgisi iOS'ta okunmuyordu (`accessibilityLiveRegion` yalnızca Android) | `announce` / `useAnnounce`; `Notice`'a `announce` seçeneği (yalnızca sonradan beliren uyarılarda; ekranla açılan kalıcı uyarılar her girişte okunmasın) |
-| Kurulum ve ilaç ekleme sihirbazında İleri'ye basınca ekran değişiyor ama VoiceOver fark etmiyordu (buton yerinde kalıyor) | Yeni adımın adı ve sırası duyurulur ("Saat seçin. 2. adım, toplam 5") |
+| Kurulum ve ilaç ekleme sihirbazında İleri'ye basınca ekran değişiyor ama VoiceOver fark etmiyordu (buton yerinde kalıyor) | Yeni adımın adı ve sırası duyurulur ("Hangi saatlerde? 3. adım, toplam 7"; stok takibi seçilirse reçete adımı eklenir ve toplam 8 olur) |
 | Saat seçicide + / − sonrası yeni saat söylenmiyordu | Her basışta "saat 9 tam" / "saat 8, 5 geçe" |
 | ALDIM / Geri al sonrası sessizlik | "Tansiyon ilacı alındı olarak işaretlendi. 10 saniye içinde geri alabilirsiniz." |
 | İlaç kartında durum iki kez okunuyordu (satır etiketi + ayrı durum yazısı) | Ayrı yazı ekran okuyucudan gizlendi |
