@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+smishtank:3,dolandiricilik,odul,"Migros: Ahmet Bey, fişinizdeki 42003 kodu AirPods çekilişimizde ikinci oldu. Ödülünüzü almak için: mgrs-cekilis.info/RzNKEws",Costco→Migros
+smishtank:5,dolandiricilik,kargo,"Merhaba, önceki gönderiniz için Aras Kargo'ya 34,90 TL gümrük ücreti borcunuz bulunmaktadır. Güvenli ödeme bağlantısı almak için 1 yazıp yanıtlayın.","UPS→Aras; $4.10→34,90 TL"
+smishtank:6,dolandiricilik,banka_hesap,"zrt01.co/r/rest05 ZIRAAT BANKASI(MH): Olagan disi islemler nedeniyle profiliniz kilitlendi, lutfen hemen geri yukleyin.",Wells Fargo→Ziraat; karaktersiz
+smishtank:7,dolandiricilik,yakin_romantik,"Merhaba, geçen sefer birlikte tenis oynadığımız kişi siz misiniz? Ben Selin.",yanlış numara açılışı; golf→tenis
+smishtank:8,dolandiricilik,yakin_romantik,"Merhaba Zeynep, uzun zamandır görüşemedik, ben Elif, nasılsın?",
+smishtank:10,dolandiricilik,yakin_romantik,"selam Burcu uzun zaman oldu, bu aralar neler yapiyorsun?",karaktersiz
+smishtank:11,dolandiricilik,yatirim,"Sayın kullanıcı, Bitcoin iç tartışma grubumuza davetlisiniz. Ekibimiz Bitcoin piyasasında her gün nasıl kâr edileceğini paylaşıyor. Katılmak için 1 yazıp bağlantıya tıklayın: https://chat.whatsapp.com/Djci8b7gTGGt16QJ5mJm",
+smishtank:12,dolandiricilik,banka_hesap,"GARANTI BBVA: Hesabinizda yetkisiz islem tespit edildi, hesabiniz kilitlenmek uzere. Lutfen http://garantibsec.com adresinden ya da size en yakin subeden dogrulama yapin.",Citi→Garanti
+smishtank:13,dolandiricilik,yakin_romantik,"Merve, ben Ayşe, nasılsın? İstanbul'a geri döndüm.",Denver→İstanbul
+smishtank:14,dolandiricilik,yakin_romantik,"Merhaba! Ben Derya. Siz Aylin misiniz? Çok özür dilerim, yanlış numarayı aramışım, sizi arkadaşım sandım. Çok utandım. İyi günler dilerim. Çok kibar birisiniz, bugün biraz garip oldu ama sizi yeni bir arkadaş olarak tanımak güzel.",
+smishtank:15,dolandiricilik,banka_hesap,"İş Bankası: Hesabınız kısıtlanmıştır, secisbank.page.link/NLt adresini ziyaret edin.",BofA→İş Bankası
+smishtank:16,atla,,,yalnızca link
+smishtank:17,dolandiricilik,is_ilani,"Harika haber! Başvurunuz kabul edildi. Süreci tamamlamak için: http://klkln.cc/vnbcbtd",
+smishtank:18,atla,,,yalnızca link
+smishtank:19,dolandiricilik,odul,"Merhaba Emre, kısa bir ankete yanıt vererek bize yardım edin, karşılığında size ücretsiz bir kol saati hediye edeceğiz. lksr.link/9pvvbF",sahte anket ödülü
+smishtank:21,dolandiricilik,yakin_romantik,"Merhaba! Ben Zehra'nın arkadaşıyım. Zehra'nın bana önerdiği Kemal Bey siz misiniz? Ben Pınar.",
+smishtank:22,dolandiricilik,kargo,"1/2 GONDEREN:yurtici-kargo.news - MESAJ: 1 Nisan tarihli teslim edilemeyen gonderiniz size ait. Lutfen sahiplenip teslimat icin onaylayin. (Devami) 2/2 https://wwj4w-yurtici.us/jWXHwj?47965169",FedEx→Yurtiçi; karaktersiz
+smishtank:23,dolandiricilik,odul,"Akbank Acele edin! Teklifleriniz geldi! (900 TL değerinde). storage.googleapis.com/jzoxubc/1fhg3lf AKBANK",BofA→Akbank; $90→900 TL
+smishtank:24,dolandiricilik,diger,"Hesabınıza para geldi. Detaylar için tamam yazıp yanıtlayın.",
+smishtank:25,dolandiricilik,abonelik_fatura,"Ücretsiz Mesaj: Mart ayı faturanız ödendi. Teşekkürler, size küçük bir hediyemiz var: mentioningdears.com/nzWjdtrM93",şablon çeşidi 1
+smishtank:26,atla,,,şablon tekrarı (smishtank:25)
+smishtank:27,dolandiricilik,odul,"2025 kasko poliçeniz için 1.275 TL fazla ödeme yapmış olabilirsiniz. 2026 için olası iade tutarınızı kontrol edin: xyzthriftyquotes.com/60ef6eec47",oto sigorta→kasko
+smishtank:28,dolandiricilik,kargo,"GONDEREN:719132-Yurt_ici.906697 MESAJ: Size birkac kez ulasmaya calistik, gonderiniz iade edilecek: https://jf245-yurtici.me/y.jDxio?37588372",FedEx→Yurtiçi; karaktersiz
+smishtank:29,atla,,,nakit ev alımı spam'i; Türk bağlamında karşılığı zayıf
+smishtank:30,dolandiricilik,abonelik_fatura,"Ucretsiz Mesaj: Ekim ayi faturaniz odendi. Tesekkurler, iste size kucuk bir hediye: vocalsprolonged.com/ZSgingd6vi",şablon çeşidi 2; karaktersiz
+smishtank:31,atla,,,şablon tekrarı (smishtank:25)
+smishtank:32,atla,,,şablon tekrarı (smishtank:25)
+smishtank:33,dolandiricilik,banka_hesap,"YAPI KREDI: Guncelleme>: Hakkinizda karar verildi, hesabiniz askiya alindi. Erisimi geri kazanmak icin hemen http://DOGRULAYAPIKREDI.GA adresine girin! Islem sadece birkac saniye surer.",Wells Fargo→Yapı Kredi; karaktersiz
+smishtank:34,atla,,,şablon tekrarı (smishtank:25)
+smishtank:35,atla,,,şablon tekrarı (smishtank:25)
+smishtank:36,atla,,,şablon tekrarı (smishtank:25)
+smishtank:37,dolandiricilik,banka_hesap,"GONDEREN:ZiraatBank-Uyari-3887 KONU:HEMEN ARAYIN: 0850 309 49 04! MESAJ: 17001 Hesap Kilitlendi!",Chase→Ziraat; sahte numara
+smishtank:38,atla,,,şablon tekrarı (smishtank:25)
+smishtank:39,dolandiricilik,kargo,"Paketiniz BUGÜN elinizde! http://www.webpage.ren/b/lc/?bfX.08",
+smishtank:40,dolandiricilik,kargo,"Bekleyen Teslimat: Merhaba, 71623881LS5 takip kodlu paketiniz teslimat adresinizi onaylamanızı bekliyor: holdingspothere.com/8930er",
+smishtank:41,dolandiricilik,icra_dava,"Toplu dava SONUÇLANDI ve size ayrılan 190.380 TL tazminat HAZIR. Tebrikler! tazminat-sorgu.com/Ccn26dr",$19.038→190.380 TL
+smishtank:43,atla,,,şablon tekrarı (smishtank:25)
+smishtank:44,atla,,,şablon tekrarı (smishtank:25)
+smishtank:45,atla,,,şablon tekrarı (smishtank:25)
+smishtank:48,dolandiricilik,banka_hesap,"Halkbnk: Lutfen buradan banka karti sifrenizi yeniden girin: https://bit.ly/35Xs2rW",Citi→Halkbank (yazım hatalı marka gerçekteki gibi)
+smishtank:49,atla,,,yalnızca link
+smishtank:50,dolandiricilik,is_ilani,"Evden çalışma iş teklifi için seçildiniz, günlük 2.666 TL maaş alın. WhatsApp'tan iletişime geçin: http://www.cxes.click/2JkZZoeX",Tk→TL
+smishtank:52,dolandiricilik,banka_hesap,"Vakıfbank: Olağandışı işlemler nedeniyle hesabınızı engelledik, lütfen hesabınızı doğrulamak için www.vakifbankhesap.info adresini ziyaret edin.",Citi→Vakıfbank
+smishtank:53,dolandiricilik,icra_dava,"Ben yine Nihan, Büro: 0850 584 13 91. İş kazası nedeniyle tazminat almaya hak kazanmış olabilirsiniz. Beni kısaca arayabilir misiniz?",yaralanma tazminatı→iş kazası
+smishtank:54,dolandiricilik,banka_hesap,"[AKBANK Uyari 05.02.2026] *8139 hesabina bagli banka kartiniz kilitlendi. En kisa surede bit.ly/89BNsg81289 adresini ziyaret edin.",Citi→Akbank; karaktersiz
+smishtank:55,dolandiricilik,is_ilani,"Salgınla mücadeleye evden çalışarak destek olun, deneyim gerekmez. SMS gönderme işi: telefonla günde 2-3 saat çalışın, günde 500-3.000 TL kazanın. Sağlık Bakanlığı destekli, hemen başvurun: http://bit.ly/Saglik-Is-Ilani Son başvuru: 31 Mart",WHO→Sağlık Bakanlığı
+smishtank:56,dolandiricilik,yatirim,"Sayın kullanıcı, BTC iç tartışma grubumuza davet edildiniz. Grupta her gün kripto piyasasında günde 5.000-50.000 TL nasıl kazanılacağı paylaşılıyor. 1 yazıp yanıtlayın ve gruba girmek için bağlantıya tıklayın: https://chat.whatsapp.com/E29ZpfVxDLCDU0lz6g5Pju",$500-15000→TL
+smishtank:58,dolandiricilik,odul,"https://kaskoiade3.me/1nhQEbD4FaH6 Size 779,04 TL'ye varan iade borcumuz olabilir. Yeni bir inceleme, geçen yıl sizden fazla ücret aldığımızı gösterdi. İadeniz hazır.",
+smishtank:59,dolandiricilik,diger,"Yeni tip koronavirüs salgınına özel sigorta: COVID-19 sigortasının primi 1.000 TL'dir. Teşhis konulursa toplu 30.000 TL, evde veya hastanede karantinada 21 güne kadar günlük 300 TL ödenir. Bilgi için WhatsApp: 0555 379 81 51",sahte sigorta; sahte numara
+smishtank:61,dolandiricilik,yatirim,"Bulut madencilik platformu: https://usdt777.vip Bağlantıyı tarayıcıya kopyalayıp kayıt olun, saniyeler içinde hesabınıza 3.000 TL ücretsiz yatırılsın. Bulut madencilikle günde 10.000-25.000 TL kazanabilirsiniz. Sürekli gelir garantili ve risksiz! Arkadaşlarınızı davet edin, büyük ödüller kazanın.",
