@@ -2,247 +2,247 @@
   "normal": [
     {
       "ngram": "im ",
-      "coef": 1.3338
+      "coef": 1.4785
     },
     {
       "ngram": "ir ",
-      "coef": 1.2124
+      "coef": 1.1816
     },
     {
       "ngram": "mis",
-      "coef": 1.1616
-    },
-    {
-      "ngram": "misti",
-      "coef": 1.1524
+      "coef": 1.1667
     },
     {
       "ngram": "mist",
-      "coef": 1.1524
+      "coef": 1.1351
     },
     {
-      "ngram": "lir",
-      "coef": 1.0594
+      "ngram": "misti",
+      "coef": 1.1351
     },
     {
-      "ngram": "ihi",
-      "coef": 1.0581
-    },
-    {
-      "ngram": "arihi",
-      "coef": 1.0344
-    },
-    {
-      "ngram": "rihi",
-      "coef": 1.0344
+      "ngram": "slim ",
+      "coef": 1.0893
     },
     {
       "ngram": " bi",
-      "coef": 1.0232
+      "coef": 1.0784
+    },
+    {
+      "ngram": "lir",
+      "coef": 1.0685
     },
     {
       "ngram": "am ",
-      "coef": 1.0182
-    },
-    {
-      "ngram": "stir ",
-      "coef": 1.0036
-    },
-    {
-      "ngram": "tir ",
-      "coef": 0.982
-    },
-    {
-      "ngram": "dik",
-      "coef": 0.917
+      "coef": 1.0281
     },
     {
       "ngram": "ilmis",
-      "coef": 0.9029
+      "coef": 0.9798
     },
     {
-      "ngram": "tarih",
-      "coef": 0.9001
+      "ngram": "stir ",
+      "coef": 0.9775
     },
     {
-      "ngram": "rih",
-      "coef": 0.9001
+      "ngram": "tir ",
+      "coef": 0.9653
     },
     {
-      "ngram": "arih",
-      "coef": 0.9001
+      "ngram": "ihi",
+      "coef": 0.9608
+    },
+    {
+      "ngram": "lim ",
+      "coef": 0.9552
+    },
+    {
+      "ngram": "arihi",
+      "coef": 0.9548
+    },
+    {
+      "ngram": "rihi",
+      "coef": 0.9548
     },
     {
       "ngram": "lmist",
-      "coef": 0.8904
+      "coef": 0.9547
+    },
+    {
+      "ngram": "dik",
+      "coef": 0.8982
+    },
+    {
+      "ngram": "lmis",
+      "coef": 0.8967
     },
     {
       "ngram": " bi ",
-      "coef": 0.8655
+      "coef": 0.8729
     }
   ],
   "reklam": [
     {
       "ngram": " num ",
-      "coef": 2.6627
+      "coef": 2.7367
     },
     {
       "ngram": "num ",
-      "coef": 2.6153
+      "coef": 2.6893
     },
     {
       "ngram": " num",
-      "coef": 2.5185
+      "coef": 2.5845
     },
     {
       "ngram": " nu",
-      "coef": 2.4953
+      "coef": 2.5644
     },
     {
       "ngram": "num",
-      "coef": 2.4627
+      "coef": 2.5101
     },
     {
       "ngram": "um ",
-      "coef": 2.2334
+      "coef": 2.3085
     },
     {
       "ngram": " tl",
-      "coef": 2.0796
-    },
-    {
-      "ngram": "tl ",
-      "coef": 2.0026
+      "coef": 2.1117
     },
     {
       "ngram": " tl ",
-      "coef": 2.0026
+      "coef": 2.0356
+    },
+    {
+      "ngram": "tl ",
+      "coef": 2.0356
     },
     {
       "ngram": " ve ",
-      "coef": 1.9374
+      "coef": 1.9789
     },
     {
       "ngram": "ve ",
-      "coef": 1.8939
+      "coef": 1.9372
     },
     {
       "ngram": "ye ",
-      "coef": 1.867
-    },
-    {
-      "ngram": "er ",
-      "coef": 1.8126
-    },
-    {
-      "ngram": "yaz",
-      "coef": 1.8077
-    },
-    {
-      "ngram": " yaz",
-      "coef": 1.7881
+      "coef": 1.91
     },
     {
       "ngram": " ve",
-      "coef": 1.7666
+      "coef": 1.8485
+    },
+    {
+      "ngram": "er ",
+      "coef": 1.8418
+    },
+    {
+      "ngram": "yaz",
+      "coef": 1.8378
+    },
+    {
+      "ngram": " yaz",
+      "coef": 1.817
     },
     {
       "ngram": "ler",
-      "coef": 1.7599
-    },
-    {
-      "ngram": " indi",
-      "coef": 1.7153
+      "coef": 1.8066
     },
     {
       "ngram": " ind",
-      "coef": 1.7153
+      "coef": 1.7524
+    },
+    {
+      "ngram": " indi",
+      "coef": 1.7524
     },
     {
       "ngram": "indir",
-      "coef": 1.7038
+      "coef": 1.7396
     }
   ],
   "dolandiricilik": [
     {
       "ngram": "yin ",
-      "coef": 2.2542
+      "coef": 2.4372
     },
     {
       "ngram": "tir",
-      "coef": 2.1805
-    },
-    {
-      "ngram": "niz",
-      "coef": 2.1694
+      "coef": 2.2599
     },
     {
       "ngram": "yin",
-      "coef": 2.0495
+      "coef": 2.2428
     },
     {
-      "ngram": "niz ",
-      "coef": 1.8962
+      "ngram": "niz",
+      "coef": 2.2224
     },
     {
       "ngram": "ayin ",
-      "coef": 1.8928
-    },
-    {
-      "ngram": " bahi",
-      "coef": 1.8361
+      "coef": 2.0311
     },
     {
       "ngram": "ayin",
-      "coef": 1.7632
+      "coef": 1.9154
     },
     {
-      "ngram": "ahis",
-      "coef": 1.7182
+      "ngram": " bahi",
+      "coef": 1.8714
+    },
+    {
+      "ngram": "niz ",
+      "coef": 1.8425
     },
     {
       "ngram": "bahis",
-      "coef": 1.7182
+      "coef": 1.7549
+    },
+    {
+      "ngram": "ahis",
+      "coef": 1.7549
     },
     {
       "ngram": "bahi",
-      "coef": 1.6933
+      "coef": 1.7295
     },
     {
       "ngram": " icr",
-      "coef": 1.6932
+      "coef": 1.7088
     },
     {
       "ngram": " icra",
-      "coef": 1.6932
-    },
-    {
-      "ngram": "andin",
-      "coef": 1.6541
+      "coef": 1.7088
     },
     {
       "ngram": "icra",
-      "coef": 1.6389
+      "coef": 1.6521
     },
     {
       "ngram": "cra",
-      "coef": 1.6389
+      "coef": 1.6521
+    },
+    {
+      "ngram": "andin",
+      "coef": 1.63
     },
     {
       "ngram": "icr",
-      "coef": 1.6157
-    },
-    {
-      "ngram": "oke",
-      "coef": 1.59
-    },
-    {
-      "ngram": " ic",
-      "coef": 1.5806
+      "coef": 1.6286
     },
     {
       "ngram": "iniz",
-      "coef": 1.5749
+      "coef": 1.6065
+    },
+    {
+      "ngram": "azand",
+      "coef": 1.5849
+    },
+    {
+      "ngram": "ahis ",
+      "coef": 1.5834
     }
   ]
 }

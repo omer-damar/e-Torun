@@ -12,6 +12,11 @@ teslimatı, e-Devlet ve MHRS bildirimleri, fatura hatırlatmaları, yakınlardan
 - Linkler yalnızca kurumların **resmi alan adlarıdır** (ör. `turkiye.gov.tr`, `ptt.gov.tr`), çünkü meşru
   mesajları dolandırıcılıktan ayıran en önemli işaretlerden biri budur.
 - Reklam mesajı yoktur; yasal reklamlar ayrı `reklam` sınıfıdır.
+- `normal_009.csv` (40 mesaj): **linkli** meşru kargo/e-ticaret bildirimleri ("teslim edildi, memnuniyet
+  anketi", "dağıtıma çıktı, canlı takip"). Telefonda gerçek bir Amazon teslimat bildirimi modelden %83
+  dolandırıcılık olasılığı alıyordu: eğitimde linkli meşru kargo mesajı neredeyse yoktu ve model linkin
+  adresini görmez (normalizasyon her linki "urltoken" yapar). Eklendikten sonra aynı mesaj %16 aldı;
+  sahte kargo mesajlarını yakalama oranı değişmedi (çeviri kargo dolandırıcılığı: 60 → 61 kırmızı).
 
 ## Güncel ölçüm (v1 dedektör, 400 mesaj)
 | Parti | Konu | Yeşil | Sarı | Kırmızı |

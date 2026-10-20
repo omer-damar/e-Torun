@@ -137,6 +137,13 @@ describe('decide — telefonda yanlış alarm veren gerçek mesajlar', () => {
     expect(d.reasons.join(' ')).toMatch(/resmi adresi/);
   });
 
+  it('teslim edildi + memnuniyet anketi linki kırmızı değil; kazanç vaat eden sahte anket sayılır', () => {
+    expect(
+      decide('KAR1234567 takip numaralı Amazon gönderiniz teslim edilmiştir. Memnuniyet anketimiz için: https://t.ornekteslimat.com.tr/r/Ab12Cd').level,
+    ).not.toBe('red');
+    expect(findRules('Kısa ankete katılın, 1.000 TL hediye çeki kazanın: http://rgjgj.capital/x')).toContain('PRIZE');
+  });
+
   it('platform linki (YouTube) kamu adresi sayılmaz: ödül vaat eden mesaj yeşile çekilmez', () => {
     const d = decide('Müjde, piyangoda büyük ikramiyeyi kazandık! 50 kişiye 150.000 TL bağışlıyoruz, videomuz: https://youtu.be/nZ3xuJwm824');
     expect(d.rules).not.toContain('OFFICIAL_LINK');

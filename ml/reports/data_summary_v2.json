@@ -10,16 +10,16 @@
     "sentetik": 0.5
   },
   "raw": {
-    "rows": 6761,
+    "rows": 6801,
     "by_label": {
-      "normal": 3083,
+      "normal": 3123,
       "reklam": 2968,
       "dolandiricilik": 710
     },
     "by_origin": {
       "gercek": 5637,
       "ceviri": 621,
-      "sentetik": 503
+      "sentetik": 543
     }
   },
   "deduplication": {
@@ -36,16 +36,16 @@
   },
   "splits": {
     "train": {
-      "rows": 4955,
+      "rows": 4995,
       "by_label": {
-        "normal": 2282,
+        "normal": 2322,
         "reklam": 1990,
         "dolandiricilik": 683
       },
       "by_origin": {
         "gercek": 3831,
         "ceviri": 621,
-        "sentetik": 503
+        "sentetik": 543
       }
     },
     "val": {

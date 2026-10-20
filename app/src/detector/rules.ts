@@ -81,8 +81,9 @@ const KEYWORDS: Record<
   PRIZE: [
     'kazandiniz', 'kazandin', 'hediye', 'odul', 'cekilis', 'iade', 'bonus', 'tebrikler', 'sansli', 'puaniniz',
     'puanlariniz', 'para iadesi', 'aidat iade', 'destek odemesi', 'yardim odemesi',
-    // Sahte "market anketi, 1.000 TL kazan" mesajları
-    'anket',
+    // Sahte "anketi doldurun, 1.000 TL kazanın" mesajları. "anket" tek başına ödül değildir
+    // (kargo "memnuniyet anketi" kırmızı çıkıyordu); kazanç vaadi aranır.
+    'kazanin', 'kazanma', 'kazanabilir',
   ],
   PERSONAL_INFO: [
     'sifre', 'parola', 'kart bilgi', 'kart numara', 'kart no', 'cvv', 'cvc', 'guvenlik kodu', 'son kullanma',

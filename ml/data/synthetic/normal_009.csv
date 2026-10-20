@@ -1,0 +1,41 @@
+queue_id,label,scam_type,text_tr,note
+syn:0401,normal,,"KAR4417820 takip numaralı Amazon gönderiniz teslim edilmiştir. Memnuniyet anketimiz için: https://t.cargox.com.tr/r/Qm81Lx",kargo_link_teslim
+syn:0402,normal,,"Trendyol Express: Paketin teslim edildi! Teslimat deneyimini puanlamak için: https://www.trendyolexpress.com/degerlendir/TY88213",kargo_link_teslim
+syn:0403,normal,,"HepsiJet: Gönderiniz bugün dağıtıma çıktı. Kuryenizi canlı takip etmek için: https://www.hepsijet.com/takip/HJ48201937",kargo_link_dagitim
+syn:0404,normal,,"Yurtiçi Kargo: 418820196634 numaralı gönderiniz teslim edildi. Bizi değerlendirmek için: https://www.yurticikargo.com/anket/4188",kargo_link_teslim
+syn:0405,normal,,"Aras Kargo: Gönderiniz dağıtıma çıkmıştır, tahmini teslimat 14:00-18:00. Takip: https://kargotakip.araskargo.com.tr/7712039",kargo_link_dagitim
+syn:0406,normal,,"MNG Kargo: 9180221301445 nolu gönderiniz teslim edilmiştir. Teslimat belgenizi görüntülemek için: https://www.mngkargo.com.tr/gonderitakip",kargo_link_teslim
+syn:0407,normal,,"Sendeo: Siparişiniz kuryemize teslim edildi, yarın adresinizde. Takip için: https://www.sendeo.com.tr/takip/SD5521840",kargo_link_dagitim
+syn:0408,normal,,"Kolay Gelsin: Paketin kapına bırakıldı. Teslimat fotoğrafını görmek için: https://www.kolaygelsin.com/t/KG77120",kargo_link_teslim
+syn:0409,normal,,"Hepsiburada: Siparişiniz teslim edildi. Ürünü değerlendirmek isterseniz: https://www.hepsiburada.com/siparislerim",kargo_link_teslim
+syn:0410,normal,,"Amazon.com.tr: Paketiniz teslim edildi. Teslimat nasıldı? Görüşlerinizi paylaşın: https://www.amazon.com.tr/gp/css/order-history",kargo_link_teslim
+syn:0411,normal,,"PTT: KP093817722TR barkodlu gönderiniz alıcıya teslim edilmiştir. Gönderi takip: https://gonderitakip.ptt.gov.tr",kargo_link_teslim
+syn:0412,normal,,"Sürat Kargo: Gönderiniz yarın teslim edilecektir. Teslimat saatini görmek için: https://www.suratkargo.com.tr/KargoTakip",kargo_link_dagitim
+syn:0413,normal,,"Trendyol: Siparişin yola çıktı! Kargonu takip etmek için Trendyol uygulamasına ya da https://www.trendyol.com/hesabim/siparislerim adresine göz atabilirsin.",kargo_link_dagitim
+syn:0414,normal,,"Getir: Siparişin teslim edildi, afiyet olsun! Kuryeni puanlamak için: https://getir.com/puanla/GT5521",kargo_link_teslim
+syn:0415,normal,,"Yemeksepeti: Siparişin teslim edildi. Restoranı değerlendirmek için: https://www.yemeksepeti.com/degerlendir/88213",kargo_link_teslim
+syn:0416,normal,,"KAR9920144 takip numarali Amazon gonderiniz dagitima cikmistir. Takip icin: https://t.cargox.com.tr/r/Zp20Kq",kargo_link_dagitim
+syn:0417,normal,,"Yurtici Kargo: 418820177231 numarali gonderiniz bugun teslim edilecektir. Detay: https://www.yurticikargo.com/tr/online-servisler/gonderi-sorgula",kargo_link_dagitim
+syn:0418,normal,,"HepsiJet: Gönderiniz teslim edildi. Teslimat deneyiminizi 1 dakikada değerlendirin: https://www.hepsijet.com/anket/HJ91022",kargo_link_teslim
+syn:0419,normal,,"N11: Siparişiniz teslim edilmiştir. Satıcıyı değerlendirmek için: https://www.n11.com/hesabim/siparislerim",kargo_link_teslim
+syn:0420,normal,,"Trendyol Express: Paketin Kadıköy teslimat noktasına bırakıldı. Teslim kodun 4821. Nokta bilgisi: https://www.trendyolexpress.com/nokta/1182",kargo_link_subede
+syn:0421,normal,,"Aras Kargo: Gönderiniz Aras Kargo Kozyatağı şubesinde. Şube adresi ve çalışma saatleri: https://www.araskargo.com.tr/subeler",kargo_link_subede
+syn:0422,normal,,"Kolay Gelsin: Paketin akıllı dolaba bırakıldı. Dolap kodu 732918, 3 gün içinde teslim alabilirsin. Konum: https://maps.app.goo.gl/Ty81Pq",kargo_link_subede
+syn:0423,normal,,"PTT: Gönderiniz Moda PTT şubesinde sizi bekliyor. Şube bilgisi için: https://www.ptt.gov.tr/subeler",kargo_link_subede
+syn:0424,normal,,"Trendyol: İade kargon depomuza ulaştı, iade tutarın 2-10 iş günü içinde kartına yansıyacak. Detay: https://www.trendyol.com/hesabim/iadelerim",kargo_link_iade
+syn:0425,normal,,"Hepsiburada: İade talebiniz onaylandı. İade kodunuzla en yakın HepsiJet noktasına gidebilirsiniz: https://www.hepsiburada.com/iadelerim",kargo_link_iade
+syn:0426,normal,,"MNG Kargo: Gönderiniz teslim edildi. Teslim alan: KAPICI. Bizi tercih ettiğiniz için teşekkür ederiz. https://www.mngkargo.com.tr",kargo_link_teslim
+syn:0427,normal,,"Amazon.com.tr: Siparişiniz bugün teslim edilecek. Teslimatı canlı izlemek için: https://www.amazon.com.tr/progress-tracker",kargo_link_dagitim
+syn:0428,normal,,"Sendeo: Paketiniz teslim edildi. Hizmetimizi değerlendirmek için kısa anketimize katılabilirsiniz: https://www.sendeo.com.tr/anket",kargo_link_teslim
+syn:0429,normal,,"Migros Sanal Market: Siparişiniz teslim edilmiştir. Alışverişinizi değerlendirmek için: https://www.migros.com.tr/siparislerim",kargo_link_teslim
+syn:0430,normal,,"Çiçeksepeti: Gönderdiğiniz çiçek teslim edildi. Teslimat fotoğrafı için: https://www.ciceksepeti.com/siparislerim",kargo_link_teslim
+syn:0431,normal,,"UPS Türkiye: Gönderiniz teslim edildi. Teslimat ayrıntıları: https://www.ups.com/track?tracknum=1Z9920",kargo_link_teslim
+syn:0432,normal,,"DHL Express: Gönderiniz bugün teslim edilecek. Teslimat seçeneklerini görmek için: https://www.dhl.com/tr-tr/home/takip.html",kargo_link_dagitim
+syn:0433,normal,,"Yurtiçi Kargo: Gönderinizi göndericiden teslim aldık, takip numaranız 418820144102. Takip: https://www.yurticikargo.com",kargo_link_kabul
+syn:0434,normal,,"KAR7713509 takip numaralı Amazon gönderiniz teslim edilmiştir. Teslimatınızı değerlendirmek ister misiniz? https://t.cargox.com.tr/r/Wd71Hc",kargo_link_teslim
+syn:0435,normal,,"A101 Kapıda: Siparişin teslim edildi. Bizi tercih ettiğin için teşekkürler! Değerlendirme: https://www.a101.com.tr/siparislerim",kargo_link_teslim
+syn:0436,normal,,"HepsiJet: Kuryemiz adresinize geldi ancak ulaşamadı. Yeni teslimat günü seçmek için Hepsiburada uygulamasını açabilir ya da https://www.hepsiburada.com/siparislerim adresine girebilirsiniz.",kargo_link_bulunamadi
+syn:0437,normal,,"Trendyol Express: Paketin yarın tekrar dağıtıma çıkacak. Evde olmayacaksan teslimat noktasını değiştirebilirsin: https://www.trendyolexpress.com/teslimat",kargo_link_bulunamadi
+syn:0438,normal,,"PTT Kargo: Gönderiniz yarın 10:00-13:00 arasında teslim edilecektir. Gönderi takip: https://gonderitakip.ptt.gov.tr",kargo_link_dagitim
+syn:0439,normal,,"Kolay Gelsin: Siparişin bugün geliyor! Kuryenin konumunu görmek için: https://www.kolaygelsin.com/canli-takip",kargo_link_dagitim
+syn:0440,normal,,"Aras Kargo: 77120391441853 numaralı gönderiniz teslim edilmiştir. Hizmet kalitemizi değerlendirmek için: https://www.araskargo.com.tr/anket",kargo_link_teslim

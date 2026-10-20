@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-10-20T20:22:31+00:00",
+  "created_at": "2026-10-20T21:18:57+00:00",
   "classes": [
     "normal",
     "reklam",
@@ -33,7 +33,7 @@
         "fraud_recall": 0.7349,
         "fraud_precision": 0.7093,
         "fraud_average_precision": 0.8284,
-        "hard_negative_as_fraud": 0.2861
+        "hard_negative_as_fraud": 0.364
       },
       {
         "config": "1_tr",
@@ -45,7 +45,7 @@
         "fraud_recall": 0.7229,
         "fraud_precision": 0.75,
         "fraud_average_precision": 0.8317,
-        "hard_negative_as_fraud": 0.2709
+        "hard_negative_as_fraud": 0.3506
       },
       {
         "config": "1_tr",
@@ -57,7 +57,7 @@
         "fraud_recall": 0.7108,
         "fraud_precision": 0.7867,
         "fraud_average_precision": 0.8334,
-        "hard_negative_as_fraud": 0.2532
+        "hard_negative_as_fraud": 0.3303
       },
       {
         "config": "2_tr_ceviri",
@@ -69,7 +69,7 @@
         "fraud_recall": 0.7831,
         "fraud_precision": 0.3939,
         "fraud_average_precision": 0.6914,
-        "hard_negative_as_fraud": 0.5241
+        "hard_negative_as_fraud": 0.5775
       },
       {
         "config": "2_tr_ceviri",
@@ -81,7 +81,7 @@
         "fraud_recall": 0.8072,
         "fraud_precision": 0.4497,
         "fraud_average_precision": 0.7123,
-        "hard_negative_as_fraud": 0.4684
+        "hard_negative_as_fraud": 0.5281
       },
       {
         "config": "2_tr_ceviri",
@@ -93,79 +93,79 @@
         "fraud_recall": 0.8072,
         "fraud_precision": 0.5234,
         "fraud_average_precision": 0.7197,
-        "hard_negative_as_fraud": 0.4354
+        "hard_negative_as_fraud": 0.4989
       },
       {
         "config": "3_tr_ceviri_sentetik",
         "C": 1.0,
-        "macro_f1": 0.8288,
-        "f1_normal": 0.9867,
-        "f1_reklam": 0.9774,
-        "f1_dolandiricilik": 0.5224,
-        "fraud_recall": 0.7711,
-        "fraud_precision": 0.3951,
-        "fraud_average_precision": 0.6641,
-        "hard_negative_as_fraud": 0.2557
+        "macro_f1": 0.8282,
+        "f1_normal": 0.9861,
+        "f1_reklam": 0.9778,
+        "f1_dolandiricilik": 0.5207,
+        "fraud_recall": 0.759,
+        "fraud_precision": 0.3962,
+        "fraud_average_precision": 0.6642,
+        "hard_negative_as_fraud": 0.3101
       },
       {
         "config": "3_tr_ceviri_sentetik",
         "C": 3.0,
-        "macro_f1": 0.8467,
-        "f1_normal": 0.9882,
-        "f1_reklam": 0.9818,
-        "f1_dolandiricilik": 0.5701,
+        "macro_f1": 0.8486,
+        "f1_normal": 0.9878,
+        "f1_reklam": 0.9826,
+        "f1_dolandiricilik": 0.5755,
         "fraud_recall": 0.7349,
-        "fraud_precision": 0.4656,
-        "fraud_average_precision": 0.6831,
-        "hard_negative_as_fraud": 0.1722
+        "fraud_precision": 0.4729,
+        "fraud_average_precision": 0.6724,
+        "hard_negative_as_fraud": 0.1865
       },
       {
         "config": "3_tr_ceviri_sentetik",
         "C": 10.0,
-        "macro_f1": 0.8676,
-        "f1_normal": 0.9888,
-        "f1_reklam": 0.9851,
-        "f1_dolandiricilik": 0.6289,
-        "fraud_recall": 0.7349,
-        "fraud_precision": 0.5495,
-        "fraud_average_precision": 0.6785,
-        "hard_negative_as_fraud": 0.0962
-      },
-      {
-        "config": "4_tr_sentetik",
-        "C": 1.0,
-        "macro_f1": 0.9021,
-        "f1_normal": 0.9871,
-        "f1_reklam": 0.9854,
-        "f1_dolandiricilik": 0.7337,
+        "macro_f1": 0.8631,
+        "f1_normal": 0.988,
+        "f1_reklam": 0.9845,
+        "f1_dolandiricilik": 0.6169,
         "fraud_recall": 0.747,
-        "fraud_precision": 0.7209,
-        "fraud_average_precision": 0.8063,
-        "hard_negative_as_fraud": 0.0886
+        "fraud_precision": 0.5254,
+        "fraud_average_precision": 0.6652,
+        "hard_negative_as_fraud": 0.1034
+      },
+      {
+        "config": "4_tr_sentetik",
+        "C": 1.0,
+        "macro_f1": 0.8963,
+        "f1_normal": 0.9866,
+        "f1_reklam": 0.9847,
+        "f1_dolandiricilik": 0.7176,
+        "fraud_recall": 0.7349,
+        "fraud_precision": 0.7011,
+        "fraud_average_precision": 0.8064,
+        "hard_negative_as_fraud": 0.1034
       },
       {
         "config": "4_tr_sentetik",
         "C": 3.0,
-        "macro_f1": 0.9107,
-        "f1_normal": 0.9894,
-        "f1_reklam": 0.9881,
-        "f1_dolandiricilik": 0.7547,
-        "fraud_recall": 0.7229,
-        "fraud_precision": 0.7895,
-        "fraud_average_precision": 0.8138,
-        "hard_negative_as_fraud": 0.0304
+        "macro_f1": 0.9063,
+        "f1_normal": 0.9889,
+        "f1_reklam": 0.9879,
+        "f1_dolandiricilik": 0.7421,
+        "fraud_recall": 0.7108,
+        "fraud_precision": 0.7763,
+        "fraud_average_precision": 0.814,
+        "hard_negative_as_fraud": 0.0427
       },
       {
         "config": "4_tr_sentetik",
         "C": 10.0,
-        "macro_f1": 0.9075,
-        "f1_normal": 0.989,
-        "f1_reklam": 0.9885,
-        "f1_dolandiricilik": 0.7451,
-        "fraud_recall": 0.6867,
-        "fraud_precision": 0.8143,
-        "fraud_average_precision": 0.8145,
-        "hard_negative_as_fraud": 0.0253
+        "macro_f1": 0.9067,
+        "f1_normal": 0.9887,
+        "f1_reklam": 0.9879,
+        "f1_dolandiricilik": 0.7436,
+        "fraud_recall": 0.6988,
+        "fraud_precision": 0.7945,
+        "fraud_average_precision": 0.8141,
+        "hard_negative_as_fraud": 0.0315
       }
     ]
   },
@@ -271,23 +271,23 @@
       "fraud_recall": 1.0,
       "fraud_caught": "12/12",
       "false_alarm_normal": 0.0027,
-      "false_alarm_reklam": 0.0104,
-      "false_alarm_normal_reklam": 0.0066
+      "false_alarm_reklam": 0.0078,
+      "false_alarm_normal_reklam": 0.0053
     },
     "sari_veya_kirmizi": {
       "threshold": 0.2,
       "fraud_recall": 1.0,
       "fraud_caught": "12/12",
-      "false_alarm_normal": 0.0081,
-      "false_alarm_reklam": 0.026,
-      "false_alarm_normal_reklam": 0.0172
+      "false_alarm_normal": 0.0108,
+      "false_alarm_reklam": 0.0286,
+      "false_alarm_normal_reklam": 0.0199
     }
   },
   "hard_negative_check": {
-    "rows": 79,
-    "kirmizi": 0.038,
-    "sari_veya_kirmizi": 0.0633,
-    "argmax_normal": 0.9241,
+    "rows": 89,
+    "kirmizi": 0.0562,
+    "sari_veya_kirmizi": 0.1124,
+    "argmax_normal": 0.9213,
     "note": "eğitime girmeyen sentetik normal mesajlar (yapay zekâ ile yazılmış)"
   },
   "test_fraud_rows_by_source": {
@@ -315,7 +315,7 @@
       "false_alarm_reklam": 1.0,
       "false_alarm_normal_reklam": 0.5179
     },
-    "hard_negative_kirmizi": 0.2025,
-    "hard_negative_sari_veya_kirmizi": 0.557
+    "hard_negative_kirmizi": 0.2697,
+    "hard_negative_sari_veya_kirmizi": 0.6067
   }
 }
