@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+syn:0251,normal,,"Emniyet Genel Müdürlüğü: 34 ABC 123 plakalı aracınıza 13.03.2024 tarihinde hız ihlali nedeniyle trafik cezası yazılmıştır. Ayrıntılar e-Devlet Kapısı'nda.",kamu_trafik
+syn:0252,normal,,"e-Devlet: Askerlik durum belgeniz güncellenmiştir. Belgenizi turkiye.gov.tr üzerinden görüntüleyebilirsiniz.",kamu_edevlet
+syn:0253,normal,,"ÖSYM: 2024-ALES başvurunuz alınmıştır. Sınav giriş belgeniz sınavdan bir hafta önce ais.osym.gov.tr adresinde yayımlanacaktır.",kamu_sinav
+syn:0254,normal,,"GİB: Adınıza 2.140,00 TL vergi borcu bulunmaktadır. Borcunuzu dijital.gib.gov.tr, banka şubeleri veya vergi dairesinden ödeyebilirsiniz.",kamu_vergi
+syn:0255,normal,,"Noter: Vekaletname işleminiz için 21.03.2024 saat 11:00'de Kadıköy 12. Noterliği'nde randevunuz bulunmaktadır.",kamu_randevu
+syn:0256,normal,,"YSK: Seçmen kaydınız Merkez Mahallesi 1024 numaralı sandıktadır. Sandık yerinizi ysk.gov.tr adresinden sorgulayabilirsiniz.",kamu_secim
+syn:0257,normal,,"MEB: Öğrencinizin ikinci dönem karnesi e-Okul Veli Bilgilendirme Sistemi'nde görüntülenebilir.",okul
+syn:0258,normal,,"Sosyal Güvenlik Kurumu: Emeklilik başvurunuz sonuçlanmıştır. Tahsis yazınızı e-Devlet üzerinden görüntüleyebilirsiniz.",kamu_sgk
+syn:0259,normal,,"Aile ve Sosyal Hizmetler Bakanlığı: Evde bakım maaşı ödemeniz bu ay hesabınıza yatırılmıştır.",kamu_yardim
+syn:0260,normal,,"Kızılay: Bağışınız için teşekkür ederiz. Kan bağışınızın tahlil sonuçlarını e-Nabız'dan görebilirsiniz.",saglik_bilgi
+syn:0261,normal,,"İl Sağlık Müdürlüğü: Mahallenizde 23 Mart'ta ücretsiz göz tarama yapılacaktır. Yer: Muhtarlık binası.",saglik_bilgi
+syn:0262,normal,,"MHRS: Randevunuz başarıyla iptal edilmiştir. Yeni randevu almak için mhrs.gov.tr veya ALO 182.",saglik_randevu
+syn:0263,normal,,"MHRS: Sayın FATMA DEMİR, 25.03.2024 08:50 tarihinde Ege Üniversitesi Hastanesi Ortopedi polikliniği randevunuz bulunmaktadır.",saglik_randevu
+syn:0264,normal,,"e-Nabız: Hekiminiz tarafından adınıza yeni bir e-reçete yazılmıştır. Reçete no: 3K8L2P",saglik_recete
+syn:0265,normal,,"Sağlık Bakanlığı: 112 Acil Çağrı Merkezi'ni yalnızca acil durumlarda arayınız. Sağlık danışmanlığı için ALO 184.",saglik_bilgi
+syn:0266,normal,,"Özel Florence Nightingale: MR çekiminiz için yarın saat 08:15'te aç karnına hastanemizde olmanızı rica ederiz.",saglik_randevu
+syn:0267,normal,,"Laboratuvar: Kan tahlili sonuçlarınız çıkmıştır. Sonuçlarınızı şifrenizle laboratuvarımızın internet sitesinden görebilirsiniz.",saglik_sonuc
+syn:0268,normal,,"Eczane Hayat: Bugün nöbetçi eczanemiz. Adres: Atatürk Cad. No: 41. Geçmiş olsun.",saglik_eczane
+syn:0269,normal,,"Diyaliz Merkezi: Pazartesi seansınız saat 07:30'a alınmıştır. Servis aracı 06:45'te kapınızda olacaktır.",saglik_randevu
+syn:0270,normal,,"Fizik Tedavi Merkezi: 10 seanslık tedavinizin 4. seansı yarın 14:00'tedir.",saglik_randevu
+syn:0271,normal,,"Sağlık Bakanlığı: Kronik hastalığı olan 65 yaş üstü vatandaşlarımız ilaçlarını aile hekimine gitmeden eczaneden alabilir.",saglik_bilgi
+syn:0272,normal,,"İstanbul Büyükşehir Belediyesi: İstanbulkart'ınıza 100 TL yükleme yapılmıştır.",belediye_bilgi
+syn:0273,normal,,"Konya Büyükşehir Belediyesi: Emlak vergisi 1. taksit son ödeme tarihi 31 Mayıs'tır. Ödeme: konya.bel.tr",belediye_fatura
+syn:0274,normal,,"Kadıköy Belediyesi: Sokağınızda yarın 08:00-16:00 arası asfalt çalışması yapılacaktır. Araçlarınızı park etmemenizi rica ederiz.",belediye_bilgi
+syn:0275,normal,,"Çankaya Belediyesi: Evde hasta bakım hizmeti başvurunuz kabul edilmiştir. Ekibimiz sizi arayarak ziyaret günü belirleyecektir.",belediye_bilgi
+syn:0276,normal,,"ASKİ: Mahallenizdeki su kesintisi giderilmiştir. İlk akan suyu bir süre akıtmanızı öneririz.",belediye_kesinti
+syn:0277,normal,,"Toroslar EDAŞ: Elektrik kesintisi sona ermiştir. Anlayışınız için teşekkür ederiz.",belediye_kesinti
+syn:0278,normal,,"Enerjisa: Elektrik faturanız 856,20 TL. Son ödeme tarihi 22.03.2024. Ödeme kanalları: enerjisa.com.tr",belediye_fatura
+syn:0279,normal,,"AFAD: Sel uyarısı! Dere yataklarından uzak durunuz, alt geçitlerde araç kullanmayınız.",kamu_afad
+syn:0280,normal,,"İçişleri Bakanlığı: Kurban Bayramı tatili süresince trafik denetimleri artırılacaktır. Hız sınırlarına uyunuz. İyi bayramlar.",kamu_uyari
+syn:0281,normal,,"Meteoroloji: Yarın Ankara'da kar yağışı ve buzlanma bekleniyor. Yaşlı vatandaşlarımızın dışarı çıkmamaları önerilir.",kamu_uyari
+syn:0282,normal,,"PTT: e-Devlet şifreniz hazırlanmıştır. Kimliğinizle PTT şubesinden şahsen teslim alabilirsiniz.",kamu_edevlet
+syn:0283,normal,,"Tapu Kadastro: Taşınmazınız üzerinde işlem yapılmıştır. Ayrıntıları e-Devlet Kapısı Tapu Bilgileri Sorgulama ekranından görebilirsiniz.",kamu_edevlet
+syn:0284,normal,,"KGM: HGS etiketinizden 3 geçiş ücreti kesilmiştir. Toplam: 147,00 TL. Ayrıntılar hgs.gov.tr",kamu_hgs
+syn:0285,normal,,"TÜVTÜRK: Araç muayene randevunuz 18.03.2024 saat 09:20, Kartal istasyonu. Ruhsat ve trafik sigortanızı yanınızda getiriniz.",kamu_arac
+syn:0286,normal,,"Göç İdaresi: İkamet izni başvurunuz değerlendirilmektedir. Sonuç e-ikamet.goc.gov.tr adresinden takip edilebilir.",kamu_edevlet
+syn:0287,normal,,"SGK: İşveren tarafından 2024/02 dönemi için 30 gün sigorta bildiriminiz yapılmıştır.",kamu_sgk
+syn:0288,normal,,"İŞKUR: İşsizlik ödeneğiniz 3. ay ödemesi 12.050,00 TL olarak hesabınıza yatırılacaktır.",kamu_iskur
+syn:0289,normal,,"UYAP: Arabuluculuk görüşmeniz 27.03.2024 saat 14:00'te Adliye Arabuluculuk Bürosu'nda yapılacaktır.",kamu_yargi
+syn:0290,normal,,"Cumhuriyet Başsavcılığı: İfade vermek üzere 28.03.2024 tarihinde saat 10:00'da başsavcılığa gelmeniz rica olunur. Tebligat e-Devlet'te.",kamu_yargi
+syn:0291,normal,,"e-Devlet: Adınıza yeni bir e-imza başvurusu yapılmıştır. Bu başvuru size ait değilse BTK'ya bildiriniz.",kamu_edevlet
+syn:0292,normal,,"Nüfus Müdürlüğü: Yeni kimlik kartınız hazırdır. Randevu almadan mesai saatlerinde teslim alabilirsiniz.",kamu_randevu
+syn:0293,normal,,"Vakıflar Genel Müdürlüğü: Aylık bağlama başvurunuz onaylanmıştır. Ödemeler her ayın 10'unda PTT'den yapılacaktır.",kamu_yardim
+syn:0294,normal,,"Gençlik ve Spor Bakanlığı: KYK burs başvurunuz sonuçlanmıştır. Sonucu e-Devlet'ten öğrenebilirsiniz.",kamu_edevlet
+syn:0295,normal,,"Toplum Sağlığı Merkezi: Çocuğunuzun 18. ay aşısı için 20.03.2024 tarihinde aile sağlığı merkezine getirmeniz gerekmektedir.",saglik_randevu
+syn:0296,normal,,"Hastane: Ameliyatınız 26.03.2024 sabah 08:00'de planlanmıştır. Bir gece önce saat 24:00'ten sonra bir şey yiyip içmeyiniz.",saglik_randevu
+syn:0297,normal,,"Ağız ve Diş Sağlığı Merkezi: Protez ölçünüz için 2. randevunuz 29.03.2024 saat 13:00'tedir.",saglik_randevu
+syn:0298,normal,,"Sağlık Bakanlığı: Kanser taraması için 40-69 yaş arası kadın vatandaşlarımız KETEM'lere ücretsiz başvurabilir.",saglik_bilgi
+syn:0299,normal,,"Eczane: Sipariş verdiğiniz ilacınız yarın öğleden sonra eczanemize gelecektir.",saglik_eczane
+syn:0300,normal,,"Sağlık Bakanlığı: Sıcak hava uyarısı! Gün içinde bol su için, 11:00-16:00 arası güneşe çıkmayın.",saglik_bilgi

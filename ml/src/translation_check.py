@@ -60,7 +60,9 @@ TURKISH_WORDS = re.compile(
     r"sayın|sayin|değerli|degerli|kazandınız|kazandiniz|gönderiniz|gonderiniz|kargonuz|hemen|arayin|arayiniz|"
     r"kilitlendi|kartiniz|kartınız|banka|adresini|ziyaret|edin|olarak|icinde|uzere|sonra|gun|saat|mesaj|konu|"
     r"gonderen|teslim|odeme|ödeme|bilgi|tebrikler|ucretsiz|kazanin|basvurun|yanitlayin|"
-    r"hesabiniza|yapildi|kodu|kodunuz|sifre|sifresi|dogrulama|kimseyle|paylasmayiniz|islem|tutari|musteri|istemez)\b",
+    r"hesabiniza|yapildi|kodu|kodunuz|sifre|sifresi|dogrulama|kimseyle|paylasmayiniz|islem|tutari|musteri|istemez|"
+    # Yaşlıların karaktersiz gündelik yazımı ("anne ben yarin gelcem").
+    r"ben|sen|anne|baba|yarin|bak|aldim|merak|gelcem|yardim)\b",
     re.IGNORECASE,
 )
 # Rakam dizileri: 7+ haneli olanlar telefon sayılır ve TR biçiminde olmalı.

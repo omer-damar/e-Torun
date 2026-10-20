@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+syn:0351,normal,,"Anne kirayı ben yatırdım bu ay, sen market parasını ayır yeter. Akşam uğrarım",kisisel_aile_para
+syn:0352,normal,,"Baba bankadan aradılar dedin ya, ben şubeye sordum, gerçekten kartın yenileniyormuş. Postacı getirecek",kisisel_aile_para
+syn:0353,normal,,"Abla IBAN'ımı atıyorum, düğün takısı için topladığımız parayı buraya yollarsın: TR00 0001 2009 4520 0058 0000 01 Selin Yıldız",kisisel_aile_para
+syn:0354,normal,,"Oğlum sana 1000 lira gönderdim, okul kitaplarını al, üstü kalırsa harçlık yap",kisisel_aile_para
+syn:0355,normal,,"Kızım emekli maaşım yattı mı bakabilir misin, ben uygulamayı açamadım",kisisel_aile_para
+syn:0356,normal,,"ANNE BEN YARIN SABAH 9DA GELIP SENI DOKTORA GOTURECEGIM HAZIR OL",kisisel_aile
+syn:0357,normal,,"dayi ben cumartesi koye gelcem tarla isine yardim ederim merak etme",kisisel_aile
+syn:0358,normal,,"teyze ilaclarin bitmis eczaneden aldim kapiya biraktim",kisisel_aile
+syn:0359,normal,,"Annecim telefonuna şifre kodu gelirse sakın kimseye okuma, ben yanına gelince birlikte bakarız",kisisel_aile
+syn:0360,normal,,"Baba e-Devlet şifreni PTT'den yeniledik ya, yeni şifreyi buzdolabının üstündeki deftere yazdım",kisisel_aile
+syn:0361,normal,,"Hayırlı olsun komşu, torununuz olmuş duydum. Allah analı babalı büyütsün",kisisel_arkadas
+syn:0362,normal,,"Nermin abla yarın Kur'an kursu iptalmiş, hocanım hastalanmış",kisisel_arkadas
+syn:0363,normal,,"Sevgili dostum emekliliğin kutlu olsun, nice sağlıklı yıllara",kisisel_arkadas
+syn:0364,normal,,"Hüseyin akşam maç var bizde izleyelim mi, çay demliyorum",kisisel_arkadas
+syn:0365,normal,,"Gelin hanım yarın börek yapıyorum gelirken yoğurt alır mısın",kisisel_aile
+syn:0366,normal,,"Anne kargon geldi kapıcıya bırakmışlar, akşam alırım",kisisel_aile
+syn:0367,normal,,"Baba hastaneden aradılar, tahlil sonuçların normal çıkmış. Doktor 3 ay sonra kontrole çağırdı",kisisel_aile
+syn:0368,normal,,"Kardeşim acil değil ama müsait olunca beni arar mısın, annemin raporu hakkında konuşalım",kisisel_aile
+syn:0369,normal,,"Annem hastanede yatıyor, ziyaret saati 14-16 arası. 5. kat 512 numaralı oda",kisisel_aile
+syn:0370,normal,,"Tebrikler kuzen, sınavı kazanmışsın! Annen çok sevinmiş, hepimiz gurur duyduk",kisisel_aile
+syn:0371,normal,,"Yarın sabah erkenden yola çıkıyoruz, kapıyı kilitlemeyi unutma anne. Varınca ararız",kisisel_aile
+syn:0372,normal,,"Dede bu linkte eski Ankara fotoğrafları var çok hoşuna gider https://www.instagram.com/p/C4kLm2xN8eQ",kisisel_aile_link
+syn:0373,normal,,"Anne istediğin tansiyon aleti bu, siparişini verdim yarın gelir https://www.trendyol.com/omron/m2-p-48213",kisisel_aile_link
+syn:0374,normal,,"Abi düğün fotoğraflarını yükledim buradan indirebilirsin https://drive.google.com/drive/folders/1aXk9mQwP",kisisel_aile_link
+syn:0375,normal,,"Teyzecim anlattığım tarif bu, sesli anlatıyor dinleyerek yaparsın https://www.youtube.com/watch?v=Zq8Lm2pTk4w",kisisel_aile_link
+syn:0376,normal,,"Okul servisi: Hocam bugün Mert'i 15 dakika geç bırakacağım, trafikteyiz",kisisel_arkadas
+syn:0377,normal,,"Baba otobüs kartına 200 lira yükledim, istersen aylık abonman yapalım",kisisel_aile_para
+syn:0378,normal,,"Eşim bugün maaşlar yattı, faturaları öderiz akşam beraber bakalım",kisisel_aile_para
+syn:0379,normal,,"Anne doğalgaz faturası 1.200 gelmiş, ben ödedim dekontu çekmeceye koydum",kisisel_aile_para
+syn:0380,normal,,"Kızım kart şifremi unuttum, bankaya gidip yeniletiyorum yarın, sen merak etme",kisisel_aile_para
+syn:0381,normal,,"Hacı amca camiye yardım için toplanan parayı derneğin hesabına yatırdık, dekont bende",kisisel_dernek
+syn:0382,normal,,"Muhtar Bey yaşlılara odun yardımı listesine annemi de yazdırabilir miyiz?",kisisel_arkadas
+syn:0383,normal,,"Evladım sağ ol, gönderdiğin para ulaştı. Allah razı olsun",kisisel_aile_para
+syn:0384,normal,,"Anne bu hafta sonu gelemiyorum, nöbetim var. Haftaya mutlaka gelirim",kisisel_aile
+syn:0385,normal,,"Selam Cemile hanım, pazartesi günü toplantı var mı biliyor musunuz? Emekliler derneği",kisisel_dernek
+syn:0386,normal,,"Annecim sesli mesajını dinledim, yarın pazara seninle ben giderim",kisisel_aile
+syn:0387,normal,,"ogulum telefonun sesi gitmis ne yapcam bilmiyom gel bi bak",kisisel_aile
+syn:0388,normal,,"Kardeşim yeğenimin doğum günü cumartesi, hediye olarak ne alalım?",kisisel_aile
+syn:0389,normal,,"Babacığım bayram namazından sonra size geliyoruz, kahvaltıyı birlikte yaparız",kisisel_bayram
+syn:0390,normal,,"Geçmiş olsun Ayten teyze, ameliyatın iyi geçtiğini duyduk. Bir ihtiyacın olursa ara",kisisel_arkadas
+syn:0391,normal,,"Yarın hava çok soğuk olacakmış anne, kalın giyin, ilaçlarını da almayı unutma",kisisel_aile
+syn:0392,normal,,"Abi otomobilin sigortası yarın bitiyormuş, acenteye söyledim yeniliyorlar",kisisel_aile
+syn:0393,normal,,"Babaanne fotoğrafını telefonuna attım, galeriden bakabilirsin. Çok güzel çıkmışsın",kisisel_aile
+syn:0394,normal,,"Sevgili komşum yarın gün yapıyoruz, saat 14'te bize buyurun",kisisel_arkadas
+syn:0395,normal,,"Anne yarın elektrikler kesilecekmiş 10-15 arası, buzdolabını fazla açma",kisisel_aile
+syn:0396,normal,,"Oğlum bankadan biri aradı kart numaramı istedi, vermedim kapattım. İyi yaptım değil mi?",kisisel_aile
+syn:0397,normal,,"Hocam pazartesi günkü randevumu perşembeye alabilir miyiz, kontrolde olacağım",kisisel_arkadas
+syn:0398,normal,,"Baba konumunu paylaşır mısın, seni almaya geliyorum hastanenin hangi kapısındasın?",kisisel_aile
+syn:0399,normal,,"Anneciğim evlilik yıl dönümünüz kutlu olsun, nice mutlu yıllara. Sizi çok seviyoruz",kisisel_aile
+syn:0400,normal,,"Kardeşim e-Devlet'ten annemin emeklilik belgesini indirdim, sana mail attım",kisisel_aile

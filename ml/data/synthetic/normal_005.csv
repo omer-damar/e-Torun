@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+syn:0201,normal,,"ZIRAAT EMEKLI: 2024 Mart ayi emekli maasiniz 22.604,00 TL Bankkart'iniza yatirilmistir. Ziraat Mobil ile bakiyenizi goruntuleyebilirsiniz.",banka_maas
+syn:0202,normal,,"Anadolu Hayat Emeklilik: BES sözleşmenize 1.500,00 TL katkı payı tahsil edilmiştir. Devlet katkısı: 450,00 TL",finans_bes
+syn:0203,normal,,"Allianz Sigorta: 34 KLM 482 plakalı aracınızın kasko poliçesi 20.03.2024 tarihinde sona erecektir. Yenileme için acentenizle görüşebilirsiniz.",finans_sigorta
+syn:0204,normal,,"Axa Sigorta: Hasar dosyanız açılmıştır. Dosya no: 2024-118734. Eksper ataması yapıldığında bilgilendirileceksiniz.",finans_sigorta
+syn:0205,normal,,"İş Yatırım: 13.03.2024 tarihli THYAO alış emriniz gerçekleşmiştir. Adet: 20, fiyat: 312,50 TL.",finans_yatirim
+syn:0206,normal,,"Garanti BBVA Yatırım: Hesabınıza 3.418,75 TL temettü ödemesi yapılmıştır.",finans_yatirim
+syn:0207,normal,,"Akbank: Bireysel Emeklilik hesabınızda fon dağılımı değişikliği talebiniz alınmıştır.",finans_bes
+syn:0208,normal,,"YAPI KREDI: 18.000,00 TL TUTARINDAKI IHTIYAC KREDINIZ HESABINIZA AKTARILMISTIR. ILK TAKSIT TARIHI 15.04.2024.",banka_kredi
+syn:0209,normal,,"Halkbank: Konut kredisi başvurunuz için ekspertiz randevusu 19.03.2024 saat 14:00 olarak belirlenmiştir.",banka_kredi
+syn:0210,normal,,"VakıfBank: Kredi kartınızın yıllık üyelik ücreti olan 650,00 TL ekstrenize yansıtılmıştır. İade talebi için VakıfBank Mobil'i kullanabilirsiniz.",banka_ekstre
+syn:0211,normal,,"Papara: Bu ay Papara Card ile yaptığın alışverişlerden 64,20 TL nakit iade kazandın.",banka_bildirim
+syn:0212,normal,,"ININAL: Kartina 200,00 TL yukleme yapildi. Guncel bakiye: 236,40 TL",banka_bakiye
+syn:0213,normal,,"Denizbank: Hesabınızdan ISKI fatura ödemesi 186,30 TL olarak gerçekleşmiştir.",banka_fatura
+syn:0214,normal,,"Akbank: 1.000,00 TL'lik POS satışınız hesabınıza aktarılmıştır. İşyeri no: 22048",finans_pos
+syn:0215,normal,,"QNB: Hesap işletim ücreti olarak 45,00 TL tahsil edilmiştir.",banka_ekstre
+syn:0216,normal,,"İş Bankası: 05.04.2024 tarihli 4.000,00 TL tutarındaki düzenli EFT talimatınız başarıyla oluşturuldu.",banka_talimat
+syn:0217,normal,,"Ziraat Bankası: Hesabınıza SGK tarafından 3.725,40 TL ödeme yapılmıştır. Açıklama: Geçici iş göremezlik ödeneği",banka_maas
+syn:0218,normal,,"Garanti BBVA: Bugün saat 02:00-04:00 arasında sistem çalışması nedeniyle kartlı işlemlerde kısa süreli yavaşlık yaşanabilir.",banka_bildirim
+syn:0219,normal,,"Enpara.com: Kartınla yurt dışından yapılan 45 dolar tutarındaki alışveriş için 1.462,95 TL ekstrene yansıyacak.",banka_harcama
+syn:0220,normal,,"TEB: CEPTETEB şifreniz yarın sona erecektir. CEPTETEB uygulamasına girerek yeni şifrenizi belirleyebilirsiniz.",banka_bildirim
+syn:0221,normal,,"Yapı Kredi: Kartınızla yapılan 2.400,00 TL'lik alışveriş 6 taksite bölünmüştür. Aylık taksit: 400,00 TL",banka_harcama
+syn:0222,normal,,"Kuveyt Türk: Kâr payı hesabınızın vadesi 22.03.2024 tarihinde dolacaktır.",banka_bildirim
+syn:0223,normal,,"Halkbank: Halkbank Mobil'e yeni cihaz tanımlaması yapılmıştır (Samsung). Bu işlemi siz yapmadıysanız şubenize başvurunuz.",banka_bildirim
+syn:0224,normal,,"Ziraat Bankası: Çek tahsilatı için verdiğiniz 25.000,00 TL tutarındaki çek hesabınıza geçmiştir.",banka_bildirim
+syn:0225,normal,,"ING: Kartını internet alışverişine kapattın. Tekrar açmak için ING Mobil > Kartlarım menüsünü kullanabilirsin.",banka_bildirim
+syn:0226,normal,,"Akbank: Kredi kartınızın son kullanma tarihi yaklaşmaktadır. Yenilenen kartınız 7 iş günü içinde adresinize ulaştırılacaktır.",banka_bildirim
+syn:0227,normal,,"Denizbank: Emekli maaşınızı bankamıza taşıdığınız için 9.000,00 TL promosyon ödemesi hesabınıza yatırılmıştır.",banka_maas
+syn:0228,normal,,"VAKIFBANK: Hesabiniza KIRA aciklamali 8.500,00 TL havale gelmistir. Gonderen: HASAN TURAN",banka_havale
+syn:0229,normal,,"QNB: Hesap özetiniz hazırlandı. 01.03-31.03 dönemine ait hesap özetinizi QNB Mobil'den indirebilirsiniz.",banka_ekstre
+syn:0230,normal,,"Garanti BBVA: Kartınıza 3.000,00 TL geçici limit artışı tanımlanmıştır. Geçici limit 30 gün geçerlidir.",banka_bildirim
+syn:0231,normal,,"Türkiye Sigorta: Trafik sigortası poliçeniz düzenlenmiştir. Poliçe tutarı: 4.820,00 TL. Poliçenizi e-Devlet'ten de görüntüleyebilirsiniz.",finans_sigorta
+syn:0232,normal,,"Anadolu Sigorta: Konut sigortası poliçeniz otomatik olarak yenilenmiştir. Yeni prim: 1.240,00 TL",finans_sigorta
+syn:0233,normal,,"Ziraat Bankası: Altın hesabınızdan 5 gram altın satışı yapılmıştır. Hesabınıza geçen tutar: 12.975,00 TL",finans_yatirim
+syn:0234,normal,,"Midas: Hesabına 2.000,00 TL para yatırıldı. Yatırım yapmaya hazırsın.",finans_yatirim
+syn:0235,normal,,"İş Bankası: Döviz hesabınızda 100,00 Euro karşılığı 3.512,00 TL'lik bozdurma işlemi gerçekleşti.",finans_yatirim
+syn:0236,normal,,"Yapı Kredi: Otomatik ödeme talimatınızla İGDAŞ doğalgaz faturası 1.012,40 TL ödenmiştir.",banka_fatura
+syn:0237,normal,,"HALKBANK: 4419 ILE BITEN KARTINIZLA BIM 412,80 TL HARCAMA YAPILMISTIR. KULLANILABILIR LIMIT 8.120,00 TL",banka_harcama
+syn:0238,normal,,"Akbank: Hesabınıza Akbank'tan 15.000,00 TL ihtiyaç kredisi kullandırılmıştır. Faiz oranı aylık %3,49.",banka_kredi
+syn:0239,normal,,"Enpara.com: Otomatik birikim talimatınla bu ay 1.000,00 TL Birikim Hesabı'na aktarıldı.",banka_talimat
+syn:0240,normal,,"Kuveyt Türk: Şubemizde vereceğiniz vekaletname işlemi için noter onaylı belge getirmeniz gerekmektedir.",banka_bildirim
+syn:0241,normal,,"Garanti BBVA: Kartınızın PIN'i 3 kez hatalı girildiği için ATM işlemlerine kapatılmıştır. Garanti BBVA Mobil'den yeni PIN belirleyebilirsiniz.",banka_bildirim
+syn:0242,normal,,"Ziraat Bankası: 30.03.2024 tarihinde vadesi dolan 3.150,00 TL tutarındaki kredi taksitiniz için hesabınızda yeterli bakiye bulundurunuz.",banka_kredi
+syn:0243,normal,,"DenizBank: Bonus Flaş kartınızın limiti 15.000,00 TL'den 20.000,00 TL'ye yükseltilmiştir. İstemiyorsanız MobilDeniz'den eski limitinize dönebilirsiniz.",banka_bildirim
+syn:0244,normal,,"VakıfBank: Vergi borcunuz olan 1.340,00 TL VakıfBank Mobil üzerinden ödenmiştir. Dekont: VakıfBank Mobil > Hesap Hareketleri",banka_fatura
+syn:0245,normal,,"QNB: 5.000,00 TL tutarındaki para transferi alıcı hesabına ulaşmıştır.",banka_havale
+syn:0246,normal,,"Papara: Arkadaşın Zeynep D. sana 120,00 TL istek gönderdi. Not: Sinema bileti",banka_havale
+syn:0247,normal,,"TEB: Ödeme günü hatırlatması: Kredi kartı borcunuz 2.318,60 TL, son ödeme tarihi 26.03.2024.",banka_hatirlatma
+syn:0248,normal,,"İş Bankası: Emekli maaşınız ile birlikte 3.000,00 TL bayram ikramiyesi hesabınıza yatırılmıştır.",banka_maas
+syn:0249,normal,,"Akbank: Kartınızla bugün yapılan 249,90 TL tutarındaki NETFLIX işlemi abonelik ödemesidir.",banka_harcama
+syn:0250,normal,,"Halkbank: Şubemizde açtığınız vadesiz hesabınız aktif hale gelmiştir. Halkbank Mobil şifrenizi ATM'lerimizden alabilirsiniz.",banka_bildirim

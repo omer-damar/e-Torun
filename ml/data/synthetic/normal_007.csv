@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+syn:0301,normal,,"THY: TK2134 sefer sayılı İstanbul-Trabzon uçuşunuz için online check-in açılmıştır. Biniş kartınızı thy.com veya THY uygulamasından alabilirsiniz.",ulasim_ucak
+syn:0302,normal,,"Pegasus: PC2048 sefer sayılı uçuşunuz 40 dakika rötarlıdır. Yeni kalkış saati 18:25. Anlayışınız için teşekkür ederiz.",ulasim_ucak
+syn:0303,normal,,"AJet: Rezervasyon kodunuz QX4T2M. Ankara-İzmir uçuşunuz 22.03.2024 09:10'da. İyi yolculuklar dileriz.",ulasim_ucak
+syn:0304,normal,,"Metro Turizm: 22 Mart 23:30 Ankara-Samsun seferi için 14 numaralı koltuk biletiniz onaylanmıştır. PNR: MT88213",ulasim_otobus
+syn:0305,normal,,"Kamil Koç: Otobüsünüz Esenler Otogarı 27 numaralı perondan 10 dakika içinde hareket edecektir.",ulasim_otobus
+syn:0306,normal,,"TCDD Taşımacılık: Yüksek Hızlı Tren biletiniz: Ankara-Konya 15.03.2024 07:40, vagon 3 koltuk 12D. İyi yolculuklar.",ulasim_tren
+syn:0307,normal,,"İDO: Yenikapı-Bursa seferiniz hava muhalefeti nedeniyle iptal edilmiştir. Bilet ücretiniz iade edilecektir.",ulasim_deniz
+syn:0308,normal,,"BiTaksi: Taksiniz yolda. 34 T 4812 plakalı araç 3 dakika içinde sizi alacak.",ulasim_taksi
+syn:0309,normal,,"Havaist: 06:00 Taksim-İstanbul Havalimanı seferi biletiniz kullanılmıştır.",ulasim_otobus
+syn:0310,normal,,"Otel Kaya Palace: Rezervasyonunuz onaylanmıştır. Giriş: 12 Temmuz 14:00, çıkış: 16 Temmuz 12:00. 2 yetişkin, deniz manzaralı oda.",hizmet_otel
+syn:0311,normal,,"Cinemaximum: Biletleriniz hazır. Dune, Salon 4, 20:15, koltuk F7-F8. Bilet kodunuz: 72QK9",hizmet_eglence
+syn:0312,normal,,"Restoran Asmalı: Cumartesi 20:00 için 4 kişilik rezervasyonunuz alınmıştır. Değişiklik için bizi arayabilirsiniz.",hizmet_rezervasyon
+syn:0313,normal,,"Netflix: Üyeliğiniz yenilendi. 229,99 TL kayıtlı kartınızdan tahsil edildi.",uygulama_abonelik
+syn:0314,normal,,"Spotify: Premium aboneliğinin bu ayki ödemesi alındı. Keyifli dinlemeler!",uygulama_abonelik
+syn:0315,normal,,"YouTube Premium: Deneme süreniz 3 gün sonra sona erecek. İptal etmezseniz üyeliğiniz otomatik olarak başlayacaktır.",uygulama_abonelik
+syn:0316,normal,,"Digitürk: Faturanız 449,00 TL. Son ödeme tarihi 24.03.2024. Ödemeyi Digitürk uygulamasından yapabilirsiniz.",uygulama_abonelik
+syn:0317,normal,,"beIN CONNECT: Üyeliğiniz 30 gün sonra sona erecek. Otomatik yenileme açıktır.",uygulama_abonelik
+syn:0318,normal,,"Ford Servis: Aracınızın periyodik bakımı tamamlanmıştır. Toplam tutar: 6.420,00 TL. Aracınızı teslim alabilirsiniz.",hizmet_servis
+syn:0319,normal,,"Bosch Servis: Çamaşır makineniz için servis kaydınız kapatılmıştır. Hizmetimizi değerlendirmek için 1-5 arası puan verebilirsiniz.",hizmet_servis
+syn:0320,normal,,"Vestel Servis: Teknisyenimiz Murat Bey bugün 14:00-16:00 arası adresinize gelecektir. Servis ücreti garanti kapsamındadır.",hizmet_servis
+syn:0321,normal,,"Doğalgaz Firması: Kombi yıllık bakım randevunuz 19 Mart Salı 10:00-12:00 arasındadır.",hizmet_servis
+syn:0322,normal,,"Avea Kuru Temizleme: Ceketiniz hazır, mesai saatleri içinde dükkânımızdan alabilirsiniz.",hizmet_bilgi
+syn:0323,normal,,"Sahibinden: İlanınız yayına alınmıştır. İlan no: 1148239. İlanınızın süresi 30 gündür.",eticaret
+syn:0324,normal,,"Sahibinden: İlanınızla ilgili yeni bir mesajınız var. Mesajı Sahibinden uygulamasından okuyabilirsiniz. Sahibinden sizden asla kart bilgisi istemez.",eticaret
+syn:0325,normal,,"Letgo: Ürününüz için bir teklif aldınız. Uygulamadan yanıtlayabilirsiniz.",eticaret
+syn:0326,normal,,"Trendyol: Favorilerindeki ürünün fiyatı düştü! Uygulamadan göz atabilirsin.",eticaret
+syn:0327,normal,,"Hepsiburada: Siparişiniz hazırlanıyor. Sipariş no: 4021880317. Kargoya verildiğinde bilgilendirileceksiniz.",eticaret
+syn:0328,normal,,"Çiçeksepeti: Gönderdiğiniz çiçek alıcıya teslim edilmiştir. Teslim saati: 11:42",eticaret
+syn:0329,normal,,"D&R: Siparişiniz mağazamıza ulaştı. Kadıköy D&R'dan 7 gün içinde teslim alabilirsiniz.",eticaret
+syn:0330,normal,,"Teknosa: Servise gönderdiğiniz cihazınız onarılarak mağazamıza ulaşmıştır.",hizmet_servis
+syn:0331,normal,,"MediaMarkt: Fatura bilgileriniz e-posta adresinize gönderilmiştir. Bizi tercih ettiğiniz için teşekkürler.",eticaret
+syn:0332,normal,,"IKEA: Montaj ekibimiz 21 Mart Perşembe 09:00-13:00 arasında adresinize gelecektir.",hizmet_servis
+syn:0333,normal,,"Koçtaş: Siparişinizin teslimatı yarın gerçekleşecektir. Teslimat öncesi kuryemiz sizi arayacaktır.",eticaret
+syn:0334,normal,,"Yemeksepeti: Siparişin teslim edildi. Afiyet olsun! Restoranı uygulamada değerlendirebilirsin.",eticaret
+syn:0335,normal,,"Getir: Siparişindeki 1 ürün stokta kalmadığı için 34,50 TL kartına iade edildi.",eticaret
+syn:0336,normal,,"Migros Money: Bu alışverişinizde 18,40 TL Money kazandınız. Toplam Money'niz: 142,75 TL",eticaret
+syn:0337,normal,,"BİM: Sipariş ettiğiniz ürün mağazamıza ulaşmıştır. Fişinizle birlikte teslim alabilirsiniz.",eticaret
+syn:0338,normal,,"Kargo İade: Trendyol iade kodunuz TY4821K. Kodu Trendyol Express noktasında göstererek ürününüzü iade edebilirsiniz.",kargo_iade
+syn:0339,normal,,"Amazon.com.tr: Prime üyeliğiniz yenilendi. 39,00 TL kartınızdan tahsil edildi.",uygulama_abonelik
+syn:0340,normal,,"Uber: Yolculuğun tamamlandı. Tutar: 287,40 TL. Fatura e-posta adresine gönderildi.",ulasim_taksi
+syn:0341,normal,,"Marti: Sürüşün tamamlandı. 12 dakika, 48,00 TL. Teşekkürler!",ulasim_taksi
+syn:0342,normal,,"Otopark: Aracınız 4 saattir otoparkımızda. Ücret: 120 TL. İyi günler dileriz.",hizmet_bilgi
+syn:0343,normal,,"Petrol Ofisi: Positive Card'ınıza bu alışverişinizde 25 puan yüklenmiştir.",eticaret
+syn:0344,normal,,"Shell: Kartınızdan 1.250,00 TL akaryakıt alımı yapılmıştır. İyi yolculuklar.",eticaret
+syn:0345,normal,,"Turkcell Superonline: Fiber internet modeminiz yarın kargoya verilecektir.",operator_bilgi
+syn:0346,normal,,"Vodafone: e-faturanız oluşturuldu. Tutar: 315,40 TL. Faturanızı Vodafone Yanımda'dan görüntüleyebilirsiniz.",operator_fatura
+syn:0347,normal,,"Türk Telekom: Numara taşıma işleminiz tamamlanmıştır. Türk Telekom'a hoş geldiniz.",operator_bilgi
+syn:0348,normal,,"Turkcell: Hattınıza 5 GB hediye internet tanımlanmıştır. Kullanım süresi 7 gündür.",operator_paket
+syn:0349,normal,,"Pttcell: Faturalı hattınıza ait Mart faturası 159,00 TL'dir. Ödeme PTT şubelerinden yapılabilir.",operator_fatura
+syn:0350,normal,,"Spor Salonu: Üyeliğinizin bitmesine 5 gün kaldı. Yenilemek için resepsiyona uğrayabilirsiniz.",hizmet_bilgi

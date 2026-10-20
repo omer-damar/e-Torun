@@ -13,6 +13,19 @@ teslimatı, e-Devlet ve MHRS bildirimleri, fatura hatırlatmaları, yakınlardan
   mesajları dolandırıcılıktan ayıran en önemli işaretlerden biri budur.
 - Reklam mesajı yoktur; yasal reklamlar ayrı `reklam` sınıfıdır.
 
+## Güncel ölçüm (v1 dedektör, 400 mesaj)
+| Parti | Konu | Yeşil | Sarı | Kırmızı |
+|---|---|---|---|---|
+| 001, 005 | banka ve finans | 15 | 45 | 40 |
+| 002 | kargo | 10 | 18 | 22 |
+| 003, 006 | kamu, sağlık, operatör, belediye | 33 | 34 | 32 (+1 reklam) |
+| 007 | ulaşım, hizmet, e-ticaret | 19 | 24 | 7 |
+| 004, 008 | kişisel, aile, uygulama kodları | 78 | 13 | 9 |
+| **Toplam** | | **155** | **134** | **110** |
+
+Kurumsal mesajlarda yanlış alarm çok yüksek; kişisel mesajlarda düşük. v2 hedefi: bu mesajların
+neredeyse hepsi yeşil, gerçek dolandırıcılık yakalama oranı korunarak.
+
 ## İlk ölçüm (v1 dedektör, 200 mesaj)
 Uygulamadaki mevcut dedektör (v1 model + kurallar) bu 200 meşru mesajın **136'sını** sarı ya da kırmızı
 buldu (kırmızı 68, sarı 68, yeşil 63, reklam 1). Ölçüm sırasında iki kural hatası düzeltildi (tutar/tarihin
