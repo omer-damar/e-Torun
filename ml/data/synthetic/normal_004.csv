@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+syn:0151,normal,,"Anne akşam yemeğe gelemiyorum, işten geç çıkacağım. Babama da söyler misin? Öptüm",kisisel_aile
+syn:0152,normal,,"Babacığım ilaçlarını aldın mı? Akşam ararım seni",kisisel_aile
+syn:0153,normal,,"Teyzecim pazar günü kahvaltıya bekliyoruz, saat 10 gibi gelin. Çocuklar da gelecek",kisisel_aile
+syn:0154,normal,,"Ahmet abi yarın cuma namazından sonra çay içelim mi, kahvehanede olurum",kisisel_arkadas
+syn:0155,normal,,"Anneanne doğum günün kutlu olsun! Seni çok seviyoruz, akşam görüntülü ararız",kisisel_aile
+syn:0156,normal,,"Selam Fatma Hanım, yarın pazara birlikte gidelim mi? Sabah 9'da kapınızın önünde olurum",kisisel_arkadas
+syn:0157,normal,,"Oğlum ben eve vardım merak etme. Otobüs biraz gecikti",kisisel_aile
+syn:0158,normal,,"Kızım şu tarifi göndermiştin ya, tekrar atar mısın kaybettim",kisisel_aile
+syn:0159,normal,,"Anne şu videoyu izle çok güzel anlatmış dizdeki ağrı egzersizlerini https://www.youtube.com/watch?v=3fKp9x2Lm0A",kisisel_aile
+syn:0160,normal,,"Dedeciğim konumu atıyorum, hastanenin otoparkındayız: https://maps.google.com/?q=39.9208,32.8541",kisisel_aile
+syn:0161,normal,,"Hayırlı cumalar komşum, Allah kabul etsin",kisisel_arkadas
+syn:0162,normal,,"Bayramınız mübarek olsun, nice sağlıklı mutlu bayramlara. Ailece ellerinizden öperiz",kisisel_bayram
+syn:0163,normal,,"Annecim kira parasını yatırdım, ev sahibine söyleyebilirsin",kisisel_aile
+syn:0164,normal,,"Abla yarın hastaneye ben götürürüm annemi, sen işine git",kisisel_aile
+syn:0165,normal,,"Hacer Hanım sizin çiçekleri suladım, anahtarı kapı önündeki saksının altına bıraktım",kisisel_arkadas
+syn:0166,normal,,"Baba telefonun kapalıydı, bir sorun yok değil mi? Müsait olunca ara",kisisel_aile
+syn:0167,normal,,"Torunun karnesini aldı, hepsi pekiyi! Akşam fotoğrafını gönderirim",kisisel_aile
+syn:0168,normal,,"Ramazan Bey yarın apartman toplantısı saat 20:00'de, yönetim odasında. Katılımınızı rica ederiz",apartman
+syn:0169,normal,,"Apartman Yönetimi: Mart ayı aidatı 750 TL'dir. Ödemeyi yönetici Ali Bey'e ya da apartman hesabına yapabilirsiniz.",apartman
+syn:0170,normal,,"Sevgili Komşularımız, yarın 10:00-12:00 arası asansör bakımı yapılacaktır. Anlayışınız için teşekkürler. Yönetim",apartman
+syn:0171,normal,,"Kuaför Gül: Yarın saat 11:00'deki randevunuzu hatırlatırız. Görüşmek üzere",randevu_hizmet
+syn:0172,normal,,"Arçelik Servis: Buzdolabınız için teknik servis kaydınız oluşturulmuştur. Teknisyenimiz 15.03.2024 tarihinde 09:00-13:00 arasında gelecektir.",randevu_hizmet
+syn:0173,normal,,"Özel Gün Okulu: Sayın Veli, 20 Mart Çarşamba günü saat 15:00'te veli toplantımız yapılacaktır.",okul
+syn:0174,normal,,"e-Okul: Öğrenciniz ELİF YILMAZ 14.03.2024 tarihinde okula gelmemiştir. Bilgi için okul idaresiyle görüşebilirsiniz.",okul
+syn:0175,normal,,"WhatsApp kodunuz: 482-913. Bu kodu kimseyle paylaşmayın.",uygulama_otp
+syn:0176,normal,,"Getir doğrulama kodun: 7741. Bu kodu kimseyle paylaşma.",uygulama_otp
+syn:0177,normal,,"Instagram onay kodunuz 503 218. Bu kodu kimseyle paylaşmayın.",uygulama_otp
+syn:0178,normal,,"Trendyol'a giriş için doğrulama kodun 290418. Trendyol çalışanları bu kodu asla sormaz.",uygulama_otp
+syn:0179,normal,,"BiP: Hesabınızı doğrulamak için kodunuz 6612",uygulama_otp
+syn:0180,normal,,"Netflix: Hesabınıza yeni bir cihazdan giriş yapıldı (iPhone, İstanbul). Bu siz değilseniz Netflix uygulamasından şifrenizi değiştirin.",uygulama_bildirim
+syn:0181,normal,,"Apple Kimliği kodunuz: 584201. Kodu kimseyle paylaşmayın. @apple.com #584201",uygulama_otp
+syn:0182,normal,,"Google doğrulama kodunuz G-418203",uygulama_otp
+syn:0183,normal,,"Hocam yarınki dersi 1 saat erteleyebilir miyiz? Torunumu okuldan alacağım",kisisel_arkadas
+syn:0184,normal,,"Muhtarlık: Mahallemizde 65 yaş üstü vatandaşlarımıza yönelik ücretsiz tansiyon ölçümü cumartesi muhtarlık binasında yapılacaktır.",belediye_bilgi
+syn:0185,normal,,"Cami Derneği: Bu akşam yatsı namazından sonra mevlit okunacaktır. Tüm cemaatimiz davetlidir.",kisisel_dernek
+syn:0186,normal,,"Annem yarın kontrole gidecek, sen de gelmek ister misin? 10'da Şehir Hastanesi'nde buluşalım",kisisel_aile
+syn:0187,normal,,"Kardeşim sana 500 lira gönderdim, ilaçları alırsın. Yetmezse söyle",kisisel_aile
+syn:0188,normal,,"Hanım ekmek alır mısın gelirken, bir de yarım kilo peynir",kisisel_aile
+syn:0189,normal,,"Taksi Durağı: Aracınız yola çıktı. 34 TK 1234 plakalı araç 5 dakika içinde kapınızda olacak.",randevu_hizmet
+syn:0190,normal,,"Dr. Kemal Sarı Muayenehanesi: Kontrol randevunuz 21 Mart Perşembe 16:00'dadır. Lütfen önceki tahlillerinizi yanınızda getiriniz.",saglik_randevu
+syn:0191,normal,,"Halk Eğitim Merkezi: El sanatları kursunuz 18 Mart Pazartesi başlıyor. Ders saatleri 13:30-16:30.",okul
+syn:0192,normal,,"Gülsüm teyze baklavalar için ellerinize sağlık, çok beğendik",kisisel_arkadas
+syn:0193,normal,,"Yeğenim düğün davetiyesini gönderdim, 12 Mayıs'ta bekliyoruz. Konum: https://maps.app.goo.gl/kX3Lm9Qw2",kisisel_davet
+syn:0194,normal,,"Mehmet amca başın sağ olsun, cenaze yarın ikindi namazına müteakip Merkez Camii'nden kaldırılacak",kisisel_taziye
+syn:0195,normal,,"Eşref Bey sipariş ettiğiniz odunlar yarın sabah gelecek, avluya bırakacağız",randevu_hizmet
+syn:0196,normal,,"Baba internetten bilet aldım, 22'sinde 10:30 otobüsüyle geliyorsun. Terminalde karşılarım",kisisel_aile
+syn:0197,normal,,"Anne telefonuna gelen kodu kimseye söyleme ha, bankadan aradık derlerse de kapat. Ben gelince bakarım",kisisel_aile
+syn:0198,normal,,"Selma ablacığım fotoğrafları gönderiyorum, torunlar çok büyümüş maşallah",kisisel_aile
+syn:0199,normal,,"Hayırlı kandiller, dualarınızı bekleriz. Ailece selamlar",kisisel_bayram
+syn:0200,normal,,"Kuzenim hastaneden çıktık, doktor iyi dedi. Akşam evde konuşuruz",kisisel_aile
