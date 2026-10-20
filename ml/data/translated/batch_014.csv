@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+smishtank:1052,atla,,,şablona yakın (smishtank:737)
+smishtank:1053,atla,,,şablon tekrarı (smishtank:650)
+smishtank:1055,atla,,,şablon tekrarı (smishtank:650)
+smishtank:1056,atla,,,şablona yakın (smishtank:456)
+smishtank:1057,atla,,,şablon tekrarı (smishtank:446)
+smishtank:1059,atla,,,şablona yakın (smishtank:387)
+smishtank:1060,atla,,,şablona yakın (smishtank:391)
+smishtank:1062,dolandiricilik,kargo,"AWB1H1NMXCR numaralı gönderiniz geri çevrildi. Yeniden planlamak için https://ptt.gov.tr@bit.ly/3Yy29Ws adresine gidin",USPS→PTT; @ ile resmi adres taklidi korundu
+smishtank:1065,dolandiricilik,diger,"Bu İkinci ve son uyarıdır: Cihazınızı derhal E!ngelleyeceğiz. Lütfen istenmeyen m3sajları silin. Bugün tarayın: congvd.me/X2Onlwz97M",sahte güvenlik uyarısı; yazım hilesi korundu
+smishtank:1066,atla,,,yalnızca link
+smishtank:1067,atla,,,şablona yakın (smishtank:969)
+smishtank:1068,dolandiricilik,diger,"Son Dakika! Ünlü dizi oyuncusuna 2 ayda 15 kilo vermezse kovulma tehdidi. İşini nasıl koruduğunu anlatan bu inanılmaz hikâyeyi okuyun ak90.xyz/VHtCnf804F",NBC→dizi; 30 lbs→15 kg; tıklama tuzağı
+smishtank:1069,atla,,,şablona yakın (smishtank:657)
+smishtank:1070,atla,,,şablona yakın (smishtank:657)
+smishtank:1071,dolandiricilik,odul,"(:) Selam, numaran salı günkü yarışmamız için seçildi. Daha fazlası için TAMAM yaz",
+smishtank:1073,dolandiricilik,kargo,"PTT paketiniz depoya ulaştı ancak adres bilgileri eksik olduğu için teslim edilemiyor. Lütfen adresinizi bağlantıdan onaylayın. https://ptt.intertakip.com (Lütfen 1 yazıp yanıtlayın, ardından SMS'ten çıkıp mesajı yeniden açarak bağlantıyı etkinleştirin)",USPS→PTT; link etkinleştirme hilesi (1 yaz) korundu
+smishtank:1074,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1075,atla,,,şablona yakın (smishtank:1051)
+smishtank:1079,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1080,dolandiricilik,banka_hesap,"ENPARA UYARI: Uber'de 480,00 TL tutarında harcama denemesi. Bu işlemi siz onaylamadıysanız iptal için bağlantıyı izleyin http://enparakartislem.org","Navy Federal→Enpara; $48→480 TL"
+smishtank:1082,atla,,,şablona yakın (smishtank:333)
+smishtank:1083,atla,,,şablona yakın (smishtank:950)
+smishtank:1085,atla,,,şablon tekrarı (smishtank:950)
+smishtank:1086,atla,,,şablon tekrarı (smishtank:950)
+smishtank:1087,atla,,,şablon tekrarı (smishtank:1073)
+smishtank:1089,atla,,,şablon tekrarı (smishtank:428)
+smishtank:1092,dolandiricilik,banka_hesap,"TEB: ACİL - Banka kartınızda şüpheli hareket gözlendi, doğrulama için hemen 0850 315 03 02 numarasını arayın.",US Bank→TEB; sahte numara
+smishtank:1097,atla,,,şablon tekrarı (smishtank:412)
+smishtank:1098,dolandiricilik,kargo,"PTT: Adres bilgisi eksik olduğu için gönderiniz teslim edilmedi. Yeniden teslimat ücreti uygulanabilir. Yardım için pttposta-eb.info adresine girin.",USPS→PTT
+smishtank:1101,atla,,,oyun turnuvası reklamı; etiket belirsiz
+smishtank:1103,atla,,,gerçek bildirim olabilir (resmi alan adı)
+smishtank:1105,dolandiricilik,banka_hesap,"VAKIFBANK [ID 082]:İnternet şubesi erişiminiz geçici olarak askıya alındı, Lütfen bilgilerinizi hemen güncelleyin lütfen tıklayın http://ow.ly/nZPx50H18Mk",Wells Fargo→VakıfBank
+smishtank:1107,atla,,,şablona yakın (smishtank:1105)
+smishtank:1108,dolandiricilik,yatirim,"Selim Ak, CoinCircle'ı beğeneceğini düşündü: Günde 2.000 TL kazanabiliriz - işte davet linkim l.coincircle.com/ajSb Daha fazla bilgi için EVET yazın",$200→2.000 TL; isim değiştirildi
+smishtank:1109,atla,,,şablona yakın (smishtank:598)
+smishtank:1110,atla,,,şablona yakın (smishtank:287)
+smishtank:1111,atla,,,gerçek kamu enerji uyarısı olabilir; ABD'ye özgü
+smishtank:1112,dolandiricilik,banka_hesap,"ING - Uyarı: Hesabınızda yakın zamanda şüpheli bir işlem fark ettik, hesabınızın güvenliği için buraya girin ing.srcrwanda.com",PNC→ING
+smishtank:1113,atla,,,şablona yakın (smishtank:1105)
+smishtank:1114,atla,,,şablona yakın (smishtank:408)
+smishtank:1115,atla,,,şablona yakın (smishtank:408)
+smishtank:1116,dolandiricilik,banka_hesap,"(Uyari@Halkbank) Kart Şifrenizi Güncelleme Talebinizi Aldık. Bu Talebi Siz Yapmadıysanız Lütfen Kartınızı halkbankpin.me/kart Adresinde Doğrulayın",BofA→Halkbank; PIN→kart şifresi
+smishtank:1117,atla,,,ABD'ye özgü toplu tazminat davası; Türk bağlamında karşılığı yok
+smishtank:1118,atla,,,ABD'ye özgü toplu tazminat davası; Türk bağlamında karşılığı yok
+smishtank:1120,dolandiricilik,diger,"Stanley'in ÜST SINIF termosunu bu hafta indirimli fiyata alın, yanında bir matara da ücretsiz gelsin. http://pqlhvds.in/40611",Yeti→Stanley; sahte mağaza
+smishtank:1122,atla,,,şablona yakın (smishtank:235)
+smishtank:1125,dolandiricilik,kargo,"GÖN:#2760-2248 KONU:#7760-2248 MSJ:Teslimat Başarısız;Tıkla? hfmu.axisxnor.com hemen yeniden teslimat isteyin yoksa ürün merkez depoya iade edilecek 01:58",
+smishtank:1126,dolandiricilik,banka_hesap,"Midas/krg7k.sq3:Olağandışı işlemler nedeniyle yatırım hesabınız kilitlendi. https://institutohaquira.edu.pe/midas/ adresini ziyaret edin",Charles Schwab→Midas
+smishtank:1128,dolandiricilik,yakin_romantik,"Selam, kusura bakma eğer alınırsan ama seni çok çekici buluyorum ve bana sugar baby olmanı isterim. İlgilenirsin diye niyetimi şimdiden söylüyorum. Şartları konuşalım, haftalık harçlık gibi",metin orijinalde kesik
+smishtank:1129,atla,,,şablon tekrarı (smishtank:1073)
