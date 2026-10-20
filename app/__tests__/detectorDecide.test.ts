@@ -60,21 +60,62 @@ describe('decideFrom (plan bölüm 8 karar tablosu)', () => {
     expect(decideFrom(0.1, [], t)).toBe('green');
   });
 
-  it('kural birleşimleri kırmızı', () => {
+  it('kural birleşimleri kırmızı (model reklam demiyorsa)', () => {
     expect(decideFrom(0.1, ['LINK', 'IMPERSONATION'], t)).toBe('red');
     expect(decideFrom(0.1, ['PAYMENT', 'URGENCY'], t)).toBe('red');
-    expect(decideFrom(0.1, ['PERSONAL_INFO', 'IMPERSONATION'], t)).toBe('red');
+    expect(decideFrom(0.1, ['PERSONAL_INFO', 'IMPERSONATION', 'CALLBACK'], t)).toBe('red');
     expect(decideFrom(0.1, ['CALLBACK', 'IMPERSONATION', 'URGENCY'], t)).toBe('red');
   });
 
-  it('zayıf işaretler tek başına sarı yapmaz; güçlü tek işaret ya da iki işaret sarı', () => {
+  it('kurum adı + şifre/ödeme kelimesi, iletişim kanalı (link, arama, acele) yoksa kırmızı değil', () => {
+    // Ekstre, kod ve maaş bildirimleri: "QNB: kredi kartı borcunuz ... son ödeme tarihi".
+    expect(decideFrom(0.05, ['PAYMENT', 'IMPERSONATION'], t)).not.toBe('red');
+    expect(decideFrom(0.05, ['PERSONAL_INFO', 'IMPERSONATION'], t)).not.toBe('red');
+    expect(decideFrom(0.1, ['PAYMENT', 'IMPERSONATION', 'CALLBACK'], t)).toBe('red');
+  });
+
+  it('model reklam diyorsa kural birleşimi en fazla sarı; düşük olasılıkta da sarı (kurum taklitli link hariç)', () => {
+    expect(decideFrom({ dolandiricilik: 0.05, reklam: 0.9 }, ['LINK', 'PRIZE'], t)).toBe('yellow');
+    expect(decideFrom({ dolandiricilik: 0.05, reklam: 0.1 }, ['LINK', 'PRIZE'], t)).toBe('yellow');
+    expect(decideFrom({ dolandiricilik: 0.05, reklam: 0.1 }, ['LINK', 'FAKE_LINK', 'IMPERSONATION'], t)).toBe('red');
+  });
+
+  it('model reklam diyorsa: link yoksa "Reklam", bilinmeyen link ya da tehlike işareti varsa değil', () => {
+    expect(decideFrom({ dolandiricilik: 0.02, reklam: 0.9 }, ['PRIZE'], t)).toBe('ad');
+    expect(decideFrom({ dolandiricilik: 0.02, reklam: 0.9 }, ['LINK'], t)).toBe('yellow');
+    expect(decideFrom({ dolandiricilik: 0.02, reklam: 0.9 }, ['GAMBLING'], t)).toBe('yellow');
+    expect(decideFrom({ dolandiricilik: 0.02, reklam: 0.9 }, ['PERSONAL_INFO'], t)).not.toBe('ad');
+  });
+
+  it('yasal reklam işareti "Reklam" yapar, ama model dolandırıcılıktan şüpheleniyorsa yapmaz', () => {
+    expect(decideFrom({ dolandiricilik: 0.05, reklam: 0.9 }, ['LINK', 'PRIZE', 'AD_MARKER'], t)).toBe('ad');
+    expect(decideFrom({ dolandiricilik: 0.4, reklam: 0.5 }, ['LINK', 'PRIZE', 'AD_MARKER'], t)).not.toBe('ad');
+  });
+
+  it('zayıf işaretler tek başına sarı yapmaz; güçlü tek işaret sarı; iki zayıf işaret model normal demiyorsa sarı', () => {
     for (const id of ['IMPERSONATION', 'OTP_INFO', 'URGENCY', 'PRIZE', 'PERSONAL_INFO', 'PAYMENT', 'CALLBACK'] as const) {
       expect(decideFrom(0.1, [id], t)).toBe('green');
     }
     expect(decideFrom(0.1, ['LINK'], t)).toBe('yellow');
     expect(decideFrom(0.1, ['GAMBLING'], t)).toBe('yellow');
-    expect(decideFrom(0.1, ['CALLBACK', 'IMPERSONATION'], t)).toBe('yellow');
-    expect(decideFrom(0.1, ['URGENCY', 'PRIZE'], t)).toBe('yellow');
+    const unsure = { dolandiricilik: 0.1, reklam: 0.45 };
+    expect(decideFrom(unsure, ['CALLBACK', 'IMPERSONATION'], t)).toBe('yellow');
+    expect(decideFrom(unsure, ['URGENCY', 'PRIZE'], t)).toBe('yellow');
+    // Model açıkça "normal" diyorsa iki zayıf işaret yeşil kalır.
+    expect(decideFrom(0.1, ['URGENCY', 'PRIZE'], t)).toBe('green');
+    // Kurum adı yalnızca link, arama, şifre ya da ödemeyle birlikte sayılır.
+    expect(decideFrom(unsure, ['IMPERSONATION', 'PRIZE'], t)).toBe('green');
+  });
+});
+
+describe('decide — kurumsal meşru mesajlar (v2 karar katmanı)', () => {
+  it.each([
+    'QNB: Kredi kartı ekstreniz kesildi. Dönem borcu: 7.842,30 TL, asgari ödeme: 3.136,92 TL, son ödeme tarihi: 25.03.2024.',
+    'Yurtiçi Kargo: 418820133647 takip numaralı gönderiniz bugün dağıtıma çıkmıştır. Takip: yurticikargo.com',
+    'Ankara Büyükşehir Belediyesi: Su faturanızın son ödeme tarihi 20.03.2024. Tutar: 287,40 TL. Ödeme: ankara.bel.tr',
+    'Dede konumu atıyorum, hastanenin otoparkındayız: https://maps.app.goo.gl/kX3Lm9Qw2',
+  ])('kırmızı değil: %s', (text) => {
+    expect(decide(text).level).not.toBe('red');
   });
 });
 

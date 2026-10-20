@@ -1,24 +1,41 @@
 /**
- * Olasılık + kurallar → kırmızı / sarı / yeşil — PROJE_PLANI.md bölüm 8 "Karar mantığı".
+ * Model olasılıkları + kurallar → kırmızı / sarı / yeşil / reklam — PROJE_PLANI.md bölüm 8 ve 9.6.
  *
- *   KIRMIZI ← p ≥ T_HIGH
- *             veya LINK ∧ (IMPERSONATION ∨ PRIZE ∨ URGENCY ∨ PERSONAL_INFO)
- *             veya PAYMENT ∧ (URGENCY ∨ IMPERSONATION)
- *             veya PERSONAL_INFO ∧ (IMPERSONATION ∨ URGENCY)          (ek: kod/şifre isteyen kurum taklidi)
- *             veya CALLBACK ∧ IMPERSONATION ∧ URGENCY                (ek: "dosyanız son gün, arayın")
- *   SARI     ← p ≥ T_LOW
- *             veya güçlü tek işaret (LINK, SHORT_LINK, GAMBLING)
- *             veya en az iki farklı işaret (OTP_INFO hariç)
- *   YEŞİL    ← diğer durumlar
+ * Model (v2) 3 sınıf verir: normal, reklam, dolandırıcılık. pD = dolandırıcılık, pR = reklam olasılığı.
  *
- * Plandan bilinçli fark: plan "herhangi bir kural → sarı" diyordu. Gerçek test setinde (806 mesaj)
- * bu, günlük sohbetteki tek kelimeleri ("hemen", "acil", "hediyeler için teşekkürler", "wifi
- * şifresi") uyarıya çevirip yanlış alarmı %1,3'ten %4,3'e çıkarıyordu (hedef ≤ %3). Bu yüzden
- * zayıf işaretler (acele, kurum adı, ödül, şifre, ödeme, "arayın") tek başına sarı yapmaz;
- * birlikte görülürlerse ya da model de şüphelenirse yapar. Kırmızı kombinasyonları değişmedi.
+ *   REKLAM  ← yasal reklam işareti (RET/İYS/Mersis) ∧ pD < T_LOW ∧ tehlike işareti yok
+ *   KIRMIZI ← pD ≥ T_HIGH
+ *             veya kural birleşimi ∧ model reklam demiyor (pR < 0,5) ∧ (pD ≥ 0,1 ∨ kurum taklitli link)
+ *   REKLAM  ← model reklam diyor (pR ≥ 0,5) ∧ pD < T_LOW ∧ tehlike işareti yok ∧ bilinmeyen link yok
+ *   SARI    ← pD ≥ T_LOW, ya da kural birleşimi (model reklam diyorsa buraya düşer),
+ *             ya da güçlü tek işaret (LINK, SHORT_LINK, GAMBLING, FAKE_LINK),
+ *             ya da en az iki zayıf işaret ∧ model mesajı açıkça normal saymıyor
+ *   YEŞİL   ← diğer durumlar
+ *
+ * Kural birleşimleri:
+ *   LINK ∧ (kurum adı ∨ ödül ∨ acele ∨ kişisel bilgi)
+ *   PAYMENT ∧ (acele ∨ (kurum adı ∧ iletişim kanalı))
+ *   PERSONAL_INFO ∧ (acele ∨ (kurum adı ∧ iletişim kanalı))
+ *   CALLBACK ∧ kurum adı ∧ acele
+ * İletişim kanalı = link, "arayın" ya da acele ettirme.
+ *
+ * Neden böyle (v2 ölçümü, gerçek doğrulama+test mesajları ve 400 sentetik zor negatif):
+ * - Kurallar tek başına karar verdiğinde gerçek reklamların 234/770'i kırmızı oluyordu (link + "hediye",
+ *   banka adı + link). Bu kombinasyonların 263'ünde model mesajın reklam olduğunu biliyordu; gerçek
+ *   dolandırıcılıkta ise 13 kombinasyonun 11'inde model reklam demiyordu. Bu yüzden kural kırmızısı
+ *   model reklam demiyorsa verilir; diyorsa en fazla sarı.
+ * - Kurum adı (banka, kargo, e-Devlet) meşru mesajların çoğunda geçer: ekstre, maaş, teslimat, kod.
+ *   Bu yüzden ödeme/şifre kelimesiyle birlikte ancak bir iletişim kanalı (link, arama, acele) varsa
+ *   kırmızı yapar; sarı sayımında da yalnızca link, arama, şifre veya ödeme ile birlikte sayılır.
+ * - Reklam kılığındaki dolandırıcılık için: tehlike işareti (kişisel bilgi isteği, bahis, kurum taklitli
+ *   link, kısa link + ödül, ödeme + acele) olan mesaj model ne derse desin "Reklam" gösterilmez.
+ * - Model "Koçtaş'tan hediye kartı kazanın + link", "Migros anketi 1.000 TL" gibi sahte kampanyaları da
+ *   reklam sanabiliyor (eğitimde kullanılmayan çeviri dolandırıcılık mesajlarının 100/555'i). 2021'den beri
+ *   ticari SMS'te ret yöntemi zorunlu (6563 s. Kanun, İYS); bu yüzden yasal reklam işareti OLMAYAN ve
+ *   bilinmeyen link içeren mesaja "Reklam" denmez, en az sarı verilir.
  */
 
-import { classify, model } from './classify';
+import { type ClassProbabilities, classify, model } from './classify';
 import { findRules, RULE_EXPLANATIONS, type RuleId } from './rules';
 
 /** 'ad': yasal reklam / kampanya mesajı (dolandırıcılık işareti yok). Kullanıcıya güvenli olarak gösterilir. */
@@ -31,12 +48,25 @@ export type Decision = {
   /** "Neden?" listesi, en fazla 4 madde. */
   reasons: string[];
   rules: RuleId[];
-  /** Geliştirici/rapor için; kullanıcıya yüzde olarak GÖSTERİLMEZ. */
+  /** Dolandırıcılık olasılığı. Geliştirici/rapor için; kullanıcıya yüzde olarak GÖSTERİLMEZ. */
   probability: number;
 };
 
+/** Karar için gereken model çıktısı. Yalnızca sayı verilirse dolandırıcılık olasılığı sayılır (pR = 0). */
+export type ModelOutput = number | Pick<ClassProbabilities, 'dolandiricilik' | 'reklam'>;
+
 export const MIN_MESSAGE_LENGTH = 15;
 export const MAX_REASONS = 4;
+/** Model bu olasılığın üstünde "reklam" diyorsa kural birleşimi tek başına kırmızı yapmaz. */
+export const AD_PROBABILITY = 0.5;
+/**
+ * Kural birleşimi, dolandırıcılık olasılığı bunun altındaysa kırmızı değil sarı yapar (kurum taklitli link
+ * hariç). Gerçek doğrulama+test dolandırıcılığında reklam sayılmayan birleşimlerin hepsinde olasılık
+ * ≥ 0,58'di; bu sınırın altındaki birleşimler listede olmayan kurum adreslerinden gelen meşru mesajlardı.
+ */
+export const COMBINATION_MIN_FRAUD = 0.1;
+/** Model bu olasılığın üstünde "normal" diyorsa iki zayıf işaret sarı yapmaz. */
+export const NORMAL_PROBABILITY = 0.5;
 
 export const LEVEL_TEXT: Record<Exclude<RiskLevel, 'too_short'>, { title: string; advice: string }> = {
   red: {
@@ -59,47 +89,77 @@ export const LEVEL_TEXT: Record<Exclude<RiskLevel, 'too_short'>, { title: string
 };
 
 /** Tek başına görülse de sarı uyarı gerektiren işaretler. */
-const STRONG_SINGLE_RULES: RuleId[] = ['LINK', 'SHORT_LINK', 'GAMBLING'];
+const STRONG_SINGLE_RULES: RuleId[] = ['LINK', 'SHORT_LINK', 'GAMBLING', 'FAKE_LINK'];
 
-const MODEL_REASON = 'Mesajın yazılışı, bilinen dolandırıcılık ve istenmeyen mesajlara çok benziyor.';
+const MODEL_REASON = 'Mesajın yazılışı, bilinen dolandırıcılık mesajlarına çok benziyor.';
+const MODEL_AD_REASON = 'Mesajın yazılışı reklam ve kampanya mesajlarına benziyor.';
 
-/**
- * ARA ÖNLEM (yeni 3 sınıflı model gelene kadar): mevcut model "spam" verisinin büyük çoğunluğu
- * yasal reklam olduğu için reklamları da yüksek olasılıkla işaretliyor. Yasal reklam işareti
- * (RET / İYS / Mersis) taşıyan ve dolandırıcılık işareti OLMAYAN mesaj, model ne derse desin
- * "Reklam" gösterilir. Dolandırıcılık işareti: kod/şifre isteme, kısa link, kurum taklitli link,
- * bahis, acele ettiren ödeme isteği.
- */
-export function isLegalAd(rules: RuleId[]): boolean {
-  const has = (id: RuleId) => rules.includes(id);
+function has(rules: RuleId[], id: RuleId): boolean {
+  return rules.includes(id);
+}
+
+/** Bir mesajı model ya da reklam işareti ne derse desin "Reklam" saymayı engelleyen işaretler. */
+export function hasDangerForAd(rules: RuleId[]): boolean {
+  const h = (id: RuleId) => has(rules, id);
   return (
-    has('AD_MARKER') &&
-    !has('PERSONAL_INFO') &&
-    !has('SHORT_LINK') &&
-    !(has('LINK') && has('IMPERSONATION')) &&
-    !has('GAMBLING') &&
-    !(has('PAYMENT') && has('URGENCY'))
+    h('PERSONAL_INFO') ||
+    h('GAMBLING') ||
+    h('FAKE_LINK') ||
+    (h('SHORT_LINK') && h('PRIZE')) ||
+    (h('PAYMENT') && h('URGENCY'))
   );
 }
 
-export function decideFrom(probability: number, rules: RuleId[], thresholds = model.thresholds): Exclude<RiskLevel, 'too_short'> {
-  const has = (id: RuleId) => rules.includes(id);
-  if (isLegalAd(rules)) return 'ad';
+/** Yasal reklam işareti taşıyan ve dolandırıcılık işareti OLMAYAN mesaj. */
+export function isLegalAd(rules: RuleId[]): boolean {
+  return has(rules, 'AD_MARKER') && !hasDangerForAd(rules);
+}
+
+/** Kural birleşimleri (bkz. dosya başı). */
+export function hasRuleCombination(rules: RuleId[]): boolean {
+  const h = (id: RuleId) => has(rules, id);
+  const reachOut = h('LINK') || h('CALLBACK') || h('URGENCY');
+  return (
+    (h('LINK') && (h('IMPERSONATION') || h('PRIZE') || h('URGENCY') || h('PERSONAL_INFO'))) ||
+    (h('PAYMENT') && (h('URGENCY') || (h('IMPERSONATION') && reachOut))) ||
+    (h('PERSONAL_INFO') && (h('URGENCY') || (h('IMPERSONATION') && reachOut))) ||
+    (h('CALLBACK') && h('IMPERSONATION') && h('URGENCY'))
+  );
+}
+
+/** Sarı sayımındaki zayıf işaretler. Kurum adı yalnızca bir talep ya da iletişim kanalıyla birlikte sayılır. */
+function weakSignals(rules: RuleId[]): RuleId[] {
+  const institutionCounts = ['LINK', 'CALLBACK', 'PERSONAL_INFO', 'PAYMENT'].some((id) => has(rules, id as RuleId));
+  return rules.filter(
+    (id) =>
+      id !== 'OTP_INFO' && id !== 'SHORT_LINK' && id !== 'AD_MARKER' && (id !== 'IMPERSONATION' || institutionCounts),
+  );
+}
+
+export function decideFrom(
+  output: ModelOutput,
+  rules: RuleId[],
+  thresholds = model.thresholds,
+): Exclude<RiskLevel, 'too_short'> {
+  const fraud = typeof output === 'number' ? output : output.dolandiricilik;
+  const ad = typeof output === 'number' ? 0 : output.reklam;
+  const normal = 1 - fraud - ad;
+  const modelSaysAd = ad >= AD_PROBABILITY;
+  const combination = hasRuleCombination(rules);
+
+  if (isLegalAd(rules) && fraud < thresholds.low) return 'ad';
   if (
-    probability >= thresholds.high ||
-    (has('LINK') && (has('IMPERSONATION') || has('PRIZE') || has('URGENCY') || has('PERSONAL_INFO'))) ||
-    (has('PAYMENT') && (has('URGENCY') || has('IMPERSONATION'))) ||
-    (has('PERSONAL_INFO') && (has('IMPERSONATION') || has('URGENCY'))) ||
-    (has('CALLBACK') && has('IMPERSONATION') && has('URGENCY'))
+    fraud >= thresholds.high ||
+    (combination && !modelSaysAd && (fraud >= COMBINATION_MIN_FRAUD || has(rules, 'FAKE_LINK')))
   ) {
     return 'red';
   }
-  // Kısa link zaten LINK'i de ekler; reklam işareti bir tehlike işareti değildir.
-  const signals = rules.filter((id) => id !== 'OTP_INFO' && id !== 'SHORT_LINK' && id !== 'AD_MARKER');
+  if (modelSaysAd && fraud < thresholds.low && !hasDangerForAd(rules) && !has(rules, 'LINK')) return 'ad';
   if (
-    probability >= thresholds.low ||
-    STRONG_SINGLE_RULES.some((id) => has(id)) ||
-    signals.length >= 2
+    fraud >= thresholds.low ||
+    combination ||
+    STRONG_SINGLE_RULES.some((id) => has(rules, id)) ||
+    (weakSignals(rules).length >= 2 && normal < NORMAL_PROBABILITY)
   ) {
     return 'yellow';
   }
@@ -119,19 +179,18 @@ export function decide(text: string): Decision {
     };
   }
 
-  const { normalized, probability } = classify(trimmed);
+  const { normalized, probabilities, probability } = classify(trimmed);
   const rules = findRules(trimmed, normalized);
-  const level = decideFrom(probability, rules);
+  const level = decideFrom(probabilities, rules);
 
   // Yeşilde yalnızca bilgilendirici kural (doğrulama kodu uyarısı) gösterilir;
   // kurum adı tek başına "Neden?" listesine girmez.
-  const shown =
-    level === 'green'
-      ? rules.filter((id) => id === 'OTP_INFO')
-      : level === 'ad'
-        ? (['AD_MARKER'] as RuleId[])
-        : rules.filter((id) => id !== 'AD_MARKER' && (id !== 'OTP_INFO' || rules.length === 1));
+  let shown: RuleId[];
+  if (level === 'green') shown = rules.filter((id) => id === 'OTP_INFO');
+  else if (level === 'ad') shown = has(rules, 'AD_MARKER') ? ['AD_MARKER'] : [];
+  else shown = rules.filter((id) => id !== 'AD_MARKER' && (id !== 'OTP_INFO' || rules.length === 1));
   const reasons = shown.map((id) => RULE_EXPLANATIONS[id]);
+  if (level === 'ad' && reasons.length === 0) reasons.push(MODEL_AD_REASON);
   if ((level === 'red' || level === 'yellow') && probability >= model.thresholds.low && reasons.length < MAX_REASONS) {
     reasons.push(MODEL_REASON);
   }

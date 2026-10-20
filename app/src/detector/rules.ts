@@ -10,6 +10,7 @@ import { normalize } from './normalize';
 
 export type RuleId =
   | 'LINK'
+  | 'FAKE_LINK'
   | 'SHORT_LINK'
   | 'URGENCY'
   | 'IMPERSONATION'
@@ -24,6 +25,7 @@ export type RuleId =
 /** Kullanıcıya gösterilecek sade açıklamalar ("Neden?" listesi). */
 export const RULE_EXPLANATIONS: Record<RuleId, string> = {
   LINK: 'Mesajda bir internet bağlantısı var. Bankalar ve devlet kurumları SMS\'teki bağlantıdan bilgi girmenizi istemez.',
+  FAKE_LINK: 'Bağlantı adresi bir kurumun adını taklit ediyor ama o kurumun gerçek adresi değil.',
   SHORT_LINK: 'Bağlantı kısaltılmış; nereye gittiği gizleniyor.',
   URGENCY: 'Sizi acele ettirmeye ya da korkutmaya çalışıyor. Dolandırıcılar düşünmenize fırsat vermek istemez.',
   IMPERSONATION: 'Resmi bir kurum veya şirket adına yazılmış gibi görünüyor.',
@@ -42,6 +44,7 @@ export const RULE_EXPLANATIONS: Record<RuleId, string> = {
 export const RULE_PRIORITY: RuleId[] = [
   'PERSONAL_INFO',
   'PAYMENT',
+  'FAKE_LINK',
   'LINK',
   'SHORT_LINK',
   'URGENCY',
@@ -54,7 +57,7 @@ export const RULE_PRIORITY: RuleId[] = [
 ];
 
 // Normalize edilmiş biçimde (küçük harf, Türkçe karaktersiz, rakamlar "num").
-const KEYWORDS: Record<Exclude<RuleId, 'LINK' | 'SHORT_LINK' | 'OTP_INFO' | 'AD_MARKER'>, string[]> = {
+const KEYWORDS: Record<Exclude<RuleId, 'LINK' | 'FAKE_LINK' | 'SHORT_LINK' | 'OTP_INFO' | 'AD_MARKER'>, string[]> = {
   URGENCY: [
     'hemen', 'acil', 'derhal', 'son gun', 'son gunu', 'son gundur', 'bugun son', 'num saat icinde', 'saat icinde',
     'aksi takdirde', 'aksi halde', 'bloke', 'askiya', 'iptal edil', 'kapatil', 'kapanacak', 'son uyari', 'haciz',
@@ -71,6 +74,8 @@ const KEYWORDS: Record<Exclude<RuleId, 'LINK' | 'SHORT_LINK' | 'OTP_INFO' | 'AD_
   PRIZE: [
     'kazandiniz', 'kazandin', 'hediye', 'odul', 'cekilis', 'iade', 'bonus', 'tebrikler', 'sansli', 'puaniniz',
     'puanlariniz', 'para iadesi', 'aidat iade', 'destek odemesi', 'yardim odemesi',
+    // Sahte "market anketi, 1.000 TL kazan" mesajları
+    'anket',
   ],
   PERSONAL_INFO: [
     'sifre', 'parola', 'kart bilgi', 'kart numara', 'kart no', 'cvv', 'cvc', 'guvenlik kodu', 'son kullanma',
@@ -84,7 +89,11 @@ const KEYWORDS: Record<Exclude<RuleId, 'LINK' | 'SHORT_LINK' | 'OTP_INFO' | 'AD_
     'borc ', 'havale', 'eft', 'para gonder', 'gonderin ', 'yatirin', 'aktarin', 'hizmet bedel', 'teslimat ucret',
     'kargo ucret', 'ucretini ode', 'masraf', 'icra masraf', 'guvenli hesap',
   ],
-  GAMBLING: ['bahis', 'casino', 'deneme bonusu', 'freespin', 'free spin', 'slot', 'iddaa', 'jackpot', 'rulet', 'betting'],
+  GAMBLING: [
+    'bahis', 'casino', 'deneme bonusu', 'freespin', 'free spin', 'slot', 'iddaa', 'jackpot', 'rulet', 'betting',
+    // Bahis sitelerinin "bahis" demeden kullandığı kalıplar (TurkishSMSCollection'daki bahis mesajları)
+    'free bonus', 'canli mac', 'hosgeldin bonus', 'kayip bonus', 'yatirim bonus', 'para yatirma bonus',
+  ],
   CALLBACK: [
     'arayiniz', 'arayin', 'aramaniz', 'irtibata gec', 'iletisime gec', 'donus sagla', 'geri donus', 'bize ulas',
     'ulasin',
@@ -142,15 +151,18 @@ export const OFFICIAL_DOMAINS = [
   // Alışveriş ve market
   'trendyol.com', 'hepsiburada.com', 'n11.com', 'amazon.com.tr', 'migros.com.tr', 'a101.com.tr', 'bim.com.tr',
   'sokmarket.com.tr', 'getir.com', 'yemeksepeti.com',
+  // Yakınların paylaştığı video, konum ve fotoğraf bağlantıları (adresler yalnızca bu şirketlere ait)
+  'youtube.com', 'youtu.be', 'google.com', 'maps.app.goo.gl', 'instagram.com', 'apple.com',
 ] as const;
 
 /**
- * Resmi adres: *.gov.tr (dolandırıcılar bu uzantıyı alamaz) ya da OFFICIAL_DOMAINS'ten biri
- * veya onun alt alan adı.
+ * Resmi adres: *.gov.tr, *.bel.tr, *.edu.tr, *.k12.tr, *.pol.tr, *.tsk.tr (dolandırıcılar bu uzantıları
+ * alamaz) ya da OFFICIAL_DOMAINS'ten biri veya onun alt alan adı.
  */
 export function isOfficialLink(url: string): boolean {
   const host = hostOf(url).replace(/^www\./, '');
-  if (host === 'gov.tr' || host.endsWith('.gov.tr')) return true;
+  // Bu uzantılar yalnızca ilgili kuruma verilir: devlet, belediye, üniversite, okul, emniyet, TSK.
+  if (/(?:^|\.)(?:gov|bel|edu|k12|pol|tsk)\.tr$/.test(host)) return true;
   return OFFICIAL_DOMAINS.some((domain) => host === domain || host.endsWith(`.${domain}`));
 }
 
@@ -194,7 +206,10 @@ export function findRules(raw: string, normalized: string = normalize(raw)): Rul
   for (const id of Object.keys(PATTERNS) as (keyof typeof PATTERNS)[]) {
     if (PATTERNS[id].test(text)) found.add(id);
   }
-  if (found.has('LINK') && hasImpersonatingLink(raw)) found.add('IMPERSONATION');
+  if (found.has('LINK') && hasImpersonatingLink(raw)) {
+    found.add('FAKE_LINK');
+    found.add('IMPERSONATION');
+  }
 
   // Kod içeren mesaj: bilgilendirici (bkz. decide.ts). Kodu VERİP "kimseyle paylaşmayın" diyorsa
   // ve link yoksa "şifre/kod istiyor" sayılmaz (bankanın gerçek doğrulama mesajı).

@@ -50,8 +50,29 @@ describe('ara önlem: yasal reklam', () => {
   it('isLegalAd yalnızca reklam işareti varken ve tehlike işareti yokken doğru', () => {
     expect(isLegalAd(['AD_MARKER'])).toBe(true);
     expect(isLegalAd(['AD_MARKER', 'PRIZE', 'IMPERSONATION'])).toBe(true);
+    // Kurum adı + başka bir site linki (banka kartıyla mağaza kampanyası) tek başına tehlike değil.
+    expect(isLegalAd(['AD_MARKER', 'LINK', 'IMPERSONATION'])).toBe(true);
     expect(isLegalAd(['AD_MARKER', 'PERSONAL_INFO'])).toBe(false);
-    expect(isLegalAd(['AD_MARKER', 'LINK', 'IMPERSONATION'])).toBe(false);
+    expect(isLegalAd(['AD_MARKER', 'LINK', 'FAKE_LINK', 'IMPERSONATION'])).toBe(false);
+    expect(isLegalAd(['AD_MARKER', 'LINK', 'SHORT_LINK', 'PRIZE'])).toBe(false);
+    expect(isLegalAd(['AD_MARKER', 'GAMBLING'])).toBe(false);
     expect(isLegalAd(['PRIZE'])).toBe(false);
+  });
+
+  it('kurum adını taklit eden link adresi ayrı işaretlenir', () => {
+    expect(findRules('Bonus iadeniz için https://ziraat-iade.xyz/giris adresine girin')).toEqual(
+      expect.arrayContaining(['FAKE_LINK', 'LINK', 'IMPERSONATION']),
+    );
+    expect(findRules('Bonus kampanyası: www.kliksa.com/kampanya')).not.toContain('FAKE_LINK');
+  });
+
+  it('bahis sitelerinin "bahis" demeden kullandığı kalıplar', () => {
+    expect(findRules('10TL FREE bonus, canli mac izle, 15dk cekim')).toContain('GAMBLING');
+  });
+
+  it('belediye, üniversite ve okul uzantıları resmi', () => {
+    expect(isOfficialLink('https://www.ankara.bel.tr/odeme')).toBe(true);
+    expect(isOfficialLink('ogrenci.ege.edu.tr')).toBe(true);
+    expect(isOfficialLink('ankara-bel.tr.odeme.xyz')).toBe(false);
   });
 });
