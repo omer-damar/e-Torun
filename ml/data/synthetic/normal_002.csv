@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+syn:0051,normal,,"Yurtiçi Kargo: 418820133647 takip numaralı gönderiniz bugün dağıtıma çıkmıştır. Takip: yurticikargo.com",kargo_dagitim
+syn:0052,normal,,"PTT: RR482913604TR barkodlu gönderiniz Kadıköy PTT Merkez Müdürlüğü'ne ulaşmıştır. Kimliğinizle 7 gün içinde teslim alabilirsiniz.",kargo_subede
+syn:0053,normal,,"Aras Kargo: Sayın ŞÜKRÜ AKIN, 77120390441853 numaralı gönderiniz teslim edilmiştir. Teslim alan: KENDİSİ",kargo_teslim
+syn:0054,normal,,"MNG Kargo: Gönderinizi teslim etmek için adresinize geldik ancak sizi bulamadık. Gönderiniz Bahçelievler şubemizde 3 gün bekleyecektir. Detay: mngkargo.com.tr",kargo_bulunamadi
+syn:0055,normal,,"Trendyol: Siparişin kargoya verildi! Trendyol Express ile en geç 16 Mart'ta teslim edilecek. Siparişlerim sayfasından takip edebilirsin.",kargo_siparis
+syn:0056,normal,,"HepsiJet: Teslimat kodunuz 5821. Kuryemize teslimat sırasında bu kodu söyleyerek paketinizi teslim alabilirsiniz.",kargo_teslim_kodu
+syn:0057,normal,,"Sürat Kargo: 3301 4820 7764 nolu gönderiniz şubemize ulaştı, yarın adresinize teslim edilecektir.",kargo_dagitim
+syn:0058,normal,,"PTT: Yurt dışından gelen RL184729305CN barkodlu gönderiniz için 412,60 TL gümrük vergisi tahakkuk etmiştir. Ödemeyi teslimat sırasında ya da ptt.gov.tr üzerinden yapabilirsiniz.",kargo_gumruk
+syn:0059,normal,,"Hepsiburada: Siparişiniz teslim edildi. Ürünü değerlendirmek için Hepsiburada uygulamasındaki Siparişlerim sayfasını ziyaret edebilirsiniz.",kargo_teslim
+syn:0060,normal,,"Yurtici Kargo: Kapida odemeli gonderiniz icin tahsil edilecek tutar 649,00 TL'dir. Kuryemize nakit veya kartla odeme yapabilirsiniz.",kargo_kapida_odeme
+syn:0061,normal,,"Aras Kargo: Gönderiniz 14.03.2024 tarihinde 13:00-17:00 saatleri arasında teslim edilecektir. Teslimat tercihinizi araskargo.com.tr adresinden değiştirebilirsiniz.",kargo_dagitim
+syn:0062,normal,,"Getir: Siparişin yola çıktı! Kuryen Emre tahmini 12 dakika içinde kapında olacak.",kargo_siparis
+syn:0063,normal,,"PTT Kargo: 0850 000 46 82 numaralı müşteri hizmetlerimizden aranarak teslimat adresiniz teyit edilmiştir. Gönderiniz yarın dağıtıma çıkacaktır.",kargo_dagitim
+syn:0064,normal,,"MNG KARGO: 9180221300774 NOLU GONDERINIZ TESLIM EDILMISTIR. BIZI TERCIH ETTIGINIZ ICIN TESEKKUR EDERIZ.",kargo_teslim
+syn:0065,normal,,"Kolay Gelsin: Paketiniz bugün 10:00-14:00 arasında teslim edilecek. Evde olamayacaksanız komşunuza bırakılması için kuryeyi arayabilirsiniz.",kargo_dagitim
+syn:0066,normal,,"Trendyol Express: Teslimat kodun 7134. Paketini teslim alırken kuryeye bu kodu söylemen yeterli.",kargo_teslim_kodu
+syn:0067,normal,,"Yurtiçi Kargo: İade gönderinizin kodu 52TR8813. Bu kodla en yakın Yurtiçi Kargo şubesinden ücretsiz iade gönderebilirsiniz.",kargo_iade
+syn:0068,normal,,"Aras Kargo: Teslim edilemeyen gönderiniz 5 gün içinde alınmadığı için göndericiye iade edilmiştir.",kargo_iade
+syn:0069,normal,,"PTT: Adınıza gelen iadeli taahhütlü mektup, Çankaya PTT şubesinde sizi bekliyor. Teslim almak için kimliğinizle başvurunuz.",kargo_subede
+syn:0070,normal,,"Hepsiburada: Siparişiniz 15 Mart'ta HepsiJet ile adresinize teslim edilecek. Tutar: 2.349,00 TL. Ödeme yapıldı.",kargo_siparis
+syn:0071,normal,,"Sürat Kargo: Gönderiniz adres bilgisi eksik olduğu için şubemizde bekletilmektedir. Lütfen 0850 000 72 72'yi arayarak kapı numaranızı bildiriniz.",kargo_bulunamadi
+syn:0072,normal,,"DHL Express: 4419208371 numaralı gönderiniz İstanbul Havalimanı'nda gümrük işlemindedir. Durumu dhl.com.tr adresinden takip edebilirsiniz.",kargo_gumruk
+syn:0073,normal,,"UPS: Gönderiniz teslim edildi. Teslimat yeri: Ön kapı. Teşekkür ederiz.",kargo_teslim
+syn:0074,normal,,"A101: Kapıda siparişin hazırlandı, kurye yola çıktı. Teslimat saati: 18:00-20:00",kargo_siparis
+syn:0075,normal,,"Migros Sanal Market: Siparişiniz 19:00-20:00 arasında teslim edilecektir. Siparişinizde eksik ürün bulunmamaktadır.",kargo_siparis
+syn:0076,normal,,"Yurtiçi Kargo: Sayın Fatma Kaya, gönderiniz teslim edilemedi. Sebep: Alıcı adreste yok. Gönderiniz yarın tekrar dağıtıma çıkacaktır.",kargo_bulunamadi
+syn:0077,normal,,"PTT: Gönderinizi teslim alırken kuryemize 3946 kodunu söyleyiniz. PTT personeli sizden kart bilgisi veya ödeme talep etmez.",kargo_teslim_kodu
+syn:0078,normal,,"Trendyol: İade talebin onaylandı. 899,90 TL tutarındaki ücret iaden kartına 2-10 iş günü içinde yansıyacak.",kargo_iade
+syn:0079,normal,,"Aras Kargo: Gönderiniz Aras Kargo Gaziemir şubesine teslim edilmiştir. Şube adresi ve çalışma saatleri için araskargo.com.tr",kargo_subede
+syn:0080,normal,,"MNG Kargo: Teslimat randevunuz 16 Mart Cumartesi 09:00-13:00 olarak oluşturulmuştur.",kargo_dagitim
+syn:0081,normal,,"Amazon.com.tr: Siparişiniz kargoya verildi. Tahmini teslimat: Salı. Takip için Amazon uygulamasında Siparişlerim bölümüne bakın.",kargo_siparis
+syn:0082,normal,,"Yurtiçi Kargo: Gönderinizi göndericiden teslim aldık. Takip numaranız: 418820145510",kargo_kabul
+syn:0083,normal,,"HepsiJet: Kuryemiz adresinize geldi fakat ulaşamadı. Yeni teslimat için Hepsiburada uygulamasından gün seçebilirsiniz.",kargo_bulunamadi
+syn:0084,normal,,"PTT KARGO: KP093817722TR NOLU GONDERINIZ KABUL EDILMISTIR. GONDERI UCRETI: 92,50 TL",kargo_kabul
+syn:0085,normal,,"Sürat Kargo: Kapıda ödemeli gönderiniz teslim edilmiştir. Tahsil edilen tutar: 349,00 TL",kargo_kapida_odeme
+syn:0086,normal,,"Trendyol: Siparişindeki 1 ürün tedarikçi tarafından iptal edildi. 159,99 TL kartına iade edilecek.",kargo_iade
+syn:0087,normal,,"Aras Kargo: Gönderiniz Hollanda'dan yola çıkmıştır, gümrük işlemleri tamamlandıktan sonra adresinize teslim edilecektir.",kargo_gumruk
+syn:0088,normal,,"Yemeksepeti: Siparişin restoran tarafından onaylandı, tahmini teslimat 35 dakika.",kargo_siparis
+syn:0089,normal,,"PTT: Emekli maaşı adrese teslim hizmeti kapsamında postacımız yarın 10:00-12:00 arasında adresinize gelecektir. Kimliğinizi hazır bulundurunuz.",kargo_dagitim
+syn:0090,normal,,"MNG Kargo: Gönderinizin teslim adresi talebiniz üzerine Kartal şubesi olarak değiştirilmiştir.",kargo_subede
+syn:0091,normal,,"Yurtiçi Kargo: 418820199034 numaralı gönderinizin teslimat kodu 2208'dir. Kodu yalnızca teslimat sırasında kuryemize söyleyiniz.",kargo_teslim_kodu
+syn:0092,normal,,"Kolay Gelsin: Paketin kapına bırakıldı. Fotoğraflı teslimat bilgisi Kolay Gelsin uygulamasında.",kargo_teslim
+syn:0093,normal,,"N11: Siparişiniz satıcı tarafından kargoya verildi. Kargo firması: Aras Kargo, takip numarası: 77120391002561",kargo_siparis
+syn:0094,normal,,"Aras Kargo: Adınıza gönderi oluşturuldu. Gönderen: ÇİÇEKSEPETİ. Takip: araskargo.com.tr",kargo_kabul
+syn:0095,normal,,"PTT: Gönderinizin teslimi için 2. kez adresinize gidilmiştir, bulunamadığınız için gönderiniz şubeye iade edilmiştir.",kargo_bulunamadi
+syn:0096,normal,,"Sürat Kargo: Sayın Ali Rıza Çelik, gönderinizi teslim alan kişi: HÜLYA ÇELİK (eşi). İyi günlerde kullanın.",kargo_teslim
+syn:0097,normal,,"Trendyol Express: Paketin şu anda dağıtımda. Kuryen Mustafa seni teslimattan önce arayacak.",kargo_dagitim
+syn:0098,normal,,"Hepsiburada: İade kargonuz depomuza ulaştı. 1.199,00 TL iade işleminiz başlatılmıştır.",kargo_iade
+syn:0099,normal,,"Yurtiçi Kargo: Gönderiniz hasarlı olarak tespit edildiğinden göndericiyle iletişime geçilmiştir. Bilgi için 0850 000 99 99.",kargo_bulunamadi
+syn:0100,normal,,"Eczacıbaşı Online: İlaç dışı siparişiniz kargoya verildi, yarın teslim edilecek.",kargo_siparis
