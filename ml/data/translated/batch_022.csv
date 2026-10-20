@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+mendeley:23,reklam,,"ayse_21(21/K) sizi arkadaş olarak eklemek istiyor. EVET-910 veya HAYIR-910 yazıp yanıtlayın. Profiline bakın: www.SMS.ac/u/hmmross Durdurmak için ARKADAS IPTAL yazıp 6246'ya gönderin",ücretli sohbet servisi reklamı
+mendeley:26,dolandiricilik,odul,"Şehir tatili kazandınız ve her HAFTA 2.000 TL'lik alışveriş çeki kazanma şansı yakaladınız. MAGAZA yazıp 8803'e gönderin. Beceri Oyunu. Koşullar geçerlidir",£200→2.000 TL; ücretli kısa numara tuzağı
+mendeley:27,reklam,,"Turkcell'den merhaba. 1 ay ücretsiz oyun, haber ve spor erişimi ile 10 ücretsiz SMS ve 20 MMS için EVET yazın. Koşullar geçerlidir: www.turkcell.com.tr",Orange→Turkcell
+mendeley:31,reklam,,"Yeni Kampanya! Enerji Tasarrufçusu ile elektrik faturanızda %40'a varan tasarruf (DEVLET LABORATUVARINDA TEST EDİLDİ), 1.050 TL (ücretsiz kargo), 3 yıl garanti. Arayın: 0532 194 38 23","Rs.→TL; sahte numara"
+mendeley:38,dolandiricilik,odul,"KAZANDINIZ! Değerli Vodafone müşterimiz, bilgisayarımız sizi 1.500 TL ödül için seçti. Ödülü almak çok kolay. Sadece 0900 174 33 86 numarasını arayın","£150→1.500 TL; 0900 ücretli hat tuzağı"
+mendeley:39,atla,,,satın alınmış servis bildirimi olabilir; etiket belirsiz
+mendeley:42,dolandiricilik,odul,"Bugün sonu XXXX ile biten Vodafone numaraları 3.500 TL ödül almak için seçildi. Eşleşme varsa 3100 talep kodunu belirterek 0900 230 02 20 numarasını arayın, standart ücret uygulanır","£350→3.500 TL; 0900 ücretli hat tuzağı"
+mendeley:48,dolandiricilik,banka_hesap,"Apple Kimliği: [BUXCX7GBVwWCcOD Son Bildirim Apple 1D'nizin süresi bugün doluyor. Bunu önlemek için Apple Kimliğinizi http://appledogrula.com.tr.kimlik.uk adresinde onaylayın Apple Inc",harf hilesi (ID→1D) korundu
+mendeley:54,atla,,,şablon tekrarı (mendeley:42)
+mendeley:58,reklam,,"Çok çekirdekli programlamanın zorluklarını aşın, güvenilirliği ölçeklendirme tekniklerini öğrenin. Microsoft Topluluk Teknoloji Günleri'nde saat 15.45'teki Intel oturumuna katılın",etkinlik tanıtımı
+mendeley:67,reklam,,"5 Ücretsiz Polifonik Zil Sesi için 0850 187 28 73'ü arayın. Her hafta yeni zil sesi almak için POLI yazıp 8161'e gönderin, zil sesi başına 30 TL. Abonelikten çıkmak için 0850 872 78 70",£3→30 TL; sahte numaralar
+mendeley:70,dolandiricilik,diger,"Önemli bir müşteri hizmetleri duyurunuz var. Hemen ÜCRETSİZ 0800 542 08 25 numarasını arayın!",geri arama tuzağı
+mendeley:73,dolandiricilik,diger,"<0900 240 40 00 numarasından iletildi> Sizi bekleyen acil bir mesaj var, lütfen HEMEN 0900 240 40 00 numarasını arayın.",0900 ücretli hat tuzağı
+mendeley:83,reklam,,"Ataşehir Ticari Merkez Gümüş paket m² 115.000 TL, Altın paket m² 125.000 TL, Kartal projesi m² 82.000 TL. En iyi fırsat için arayın: 0532 113 18 02",Noida→Ataşehir/Kartal; sahte numara
+mendeley:86,reklam,,"D&R BONUS ÖZEL: 5.000 TL değerinde gerçek D&R hediye çeki kazanma şansı. Sadece 4 kolay soruyu yanıtlayın. DR yazıp 8668'e gönderin. Ayrıntılar: www.yuzdeyuzgercek.com",HMV→D&R; £500→5.000 TL; ücretli yarışma
+mendeley:89,atla,,,ücretli tanışma/yetişkin sohbet hattı
+mendeley:92,dolandiricilik,odul,"Garantili 2.000 TL ödül ya da 10.000 TL nakit kazandınız, ödülünüzü almak için ücretsiz 0800 040 71 66'yı arayın (18+). Durdurmak için DUR yazıp 8833'e gönderin","£200/£1000→2.000/10.000 TL"
+mendeley:97,dolandiricilik,yakin_romantik,"Tanıdığınız biri arkadaşlık servisimiz aracılığıyla sizinle iletişime geçmek istiyor! Kim olduğunu öğrenmek için sabit hattan 0900 500 09 28 numarasını arayın.",0900 ücretli hat tuzağı
+mendeley:105,atla,,,kişisel şikâyet metni; spam değil
+mendeley:114,atla,,,anlamsız içerik
+mendeley:116,dolandiricilik,odul,"Size 2. kez ulaşmaya çalışıyoruz. 7.500 TL ödül kazandınız. Almak çok kolay, HEMEN 0900 210 13 59 numarasını arayın! Dakikası sadece 10 TL.",£750→7.500 TL
+mendeley:117,reklam,,"Kredilerinizle Jamster Altın Kulüp'ün tadını çıkarın: 2 yeni görüntülü zil sesi + 2 logo + müzik haberleri! Daha fazla eğlence jamster.com.tr'de! Yalnızca 16 yaş üstü. Yardım: 0850 213 18 60",sahte numara
+mendeley:120,atla,,,ücretli tanışma servisi
+mendeley:121,dolandiricilik,banka_hesap,"Sayın Papara müşterisi, Papara kimlik doğrulamanızın süresi doldu. Hemen 0850 299 24 62 numaralı müşteri hizmetlerini arayın. Hesabınız 24 saat içinde bloke edilecektir. Teşekkürler PAPARA EKİBİ",Paytm KYC→Papara kimlik doğrulama; sahte numara
+mendeley:122,atla,,,anlamsız içerik
+mendeley:125,reklam,,"Pasaport işlemleri / Vergi Beyannamesi / KDV Beyannamesi için kapıda hizmet. İletişim: ONS Danışmanlık 0532 066 99 88 Bakırköy",Hindistan→Bakırköy; sahte numara
+mendeley:131,reklam,,"Süper Lig: Dev derbi bu akşam 20.00'de! Maçı cepte takip etmek için http://lig.onmix.mobi/?src=504 adresine tıklayın. Bildirimleri durdurmak için http://onmix.mobi/alert",IPL kriket→Süper Lig
+mendeley:140,atla,,,müstehcen içerik
+mendeley:155,atla,,,şablon tekrarı (mendeley:73)
+mendeley:156,reklam,,"Daha fazla zil sesi, logo ve oyun için www.txt8222.com.tr adresine girin. Sorular: bilgi@txt8222.com.tr",
+mendeley:160,reklam,,"8707: Yeni sezona 2 hafta ÜCRETSİZ gol ve haber servisiyle başlayın! Takımınızın adını 8707'ye gönderin, örn. GS yazıp 8707'ye",
+mendeley:165,atla,,,ücretli tanışma/yetişkin sohbet hattı
+mendeley:166,reklam,,"İstanbul Havalimanı yakınında, Arnavutköy'de imarlı arsalar. Metrekaresi 2.600 TL, rezervasyon 30.000 TL'den başlıyor, peşin veya taksit seçeneği. Arayın: 0532 324 14 51",Noida→Arnavutköy; sahte numara
+mendeley:169,dolandiricilik,banka_hesap,"Sayın müşterimiz, sistem güncellemesi nedeniyle ATM KARTINIZ devre dışı bırakıldı, yeniden etkinleştirmek için lütfen 0850 656 35 08 numaralı müşteri hizmetlerini arayın.",BVN→sistem güncellemesi; sahte numara
+mendeley:173,dolandiricilik,diger,"1 yeni sesli mesajınız var. Lütfen 0900 191 81 54 numarasını arayın.",0900 ücretli hat tuzağı
+mendeley:180,dolandiricilik,diger,"Yeni bir görüntülü telefon mu istiyorsunuz? Her şebekeye 750 dakika? Yarı fiyatına hat ücreti ve 3 ay ücretsiz SMS? Ücretsiz teslimat için yanıtlayın ya da 0800 093 07 05'i arayın",sahte operatör teklifi
+mendeley:183,dolandiricilik,yakin_romantik,"Gizli bir hayranınız var. Sizi bu kadar özel bulan kişinin kim olduğunu ÖĞRENMEK için 0900 517 40 42'yi arayın. Çıkmak için HAYRAN DUR yazın. Mesaj başı 15 TL",0900 ücretli hat tuzağı
+mendeley:186,atla,,,şablona yakın (mendeley:180)
+mendeley:187,atla,,,indirim kodu bildirimi; etiket belirsiz
+mendeley:189,atla,,,şablona yakın (mendeley:180)
+mendeley:193,dolandiricilik,odul,"Tebrikler, 5.000 TL'lik D&R hediye çeki ya da haftalık 1.000 TL'lik çekilişimize ücretsiz katılım kazandınız, MUZIK yazıp 8706'ya gönderin. Koşullar www.Ldew.com","£500/£100→5.000/1.000 TL"
+mendeley:195,atla,,,müstehcen içerik
+mendeley:203,dolandiricilik,odul,"ACİL! Cep numaranız 05.09'da 20.000 TL Bonus Arayan Ödülü kazandı. Bu size son ulaşma denememiz! Sabit hattan 0900 401 97 88 numarasını arayın",£2000→20.000 TL
+mendeley:207,atla,,,şablon tekrarı (mendeley:183)
+mendeley:213,dolandiricilik,odul,"Haftalık 2.500 TL'lik yarışmamıza ÜCRETSİZ katılım için hemen KATIL yazıp 8412'ye gönderin. 18 yaş üstü, koşullar www.textcomp.com",£250→2.500 TL
+mendeley:223,atla,,,şablona yakın (mendeley:67)
+mendeley:226,atla,,,şablon tekrarı (mendeley:73)
+mendeley:228,atla,,,ücretli tanışma/yetişkin sohbet hattı
+mendeley:231,dolandiricilik,diger,"Zil sesi siparişiniz için teşekkürler, referans no X29. Hattınızdan 45 TL tahsil edilecektir. Zil sesiniz ulaşmazsa 0900 598 91 80 numaralı müşteri hizmetlerini arayın",sahte ücret + 0900 geri arama tuzağı
+mendeley:233,dolandiricilik,odul,"Adım Tülin ve bölgenizdeki yoksullara hayır işi için size aktarmak istediğim 73 milyon TL var. İletişim: tulin.hayir@gmail.com",7.3 milyon dolar→73 milyon TL; isim değiştirildi
