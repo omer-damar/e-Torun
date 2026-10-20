@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+smishtank:62,atla,,,şablon tekrarı (smishtank:25)
+smishtank:65,dolandiricilik,banka_hesap,"Garanti BBVA Uyarı: Olağandışı işlem nedeniyle banka kartınıza erişimi engelledik. Bilgilerinizi garanti-islemler.org adresinden doğrulayın.",Citi→Garanti
+smishtank:66,dolandiricilik,banka_hesap,"(BonusKart_Musteri Hizmetleri#2627457643) Bekleyen bir sorununuz var. Cozmek icin lutfen ziyaret edin: http://r2s9hq82ne.mmnrxeqmcv.nikxc.org",Discover→Bonus Kart; karaktersiz
+smishtank:67,atla,,,yalnızca adres (müstehcen)
+smishtank:68,dolandiricilik,yakin_romantik,"Merhaba Kerem, ben Selda, bu benim yeni numaram. Şu an Almanya'dayım, mesajımı alınca bana yaz çünkü numaranı doğru kaydettiğimden emin değilim. Yanlış numaraysa özür dilerim, umarım rahatsız etmemişimdir.",Filipinler→Almanya
+smishtank:69,dolandiricilik,diger,"Merhaba Cem Bey, elimizdeki proje için yakın zamanda çok miktarda değerli metal hammaddesine ihtiyacım var, bana bir fiyat listesi gönderebilir misiniz?",sohbet başlatma tuzağı
+smishtank:70,dolandiricilik,yatirim,"Sayin kullanici, Bitcoin analiz grubumuza ve yatirim planimiza katilarak gunde 15.000-150.000 TL kazanabilirsiniz. Katilmak icin 1 yazin ve baglantiya basili tutun: https://chat.whatsapp.com/DzeAqjxgNbi6S4cuCFchXN",karaktersiz
+smishtank:71,dolandiricilik,yakin_romantik,"Merhaba Leyla, ben Aysel. Beni hatırladın mı? En son Bodrum'daki açık artırmada tanışmıştık.",Kaliforniya→Bodrum
+smishtank:72,atla,,,nakit ev alımı spam'i (smishtank:29 ile aynı tür)
+smishtank:73,dolandiricilik,kargo,"[PTT] Üzgünüz, paketiniz teslim edilemedi. Teslimatı yeniden planlamak için lütfen https://bit.ly/3NR5x9f adresini ziyaret edin.",USPS→PTT
+smishtank:74,dolandiricilik,yatirim,"Sayın kullanıcı, Bitc0in analiz grubumuza ve yatırım planımıza davetlisiniz, günde 15.000-150.000 TL kazanın. 👇👇👇 Katılmak için aşağıdaki bağlantıya tıklayın 👇👇👇 https://chat.whatsapp.com/F6Wo68CcSRq88C9LSdsGcN",yazım hilesi (Bitc0in) korundu
+smishtank:75,dolandiricilik,yakin_romantik,"Bu Volkan'ın numarası mı acaba?",
+smishtank:76,dolandiricilik,abonelik_fatura,"Gönderen: NETFLIX Mesaj: NETFLIX aylık ödemeniz başarısız oldu ve hesabınız geçici olarak kilitlendi. Tüm ayrıntılar aşağıdaki ekte. Abonelik-basarisiz56756... Lütfen mesajı ayrıntılı olarak inceleyin.",
+smishtank:79,dolandiricilik,yakin_romantik,"Ferhat Bey siz misiniz? Ben Aslı, numaranın doğru olduğundan emin değilim.",
+smishtank:80,dolandiricilik,banka_hesap,"Yapı Kredi hesabınızı yükseltmek için bağlantıya tıklayın: https://express.adobe.com/page/IkvuZSZq2z1lj/",Wells Fargo→Yapı Kredi
+smishtank:82,dolandiricilik,banka_hesap,"DENIZBANK - Ekibimiz 15 Temmuz'da banka kartinizi kilitledi. Kilidi acmak icin lutfen Denizbank-KORUMA.com adresini ziyaret edin.",Regions→Denizbank; karaktersiz
+smishtank:83,dolandiricilik,yatirim,"Sayın 05550000000 arkadaşım, Bitcoin Alım Satım Çalışma Grubu: https://rebrand.ly/v7qj08h",numara sahte
+smishtank:84,dolandiricilik,yatirim,"(1) USDT'n var mı (2) Nasıl yatırım yapıp kayıt olursun (3) Nasıl katılırsın. Bana buradan yaz: https://wa.me/+905321234567",numara sahte
+smishtank:85,dolandiricilik,odul,"Hakan Bey GÜVENLİSÜRÜCÜUYARISI: Kasko poliçenizden fazla ücret alınmış görünüyor. GÜVENLİSÜRÜCÜİNDİRİMİ için başvurup İADE almak için geç değil. kzrp1h.com/bff4948af7",oto sigorta→kasko
+smishtank:86,dolandiricilik,banka_hesap,"Olağandışı Etkinlik: Trendyol hesabınız olağandışı etkinlik nedeniyle askıya alındı. Engellenen giriş denemesi: Mozilla Firefox 8.7 [168.254.81.174 - Rusya]. Hesabınızın kilidini açmak için lütfen aşağıdaki bağlantıdan doğrulama yapın: http://www.xprswebsite.com/free/userf111/redirf111",Amazon→Trendyol; Turkey→Rusya
+smishtank:87,dolandiricilik,kargo,"[Yurtiçi Kargo] - Adres hatalı olduğu için paket teslim edilemiyor, doğru adresi güncellemek için lütfen bağlantıyı takip edin. https://yurticikargoo.com",UPS→Yurtiçi; tek harf farklı taklit alan adı
+smishtank:88,dolandiricilik,banka_hesap,"UYARI: Ziraat Bankası Emekli Maaş Kartınız olağandışı işlem nedeniyle bloke edildi. Kartınızı yeniden etkinleştirmek için lütfen http//:ziraatemeklikart.com adresini ziyaret edin.",BofA EDD kartı→emekli maaş kartı
+smishtank:89,dolandiricilik,banka_hesap,"Is Bankasi UYARI: Hesabiniz olagandisi islem nedeniyle kilitlendi. Hesabiniza para yatirmaya devam edebilirsiniz. Blokeyi kaldirmak icin baglantiyi ziyaret edin: https://isbdogrula-bilgi.com",Wells Fargo→İş Bankası; karaktersiz
+smishtank:90,dolandiricilik,banka_hesap,"QNB: 4.722,00 TL tutarındaki bir harcama onay bekliyor. İşlemi onaylamak için EVET yazın. Siz değil misiniz? 11 Ağustos'tan önce qnb-guvenlik01.com adresini ziyaret edin.","Citizens→QNB; $472.20→4.722,00 TL"
+smishtank:91,dolandiricilik,odul,"Gratis sadece harika fiyatlar sunmuyor. Bugün 1.000 TL'ye varan kazanç için birçok fırsatınız var. http://prettyplump.directory/DFzOyZtj",CVS→Gratis
+smishtank:92,dolandiricilik,banka_hesap,"AKBANK UYARI: Atasehir Bulvari No:30 Istanbul adresinde olagandisi bir islem girisimi tespit ettik. Bu siz degilseniz kimliginizi dogrulamak ve hesabinizi guvenceye almak icin guvenli baglantiyi kullanin: https://guvenlik06-akbank-dogrula.my03.com/?Dogrula",Chase→Akbank; NJ adresi→İstanbul; karaktersiz
+smishtank:93,dolandiricilik,banka_hesap,"Halkbank Dolandırıcılık Uyarıları: Hesabınızda olağandışı işlemler fark ettik. Hesabınızı güvenceye almak için lütfen işlemleri HalkbankDogrula.com/act adresinden onaylayın.",Wells Fargo→Halkbank
+smishtank:94,dolandiricilik,kargo,"PTTKargo: Adres sorunu nedeniyle paketinizi gönderemedik. Teslimatın yapılabilmesi için adresinizi onaylamanız gerekiyor. https://s.id/1fXBI",USPS→PTT
+smishtank:97,dolandiricilik,odul,"Koçtaş Teklifi + Hediye Puan http://flatterlaud.cricket/0VH9A5",Home Depot→Koçtaş
+smishtank:98,dolandiricilik,banka_hesap,"denizbank: Banka kartiniz olagandisi hareket nedeniyle kullanima kapatildi. Yeniden etkinlestirmek icin https://www.yardim-islemmerkezi.com adresine girip bilgilerinizi girin.",Regions→Denizbank; karaktersiz
+smishtank:99,dolandiricilik,odul,"Koçtaş'tan hızlı hediyeler! http://surveysens.yokohama/9vePTP",Home Depot→Koçtaş
+smishtank:100,dolandiricilik,odul,"Babam az önce sana bir paket bıraktı. Migros'tan geldiğini söyledi, bugün müşterilerine para dağıtıyorlarmış. Biz de deneyelim mi? Buradan başlamamız gerekiyormuş dedi. http://indianelder.business/hBF734",Costco→Migros
+smishtank:101,dolandiricilik,odul,"Bauhaus'tan nakit ödemeler http://apartnerve.florist/Qd8qKU",Home Depot→Bauhaus
+smishtank:102,dolandiricilik,odul,"Bauhaus Hediye Kartı Teklifi http://leaseill.associates/b42TrX",Home Depot→Bauhaus
+smishtank:104,dolandiricilik,banka_hesap,"<#>Vakifbank.Emekli: Emekli maas hesabiniz gecici olarak bekletmeye alindi. Hesabinizi kullanmaya devam etmek icin son islemlerinizi onaylamaniz gerekiyor http://processingprotection.me/JaZcP",BofA EDD→Vakıfbank emekli; karaktersiz
+smishtank:105,dolandiricilik,edevlet_vergi,"SGK HİZMET BİRİMİ: Emekli maaş kartınız geçici olarak askıya alındı. Hesabınızın kapanmasını önlemek için lütfen ziyaret edin: http://sgk-emeklidestek.info",California EDD→SGK
+smishtank:106,dolandiricilik,odul,"Migros'tan anında hediyeler! http://rgjgj.capital/i16nf0",Home Depot→Migros
+smishtank:107,dolandiricilik,odul,"1/2 GÖNDEREN:OdulMarkasi.com sms_id_YBJ431 MESAJ: Değerli bir Koçtaş müşterisi olduğunuz için size özel 1.000 TL değerinde bir hediyemiz var (Devamı 2/2) Zaman ayırdığınız için. Üç soruluk bu anketi yanıtlamanız yeterli, ödülünüz verilecek. sms_id_YBJ431 (Son)","Home Depot→Koçtaş; $100→1.000 TL"
+smishtank:108,dolandiricilik,banka_hesap,"ZIRAAT_EMEKLI_KART: 4427*** ile baslayan kartiniz gecici olarak bloke edildi. Blokeyi kaldirmak icin: https://ziraatemeklikart-blokekaldir.meeha.com.bd/asdfghjkl.html",BofA EDD→Ziraat emekli kartı; karaktersiz
+smishtank:109,dolandiricilik,banka_hesap,"EMEKLI.MAAS.KARTI: Kartiniz devre disi birakildi. Kartinizin zarar gormemesi icin https://romualdo.exe.it/AKARA.html adresinden yeniden etkinlestirin.",EDD Visa→emekli maaş kartı; karaktersiz
+smishtank:110,atla,,,anlamsız/bozuk metin
+smishtank:111,dolandiricilik,banka_hesap,"Emekli maaş kartınızda olağandışı hareketler var. Yeni bir giriş tespit edildi. Bu siz değilseniz şu adımları izleyin: ee2r.info",BOA işsizlik kartı→emekli maaş kartı
+smishtank:112,dolandiricilik,odul,"Hiç Migros'tan alışveriş yaptıysanız bu muhteşem hediye kampanyasına katılmaya hak kazandınız http://pricesever.financial/j07mFgmb",Costco→Migros
+smishtank:113,atla,,,müstehcen ürün reklamı
+smishtank:114,atla,,,yalnızca adres
+smishtank:115,dolandiricilik,abonelik_fatura,"Geçen ayki öde.meniz yapıl.dı. Teşekkürler, bu size sür.priz bir he.diye: W3NGZ.COM/6blDog8jzc",nokta ile kelime bölme hilesi korundu
+smishtank:116,dolandiricilik,odul,"Önemli Güncelleme: Eylül'de kazandığınız iPad Pro'yu ayırtmak için 24 saatiniz kaldı: disciplepurse.com/HvMe3JH",
+smishtank:117,dolandiricilik,abonelik_fatura,"Merhaba, Turkcell'den yazıyoruz. Harika haber! Mevcut telefonunuzun en az %50'sini ödediniz. iPhone 17 Pro Max teklifimizle ilgileniyorsanız ayrıntıları almak için EVET yazıp yanıtlayın.",AT&T→Turkcell
+smishtank:118,dolandiricilik,odul,"Koçtaş 1.000 TL Hediye Kartı kazanın http://abusenat.associates/mKd6NG","Home Depot→Koçtaş; $100→1.000 TL"
+smishtank:119,dolandiricilik,banka_hesap,"<#>Yapı Kredi: Güncellenen sözleşme koşullarını onaylayın. https://cp2we.app.link/iur",BofA→Yapı Kredi
