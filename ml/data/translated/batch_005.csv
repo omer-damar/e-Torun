@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+smishtank:257,atla,,,müstehcen ima (smishtank:244 ile aynı tür)
+smishtank:258,dolandiricilik,yakin_romantik,"Selam, bu akşam kafede buluşmak ister misin? Bu arada ben Sevgi, haber ver: http://lxhtwb.com/G21sEyA",bar→kafe
+smishtank:259,atla,,,müstehcen içerik
+smishtank:260,atla,,,müstehcen içerik
+smishtank:261,atla,,,müstehcen içerik
+smishtank:262,dolandiricilik,yakin_romantik,"Merhaba tatlım, adım Seda. Birbirimize yakın oturuyormuşuz. Bana yaz... http://rfhy.ps.com/6vDF7Xx",
+smishtank:263,dolandiricilik,yakin_romantik,"Selam canım, sonunda kameramı kurdum. Konuşalım, buradan gir: http://kxqghk.com/ROpuoNr",
+smishtank:264,atla,,,müstehcen içerik
+smishtank:265,dolandiricilik,yakin_romantik,"Tatli Burcu03'ten bir mesajiniz var. Gelen kutusuna girmek icin dokunun... http://yrvdnd.com/OmwsQQJ",karaktersiz
+smishtank:266,dolandiricilik,banka_hesap,"Yapı Kredi Uyarıları - Hesabınıza yapılan maaş ödemesi incelemeye alındı. Sorunu çözmek için lütfen https://scre-yk0llafca.live/login adresini ziyaret edin.",BofA→Yapı Kredi; direct deposit→maaş ödemesi
+smishtank:267,dolandiricilik,banka_hesap,"Olağandışı Etkinlik: Amazon hesabınızı olağandışı etkinlik nedeniyle askıya aldık. Engellenen giriş denemesi: Mozilla Firefox 8.5 [85.123.144.235 - Kanada]. Güvenlik nedeniyle hesabınız askıya alındı. Kilidi açmak için lütfen aşağıdaki bağlantıdan doğrulama yapın: http://www.xprswebsite.com/free/userf112",Amazon Türkiye'de de var; korundu
+smishtank:268,atla,,,şablon tekrarı (smishtank:86/192/193 ile aynı)
+smishtank:269,dolandiricilik,odul,"Burger King Bedav@ ürününüzü isteyin ve bir yıl boyunca bedav@ yemek kazanmak için katılın 1X3.me/3WJ0mm",yazım hilesi (Fr@@→Bedav@) korundu
+smishtank:270,atla,,,emlak ilanı; Türk bağlamında karşılığı zayıf
+smishtank:271,dolandiricilik,edevlet_vergi,"SGK Emekli Hizmetleri: Sahte başvurular nedeniyle emekli maaşınızı kaybetmemek için profil bilgilerinizi buradan onaylayın: http://sgkemekliuyari.com/yardim Aksi takdirde maaş kartınız kapatılabilir.",BofA EDD→SGK emekli
+smishtank:273,dolandiricilik,banka_hesap,"ZİRAAT BANKASI EMEKLİ UYARI HİZMETİ: '4427' ile biten emekli maaş kartınız, hesaptaki olağandışı işlemler nedeniyle kilitlendi ve incelemeye alındı. Kartınızı yeniden etkinleştirmek için aşağıdaki güvenli bağlantıya tıklayıp kart bilgilerinizi kontrol edin. http://emeklikartcozum.com",BofA EDD→Ziraat emekli kartı
+smishtank:274,dolandiricilik,banka_hesap,"Hesabınızdan HP Pro Serisi F1 için 5.423,50 TL çekildi. Sipariş No: TRNDMX. Bu işlemi siz onaylamadıysanız bizi arayın: 0850 595 13 47","$542.35→5.423,50 TL; sahte numara"
+smishtank:275,dolandiricilik,banka_hesap,"UYARI-BANKAKIMLIK: it55XX2445 / Iyi gunler, bankacilik basvurunuz icin hizli bir inceleme gerekiyor: 0850 333 05 02 BildirimNo:9aAyyy0AaA",sahte numara; karaktersiz
+smishtank:276,dolandiricilik,abonelik_fatura,"Gönderen: Neftlix MESAJ: NETFLIX üyeliğinizin son ödemesi işlenirken sorun yaşadık ve hesabınız geçici olarak kısıtlandı. NETFLIX'i kullanmaya devam etmek için lütfen http://www.billing-customer.kfx65hci-app.zwbq.shop adresinden ödeme bilgilerinizi güncelleyin ve askıya alınmayı önleyin. Saygılarımızla, NETFLIX",yazım hatalı gönderen (Neftlix) korundu
+smishtank:277,dolandiricilik,odul,"Size 14.500.000,00 TL tutarında hibe tahsis edilmiştir. Lütfen Ref#:WBG-3411-01FG numarasıyla Serkan Aydın ile iletişime geçin (saydin720 @ gmail.com)","$1.450.000→14.500.000 TL; isim değiştirildi"
+smishtank:278,dolandiricilik,banka_hesap,"İş Bankası: Uyarı! Yetkisiz işlem nedeniyle hesaplarınız bekletmeye alındı. Hesabınızı doğrulamak için isbank9webio.com/ adresini ziyaret edin.",JP Morgan→İş Bankası
+smishtank:279,dolandiricilik,banka_hesap,"Garanti BBVA: İletişim bilgileriniz güncellendi. Bu siz değilseniz doğrulamak için lütfen https://garantl-00.herokuapp.com/login adresini ziyaret edin.",Citi→Garanti; harf benzerliği (i→l) korundu
+smishtank:280,dolandiricilik,banka_hesap,"VAKIFBANK: UYARI: Yeni çevrimiçi güncellemeler nedeniyle internet bankacılığınız devre dışı bırakıldı. Bilgilerinizi güncellemek için lütfen http//:vakifonlinedogrula.com adresinden doğrulama yapın.",BofA→Vakıfbank
+smishtank:285,dolandiricilik,kargo,"Kargo görevlisi, paket adresiniz ayrıntılı olmadığı için teslimat yapamıyor. Lütfen adres bilgilerinizi güncelleyin. pttadresguncel.info/wt2e",
+smishtank:286,dolandiricilik,banka_hesap,"Ziraat-Emekli UYARI: Emekli maaş kartınız güvenlik nedeniyle devre dışı bırakıldı. Kartınızı şimdi yeniden etkinleştirmek için https://user-zr2emekli.com/emekli adresini ziyaret edin.",BofA EDD→Ziraat emekli
+smishtank:287,dolandiricilik,odul,"Gratis Müşteri Haftası: Kısa Anketi Doldurun, 1.000 TL'ye Varan Ödül Kazanın senatedoublet.com/HU8KRY","CVS→Gratis; $100→1.000 TL"
+smishtank:288,dolandiricilik,odul,"Gratis'in Yeni 1.000 TL Hediyesini Kapın areanitrogen.com/Leye1E","CVS→Gratis; $100→1.000 TL"
+smishtank:289,atla,,,müstehcen içerik
+smishtank:290,dolandiricilik,banka_hesap,"Son para çekme işleminiz |#yatirim-AKBANK#| gerçekleştirilemedi. Ayrıntılar için https://ishurl.info adresini ziyaret edin.",BofA→Akbank
+smishtank:291,dolandiricilik,banka_hesap,"ZiraatEmekli_Uyari: 4427*** ile baslayan maas kartiniz devre disi birakildi. Simdi yeniden etkinlestirmek icin asagiya tiklayin. https://kart-etkinlestir.info/index2.html",EDD→emekli kartı; karaktersiz
+smishtank:292,dolandiricilik,odul,"Koçtaş Anketi: 1.000 TL kazanın http://moreshrill.shopping/PkRvik","Home Depot→Koçtaş; $100→1.000 TL"
+smishtank:293,atla,,,şablon tekrarı (smishtank:127)
+smishtank:294,dolandiricilik,kredi,"İşletmeniz için ek sermayeye mi ihtiyacınız var? Biz buradayız! 24-48 saat içinde onay alın, paranız hesabınızda! Başvurmak için tıklayın https://tinyurl.llc/FAtW7F",orijinalde mesaj iki kez tekrarlanmış
+smishtank:298,atla,,,etkinlik daveti reklamı; dolandırıcılık olduğu belirsiz
+smishtank:299,dolandiricilik,odul,"Esra Hanım, adınız sahipsiz para sorgusunda çıktı mim342.com/e1630/75b822a Telefon faturanız: 850 TL Elektrik.",$85→850 TL
+smishtank:300,dolandiricilik,odul,"Esra Hanım, size ödenmesi gereken ve haberiniz olmayan bir para olabilir. Süre yakında doluyor: bdhicy.com/okrWt zkMU6n1",
+smishtank:303,dolandiricilik,diger,"YeniTrafikKuralları: Esra Hanım, sürücüler endişeli: chl8vo.com/ykrrb",CA motorists→sürücüler; tıklama tuzağı
+smishtank:304,dolandiricilik,odul,"Gratis Müşteri Haftası: Kısa Anketi Bitirin, 750 TL'ye Varan Gratis Mağaza Ödülü Kazanın comfortstale.com/elPdWW","CVS→Gratis; $75→750 TL"
+smishtank:305,dolandiricilik,diger,"DiyetFix'e hoş geldiniz. Yatmadan önce sadece 1 bardak içerek 4 haftada 13 kilo verin. İnceleyin: wlness21.com/3qOV",sahte sağlık ürünü; 28 lbs→13 kg
+smishtank:307,dolandiricilik,kargo,"Sipariş No 46987 Merhaba. Kurye kapınızdaydı, sizi bulamadı. Bugün ne zaman tekrar gelebileceğimizi bize bildirin b806l.me/duNccdX",
+smishtank:310,dolandiricilik,diger,"Başvuru: KJN468 - Durum: Tamamlandı, sonuçları kontrol edin: veilknitting.com/y8mXEyk",
+smishtank:311,dolandiricilik,kargo,"PTT'den Selin, bekleyen gönderilerinizden biriyle ilgili sizinle iletişime geçmek istiyor: spongelowering.com/fxxgMDq",USPS→PTT
+smishtank:316,atla,,,yabancı hayır kampanyası reklamı; Türk bağlamına uygun değil
+smishtank:317,dolandiricilik,odul,"Bu, örnek ödeme geçmişiniz için teşekkür hediyemizdir. Mutlu yıllar! Türk Telekom yrt1x.info/RbGWPZ6FRQ",T-Mobile→Türk Telekom; Noel→yeni yıl
+smishtank:318,dolandiricilik,odul,"Watsons: Son ödül programımızın son seçilenlerinden birisiniz, 1 dakikalık anketle 834 ödülden birini alabilirsiniz cpqsz.cc/DwFK192",Walgreens→Watsons
+smishtank:332,atla,,,şablon tekrarı (smishtank:25)
+smishtank:333,dolandiricilik,banka_hesap,"Enpara: Olağandışı işlem nedeniyle BANKA KARTINIZI geçici olarak kilitledik. Bilgilerinizi https://enpara01giris6h.finixp.org adresinden onaylayın",Navy Federal→Enpara
+smishtank:334,dolandiricilik,banka_hesap,"[enpara-EUyari]: Olagandisi islemler nedeniyle BANKA KARTINIZI gecici olarak kilitledik. Bilgilerinizi https://enpara01b-giris00.gipsitv.org adresinden onaylayin",Navy Federal→Enpara; karaktersiz
+smishtank:335,dolandiricilik,is_ilani,"Merhaba! Müşterilerimizin talebini karşılamak için ekibimizde ek elemana ihtiyacımız var. Bu nedenle sizi Satın Alma Temsilcisi olarak aramızda görmek istiyoruz. Uzaktan çalışacak ve haftalık 6.000 TL kazanacaksınız. Teklif hakkında daha fazla bilgi için https://miborealityasociate.wixsite.com/mibor adresini ziyaret edin!",$600→6.000 TL
+smishtank:336,dolandiricilik,banka_hesap,"Akbank mobil - çevrimiçi erişim kilitlendi! ip(72.103.23.01) adresinden yapılan çok sayıda başarısız havale denemesi nedeniyle, kilidi açmak için lütfen bilgilerinizi http://jmp.su/dogrula adresinden doğrulayın.",Chase→Akbank
