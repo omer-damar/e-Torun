@@ -13,8 +13,8 @@
     "rows": 6761,
     "by_label": {
       "normal": 3083,
-      "reklam": 2970,
-      "dolandiricilik": 708
+      "reklam": 2968,
+      "dolandiricilik": 710
     },
     "by_origin": {
       "gercek": 5637,
@@ -38,9 +38,9 @@
     "train": {
       "rows": 4955,
       "by_label": {
-        "normal": 2283,
-        "reklam": 1991,
-        "dolandiricilik": 681
+        "normal": 2282,
+        "reklam": 1990,
+        "dolandiricilik": 683
       },
       "by_origin": {
         "gercek": 3831,
@@ -51,8 +51,8 @@
     "val": {
       "rows": 767,
       "by_label": {
-        "normal": 369,
-        "reklam": 386,
+        "normal": 370,
+        "reklam": 385,
         "dolandiricilik": 12
       },
       "by_origin": {
@@ -72,8 +72,7 @@
     }
   },
   "test_fraud_by_source": {
-    "turkish_sms_collection": 6,
-    "scam_tr:gercek": 5,
-    "uysal_2013": 1
+    "scam_tr:gercek": 8,
+    "turkish_sms_collection": 4
   }
 }

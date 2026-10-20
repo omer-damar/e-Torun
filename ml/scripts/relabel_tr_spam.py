@@ -23,6 +23,8 @@ import sys
 from pathlib import Path
 
 import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 from src.load_data import PROCESSED_DIR, load_turkish_sms_collection, load_uysal
 from src.normalize import normalize
@@ -34,6 +36,8 @@ OVERRIDES_PATH = RELABEL_DIR / "tr_spam_overrides.csv"
 REVIEW_PATH = PROCESSED_DIR / "relabel_review.csv"
 
 LABELS = {"reklam", "dolandiricilik", "normal", "atla"}
+# Elle verilen karar bu benzerliğin (karakter n-gram kosinüs) üstündeki kopyalara inceleme için taşınır.
+NEAR_COPY_SIMILARITY = 0.6
 
 # Normalize metinde aranır ("num" = rakam, "urltoken" = link).
 AD_MARKER = re.compile(
@@ -98,6 +102,22 @@ def load_overrides() -> pd.DataFrame:
     return df
 
 
+def flag_near_copies(spam: pd.DataFrame, threshold: float = NEAR_COPY_SIMILARITY) -> None:
+    """Elle 'reklam' dışı etiketlenen bir mesaja çok benzeyen (yalnızca isim/tarih/tutar farklı) otomatik
+    satırları inceleme listesine alır: aynı dolandırıcılık şablonunun kopyası reklam olarak kalmasın."""
+    manual = spam["method"].eq("elle") & spam["label"].ne("reklam")
+    auto = spam["method"].str.startswith("oto")
+    if not manual.any() or not auto.any():
+        return
+    vectorizer = TfidfVectorizer(analyzer="char_wb", ngram_range=(3, 5)).fit(spam["normalized"])
+    sim = cosine_similarity(vectorizer.transform(spam.loc[auto, "normalized"]), vectorizer.transform(spam.loc[manual, "normalized"]))
+    best = sim.max(axis=1)
+    near = spam.index[auto][best >= threshold]
+    ref = spam.loc[manual, "key"].to_numpy()[sim.argmax(axis=1)][best >= threshold]
+    spam.loc[near, "method"] = "aday_benzer"
+    spam.loc[near, "reason"] = [f"elle etiketlenen {k} ile neredeyse aynı" for k in ref]
+
+
 def main() -> int:
     spam = load_spam()
     auto = [classify(n, t) for n, t in zip(spam["normalized"], spam["text"])]
@@ -116,6 +136,7 @@ def main() -> int:
     for col in ("label", "scam_type", "note"):
         spam.loc[hit, col] = spam.loc[hit, "key"].map(ov[col])
     spam.loc[hit, "method"] = "elle"
+    flag_near_copies(spam)
 
     RELABEL_DIR.mkdir(parents=True, exist_ok=True)
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
@@ -126,7 +147,7 @@ def main() -> int:
 
     print(f"{len(spam)} tekil spam mesajı")
     print(spam.groupby(["method", "label"]).size().to_string())
-    pending = spam["method"].isin(["aday_dolandiricilik", "aday_bahis"]).sum()
+    pending = spam["method"].isin(["aday_dolandiricilik", "aday_bahis", "aday_benzer"]).sum()
     print(f"Elle incelenmemiş aday: {pending}")
     return 0
 

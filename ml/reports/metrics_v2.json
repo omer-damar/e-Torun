@@ -1,0 +1,321 @@
+{
+  "created_at": "2026-10-20T20:22:31+00:00",
+  "classes": [
+    "normal",
+    "reklam",
+    "dolandiricilik"
+  ],
+  "selection_rule": "CV makro F1'i en iyinin 0.005 yakınındaki adaylardan, eğitime girmeyen sentetik zor negatiflerde en az 'dolandırıcılık' diyen",
+  "selected_config": "4_tr_sentetik",
+  "selected_weights": {
+    "gercek": 1.0,
+    "sentetik": 1.0
+  },
+  "selected_c": 10.0,
+  "n_features": 20000,
+  "thresholds": {
+    "low": 0.2,
+    "high": 0.4,
+    "rule": "normal+reklam yanlış alarm: kırmızı ≤ 1%, sarı ≤ 3% (doğrulama)"
+  },
+  "cross_validation": {
+    "real_rows": 5365,
+    "real_fraud_rows": 83,
+    "folds": 5,
+    "table": [
+      {
+        "config": "1_tr",
+        "C": 1.0,
+        "macro_f1": 0.8982,
+        "f1_normal": 0.9868,
+        "f1_reklam": 0.9857,
+        "f1_dolandiricilik": 0.7219,
+        "fraud_recall": 0.7349,
+        "fraud_precision": 0.7093,
+        "fraud_average_precision": 0.8284,
+        "hard_negative_as_fraud": 0.2861
+      },
+      {
+        "config": "1_tr",
+        "C": 3.0,
+        "macro_f1": 0.9044,
+        "f1_normal": 0.9888,
+        "f1_reklam": 0.9883,
+        "f1_dolandiricilik": 0.7362,
+        "fraud_recall": 0.7229,
+        "fraud_precision": 0.75,
+        "fraud_average_precision": 0.8317,
+        "hard_negative_as_fraud": 0.2709
+      },
+      {
+        "config": "1_tr",
+        "C": 10.0,
+        "macro_f1": 0.9082,
+        "f1_normal": 0.989,
+        "f1_reklam": 0.9887,
+        "f1_dolandiricilik": 0.7468,
+        "fraud_recall": 0.7108,
+        "fraud_precision": 0.7867,
+        "fraud_average_precision": 0.8334,
+        "hard_negative_as_fraud": 0.2532
+      },
+      {
+        "config": "2_tr_ceviri",
+        "C": 1.0,
+        "macro_f1": 0.83,
+        "f1_normal": 0.987,
+        "f1_reklam": 0.9788,
+        "f1_dolandiricilik": 0.5242,
+        "fraud_recall": 0.7831,
+        "fraud_precision": 0.3939,
+        "fraud_average_precision": 0.6914,
+        "hard_negative_as_fraud": 0.5241
+      },
+      {
+        "config": "2_tr_ceviri",
+        "C": 3.0,
+        "macro_f1": 0.8498,
+        "f1_normal": 0.9889,
+        "f1_reklam": 0.983,
+        "f1_dolandiricilik": 0.5776,
+        "fraud_recall": 0.8072,
+        "fraud_precision": 0.4497,
+        "fraud_average_precision": 0.7123,
+        "hard_negative_as_fraud": 0.4684
+      },
+      {
+        "config": "2_tr_ceviri",
+        "C": 10.0,
+        "macro_f1": 0.8698,
+        "f1_normal": 0.9893,
+        "f1_reklam": 0.9851,
+        "f1_dolandiricilik": 0.6351,
+        "fraud_recall": 0.8072,
+        "fraud_precision": 0.5234,
+        "fraud_average_precision": 0.7197,
+        "hard_negative_as_fraud": 0.4354
+      },
+      {
+        "config": "3_tr_ceviri_sentetik",
+        "C": 1.0,
+        "macro_f1": 0.8288,
+        "f1_normal": 0.9867,
+        "f1_reklam": 0.9774,
+        "f1_dolandiricilik": 0.5224,
+        "fraud_recall": 0.7711,
+        "fraud_precision": 0.3951,
+        "fraud_average_precision": 0.6641,
+        "hard_negative_as_fraud": 0.2557
+      },
+      {
+        "config": "3_tr_ceviri_sentetik",
+        "C": 3.0,
+        "macro_f1": 0.8467,
+        "f1_normal": 0.9882,
+        "f1_reklam": 0.9818,
+        "f1_dolandiricilik": 0.5701,
+        "fraud_recall": 0.7349,
+        "fraud_precision": 0.4656,
+        "fraud_average_precision": 0.6831,
+        "hard_negative_as_fraud": 0.1722
+      },
+      {
+        "config": "3_tr_ceviri_sentetik",
+        "C": 10.0,
+        "macro_f1": 0.8676,
+        "f1_normal": 0.9888,
+        "f1_reklam": 0.9851,
+        "f1_dolandiricilik": 0.6289,
+        "fraud_recall": 0.7349,
+        "fraud_precision": 0.5495,
+        "fraud_average_precision": 0.6785,
+        "hard_negative_as_fraud": 0.0962
+      },
+      {
+        "config": "4_tr_sentetik",
+        "C": 1.0,
+        "macro_f1": 0.9021,
+        "f1_normal": 0.9871,
+        "f1_reklam": 0.9854,
+        "f1_dolandiricilik": 0.7337,
+        "fraud_recall": 0.747,
+        "fraud_precision": 0.7209,
+        "fraud_average_precision": 0.8063,
+        "hard_negative_as_fraud": 0.0886
+      },
+      {
+        "config": "4_tr_sentetik",
+        "C": 3.0,
+        "macro_f1": 0.9107,
+        "f1_normal": 0.9894,
+        "f1_reklam": 0.9881,
+        "f1_dolandiricilik": 0.7547,
+        "fraud_recall": 0.7229,
+        "fraud_precision": 0.7895,
+        "fraud_average_precision": 0.8138,
+        "hard_negative_as_fraud": 0.0304
+      },
+      {
+        "config": "4_tr_sentetik",
+        "C": 10.0,
+        "macro_f1": 0.9075,
+        "f1_normal": 0.989,
+        "f1_reklam": 0.9885,
+        "f1_dolandiricilik": 0.7451,
+        "fraud_recall": 0.6867,
+        "fraud_precision": 0.8143,
+        "fraud_average_precision": 0.8145,
+        "hard_negative_as_fraud": 0.0253
+      }
+    ]
+  },
+  "validation": {
+    "rows": 767,
+    "macro_f1": 0.9183,
+    "per_class": {
+      "normal": {
+        "precision": 0.9865,
+        "recall": 0.9892,
+        "f1": 0.9879,
+        "n": 370
+      },
+      "reklam": {
+        "precision": 0.9844,
+        "recall": 0.9844,
+        "f1": 0.9844,
+        "n": 385
+      },
+      "dolandiricilik": {
+        "precision": 0.8182,
+        "recall": 0.75,
+        "f1": 0.7826,
+        "n": 12
+      }
+    },
+    "confusion": [
+      [
+        366,
+        4,
+        0
+      ],
+      [
+        4,
+        379,
+        2
+      ],
+      [
+        1,
+        2,
+        9
+      ]
+    ],
+    "kirmizi": {
+      "threshold": 0.4,
+      "fraud_recall": 0.75,
+      "fraud_caught": "9/12",
+      "false_alarm_normal": 0.0,
+      "false_alarm_reklam": 0.0052,
+      "false_alarm_normal_reklam": 0.0026
+    },
+    "sari_veya_kirmizi": {
+      "threshold": 0.2,
+      "fraud_recall": 0.8333,
+      "fraud_caught": "10/12",
+      "false_alarm_normal": 0.0135,
+      "false_alarm_reklam": 0.0182,
+      "false_alarm_normal_reklam": 0.0159
+    }
+  },
+  "test": {
+    "rows": 767,
+    "macro_f1": 0.9471,
+    "per_class": {
+      "normal": {
+        "precision": 0.9946,
+        "recall": 0.9919,
+        "f1": 0.9932,
+        "n": 370
+      },
+      "reklam": {
+        "precision": 0.9948,
+        "recall": 0.987,
+        "f1": 0.9909,
+        "n": 385
+      },
+      "dolandiricilik": {
+        "precision": 0.75,
+        "recall": 1.0,
+        "f1": 0.8571,
+        "n": 12
+      }
+    },
+    "confusion": [
+      [
+        367,
+        2,
+        1
+      ],
+      [
+        2,
+        380,
+        3
+      ],
+      [
+        0,
+        0,
+        12
+      ]
+    ],
+    "kirmizi": {
+      "threshold": 0.4,
+      "fraud_recall": 1.0,
+      "fraud_caught": "12/12",
+      "false_alarm_normal": 0.0027,
+      "false_alarm_reklam": 0.0104,
+      "false_alarm_normal_reklam": 0.0066
+    },
+    "sari_veya_kirmizi": {
+      "threshold": 0.2,
+      "fraud_recall": 1.0,
+      "fraud_caught": "12/12",
+      "false_alarm_normal": 0.0081,
+      "false_alarm_reklam": 0.026,
+      "false_alarm_normal_reklam": 0.0172
+    }
+  },
+  "hard_negative_check": {
+    "rows": 79,
+    "kirmizi": 0.038,
+    "sari_veya_kirmizi": 0.0633,
+    "argmax_normal": 0.9241,
+    "note": "eğitime girmeyen sentetik normal mesajlar (yapay zekâ ile yazılmış)"
+  },
+  "test_fraud_rows_by_source": {
+    "scam_tr:gercek": 8,
+    "turkish_sms_collection": 4
+  },
+  "v1_baseline": {
+    "thresholds": {
+      "low": 0.3,
+      "high": 0.6745
+    },
+    "test_kirmizi": {
+      "threshold": 0.6745,
+      "fraud_recall": 0.9167,
+      "fraud_caught": "11/12",
+      "false_alarm_normal": 0.0027,
+      "false_alarm_reklam": 0.9974,
+      "false_alarm_normal_reklam": 0.5099
+    },
+    "test_sari_veya_kirmizi": {
+      "threshold": 0.3,
+      "fraud_recall": 1.0,
+      "fraud_caught": "12/12",
+      "false_alarm_normal": 0.0162,
+      "false_alarm_reklam": 1.0,
+      "false_alarm_normal_reklam": 0.5179
+    },
+    "hard_negative_kirmizi": 0.2025,
+    "hard_negative_sari_veya_kirmizi": 0.557
+  }
+}
