@@ -21,7 +21,8 @@
 import { classify, model } from './classify';
 import { findRules, RULE_EXPLANATIONS, type RuleId } from './rules';
 
-export type RiskLevel = 'red' | 'yellow' | 'green' | 'too_short';
+/** 'ad': yasal reklam / kampanya mesajı (dolandırıcılık işareti yok). Kullanıcıya güvenli olarak gösterilir. */
+export type RiskLevel = 'red' | 'yellow' | 'green' | 'ad' | 'too_short';
 
 export type Decision = {
   level: RiskLevel;
@@ -50,6 +51,11 @@ export const LEVEL_TEXT: Record<Exclude<RiskLevel, 'too_short'>, { title: string
     title: 'Belirgin bir tehlike işareti bulunmadı.',
     advice: 'Yine de para veya şifre isteyen mesajlara dikkat edin.',
   },
+  ad: {
+    title: 'Bu bir reklam / kampanya mesajı.',
+    advice:
+      'Belirgin bir dolandırıcılık işareti görünmüyor. İstemiyorsanız mesajdaki "RET" yöntemiyle bu reklamları durdurabilirsiniz.',
+  },
 };
 
 /** Tek başına görülse de sarı uyarı gerektiren işaretler. */
@@ -57,8 +63,28 @@ const STRONG_SINGLE_RULES: RuleId[] = ['LINK', 'SHORT_LINK', 'GAMBLING'];
 
 const MODEL_REASON = 'Mesajın yazılışı, bilinen dolandırıcılık ve istenmeyen mesajlara çok benziyor.';
 
+/**
+ * ARA ÖNLEM (yeni 3 sınıflı model gelene kadar): mevcut model "spam" verisinin büyük çoğunluğu
+ * yasal reklam olduğu için reklamları da yüksek olasılıkla işaretliyor. Yasal reklam işareti
+ * (RET / İYS / Mersis) taşıyan ve dolandırıcılık işareti OLMAYAN mesaj, model ne derse desin
+ * "Reklam" gösterilir. Dolandırıcılık işareti: kod/şifre isteme, kısa link, kurum taklitli link,
+ * bahis, acele ettiren ödeme isteği.
+ */
+export function isLegalAd(rules: RuleId[]): boolean {
+  const has = (id: RuleId) => rules.includes(id);
+  return (
+    has('AD_MARKER') &&
+    !has('PERSONAL_INFO') &&
+    !has('SHORT_LINK') &&
+    !(has('LINK') && has('IMPERSONATION')) &&
+    !has('GAMBLING') &&
+    !(has('PAYMENT') && has('URGENCY'))
+  );
+}
+
 export function decideFrom(probability: number, rules: RuleId[], thresholds = model.thresholds): Exclude<RiskLevel, 'too_short'> {
   const has = (id: RuleId) => rules.includes(id);
+  if (isLegalAd(rules)) return 'ad';
   if (
     probability >= thresholds.high ||
     (has('LINK') && (has('IMPERSONATION') || has('PRIZE') || has('URGENCY') || has('PERSONAL_INFO'))) ||
@@ -68,7 +94,8 @@ export function decideFrom(probability: number, rules: RuleId[], thresholds = mo
   ) {
     return 'red';
   }
-  const signals = rules.filter((id) => id !== 'OTP_INFO' && id !== 'SHORT_LINK'); // kısa link zaten LINK'i de ekler
+  // Kısa link zaten LINK'i de ekler; reklam işareti bir tehlike işareti değildir.
+  const signals = rules.filter((id) => id !== 'OTP_INFO' && id !== 'SHORT_LINK' && id !== 'AD_MARKER');
   if (
     probability >= thresholds.low ||
     STRONG_SINGLE_RULES.some((id) => has(id)) ||
@@ -98,9 +125,16 @@ export function decide(text: string): Decision {
 
   // Yeşilde yalnızca bilgilendirici kural (doğrulama kodu uyarısı) gösterilir;
   // kurum adı tek başına "Neden?" listesine girmez.
-  const shown = level === 'green' ? rules.filter((id) => id === 'OTP_INFO') : rules.filter((id) => id !== 'OTP_INFO' || rules.length === 1);
+  const shown =
+    level === 'green'
+      ? rules.filter((id) => id === 'OTP_INFO')
+      : level === 'ad'
+        ? (['AD_MARKER'] as RuleId[])
+        : rules.filter((id) => id !== 'AD_MARKER' && (id !== 'OTP_INFO' || rules.length === 1));
   const reasons = shown.map((id) => RULE_EXPLANATIONS[id]);
-  if (level !== 'green' && probability >= model.thresholds.low && reasons.length < MAX_REASONS) reasons.push(MODEL_REASON);
+  if ((level === 'red' || level === 'yellow') && probability >= model.thresholds.low && reasons.length < MAX_REASONS) {
+    reasons.push(MODEL_REASON);
+  }
 
   return { level, ...LEVEL_TEXT[level], reasons: reasons.slice(0, MAX_REASONS), rules, probability };
 }

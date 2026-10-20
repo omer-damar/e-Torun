@@ -19,6 +19,8 @@ const LEVEL_STYLE: Record<Exclude<RiskLevel, 'too_short'>, { icon: string; label
   red: { icon: '⛔', label: 'Yüksek risk', background: colors.danger, text: colors.textOnColor },
   yellow: { icon: '⚠️', label: 'Dikkat', background: colors.warningBackground, text: colors.warningText },
   green: { icon: '✅', label: 'Belirgin risk yok', background: colors.success, text: colors.textOnColor },
+  // Reklam: güvenli ama "normal mesaj" da değil; maviyle ayrılır (beyaz yazıyla 8:1 kontrast).
+  ad: { icon: '📢', label: 'Reklam mesajı', background: colors.primary, text: colors.textOnColor },
 };
 
 /** D2–D6 — Sonuç ekranı. Olasılık yüzde olarak gösterilmez (bölüm 8). */

@@ -18,7 +18,8 @@ export type RuleId =
   | 'PAYMENT'
   | 'GAMBLING'
   | 'CALLBACK'
-  | 'OTP_INFO';
+  | 'OTP_INFO'
+  | 'AD_MARKER';
 
 /** Kullanıcıya gösterilecek sade açıklamalar ("Neden?" listesi). */
 export const RULE_EXPLANATIONS: Record<RuleId, string> = {
@@ -34,6 +35,7 @@ export const RULE_EXPLANATIONS: Record<RuleId, string> = {
     'Sizden mesajdaki numarayı aramanızı istiyor. Kurumu aramanız gerekiyorsa numarayı mesajdan değil, resmi sitesinden bulun.',
   OTP_INFO:
     'Bu bir doğrulama kodu. Sizi arayan kişi banka görevlisi olsa bile bu kodu kimseye söylemeyin.',
+  AD_MARKER: 'Mesajda yasal reklam işaretleri var (reklamı durdurma yöntemi veya şirket sicil numarası).',
 };
 
 /** "Neden?" listesindeki sıra: en tehlikeli işaret en üstte. */
@@ -48,10 +50,11 @@ export const RULE_PRIORITY: RuleId[] = [
   'PRIZE',
   'GAMBLING',
   'OTP_INFO',
+  'AD_MARKER',
 ];
 
 // Normalize edilmiş biçimde (küçük harf, Türkçe karaktersiz, rakamlar "num").
-const KEYWORDS: Record<Exclude<RuleId, 'LINK' | 'SHORT_LINK' | 'OTP_INFO'>, string[]> = {
+const KEYWORDS: Record<Exclude<RuleId, 'LINK' | 'SHORT_LINK' | 'OTP_INFO' | 'AD_MARKER'>, string[]> = {
   URGENCY: [
     'hemen', 'acil', 'derhal', 'son gun', 'son gunu', 'son gundur', 'bugun son', 'num saat icinde', 'saat icinde',
     'aksi takdirde', 'aksi halde', 'bloke', 'askiya', 'iptal edil', 'kapatil', 'kapanacak', 'son uyari', 'haciz',
@@ -118,23 +121,59 @@ function hostOf(url: string): string {
 }
 
 /**
- * Resmi devlet alan adı (*.gov.tr). Dolandırıcılar bu uzantıyı alamaz; "turkiye.gov.tr.xyz.com"
- * gibi taklitler .gov.tr ile BİTMEDİĞİ için yakalanır.
+ * Kurumların ve büyük şirketlerin kendi alan adları. Dolandırıcı bunları alamaz; taklitler
+ * ("garantibbva-guvenlik.com", "ptt.gov.tr.xyz.com") bu adlarla BİTMEDİĞİ için yakalanır.
+ * Liste bilinçli olarak kısa ve yalnızca yaygın, kesin adları içerir.
  */
-export function isOfficialGovLink(url: string): boolean {
-  const host = hostOf(url);
-  return host === 'gov.tr' || host.endsWith('.gov.tr');
+export const OFFICIAL_DOMAINS = [
+  // Bankalar
+  'garantibbva.com.tr', 'ziraatbank.com.tr', 'isbank.com.tr', 'akbank.com', 'yapikredi.com.tr', 'halkbank.com.tr',
+  'vakifbank.com.tr', 'qnb.com.tr', 'denizbank.com', 'enpara.com', 'teb.com.tr', 'kuveytturk.com.tr', 'ingbank.com.tr',
+  // Kargo
+  'yurticikargo.com', 'araskargo.com.tr', 'mngkargo.com.tr', 'suratkargo.com.tr', 'hepsijet.com', 'trendyolexpress.com',
+  // Operatörler
+  'turkcell.com.tr', 'vodafone.com.tr', 'turktelekom.com.tr',
+  // Alışveriş ve market
+  'trendyol.com', 'hepsiburada.com', 'n11.com', 'amazon.com.tr', 'migros.com.tr', 'a101.com.tr', 'bim.com.tr',
+  'sokmarket.com.tr', 'getir.com', 'yemeksepeti.com',
+] as const;
+
+/**
+ * Resmi adres: *.gov.tr (dolandırıcılar bu uzantıyı alamaz) ya da OFFICIAL_DOMAINS'ten biri
+ * veya onun alt alan adı.
+ */
+export function isOfficialLink(url: string): boolean {
+  const host = hostOf(url).replace(/^www\./, '');
+  if (host === 'gov.tr' || host.endsWith('.gov.tr')) return true;
+  return OFFICIAL_DOMAINS.some((domain) => host === domain || host.endsWith(`.${domain}`));
 }
+
+/** Geriye dönük ad. */
+export const isOfficialGovLink = isOfficialLink;
 
 function hasImpersonatingLink(raw: string): boolean {
-  return linksIn(raw).some((url) => !isOfficialGovLink(url) && IMPERSONATING_HOST.test(url));
+  return linksIn(raw).some((url) => !isOfficialLink(url) && IMPERSONATING_HOST.test(url));
 }
 
-/** Mesajdaki bütün linkler resmi .gov.tr adresiyse link kuralı uygulanmaz. */
+/** Mesajdaki bütün linkler resmi adresse link kuralı uygulanmaz. */
 function onlyOfficialLinks(raw: string): boolean {
   const links = linksIn(raw);
-  return links.length > 0 && links.every(isOfficialGovLink);
+  return links.length > 0 && links.every(isOfficialLink);
 }
+
+/**
+ * Yasal ticari ileti işaretleri: 6563 sayılı Kanun ve İYS gereği Türkiye'de reklam SMS'lerinde
+ * ret yöntemi ("SMS ret: 7447'ye RET yaz") ve çoğunlukla Mersis numarası bulunur.
+ * Dolandırıcılar bunları nadiren ekler. Normalize metinde aranır.
+ */
+const AD_MARKER = new RegExp(
+  '(?:^| )(?:' +
+    [
+      'mersis', 'mn num', 'sms ret', 'ret yaz', 'ret mg', 'iys', 'iptal icin', 'iptali icin', 'almak istemiyorsaniz',
+      'almak istemiyorsan', 'almamak icin', 'cikmak icin', 'cikis icin', 'listeden cik',
+    ].join('|') +
+    ')',
+);
 
 /** Mesajdaki kural tetiklerini bulur (sıra: RULE_PRIORITY). */
 export function findRules(raw: string, normalized: string = normalize(raw)): RuleId[] {
@@ -157,6 +196,7 @@ export function findRules(raw: string, normalized: string = normalize(raw)): Rul
     found.add('OTP_INFO');
     if (DO_NOT_SHARE.test(text) && !found.has('LINK')) found.delete('PERSONAL_INFO');
   }
+  if (AD_MARKER.test(text)) found.add('AD_MARKER');
 
   return RULE_PRIORITY.filter((id) => found.has(id));
 }
