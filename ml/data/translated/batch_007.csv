@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+smishtank:417,dolandiricilik,banka_hesap,"BilgiMsj_ZiraatB: Otomatik fatura ödemeniz planlandığı gibi gerçekleşmedi, sorunu çözmenize yardımcı olmak için buradayız. İncelemek için lpsf/ziraat adresine gidin",Wells Fargo→Ziraat; harf hilesi (I→l) korundu
+smishtank:418,dolandiricilik,odul,"Para kazanın! Yalnızca 2 dakikanızı alır http://boardingma.shopping/fEXyQZ",
+smishtank:419,dolandiricilik,banka_hesap,"DENIZBANK: İnternet şubesi profiliniz olası bir sistem açığıyla ilişkilendirildi. Kimlik hırsızlığını önlemek için https://sec03dnz.com/bRZQK adresine giriş yapıp bilgilerinizi doğrulayın.",BofA→Denizbank
+smishtank:420,dolandiricilik,banka_hesap,"Konu: Yeni Cihaz Girişi. Hepsiburada hesabınıza tanınmayan bir tarayıcıdan giriş denemesi yapıldı. Girişi onaylamadan önce lütfen aşağıdaki bilgilerin doğru olduğundan emin olun: Tarih: 10 Şubat 2023 IP Adresi: 1.22.542.93 Tarayıcı: Mozilla Firefox Konum: Antalya, Türkiye",Amazon→Hepsiburada; Texas→Antalya; metin orijinalde kesik
+smishtank:421,dolandiricilik,banka_hesap,"Sipariş #113-87368244-001 onaylandı! Tahmini teslimat: 23.03. Toplam: 22.497,80 TL. Sorularınız için arayın: 0850 767 22 44. Ret için RET yazın. İyi alışverişler!","$2249.78→22.497,80 TL; sahte sipariş + geri arama tuzağı; sahte numara"
+smishtank:422,dolandiricilik,kargo,"Kargo servisi: Kapı numarası eksik olduğu için ürünlerin tesliminde gecikme yaşamamak adına doğru teslimat adresini bildirin. ""TAMAM"" yanıtını verdikten sonra adresinizi yeniden onaylayın http://pttkrgo.com/go/Takip/Q11U3 Lütfen zamanında güncelleyin. Bağlantıyı tarayıcıda açın",OK→TAMAM
+smishtank:428,dolandiricilik,kargo,"Gönderi bilgilerinizdeki sokak adresi eksik olduğu için kargo siparişiniz bekletiliyor. Lütfen kontrol edin. ptycglvlogd.info/Rdeu 13:26",
+smishtank:430,dolandiricilik,banka_hesap,"ŞEKERBANK<DİKKAT> Kredi kartı hesabınızdan 2.000,00 TL ödeme yapıldı. Bu işlemi siz onaylamadıysanız iptal etmek için Https://www.Sekerbank.Org_@bit.ly/3T1lhlE adresini ziyaret edin.","Union Bank→Şekerbank; $200→2.000 TL; @ ile alan adı gizleme hilesi korundu"
+smishtank:432,dolandiricilik,banka_hesap,"n11 Hesabınız kilitlendi. Kısa süre önce hesabınıza çok sayıda başarısız giriş denemesi yapıldı. Hesabınızı hemen kurtarmak için aşağıdaki bağlantıya tıklayın: http://s953782679.onlinehome.us/custapp Kalıcı olarak askıya alınmaması için lütfen 48 saat içinde işlem yapın.",Amazon→n11
+smishtank:433,atla,,,şablon tekrarı (smishtank:413)
+smishtank:435,dolandiricilik,edevlet_vergi,"SGK EMK: Emekli maaş kartınız geçici olarak DEVRE DIŞI bırakıldı. Bkz. http://dogrulamalinkim.cf İptal için IPTAL yazın",EDD→SGK emekli kartı
+smishtank:436,atla,,,gerçek kurum bildirimi olabilir (resmi alan adı); etiket belirsiz
+smishtank:437,dolandiricilik,odul,"Trendyol: Tebrikler Hakan, bugünkü Trendyol kulaklık çekilişinde 3. oldunuz! Bağlantıya tıklayın: b2gxv.info/5ssC5f2SEG",Amazon→Trendyol; isim değiştirildi
+smishtank:440,atla,,,yasal reklam olabilir; etiket belirsiz
+smishtank:441,atla,,,müstehcen içerik
+smishtank:442,dolandiricilik,abonelik_fatura,"[Türk Telekom]: Son faturanızı tahsil edemedik. Gecikme ücreti ödememek için fatura bilgilerinizi şuradan güncelleyin: https://turktelekom.tr.fatura45.com/?tt=2",EE→Türk Telekom
+smishtank:443,dolandiricilik,odul,"Migros kampanya: iPhone 14 hediyemiz kazanan hat: 0539 772 94 41 Renk: Mor Hafıza: 256GB dawlmterreabrbie.com/phone.html",Costco→Migros; sahte numara
+smishtank:444,atla,,,şablon tekrarı (smishtank:221)
+smishtank:445,dolandiricilik,banka_hesap,"AMAZON hesabınız geçici olarak kısıtlandı. Erişimi geri yüklemek için lütfen onaylayın :// Inkd.in/gHghxQ3U İptal için IPTAL yazın",harf hilesi (lnkd→Inkd) korundu
+smishtank:446,dolandiricilik,banka_hesap,"Hepsiburada Hesabınızı geçici olarak askıya aldık. Geri yüklemek için aşağıdaki talimatları izleyin. https://www.weblaunch.hu/free/main38/mail?=749000072 Lütfen kurtarma işlemini 2 gün içinde tamamlayın, aksi halde Hepsiburada hesabınız kalıcı olarak askıya alınır. Yaşanan aksaklık için özür dileriz.",Amazon→Hepsiburada
+smishtank:447,dolandiricilik,abonelik_fatura,"Üyeliğiniz beklemeye alındı. Hesabınızı normal sekilde kullanmak icin mevcut fatura bilgilerinizdeki bazı sorunları gidermeniz gerekiyor. Hesabınızı güncellemek için asağıdaki baglantıya tıklayın : http://s955064170.onlinehome.us/itsy?_glbsas Saygılarımızla, Disney+ Ltd. Şti.",Netflix→Disney+; orijinaldeki dil bozukluğu kısmen korundu
+smishtank:449,atla,,,şablon tekrarı (smishtank:432)
+smishtank:450,atla,,,şablon tekrarı (smishtank:317)
+smishtank:453,atla,,,şablon tekrarı (smishtank:447)
+smishtank:456,dolandiricilik,banka_hesap,"(Amazon: Hesap kilitlendi.ayrıntılar WOTw1W3X.safelinkamz.us/?UserID-IAIUF ~) ol6f0",
+smishtank:457,dolandiricilik,banka_hesap,"Amazon.com.tr 976595 Amazon tek kullanımlık şifrenizdir. Kimseyle paylaşmayın. Bu talebi siz yapmadıysanız aşağıdan giriş yapıp doğrulayın https://website.roomraccoon.com/free/help96/mail?=70352032 Aksi halde bu mesajı dikkate almayın. Amazon Ekibi",sahte doğrulama kodu + link
+smishtank:458,atla,,,şablon tekrarı (smishtank:432)
+smishtank:459,dolandiricilik,yatirim,"Sayın üyemiz, günde 6.000-40.000 TL kazanmayı öğrenebileceğiniz Bitcoin sohbet ve çalışma grubumuza katılmak için lütfen tıklayın whatsapp://chat/?code=GOCVGBKOzmb0FmmQBgwddb",600-4000→6.000-40.000 TL
+smishtank:461,dolandiricilik,banka_hesap,"Papara hesabınız sınırlandırıldı. Sistemimiz iki yetkisiz giriş denemesi tespit ettiği için hesabınızı dondurduk. Hesabınızın kilidini açmak için hesabınızı doğrulamanız gerekiyor. Aşağıdaki bağlantıya tıklayın: http://s953223476.onlinehome.us/",PayPal→Papara; metin orijinalde kesik
+smishtank:467,atla,,,şablon tekrarı (smishtank:432)
+smishtank:468,atla,,,şablon tekrarı (smishtank:432)
+smishtank:471,atla,,,şablon tekrarı (smishtank:292)
+smishtank:472,atla,,,şablon tekrarı (smishtank:461)
+smishtank:473,atla,,,müstehcen ima
+smishtank:474,atla,,,şablon tekrarı (smishtank:382)
+smishtank:476,atla,,,şablon tekrarı (smishtank:374)
+smishtank:477,atla,,,şablon tekrarı (smishtank:358)
+smishtank:478,dolandiricilik,banka_hesap,"GÖN:Ziraat-Bankasi_stsj MSJ:Uyarı Ref:WWRPq!Kartınız Kilitlendi! Mesajın tamamını hemen okuyun : https://forms.gle/wfmtmZUfZ7d5bcJX6?XujiLSn",Wells Fargo→Ziraat
+smishtank:481,dolandiricilik,banka_hesap,"(Hemen 0850 559 49 96 arayın ! 290#) Banka.Kartınız kilitlendi! Hesap-No: 95150-199!",sahte numara
+smishtank:482,atla,,,yalnızca link
+smishtank:485,atla,,,şablon tekrarı (smishtank:287)
+smishtank:486,atla,,,şablon tekrarı (smishtank:358)
+smishtank:487,atla,,,şablon tekrarı (smishtank:374)
+smishtank:489,atla,,,anlamsız içerik
+smishtank:490,dolandiricilik,odul,"2 DK Anket - 1.000 TL Ödül centurysever.com/2MbuXy",100→1.000 TL
+smishtank:492,dolandiricilik,banka_hesap,"TEB Bilgi Msj #311: Banka kartınız düzensiz işlemler nedeniyle bloke edildi. Onaylamak için lütfen: hub7news.com/s",Citi→TEB
+smishtank:493,atla,,,şablon tekrarı (smishtank:358)
+smishtank:496,atla,,,şablon tekrarı (smishtank:292)
+smishtank:497,dolandiricilik,kargo,"GÖN:#4ta.ARAS.se4 KONU:http://araskargo.comw-ykgedh.world//1qsyl3rv21 MSJ:Dağıtımda:konum bilgisi eksik(Hata) . Teşekkürler",UPS→Aras; alan adı taklidi (.comw-) korundu
+smishtank:499,atla,,,şablon tekrarı (smishtank:317)
