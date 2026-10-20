@@ -380,6 +380,43 @@ Python'da `\d` ve `\s` yerine açık karakter sınıfları kullanılır. `ml/tes
 - **Olasılık:** `z = intercept + Σ x_j·coef_j`, `p = 1 / (1 + e^(−z))`.
 - **Parity testi:** 200 vektörde `|p_ts − p_py| < 1e-4` ve `normalized` metinler birebir aynı.
 
+### 9.6 Veri ve model v2 — reklam ≠ dolandırıcılık (Ekim 2026)
+
+**Neden:** v1 modeli Migros'un yasal kampanya SMS'ine %99 ile "dolandırıcılık" dedi. Ölçüm: TurkishSMSCollection ve Uysal'ın "spam" sınıfı (2.742 mesaj) büyük ölçüde **yasal ticari reklam** (mağaza/banka/operatör kampanyası); gerçek dolandırıcılık kalıbı birkaç yüz mesajda. v1 aslında bir **reklam dedektörü** oldu ve raporlanan F1 0,99 bu yüzden yanıltıcıydı. Aynı hata, aynı veri setini kullanan açık kaynak Türkçe projelerde de görülüyor; Türkçe'de gerçek SMS dolandırıcılığı içeren düzgün etiketli açık veri seti bulunamadı — bu çalışmanın özgün katkılarından biri.
+
+**Ara önlem (yapıldı):** yasal reklam işareti (SMS ret / RET yaz / İYS / Mersis) taşıyan ve dolandırıcılık işareti olmayan mesaj → mavi "📢 Reklam mesajı"; bankaların, kargo firmalarının, operatörlerin ve büyük mağazaların resmi alan adları (+ `*.gov.tr`) link/kurum taklidi sayılmaz.
+
+**Sınıflar (model):** `0 = normal`, `1 = reklam` (yasal ticari ileti), `2 = dolandırıcılık` (oltalama, sahte kurum/kargo/banka, sahte ödül/iade, kod/şifre/para isteme, yakın taklidi, yasa dışı bahis). Dolandırıcılığın **türü** model sınıfı değildir; açıklanabilir kurallarla belirlenir (📦 kargo, 🏛️ e-Devlet/icra/vergi, 🏦 banka/hesap, 🎁 ödül/iade, 🎰 bahis, 👨‍👩‍👧 yakın taklidi, 💰 yatırım/kripto). Kullanıcıya: kırmızı (dolandırıcılık + türü) / sarı (şüpheli: model kararsız) / yeşil (normal) / mavi (reklam).
+
+**Veri kaynakları:**
+
+| Kaynak | Lisans | Kullanım |
+|---|---|---|
+| TurkishSMSCollection, Uysal 2013 | belirsiz (repoya girmez) | "spam" → **reklam**; dolandırıcılığa benzeyen adaylar ve bahis tek tek incelenip yeniden etiketlenir |
+| [SmishTank Dataset I](https://arxiv.org/abs/2402.18430) (1.062, 2022–24, gerçek) | CC BY-NC-SA 4.0 | çeviri + yerelleştirme → dolandırıcılık (kategori eşlemesi: Account Alert, Delivery, Prize, Finance/Crypto, Lawsuits, Loans, Job, Wrong Number/Romance) |
+| [Mendeley SMS Phishing](https://data.mendeley.com/datasets/f45bkkt8pr/1) (5.971; 638 smishing, 489 spam) | CC BY 4.0 | smishing + spam çeviri + yerelleştirme; normal mesajlar kullanılmaz |
+| [UCI SMS Spam Collection](https://archive.ics.uci.edu/dataset/228/sms+spam+collection) | CC BY 4.0 | Mendeley ile 4.943 ortak; yalnızca fazladan 65 spam |
+| scam_tr.csv (46 gerçek TR) | kaynaklı | altın test |
+| Kullanıcının gelen kutusu (normal, reklam, dolandırıcılık) | kişisel, anonimleştirilir, repoya girmez | altın test (+ zor negatifler) |
+
+**Çeviri ve Türkiye'ye yerelleştirme** (Claude ile, parti parti; orijinal + çeviri + kaynak + lisans saklanır):
+- Para: £/$/€ → TL, gerçekçi tutarlar (küçük ücret 29,90–49,90 TL; ödül 10.000–50.000 TL; yatırım "günde 5.000 TL").
+- Kurum/marka: USPS/Royal Mail/DHL → PTT, Yurtiçi, Aras, MNG; IRS/HMRC → GİB/e-Devlet; NHS → e-Nabız/MHRS; E-ZPass/toll → HGS/OGS; DMV/DVLA → trafik cezası/Emniyet; Bank of America/Chase/Wells Fargo/Citi → Ziraat, Garanti, İş Bankası, Akbank, Yapı Kredi; Amazon/Costco/Home Depot → Trendyol, Hepsiburada, Migros; T-Mobile/Verizon → Turkcell, Vodafone, Türk Telekom; uluslararası olanlar (Apple, Netflix, WhatsApp, Binance) kalır.
+- Telefon: TR biçimi (05xx, 0850, 444 xx xx); ücretli hatlar → 0900 / kısa numara. Link: taklit mantığı korunur, Türk bağlamına taşınır (`usps-redelivery.com` → `ptt-teslimat-takip.xyz`); kısa linkler kalır.
+- Reklamlarda yasal işaretler (İYS, "RET yazıp 7447'ye gönderin", Mersis) eklenir; dolandırıcılıkta eklenmez (ya da gerçek hayattaki gibi nadiren).
+- İsim, tarih (GG.AA.YYYY), adres Türk bağlamında. Yazım çeşitliliği: bir kısmı bilinçli olarak Türkçe karaktersiz / büyük harfli (gerçek SMS'lerdeki gibi).
+- **Son kontrol betiği (testli):** £/$/"UK"/"txt"/"postcode" kalıntısı, telefon/link biçimi, Türkçe dil oranı, mevcut veriyle tekrar.
+
+**Dürüstlük kuralları:** Çevrilmiş ve sentetik satırlar **yalnızca eğitimde**; test her zaman gerçek Türkçe mesajlarla. Her satırda `source, license, translated, synthetic` alanları; çevrilmiş veriye düşük örnek ağırlığı. Raporda çevirinin yapay zekâ ile yapıldığı açıkça yazılır.
+
+**Sızıntıya karşı ayırma:** Şablon gruplama (rakam/tarih/link soyutlanmış iskelet + benzerlik) — aynı şablon ya eğitimde ya testte (`GroupShuffleSplit`).
+
+**Model:** 3 sınıflı lojistik regresyon (telefonda çevrimdışı, Python ↔ TS parity sürer) + açıklanabilir sinyaller (link resmi/bilinmeyen/kısa, yasal reklam işareti, IBAN, telefon, tutar, acele kelimeleri). Eşikler doğrulama setinde: **reklam/normal → dolandırıcılık yanlış alarmı ≤ %1**, gerçek dolandırıcılık yakalama oranı en yüksek.
+
+**Ölçüm:** Altın test setinde sınıf başına kesinlik / yakalama / F1, karışıklık matrisi, hata analizi. **Ablasyon:** (1) yalnız TR, (2) + çeviri, (3) + sentetik — gerçek mesajlarda her eklemenin etkisi.
+
+**Dosyalar:** ham yabancı veri `ml/data/raw/foreign/<kaynak>/` (repoya girmez); çeviriler `ml/data/translated/*.csv` (kaynak lisansıyla birlikte, CC BY / CC BY-NC-SA koşullarına uygun olarak repoda); kullanıcı mesajları `ml/data/raw/inbox/` (repoya girmez).
+
 ---
 
 ## 10. Erişilebilirlik ve tasarım sistemi
