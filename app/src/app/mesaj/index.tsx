@@ -28,6 +28,11 @@ export default function MessageCheckScreen() {
 
   const check = () => {
     const value = text.trim();
+    // Buton soluk/devre dışı gösterilmez (yaşlı kullanıcı nedenini anlamıyor); basınca ne yapacağı söylenir.
+    if (!value) {
+      setNotice('Önce mesajı yapıştırın. Yukarıdaki "Panodan yapıştır" butonuna dokunun.');
+      return;
+    }
     if (Array.from(value).length < MIN_MESSAGE_LENGTH) {
       setNotice('Kontrol için mesaj çok kısa. Lütfen mesajın tamamını yapıştırın.');
       return;
@@ -61,12 +66,11 @@ export default function MessageCheckScreen() {
         placeholder="Mesaj burada görünecek. İsterseniz kendiniz de yazabilirsiniz."
         maxLength={2000}
       />
-      {notice ? <Notice title={notice} /> : null}
+      {notice ? <Notice title={notice} announce /> : null}
       <BigButton
         icon="🔍"
         title="Kontrol Et"
         onPress={check}
-        disabled={text.trim().length === 0}
         accessibilityHint="Mesajın dolandırıcılık riski olup olmadığını gösterir"
         testID="check"
       />

@@ -12,6 +12,7 @@ import {
   ScreenContainer,
 } from '@/components';
 import { TimePickerBig } from '@/components/TimePickerBig';
+import { useAnnounce } from '@/utils/a11y';
 import { contactTitle } from '@/features/emergency/contacts';
 import {
   adjacentStep,
@@ -97,6 +98,8 @@ export default function MedicationEditScreen() {
     else setStepIndex((i) => adjacentStep(i, -1, draft));
   };
   const visibleSteps = WIZARD_STEPS.filter((s) => isStepVisible(s, draft));
+  // Adım değişince VoiceOver'a yeni adımın adı söylenir (ekran aynı kaldığı için kendiliğinden okunmaz).
+  useAnnounce(`${STEP_TITLES[step]}. ${visibleSteps.indexOf(step) + 1}. adım, toplam ${visibleSteps.length}`, true);
   const updateRefill = (patch: Partial<MedicationDraft['refill']>) => update({ refill: { ...draft.refill, ...patch } });
 
   const save = async () => {
@@ -179,7 +182,7 @@ export default function MedicationEditScreen() {
               onPress={() => update({ times: [...draft.times, suggestion] })}
             />
           ) : null}
-          {error ? <Notice title={error} /> : null}
+          {error ? <Notice title={error} announce /> : null}
         </>
       );
       break;
@@ -207,7 +210,7 @@ export default function MedicationEditScreen() {
               ))}
             </>
           ) : null}
-          {error ? <Notice title={error} /> : null}
+          {error ? <Notice title={error} announce /> : null}
         </>
       );
       break;
@@ -260,7 +263,7 @@ export default function MedicationEditScreen() {
               />
             </>
           ) : null}
-          {error ? <Notice title={error} /> : null}
+          {error ? <Notice title={error} announce /> : null}
         </>
       );
       break;
@@ -369,7 +372,7 @@ export default function MedicationEditScreen() {
               message={`Telefon en fazla ${MAX_TRIGGERS} hatırlatma tutabiliyor (şu an ${countTriggers(medications)}). Saat veya gün sayısını azaltın.`}
             />
           ) : null}
-          {error ? <Notice title={error} /> : null}
+          {error ? <Notice title={error} announce /> : null}
           {existing ? (
             <BigButton
               icon="🗑️"

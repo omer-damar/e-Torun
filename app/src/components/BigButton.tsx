@@ -2,6 +2,7 @@ import * as Haptics from 'expo-haptics';
 import { Pressable, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { borderWidth, colors, MIN_TOUCH_SIZE, radius, spacing } from '@/theme';
+import { spokenText } from '@/utils/a11y';
 import { AppText } from './AppText';
 
 export type BigButtonVariant = 'primary' | 'danger' | 'neutral';
@@ -42,7 +43,8 @@ export function BigButton({
   testID,
 }: Props) {
   const palette = variantStyles[variant];
-  const label = accessibilityLabel ?? (subtitle ? `${title}. ${subtitle}` : title);
+  // Başlıkta/alt metinde emoji olabilir (ör. "⚠️ 2 ilacınız bitmek üzere"); VoiceOver onları okumasın.
+  const label = spokenText(accessibilityLabel ?? (subtitle ? `${title}. ${subtitle}` : title));
 
   const handlePress = () => {
     // Titreşim desteklenmeyen cihazda sessizce atlanır; asıl işlem engellenmez.

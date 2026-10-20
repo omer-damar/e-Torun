@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { formatTime, parseTime } from '@/features/medications/schedule';
 import { borderWidth, colors, MIN_TOUCH_SIZE, radius, spacing } from '@/theme';
+import { announce } from '@/utils/a11y';
 import { AppText } from './AppText';
 
 const MINUTE_STEP = 5;
@@ -32,13 +33,19 @@ export function stepMinute(time: string, delta: number): string {
  * Büyük +/− düğmeli saat seçici (kaydırma tekerleği yok; yaşlı kullanıcı için tek dokunuş).
  * Saat ve dakika ayrı sütunlarda; her düğme ≥ 64pt.
  */
+export function spokenTime(time: string, label?: string): string {
+  const { hour, minute } = parseTime(time);
+  return `${label ? `${label}: ` : ''}saat ${hour}${minute ? `, ${minute} geçe` : ' tam'}`;
+}
+
 export function TimePickerBig({ value, onChange, label }: Props) {
-  const { hour, minute } = parseTime(value);
-  const spoken = `${label ? `${label}: ` : ''}saat ${hour}${minute ? `, ${minute} geçe` : ' tam'}`;
+  const spoken = spokenTime(value, label);
 
   const change = (next: string) => {
     Haptics.selectionAsync().catch(() => {});
     onChange(next);
+    // iOS canlı bölgeyi okumaz: + / − basıldıktan sonra yeni saat söylenir.
+    announce(spokenTime(next));
   };
 
   return (

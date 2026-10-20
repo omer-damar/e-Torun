@@ -1,6 +1,18 @@
 import { Text, useWindowDimensions, type TextProps } from 'react-native';
 
 import { colors, getTypography, scaleFontSize, typography, useFontScale } from '@/theme';
+import { hasDecoration, spokenText } from '@/utils/a11y';
+
+/**
+ * Düz metinde emoji/madde işareti varsa VoiceOver'a onlarsız hâli verilir ("⏳ Bekliyor" → "Bekliyor").
+ * İç içe öğe varsa (ör. kalın yazılı bir kelime) dokunulmaz; açık `accessibilityLabel` her zaman önceliklidir.
+ */
+function defaultLabel(children: unknown): string | undefined {
+  const parts = Array.isArray(children) ? children : [children];
+  if (!parts.every((p) => typeof p === 'string' || typeof p === 'number')) return undefined;
+  const text = parts.join('');
+  return hasDecoration(text) ? spokenText(text) : undefined;
+}
 
 type Variant = keyof typeof typography;
 
@@ -24,6 +36,7 @@ export function AppText({ variant = 'body', color = colors.text, style, ...rest 
   return (
     <Text
       allowFontScaling={false}
+      accessibilityLabel={defaultLabel(rest.children)}
       style={[
         base,
         {

@@ -5,6 +5,7 @@ import { validateContact, type ContactErrors, type ContactInput } from '@/featur
 import { formatPhone } from '@/features/emergency/phone';
 import { pickFromAddressBook } from '@/features/emergency/pickFromAddressBook';
 import { colors, spacing } from '@/theme';
+import { useAnnounce } from '@/utils/a11y';
 import { AppText } from './AppText';
 import { AppTextInput } from './AppTextInput';
 import { BigButton } from './BigButton';
@@ -25,6 +26,7 @@ export function ContactForm({ initial, submitLabel, onSubmit }: Props) {
   const phoneRef = useRef<TextInput>(null);
 
   const [pickedInfo, setPickedInfo] = useState<string | null>(null);
+  useAnnounce(pickedInfo);
 
   const submit = async () => {
     const result = validateContact({ name, relation, phone });
@@ -98,7 +100,7 @@ export function ContactForm({ initial, submitLabel, onSubmit }: Props) {
         value={phone}
         onChangeText={setPhone}
         error={errors.phone}
-        placeholder="0555 123 45 67"
+        placeholder="0555 000 00 00"
         keyboardType="phone-pad"
         textContentType="telephoneNumber"
       />

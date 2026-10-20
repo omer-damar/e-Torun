@@ -2,6 +2,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { medColor, type Dose, type DoseStatus } from '@/features/medications/model';
 import { borderWidth, colors, radius, spacing } from '@/theme';
+import { spokenText } from '@/utils/a11y';
 import { AppText } from './AppText';
 import { BigButton } from './BigButton';
 
@@ -38,7 +39,11 @@ export function DoseCard({ dose, status, takenAt, highlighted, canUndo, onTake, 
           🔔 Bu ilacın saati geldi
         </AppText>
       ) : null}
-      <View style={styles.header} accessible accessibilityLabel={`${dose.time}, ${dose.name}${doseText}, ${color.label} renkli. ${statusText}`}>
+      <View
+        style={styles.header}
+        accessible
+        accessibilityLabel={spokenText(`${dose.time}, ${dose.name}${doseText}, ${color.label} renkli. ${statusText}`)}
+      >
         <AppText variant="title">{dose.time}</AppText>
         <View style={styles.nameBox}>
           <View style={styles.nameRow}>
@@ -50,7 +55,13 @@ export function DoseCard({ dose, status, takenAt, highlighted, canUndo, onTake, 
           {dose.dose ? <AppText>{dose.dose}</AppText> : null}
         </View>
       </View>
-      <AppText variant="bodyBold" color={status === 'missed' ? colors.warningText : status === 'taken' ? colors.success : colors.text}>
+      {/* Durum yukarıdaki satırın etiketinde zaten okunuyor; VoiceOver iki kez söylemesin. */}
+      <AppText
+        variant="bodyBold"
+        color={status === 'missed' ? colors.warningText : status === 'taken' ? colors.success : colors.text}
+        accessibilityElementsHidden
+        importantForAccessibility="no-hide-descendants"
+      >
         {statusText}
       </AppText>
 

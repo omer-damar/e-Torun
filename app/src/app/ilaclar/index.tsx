@@ -10,6 +10,7 @@ import { useNow } from '@/features/medications/useNow';
 import { useNotificationPermission } from '@/features/notifications/permission';
 import { useAppData } from '@/storage/AppDataProvider';
 import { colors } from '@/theme';
+import { announce } from '@/utils/a11y';
 import { formatTurkishDate } from '@/utils/date';
 
 /** "Aldım" işaretinden sonra "Geri al" bu kadar süre görünür (toast değil, satırın içinde). */
@@ -48,6 +49,7 @@ export default function MedicationsTodayScreen() {
   const take = async (dose: Dose) => {
     setRecentlyTaken((r) => ({ ...r, [doseKey(dose)]: Date.now() }));
     await markDose(dose, 'taken');
+    announce(`${dose.name} alındı olarak işaretlendi. ${UNDO_WINDOW_MS / 1000} saniye içinde geri alabilirsiniz.`);
   };
   const undo = async (dose: Dose) => {
     setRecentlyTaken((r) => {
@@ -55,6 +57,7 @@ export default function MedicationsTodayScreen() {
       return rest;
     });
     await unmarkDose(dose);
+    announce(`${dose.name} için Aldım işareti geri alındı.`);
   };
 
   return (

@@ -1,4 +1,5 @@
 /** D6 — "Yakınıma sor": şüpheli mesajı yakına danışmak için hazır SMS metni. */
+import { spokenText } from '@/utils/a11y';
 
 /** Çok uzun mesajlar SMS'te parçalanmasın; yakın için ilk kısım yeterli. */
 export const MAX_QUOTED_LENGTH = 500;
@@ -13,9 +14,5 @@ export function buildAskRelativeSms(params: { contactName: string; userName: str
 
 /** Sesli okuma için: emoji ve süs karakterleri okunmasın. */
 export function speechText(parts: string[]): string {
-  return parts
-    .join(' ')
-    .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/gu, '')
-    .replace(/\s+/g, ' ')
-    .trim();
+  return spokenText(parts.join(' '));
 }

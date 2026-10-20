@@ -62,16 +62,16 @@ describe('Bugünkü ilaçlarım', () => {
     await renderToday();
 
     const take = await screen.findByRole('button', { name: '23:59 Tansiyon ilacı ilacını aldım' });
-    expect(screen.getByText('⏳ Bekliyor')).toBeTruthy();
+    expect(screen.getByLabelText(/renkli\. Bekliyor/)).toBeTruthy();
 
     await fireEvent.press(take);
-    expect(await screen.findByText(/✅ Alındı/)).toBeTruthy();
+    expect(await screen.findByLabelText(/renkli\. Alındı/)).toBeTruthy();
     const log = await storedLog();
     expect(log).toHaveLength(1);
     expect(log[0]).toMatchObject({ medicationId: 'm1', scheduledAt: `${localDateKey(new Date())}T23:59`, status: 'taken' });
 
     await fireEvent.press(screen.getByRole('button', { name: 'Tansiyon ilacı için Aldım işaretini geri al' }));
-    expect(await screen.findByText('⏳ Bekliyor')).toBeTruthy();
+    expect(await screen.findByLabelText(/renkli\. Bekliyor/)).toBeTruthy();
     expect(await storedLog()).toEqual([]);
   });
 
@@ -81,11 +81,11 @@ describe('Bugünkü ilaçlarım', () => {
     const remaining = async () => JSON.parse((await AsyncStorage.getItem(STORAGE_KEYS.medications))!).data[0].stock.remainingUnits;
 
     await fireEvent.press(await screen.findByRole('button', { name: '23:59 Tansiyon ilacı ilacını aldım' }));
-    await screen.findByText(/✅ Alındı/);
+    await screen.findByLabelText(/renkli\. Alındı/);
     expect(await remaining()).toBe(9);
 
     await fireEvent.press(screen.getByRole('button', { name: 'Tansiyon ilacı için Aldım işaretini geri al' }));
-    await screen.findByText('⏳ Bekliyor');
+    await screen.findByLabelText(/renkli\. Bekliyor/);
     expect(await remaining()).toBe(10);
   });
 
@@ -110,7 +110,7 @@ describe('Bugünkü ilaçlarım', () => {
         jest.advanceTimersByTime(UNDO_WINDOW_MS + 200);
       });
       expect(screen.queryByRole('button', { name: /geri al/ })).toBeNull();
-      expect(screen.getByText(/✅ Alındı/)).toBeTruthy();
+      expect(screen.getByLabelText(/renkli\. Alındı/)).toBeTruthy();
     } finally {
       jest.useRealTimers();
     }

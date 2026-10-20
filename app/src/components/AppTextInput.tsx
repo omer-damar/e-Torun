@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import { StyleSheet, TextInput, View, useWindowDimensions, type TextInputProps } from 'react-native';
 
 import { borderWidth, colors, getTypography, MIN_TOUCH_SIZE, radius, scaleFontSize, spacing, useFontScale } from '@/theme';
+import { useAnnounce } from '@/utils/a11y';
 import { AppText } from './AppText';
 
 type Props = Omit<TextInputProps, 'style'> & {
@@ -18,6 +19,7 @@ type Props = Omit<TextInputProps, 'style'> & {
 export const AppTextInput = forwardRef<TextInput, Props>(function AppTextInput({ label, error, hint, ...rest }, ref) {
   const { fontScale } = useWindowDimensions();
   const typography = getTypography(useFontScale());
+  useAnnounce(error ? `${label}: ${error}` : null);
   // Çok satırlı kutu (ör. SMS metni) gövde yazısıyla; tek satırlık kutu buton yazısı boyutunda.
   const fontSize = scaleFontSize((rest.multiline ? typography.body : typography.button).fontSize, fontScale);
   const sizeStyle = rest.multiline

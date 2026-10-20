@@ -6,6 +6,7 @@ import { AppText, AppTextInput, BigButton, ConfirmDialog, Notice, ScreenContaine
 import { addUnits, describeDaysLeft, formatUnits, getRefillStatus, parseUnits } from '@/features/medications/stock';
 import { useAppData } from '@/storage/AppDataProvider';
 import { borderWidth, colors, radius, spacing } from '@/theme';
+import { useAnnounce } from '@/utils/a11y';
 
 /** B6 — İlaç stoğu: "Yeni kutu aldım", sayıyı düzelt, takibi başlat / kapat. */
 export default function MedicationStockScreen() {
@@ -19,6 +20,7 @@ export default function MedicationStockScreen() {
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [confirmStop, setConfirmStop] = useState(false);
+  useAnnounce(message);
 
   if (!med) {
     return (
@@ -88,7 +90,7 @@ export default function MedicationStockScreen() {
       ) : null}
 
       {message ? <AppText color={colors.success}>✅ {message}</AppText> : null}
-      {error ? <Notice title={error} /> : null}
+      {error ? <Notice title={error} announce /> : null}
 
       {med.stock ? (
         <>

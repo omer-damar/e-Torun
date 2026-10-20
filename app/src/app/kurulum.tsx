@@ -10,6 +10,7 @@ import { MAX_NAME_LENGTH } from '@/features/settings/settings';
 import { useAppData } from '@/storage/AppDataProvider';
 import { APP_NAME, NOT_OFFICIAL_NOTICE } from '@/appInfo';
 import { colors, spacing } from '@/theme';
+import { useAnnounce } from '@/utils/a11y';
 
 const STEP_TITLES = ['Hoş geldiniz', 'Size nasıl hitap edelim?', 'Yakınınızı ekleyin', 'Bildirim izni'];
 
@@ -38,6 +39,8 @@ export default function OnboardingScreen() {
   };
 
   const progress = `Adım ${step + 1} / ${STEP_TITLES.length}`;
+  // Butonlar yerinde kaldığı için VoiceOver yeni adımı fark etmez; adı ve sırası söylenir.
+  useAnnounce(`${STEP_TITLES[step]}. ${step + 1}. adım, toplam ${STEP_TITLES.length}`, true);
   const backButton =
     step > 0 ? <BigButton title="Geri" icon="⬅️" variant="neutral" onPress={back} accessibilityHint="Önceki adıma döner" /> : null;
 
@@ -126,6 +129,7 @@ export default function OnboardingScreen() {
         <AppText>Birazdan telefonunuz "Bildirim göndermek istiyor" diye soracak. Lütfen "İzin Ver"e dokunun.</AppText>
         {permissionDenied ? (
           <Notice
+            announce
             title="Bildirim izni verilmedi"
             message="İlaç hatırlatmaları çalışmaz. Dilediğiniz zaman telefonun Ayarlar uygulamasından açabilirsiniz."
           />
