@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+smishtank:795,dolandiricilik,kredi,"0532 177 55 10 yeni bir sesli mesaj bıraktı: ""Borç yapılandırma programlarımızla mevcut borcunuzun yaklaşık %90-95'ini silebiliyoruz. Lütfen bizi 0850 298 00 19 numarasından geri arayın. Tekrar ediyorum, numaramız 0850 298 00 19. Çok teşekkürler, dönüşünüzü bekliyoruz""",fresh start→borç yapılandırma; sahte numaralar; metin orijinalde kesik
+smishtank:796,atla,,,şablona yakın (smishtank:447)
+smishtank:798,atla,,,şablon tekrarı (smishtank:681)
+smishtank:799,atla,,,yasal reklam olabilir; etiket belirsiz
+smishtank:800,atla,,,şablon tekrarı (smishtank:650)
+smishtank:801,dolandiricilik,banka_hesap,"(Amazon hesabınızda fatura sorunu. Bilgi için tıklayın : 8pt21.scr-tyalrt5.us/?UserID-IOCDCZKFAK ~) 85C19",
+smishtank:802,atla,,,şablon tekrarı (smishtank:801)
+smishtank:803,atla,,,yasal reklam olabilir; etiket belirsiz
+smishtank:806,atla,,,anlamsız içerik
+smishtank:807,atla,,,şablona yakın (smishtank:447)
+smishtank:808,dolandiricilik,yakin_romantik,"İzmir'e döndüm, misafirperverliğin için teşekkürler, bir dahaki sefere Bodrum'a geleceğim zaman önceden haber veririm.","LA/San Diego→İzmir/Bodrum; yanlış numara açılışı (linksiz)"
+smishtank:809,dolandiricilik,yakin_romantik,"Güzel bir hafta sonu geliyor. Dışarı çıkalım mı? Numaranı Selin verdi. Profilime buradan bakabilirsin: bit.ly/profileGB12RD",isim değiştirildi
+smishtank:810,dolandiricilik,banka_hesap,"Sayın müşterimiz, Yapı Kredi banka hesabınızı kapatıyor. Hesabınızın aktif kalması için lütfen ŞİFRENİZİ yapikredi-degil.com/XJY23VB adresinde onaylayın.",BofA→Yapı Kredi; PIN→şifre
+smishtank:811,dolandiricilik,odul,"Ödül kazandınız! 5.000 TL değerindeki Trendyol hediye çekinizi almak için bit.ly/yourprize001 adresine gidin","Amazon→Trendyol; $500→5.000 TL"
+smishtank:813,dolandiricilik,diger,"Ünlü doktor canlı yayında 4.262.296 izleyicinin önünde ilaç şirketlerini ifşa etti. Gördüklerinize inanamayacaksınız loweringpriest.com/9jEIG8y.",Dr Oz→ünlü doktor (isim verilmedi); tıklama tuzağı
+smishtank:814,atla,,,şablona yakın (smishtank:657)
+smishtank:815,dolandiricilik,yakin_romantik,"selam ben Bursa'dayım, S.N A P: - Chiquta228",Brandon→Bursa; ayrık yazım hilesi korundu
+smishtank:816,atla,,,anlamsız içerik
+smishtank:818,dolandiricilik,kargo,"[No. 374926423] paketiniz öngörülemeyen bir durum nedeniyle dağıtım merkezinde bekletiliyor ürününüzü teslim almak için lütfen t.ly/IqtWq adresindeki talimatları izleyin",
+smishtank:819,dolandiricilik,kargo,"Kargonuzla ilgili bir güncelleme var. Ödenmemiş gümrük ücreti nedeniyle gönderiniz durduruldu. Talimatları buradan izleyin: n6u.me/RIBSH",
+smishtank:822,dolandiricilik,kargo,"Teslimatınız depomuzda durduruldu. Takip No: R6903-8280-TR Lütfen sorunu buradan çözün: f94.us/VrVwq",
+smishtank:823,atla,,,şablona yakın (smishtank:399)
+smishtank:824,dolandiricilik,banka_hesap,"Uyarı#55400. Akbank bildirimi. Acil işlem yapmanız gerekiyor. Ziyaret edin: apt8413-akbank.3utilities.com/bcouu",Wells Fargo→Akbank
+smishtank:825,dolandiricilik,diger,"COVID-19 varyantı taşıyan biriyle temas ettiniz. Test kiti sipariş etmek için lütfen buradaki talimatları izleyin: hes.saglik-bildirim.com/?randevu",HSE→HES; sahte sağlık bildirimi
+smishtank:828,atla,,,şablona yakın (smishtank:428)
+smishtank:829,atla,,,şablona yakın (smishtank:447)
+smishtank:830,atla,,,şablona yakın (smishtank:819)
+smishtank:831,atla,,,şablon tekrarı (smishtank:358)
+smishtank:832,dolandiricilik,kargo,"teslimat: 0555 000 00 00 PTT MESAJI sayın müşterimiz, IDWA76S01 numaralı paketiniz transfer sırasında kayboldu ve arama başlatıldı. lütfen bilgilerinizi güncelleyin",USPS→PTT; sahte numara; metin orijinalde kesik
+smishtank:833,atla,,,şablona yakın (smishtank:432)
+smishtank:834,atla,,,şablon tekrarı (smishtank:432)
+smishtank:835,atla,,,şablon tekrarı (smishtank:432)
+smishtank:836,dolandiricilik,kargo,"Gönderen: PTT İÇERİK: Ödenmemiş kargo ücreti nedeniyle gönderiniz bölgenizdeki PTT şubesine yönlendirildi. Teslimatı yeniden planlamak için lütfen ziyaret edin: bq034a.989e.co",USPS→PTT
+smishtank:838,atla,,,şablona yakın (smishtank:432)
+smishtank:839,atla,,,şablona yakın (smishtank:432)
+smishtank:840,atla,,,şablon tekrarı (smishtank:461)
+smishtank:841,atla,,,şablona yakın (smishtank:447)
+smishtank:842,atla,,,şablona yakın (smishtank:461)
+smishtank:843,atla,,,şablona yakın (smishtank:399)
+smishtank:844,atla,,,şablona yakın (smishtank:447)
+smishtank:845,atla,,,şablona yakın (smishtank:720)
+smishtank:846,atla,,,şablon tekrarı (smishtank:432)
+smishtank:847,atla,,,şablona yakın (smishtank:447)
+smishtank:848,atla,,,alkol reklamı; yasal reklam olabilir
+smishtank:849,dolandiricilik,diger,"Selam, kusura bakma yurt dışındaydım, döndüm. Telefonun 5.000 TL borcu var, istersen 3.300 TL'ye veririm. Akşam 7'de işten çıkıyorum, Kadıköy'deyim. Birkaç kişi daha ilgileniyor, almadıysan haber ver","$500/$330→5.000/3.300 TL; Encinitas→Kadıköy; sahte satıcı kalıbı"
+smishtank:850,atla,,,şablona yakın (smishtank:386)
+smishtank:853,atla,,,şablona yakın (smishtank:291)
+smishtank:857,atla,,,şablona yakın (smishtank:737)
+smishtank:858,dolandiricilik,kargo,"CUMARTESİ PAKETİNİZ! ; Sonunda Dağıtıma Çıktı; http://drilldeliver.com/xbgssimr/BmzxcMn",
+smishtank:866,dolandiricilik,is_ilani,"Merhaba, şu an yarı zamanlı bir iş arıyor musunuz? Trendyol mağazalarına satış artırma hizmeti veriyoruz, günde sadece bir saatle 300-2.000 TL arası düzenli gelir elde edebilirsiniz. Hiçbir depozito ya da üyelik ücreti ödemenize gerek yok, cinsiyet fark etmeksizin 23-60 yaş","Amazon→Trendyol; $30-200→300-2.000 TL; metin orijinalde kesik"
