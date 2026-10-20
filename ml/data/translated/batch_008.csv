@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+smishtank:501,dolandiricilik,abonelik_fatura,"BildirimNo:265569 Aboneliklerinizin-süresi-bug ün-doluyor,faturalarınızı-hemen-yenileyin>:// 9qr.de/itCwLh",tireli yazım hilesi korundu
+smishtank:502,dolandiricilik,banka_hesap,"ZIRAAT: Ay*****@gmail.com alıcısına yaptığınız 12.500 TL tutarındaki FAST ödemesi beklemede. Onaylamak veya iptal etmek için https://ziraat-fastodeme.com adresini ziyaret edin","Wells Fargo Zelle→Ziraat FAST; $1250→12.500 TL"
+smishtank:503,atla,,,şablon tekrarı (smishtank:459)
+smishtank:505,dolandiricilik,banka_hesap,"Garanti BBVA Dolandırıcılık Birimi: Olağandışı işlemler nedeniyle banka kartınız kısıtlandı. Ayrıntılar: https://web21cen.in/gbbva/",BofA→Garanti BBVA
+smishtank:506,atla,,,anlamsız içerik
+smishtank:508,dolandiricilik,odul,"Koçtaş Araştırması, Bugün Ödemenizi Alın http://hireprevio.shopping/ybFO3G",Home Depot→Koçtaş
+smishtank:509,atla,,,şablona yakın (smishtank:508)
+smishtank:510,dolandiricilik,banka_hesap,"GÖN:uyari@albarakaturk-bilgi.com KONU: (Albaraka Türk) MSJ:Güvenlik incelemesi için, olağandışı etkinlik nedeniyle hesabınızı şuradan doğrulayın: https://tinyurl.com/2e2e85bw",Bank of the West→Albaraka Türk; sahte gönderici adresi
+smishtank:511,dolandiricilik,banka_hesap,"<Konu: ininal Mesajı,> Yeni giriş tespit edildi: [173.49.213.22 - Umman] Android. Hesabınızın kilidini açmak için aşağıdaki bağlantıyı izleyin: eb4.us/a4f64a26 Hesabınızı 24 saat içinde doğrulayın, aksi halde ininal hesabınız kalıcı olarak kapatılacaktır. Saygılarımızla, ininal ID 617065",PayPal→ininal
+smishtank:514,dolandiricilik,odul,"Mig ros'taki fırsatı mutlaka yakalayın çünkü 600 TL'yi neredeyse hiç dağıtmazlar. Fırsatı bulunca değerlendirmek lazım. http://tonestrength.financial/7Mu7T15C","Costco→Migros; ayrık yazım hilesi (Cost co→Mig ros) korundu; $60→600 TL"
+smishtank:515,dolandiricilik,banka_hesap,"GÖN:Kuveyt Türk.KART KİLİTLİ KONU:İletişim 0850 399 82 79 MSJ::7268",Navy Federal→Kuveyt Türk; sahte numara
+smishtank:517,dolandiricilik,odul,"Tebrikler, UNICEF tarafından size 10.000 TL karşılıksız destek verildi. Bu program pandemiden etkilenen kişiler içindir. Desteğinizi almak için bu bağlantıya tıklayın https://forms.gle/tmfZY2iQzA9T6x557","$1,000→10.000 TL"
+smishtank:521,dolandiricilik,banka_hesap,"<Konu: Bildirim : 84781> Kart bilgilerinizdeki bir sorun nedeniyle güvenliğiniz için Çiçeksepeti hesabınızı devre dışı bıraktık. Hesabınızın kilidini açmak için lütfen aşağıdaki bağlantıyı izleyin: https://app.mailingboss.com/index.php/campaigns/63857c6fb397b/track-u",Amazon→Çiçeksepeti
+smishtank:522,dolandiricilik,banka_hesap,"GÖN:Vakıf Katılım. MSJ:Güvenlik Uyarısı Kalıcı kilitlenmeyi önlemek için hesabınızı doğrulayın https://mortgageassociatescc.com/acr/vakifkatilim",Altura CU→Vakıf Katılım
+smishtank:523,atla,,,şablon tekrarı (smishtank:515)
+smishtank:524,dolandiricilik,odul,"Kazanmak için yanıt vermeniz yeterli! Evet, ne düşündüğünüzü bize söyleyin. CarrefourSA her katılımınız için size 1.000 TL'ye kadar geri ödeme yapacak. http://inflatecoupling.ventures/10EcgOrr 12:42","Costco→CarrefourSA; $100→1.000 TL"
+smishtank:527,atla,,,yalnızca selam + link
+smishtank:530,dolandiricilik,kargo,"GÖN:esmlfl-MNG-2 MSJ:803-Paketinizi bugün teslim etmeye çalıştık ama evde değildiniz ya da bırakacak güvenli bir yer yoktu e103c-mngkargo.com/?=bej",UPS→MNG Kargo
+smishtank:531,dolandiricilik,edevlet_vergi,"(Güvenlik Uyarısı-cqo3-7/24 Destek Hattımızı arayın: 0850 796 10 50 #) Sosyal Yardım Kartınız şu anda Donduruldu! MesajNo 95150-199!",EBT kartı→sosyal yardım kartı; sahte numara
+smishtank:532,dolandiricilik,abonelik_fatura,"(NETFLX) Aboneliğinizi 3 kez uzatamadık, faturanızı şimdi düzeltin > ://lnkd.in/g7jb5b_7",
+smishtank:534,dolandiricilik,abonelik_fatura,"(Fatura bilgilerinizle ilgili sorun yaşıyoruz, Lütfen Güncelleyin 6psf.uyeliksorun24.us/?giris ~) 25LZ",
+smishtank:535,atla,,,etkinlik daveti; dolandırıcılık olduğu belirsiz
+smishtank:540,dolandiricilik,banka_hesap,"GÖN:Vakıf Katılım. KONU:+ MSJ:Çevrimiçi Hesap Bildirimi Mesajı Açmak İçin Aşağıya Tıklayın https://bacindustries.net/alco/vakifkatilim",Altura CU→Vakıf Katılım
+smishtank:544,atla,,,şablon tekrarı (smishtank:267)
+smishtank:545,dolandiricilik,banka_hesap,"Satın aldığınız için teşekkürler, Ev Tipi Çok Amaçlı Spor Aleti için kartınızdan 5.702,50 TL çekildi. Sipariş no PLMW7541, 14.02.2023. Siz değil misiniz? Bizi arayın: 0850 810 75 03","$570.25→5.702,50 TL; sahte numara"
+smishtank:550,dolandiricilik,banka_hesap,"Değerli Amazon Müşterimiz, yeni KVKK düzenlemesi gereği Amazon'da alışverişe devam edebilmeniz için hesap bilgilerinizi güncellemenizi rica ediyoruz. Buradan güncelleyin: eb4.app/dfd5982b Hesap bilgilerini güncellemeyen müşterilerin hesapları askıya alınacaktır.",yeni düzenleme→KVKK; metin orijinalde kesik
+smishtank:553,dolandiricilik,banka_hesap,"<Konu: Yapı Kredi Bildirimi: 80168742> Olağandışı etkinlik nedeniyle Yapı Kredi hesabınızı kilitledik. Yeni Giriş: [254.27.40.179 - Zimbabve] Tarayıcı: UC Browser. Hesabınızı geri yüklemek için aşağıdaki bağlantıya tıklayın: https://api.hubapi.com/Ctc/ZW+23284/d2L62N04/J",BofA→Yapı Kredi
+smishtank:555,dolandiricilik,odul,"Türk Telekom: Dünkü geçici hat kesintisi için özür dileriz. Etkilenen 25.000 müşterimizden birisiniz. Bunun karşılığında size 1.000 TL DEĞERİNDE HEDİYE veriyoruz! Türk Telekom hakkındaki 30 saniyelik kısa anketimizi doldurun, 1.000 TL'lik ürününüzü alın. fartherpgmon","T-Mobile→Türk Telekom; $100→1.000 TL; yazım hataları kısmen korunmadı"
+smishtank:557,dolandiricilik,odul,"Turkcell TEBRİKLER! Özel bir ödül almak için seçildiniz! BAŞLAMAK için TAMAM'a tıklayın: https://bit.ly/3SIKE1M",T-Mobile→Turkcell
+smishtank:560,atla,,,şablon tekrarı (smishtank:267)
+smishtank:564,atla,,,şablon tekrarı (smishtank:412)
+smishtank:567,atla,,,şablon tekrarı (smishtank:267)
+smishtank:569,atla,,,şablona yakın (smishtank:305)
+smishtank:574,atla,,,şablona yakın (smishtank:305)
+smishtank:577,dolandiricilik,edevlet_vergi,"İŞKUR (işsizlik ödeneği) hesabınız düzensiz işlemler nedeniyle acil ilgi gerektiriyor. Doğrulanmazsa hesabınız kısıtlanacaktır. Aşağıdaki güvenli bağlantıya tıklayarak kayıt olmanız gerekmektedir: http://justizama.mx/iskur/odenek/giris",EDD UI→İŞKUR işsizlik ödeneği
+smishtank:578,dolandiricilik,kredi,"f3147403 hızlı nakit için en iyi adres - 20.000 TL'ye kadar Taksitli Nakit için bu bağlantıya gidin -> hizlikredibul.ai%",$2000→20.000 TL
+smishtank:579,dolandiricilik,kargo,"Kargonuzu teslim edemedik, Yeniden teslimat için lütfen https://tiny.one/myaras871 adresini ziyaret edip teslimat zamanı planlayın.",FedEx→Aras
+smishtank:580,atla,,,ABD'ye özgü toplu tazminat davası; Türk bağlamında karşılığı yok
+smishtank:594,dolandiricilik,yakin_romantik,"Günün nasıl geçti? Selam Kerem! Beni hatırladın mı? Ben Melis",yanlış numara açılışı (linksiz)
+smishtank:595,dolandiricilik,yakin_romantik,"Nasılsınız? Ben Ceren, Kaya Bey siz misiniz acaba?",yanlış numara açılışı (linksiz)
+smishtank:596,dolandiricilik,odul,"B İM yönetiminden: sadakatiniz için teşekkür ederiz. Ücretsiz seçebileceğiniz 10 ürün var http://stupiduneasy.financial/RBMwGXCm",Costco→BİM; ayrık yazım hilesi korundu
+smishtank:597,dolandiricilik,odul,"Ekstra harçlık ister misin? .. şu soruları cevapla, Metro Market sana 750 TL versin... bir arkadaşını davet et, daha fazlasını kazanma şansı yakala! http://considerstill.ventures/gPRjYtsl","Costco→Metro Market; $75→750 TL"
+smishtank:598,dolandiricilik,odul,"Merhaba G ratis müşterimiz! Kısa bir anketi doldurmak için rastgele seçildiniz. Görüşünüz için ödeme alacaksınız. http://intriguehardy.directory/TTjI4KRA",CVS→Gratis; ayrık yazım hilesi korundu
+smishtank:599,atla,,,müstehcen içerik
+smishtank:600,dolandiricilik,banka_hesap,"ŞEKERBANK<DİKKAT> Birden fazla sahte maaş yatırımı nedeniyle tüm bakiyeniz bloke edildi. Kalan maaş yatırımları beklemede kalacaktır. Blokeyi kaldırmak için Https://www.Sekerbank.Org_@nx.tn/EjmCx adresini ziyaret edin.",Union Bank→Şekerbank; @ ile alan adı gizleme hilesi korundu
+smishtank:601,atla,,,şablona yakın (smishtank:447)
+smishtank:602,dolandiricilik,kargo,"Gönderen: PTT Msj: Alıcı adresi geçersiz olduğu için paketiniz bekletiliyor. Doğru adres bilgilerini bağlantıdan doldurun. https://s.id/1rAQj",USPS→PTT
+smishtank:605,dolandiricilik,banka_hesap,"ING: Şüpheli işlemler nedeniyle banka kartınız kısıtlandı. Lütfen ziyaret edin: https://ing.guvenli-mobilsube.com/t?d",TD→ING; sondaki klavye çöpü atıldı
+smishtank:606,dolandiricilik,odul,"Bilgi Msj: Mart faturanız ödendi. Teşekkürler, işte size küçük bir hediye: consensuscelebrated.com/5hTSjyzHWc",
+smishtank:607,dolandiricilik,banka_hesap,"Odeabank Mobil Şube erişiminiz devre dışı bırakıldı. Erişiminizi buradan geri yükleyin https://erisimgeriyukle.netlify.app/",Alaska USA→Odeabank
