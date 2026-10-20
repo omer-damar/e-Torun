@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+mendeley:520,atla,,,şablona yakın (mendeley:180)
+mendeley:533,dolandiricilik,kargo,"Müşteri hizmetleri duyurusu. Sizi bekleyen bir yılbaşı gönderiniz var. Teslimatı ayarlamak için lütfen hemen 0850 704 67 44 numarasını arayın",geri arama tuzağı; sahte numara
+mendeley:546,reklam,,"Almanya'yı dakikası sadece 10 kuruşa arayın! Sabit hattan 0850 861 85 86 erişim numarası üzerinden arayın.",1p→10 kuruş
+mendeley:550,atla,,,şablon tekrarı (mendeley:73)
+mendeley:552,atla,,,şablona yakın (mendeley:203)
+mendeley:553,dolandiricilik,odul,"Acil! Lütfen sabit hattan 0900 121 32 37 numarasını arayın. 50.000 TL nakit ya da lüks 4 yıldızlı Bodrum tatili teslim alınmayı bekliyor. Dakikası 15 TL. 16 yaş üstü.","£5000→50.000 TL; Kanarya Adaları→Bodrum"
+mendeley:554,atla,,,şablona yakın (mendeley:97)
+mendeley:564,atla,,,ücretli tanışma/yetişkin sohbet hattı
+mendeley:567,dolandiricilik,diger,"ÜCRETSİZ MESAJ 500 ÜCRETSİZ SMS'inizi etkinleştirmek için bu mesaja UCRET kelimesiyle yanıt verin, ayrıntılar www.ucretsizsms500.com.tr",ücretli yanıt tuzağı
+mendeley:570,dolandiricilik,kargo,"Müşteri hizmetleri duyurusu. Yakın zamanda size teslimat yapmaya çalıştık ancak başaramadık, yeniden planlamak için lütfen 0850 029 89 26 numarasını arayın. Ref:9307622",geri arama tuzağı; sahte numara
+mendeley:571,reklam,,"Ücretsiz Mesaj: Tarkan'ın ""Kuzu Kuzu"" zil sesini TAMAMEN ÜCRETSİZ almak için hemen bu mesaja GIT yazarak yanıt verin!",yabancı şarkı→Türkçe şarkı
+mendeley:574,dolandiricilik,banka_hesap,"İnternet Bankacılığınızda olağandışı işlemler tespit ettik. Hesabınızın askıya alınmaması için güvenli bağlantıdan giriş yapın http:/95.141.32.7:81/default.aspx",doğrudan IP adresli link korundu
+mendeley:580,atla,,,şablona yakın (mendeley:203)
+mendeley:582,atla,,,şablona yakın (mendeley:270)
+mendeley:585,atla,,,şablona yakın (mendeley:116)
+mendeley:587,dolandiricilik,edevlet_vergi,"ACİL: Devlet, COVID-19 ile mücadele sözü kapsamında tüm vatandaşlara 4.580 TL ödeme yaptı. Başvurmak için buraya dokunun https:/tr-covid-19.webredirect.org/basvuru",UKGOV→devlet; 458 GBP→4.580 TL
+mendeley:590,reklam,,"Bakiyeniz 5.000 TL oldu. Sıradaki soru: 90'larda ""Şımarık"" şarkısını kim söyledi? Yanıtlamak için cevabınızı 8360'a gönderin. Bol şans!",ücretli yarışma; £500→5.000 TL
+mendeley:596,atla,,,yalnızca link
+mendeley:597,atla,,,müstehcen içerik
+mendeley:598,atla,,,şablona yakın (mendeley:213)
+mendeley:601,atla,,,şablona yakın (mendeley:180)
+mendeley:605,atla,,,şablona yakın (mendeley:42)
+mendeley:607,reklam,,"Güneş Bilgi Yarışması Haftanın Sorusu! Kapadokya hangi bölgemizdedir biliyorsanız son model bir DVD oynatıcı kazanın. Cevabınızı 8227'ye gönderin.",ücretli yarışma; Algarve→Kapadokya
+mendeley:608,dolandiricilik,odul,"Tebrikler! 2 kişilik 1 yıllık özel sinema kartı sizin. Hemen 0900 120 94 67 numarasını arayın! Vizyondaki tüm filmler ÜCRETSİZ! Dakikası 15 TL. Kaçırmayın!",0900 ücretli hat tuzağı
+mendeley:634,atla,,,abonelik bildirimi; etiket belirsiz
+mendeley:635,atla,,,şablona yakın (mendeley:607)
+mendeley:653,atla,,,uyarı metni (dolandırıcılığı anlatıyor); etiket belirsiz
+mendeley:658,atla,,,şablon tekrarı (mendeley:570)
+mendeley:664,atla,,,şablona yakın (mendeley:270)
+mendeley:674,reklam,,"TheMob> En yeni içeriklerimize göz atın: Oyunlar, Zil Sesleri, Magazin ve spor. Telefonunuzu formda ve eğlenceli tutmak için WAP yazıp 8246'ya gönderin",
+mendeley:679,reklam,,"Şimdi SAUNA ZAYIFLAMA KEMERİ (650 TL) ve TİTREŞİMLİ SAUNA KEMERİ (999 TL), 5 cm'ye kadar yağ yakımı + ÜCRETSİZ zayıflama çayı. Tel: 0532 130 48 72",Rs→TL; sahte numara
+mendeley:680,atla,,,şablona yakın (mendeley:203)
+mendeley:690,atla,,,uyarı metni (dolandırıcılığı anlatıyor); etiket belirsiz
+mendeley:700,atla,,,şablon tekrarı (mendeley:412)
+mendeley:702,atla,,,müstehcen içerik
+mendeley:710,atla,,,şablon tekrarı (mendeley:183)
+mendeley:716,atla,,,şablona yakın (mendeley:38)
+mendeley:717,dolandiricilik,yakin_romantik,"Aramanı kaçırdım kusura bakma, müsait olunca konuşalım. Numaram 0900 020 15 29",ücretli hata geri arama tuzağı
+mendeley:733,atla,,,şablona yakın (mendeley:67)
+mendeley:736,dolandiricilik,banka_hesap,"Banka hesabınızdan 08.02.17 11:17:37'de 5.903 TL tutarında işlem yapıldı, yetkisiz ise bu bağlantıyı izleyin http://isbanklogin:internetsube.com","AUD 590.3→5.903 TL; CommBank→İş Bankası"
+mendeley:743,atla,,,şablona yakın (mendeley:169)
+mendeley:751,atla,,,yetişkin sohbet hattı
+mendeley:753,atla,,,şablon tekrarı (mendeley:567)
+mendeley:768,atla,,,şaka metni; spam değil
+mendeley:772,atla,,,yalnızca link
+mendeley:777,atla,,,şablon tekrarı (mendeley:607)
+mendeley:783,atla,,,şablona yakın (mendeley:213)
+mendeley:788,dolandiricilik,banka_hesap,"QNB'DEN ÖNEMLİ MESAJ: COVID-19 salgını nedeniyle müşterilerimizin güvenliği için tüm müşterilerimizin kişisel bilgilerini gözden geçirip güncellemesi gerekmektedir. Aksi takdirde hesabınızı kullanamayacaksınız",Westpac→QNB; metin orijinalde kesik
+mendeley:789,reklam,,"Kış ve Düğün Sezonu. Sezonun tadını ışıltılı kıyafetlerle çıkarın. Gardırop Kuru Temizleme: En iyi kalite, uygun fiyat. İstanbul genelinde 60'tan fazla şube. Arayın: 0532 472 60 00",NCR→İstanbul; sahte numara
+mendeley:791,atla,,,şablona yakın (mendeley:180)
