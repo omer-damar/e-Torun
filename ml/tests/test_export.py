@@ -5,7 +5,14 @@ from pathlib import Path
 import pytest
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from src.export_model import MODEL_PATH, PARITY_PATH, char_wb_ngrams, predict_from_export
+from src.export_model import (
+    MAX_MODEL_BYTES,
+    MODEL_PATH,
+    PARITY_PATH,
+    char_wb_ngrams,
+    fraud_probability,
+    predict_from_export,
+)
 from src.features import NGRAM_RANGE
 from src.normalize import normalize
 
@@ -42,15 +49,17 @@ def model():
 
 
 def test_model_json_schema(model):
+    assert model["classes"] == ["normal", "reklam", "dolandiricilik"]
     assert model["ngramRange"] == list(NGRAM_RANGE)
     assert model["sublinearTf"] is True and model["norm"] == "l2"
-    assert isinstance(model["intercept"], float)
+    assert len(model["intercepts"]) == 3 and all(isinstance(v, float) for v in model["intercepts"])
     assert 0 < model["thresholds"]["low"] < model["thresholds"]["high"] < 1
     assert 1000 <= len(model["features"]) <= 20000
-    for ngram, (idf, coef) in list(model["features"].items())[:500]:
+    for ngram, row in list(model["features"].items())[:500]:
         assert 3 <= len(ngram) <= 5
-        assert idf >= 1 and math.isfinite(coef)
-    assert MODEL_PATH.stat().st_size < 1_500_000
+        idf, *coefs = row
+        assert idf >= 1 and len(coefs) == 3 and all(math.isfinite(c) for c in coefs)
+    assert MODEL_PATH.stat().st_size < MAX_MODEL_BYTES
 
 
 def test_parity_vectors_are_consistent(model):
@@ -58,11 +67,17 @@ def test_parity_vectors_are_consistent(model):
     assert len(vectors) >= 150
     for vector in vectors:
         assert vector["normalized"] == normalize(vector["text"])
-        assert abs(predict_from_export(model, vector["text"]) - vector["probability"]) < 1e-6
+        probabilities = predict_from_export(model, vector["text"])
+        assert sum(probabilities) == pytest.approx(1.0)
+        assert all(abs(a - b) < 1e-6 for a, b in zip(probabilities, vector["probabilities"]))
 
 
 def test_obvious_messages(model):
     scam = "Hesabınız bloke edilmiştir. Kaldırmak için hemen tıklayın: https://banka-dogrula.xyz/giris"
     safe = "Anne akşam yemeğe geliyoruz, ekmek alalım mı?"
-    assert predict_from_export(model, scam) >= model["thresholds"]["high"]
-    assert predict_from_export(model, safe) < model["thresholds"]["low"]
+    ad = "Tüm ürünlerde %50 indirim başladı! SMS almak istemiyorsanız RET yazıp 3444'e gönderin. Mersis: 0123456789000015"
+    assert fraud_probability(model, scam) >= model["thresholds"]["high"]
+    assert fraud_probability(model, safe) < model["thresholds"]["low"]
+    probabilities = predict_from_export(model, ad)
+    assert probabilities.index(max(probabilities)) == model["classes"].index("reklam")
+    assert fraud_probability(model, ad) < model["thresholds"]["low"]

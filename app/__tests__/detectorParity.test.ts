@@ -27,19 +27,25 @@ describe('Python ↔ TS parity', () => {
     expect(VECTORS.length).toBeGreaterThanOrEqual(150);
   });
 
-  it('model.json yüklü ve beklenen biçimde', () => {
+  it('model.json yüklü ve beklenen biçimde (3 sınıf)', () => {
+    expect(model.classes).toEqual(['normal', 'reklam', 'dolandiricilik']);
+    expect(model.intercepts).toHaveLength(3);
     expect(model.ngramRange).toEqual([3, 5]);
     expect(Object.keys(model.features).length).toBeGreaterThan(1000);
+    expect(Object.values(model.features)[0]).toHaveLength(4);
     expect(model.thresholds.low).toBeLessThan(model.thresholds.high);
   });
 
-  it('tüm vektörlerde normalize birebir, olasılık farkı < 1e-4', () => {
+  it('tüm vektörlerde normalize birebir, her sınıfın olasılık farkı < 1e-4', () => {
     let maxDiff = 0;
     const mismatches: string[] = [];
     for (const v of VECTORS) {
-      const { normalized, probability } = classify(v.text);
+      const { normalized, probabilities, probability } = classify(v.text);
       if (normalized !== v.normalized) mismatches.push(`${JSON.stringify(v.text)} → ${normalized} ≠ ${v.normalized}`);
-      maxDiff = Math.max(maxDiff, Math.abs(probability - v.probability));
+      model.classes.forEach((name, k) => {
+        maxDiff = Math.max(maxDiff, Math.abs(probabilities[name] - v.probabilities[k]));
+      });
+      expect(probability).toBe(probabilities.dolandiricilik);
     }
     expect(mismatches).toEqual([]);
     expect(maxDiff).toBeLessThan(1e-4);

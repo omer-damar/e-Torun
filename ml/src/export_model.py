@@ -1,9 +1,15 @@
-"""Eğitilen modeli uygulamaya aktarır — bölüm 9.4.
+"""Eğitilen v2 modelini (3 sınıf) uygulamaya aktarır — bölüm 9.4 / 9.6.
 
-Çalıştırma: python -m src.export_model   (önce python -m src.train)
+Çalıştırma: python -m src.export_model   (önce python -m src.train_v2)
 Çıktılar:
   app/src/detector/model.json      (elle düzenlenmez)
-  ml/exports/parity_vectors.json   (TS parity testi: { text, normalized, probability })
+  ml/exports/parity_vectors.json   (TS parity testi: { text, normalized, probabilities })
+
+model.json (sürüm 2.x):
+  classes      ["normal", "reklam", "dolandiricilik"]
+  intercepts   sınıf başına sabit
+  thresholds   dolandırıcılık olasılığı için { high: KIRMIZI, low: SARI }
+  features     n-gram → [idf, sınıf 0 katsayısı, sınıf 1 katsayısı, sınıf 2 katsayısı]
 
 Parity vektörleri yalnızca repoda zaten bulunan metinlerden (scam_tr.csv, normalize
 test örnekleri) üretilir; veri setlerindeki kişisel SMS'ler repoya girmez.
@@ -24,11 +30,14 @@ from src.normalize import normalize
 
 ML_DIR = Path(__file__).resolve().parent.parent
 REPO_DIR = ML_DIR.parent
+BUNDLE_PATH = ML_DIR / "artifacts" / "model_v2.joblib"
 MODEL_PATH = REPO_DIR / "app" / "src" / "detector" / "model.json"
 PARITY_PATH = ML_DIR / "exports" / "parity_vectors.json"
-MAX_MODEL_BYTES = 1_500_000
+MODEL_VERSION = "2.0.0"
+MAX_MODEL_BYTES = 1_200_000
 DECIMALS = 6
 PARITY_COUNT = 200
+PARITY_TOLERANCE = 1e-4
 
 
 def char_wb_ngrams(normalized: str, ngram_range=NGRAM_RANGE) -> list[str]:
@@ -49,38 +58,50 @@ def char_wb_ngrams(normalized: str, ngram_range=NGRAM_RANGE) -> list[str]:
     return ngrams
 
 
-def predict_from_export(model: dict, text: str) -> float:
-    """model.json üzerinden olasılık — TS tarafının referans uygulaması.
+def predict_from_export(model: dict, text: str) -> list[float]:
+    """model.json üzerinden sınıf olasılıkları — TS tarafının referans uygulaması.
 
-    TF = 1 + ln(sayı), × idf, L2 normalizasyon (yalnızca modelde olan n-gramlar), sigmoid.
+    TF = 1 + ln(sayı), × idf, L2 normalizasyon (yalnızca modelde olan n-gramlar),
+    z_k = intercept_k + Σ x·coef_k, softmax.
     """
     features = model["features"]
     counts = Counter(g for g in char_wb_ngrams(normalize(text), model["ngramRange"]) if g in features)
     weights = {g: (1 + math.log(c)) * features[g][0] for g, c in counts.items()}
     norm = math.sqrt(sum(v * v for v in weights.values()))
-    z = model["intercept"]
+    z = list(model["intercepts"])
     if norm > 0:
-        z += sum(v / norm * features[g][1] for g, v in weights.items())
-    return 1 / (1 + math.exp(-z))
+        for g, v in weights.items():
+            for k in range(len(z)):
+                z[k] += v / norm * features[g][k + 1]
+    top = max(z)
+    exp = [math.exp(v - top) for v in z]
+    total = sum(exp)
+    return [v / total for v in exp]
+
+
+def fraud_probability(model: dict, text: str) -> float:
+    return predict_from_export(model, text)[model["classes"].index("dolandiricilik")]
 
 
 def build_model_json(bundle: dict) -> dict:
     pipeline = bundle["pipeline"]
     tfidf = pipeline.named_steps["tfidf"]
     clf = pipeline.named_steps["clf"]
-    coef = clf.coef_[0]
+    if list(clf.classes_) != list(range(len(bundle["classes"]))):
+        raise ValueError(f"beklenmeyen sınıf sırası: {clf.classes_}")
     features = {
-        ngram: [round(float(tfidf.idf_[idx]), DECIMALS), round(float(coef[idx]), DECIMALS)]
+        ngram: [round(float(tfidf.idf_[idx]), DECIMALS)] + [round(float(c), DECIMALS) for c in clf.coef_[:, idx]]
         for ngram, idx in sorted(tfidf.vocabulary_.items())
     }
     return {
-        "version": "1.0.0",
+        "version": MODEL_VERSION,
         "createdAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "model": bundle["model_name"],
+        "model": f"LogisticRegression multinomial C={bundle['c']} ({bundle['config']})",
+        "classes": list(bundle["classes"]),
         "ngramRange": list(NGRAM_RANGE),
         "sublinearTf": True,
         "norm": "l2",
-        "intercept": round(float(clf.intercept_[0]), DECIMALS),
+        "intercepts": [round(float(v), DECIMALS) for v in clf.intercept_],
         "thresholds": {"high": bundle["thresholds"]["high"], "low": bundle["thresholds"]["low"]},
         "features": features,
     }
@@ -94,7 +115,7 @@ def parity_texts() -> list[str]:
 
 
 def main() -> None:
-    bundle = joblib.load(ML_DIR / "artifacts" / "model.joblib")
+    bundle = joblib.load(BUNDLE_PATH)
     model = build_model_json(bundle)
 
     payload = json.dumps(model, ensure_ascii=False, separators=(",", ":"))
@@ -105,20 +126,20 @@ def main() -> None:
     MODEL_PATH.write_text(payload, encoding="utf-8")
 
     texts = parity_texts()
-    sklearn_proba = bundle["pipeline"].predict_proba([normalize(t) for t in texts])[:, 1]
+    sklearn_proba = bundle["pipeline"].predict_proba([normalize(t) for t in texts])
     vectors = []
     max_diff = 0.0
     for text, p_sklearn in zip(texts, sklearn_proba):
         p_export = predict_from_export(model, text)
-        max_diff = max(max_diff, abs(p_export - p_sklearn))
-        vectors.append({"text": text, "normalized": normalize(text), "probability": round(p_export, 8)})
-    if max_diff > 1e-4:
+        max_diff = max(max_diff, *(abs(a - b) for a, b in zip(p_export, p_sklearn)))
+        vectors.append({"text": text, "normalized": normalize(text), "probabilities": [round(p, 8) for p in p_export]})
+    if max_diff > PARITY_TOLERANCE:
         raise SystemExit(f"Dışa aktarılan model sklearn'den sapıyor: {max_diff:.2e}")
 
     PARITY_PATH.parent.mkdir(parents=True, exist_ok=True)
     PARITY_PATH.write_text(json.dumps(vectors, ensure_ascii=False, indent=1), encoding="utf-8")
     print(
-        f"model.json: {len(model['features'])} n-gram, {size / 1024:.0f} KB · "
+        f"model.json {MODEL_VERSION}: {len(model['features'])} n-gram, {size / 1024:.0f} KB · "
         f"parity: {len(vectors)} vektör, sklearn'e en büyük fark {max_diff:.2e}"
     )
 
