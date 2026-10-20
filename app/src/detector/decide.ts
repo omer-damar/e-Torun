@@ -149,7 +149,7 @@ export function decideFrom(
   const combination = hasRuleCombination(rules);
 
   // Kod VEREN (istemeyen), bilinmeyen link içermeyen mesaj: doğrulama kodu. Model şüphelense de yeşil;
-  // ekranda "kodu kimseye söylemeyin" uyarısı gösterilir. (Telefonda: "Kariyer.net onay kod 388403".)
+  // ekranda "kodu kimseye söylemeyin" uyarısı gösterilir. (Telefonda: "Kariyer.net onay kod 482913".)
   if (has(rules, 'OTP_INFO') && !has(rules, 'PERSONAL_INFO') && !has(rules, 'LINK') && !combination) return 'green';
   if (isLegalAd(rules) && fraud < thresholds.low) return 'ad';
   if (

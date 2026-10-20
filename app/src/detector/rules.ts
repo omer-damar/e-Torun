@@ -108,7 +108,7 @@ const PATTERNS = Object.fromEntries(
 ) as Record<keyof typeof KEYWORDS, RegExp>;
 
 const SHORT_LINK = /(?:^|[^a-z0-9.])(?:bit\.ly|tinyurl\.com|cutt\.ly|t\.ly|rebrand\.ly|goo\.gl|t\.co|qrsu\.io|is\.gd|ow\.ly|shorturl\.at|s\.id|rb\.gy|tiny\.cc)(?:\/|$|[^a-z0-9])/i;
-// "onay kod 388403" gibi kısa biçim de (Kariyer.net).
+// "onay kod 482913" gibi kısa biçim de (Kariyer.net).
 const OTP = /(?:^| )(?:dogrulama|onay|guvenlik|sms|giris|tek kullanimlik) (?:kodu|kodunuz|kod|sifre|sifreniz) /;
 /** Kodu veren gerçek kurum mesajlarındaki uyarı: "kimseyle paylaşmayın", "kimseyle paylaşma". */
 const DO_NOT_SHARE = /(?:^| )(?:kimseyle|kimseye|paylasma|vermeyin|vermeyiniz|soylemeyin|soylemeyiniz)/;
