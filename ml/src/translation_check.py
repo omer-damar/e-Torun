@@ -1,6 +1,8 @@
 """Çevrilmiş / yerelleştirilmiş mesajların son kontrolü — PROJE_PLANI.md bölüm 9.6.
 
-Çalıştırma: python -m src.translation_check   (data/translated/*.csv dosyalarının hepsini denetler)
+Çalıştırma: python -m src.translation_check   (data/translated/batch_*.csv ve data/synthetic/normal_*.csv)
+
+Sentetik normal mesajlar (data/synthetic/normal_XXX.csv) aynı şemayı kullanır; queue_id "syn:NNNN" olur.
 
 Çeviri dosyası şeması (data/translated/batch_XXX.csv):
   queue_id   : kuyruk kimliği (data/raw/foreign/translation_queue.csv) — orijinal metin saklanmaz
@@ -19,6 +21,7 @@ import pandas as pd
 
 ML_DIR = Path(__file__).resolve().parent.parent
 TRANSLATED_DIR = ML_DIR / "data" / "translated"
+SYNTHETIC_DIR = ML_DIR / "data" / "synthetic"
 
 LABELS = {"normal", "reklam", "dolandiricilik", "atla"}
 SCAM_TYPES = {
@@ -56,7 +59,8 @@ TURKISH_WORDS = re.compile(
     r"\b(?:ve|bir|için|icin|ile|bu|hesap|hesabi|hesabınız|hesabiniz|hesabina|lütfen|lutfen|tıklayın|tiklayin|"
     r"sayın|sayin|değerli|degerli|kazandınız|kazandiniz|gönderiniz|gonderiniz|kargonuz|hemen|arayin|arayiniz|"
     r"kilitlendi|kartiniz|kartınız|banka|adresini|ziyaret|edin|olarak|icinde|uzere|sonra|gun|saat|mesaj|konu|"
-    r"gonderen|teslim|odeme|ödeme|bilgi|tebrikler|ucretsiz|kazanin|basvurun|yanitlayin)\b",
+    r"gonderen|teslim|odeme|ödeme|bilgi|tebrikler|ucretsiz|kazanin|basvurun|yanitlayin|"
+    r"hesabiniza|yapildi|kodu|kodunuz|sifre|sifresi|dogrulama|kimseyle|paylasmayiniz|islem|tutari|musteri|istemez)\b",
     re.IGNORECASE,
 )
 # Rakam dizileri: 7+ haneli olanlar telefon sayılır ve TR biçiminde olmalı.
@@ -131,7 +135,8 @@ def check_files(paths: list[Path]) -> tuple[pd.DataFrame, list[Issue]]:
 
 
 def main() -> int:
-    paths = sorted(TRANSLATED_DIR.glob("batch_*.csv"))
+    # Tekrar kontrolü iki klasörü birlikte kapsar: sentetik bir mesaj çeviriyle aynı olmamalı.
+    paths = sorted(TRANSLATED_DIR.glob("batch_*.csv")) + sorted(SYNTHETIC_DIR.glob("normal_*.csv"))
     combined, issues = check_files(paths)
     print(f"{len(paths)} dosya, {len(combined)} satır")
     if len(combined):

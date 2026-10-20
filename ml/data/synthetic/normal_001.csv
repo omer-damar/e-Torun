@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+syn:0001,normal,,"Garanti BBVA: 482913 dogrulama kodunuzdur. Bu kodu Garanti BBVA calisanlari dahil kimseyle paylasmayiniz.",banka_otp
+syn:0002,normal,,"Ziraat Bankası: İnternet şubesi giriş şifreniz 731044. Şifrenizi kimseyle paylaşmayınız. Bu işlem size ait değilse 0850 000 12 34'ü arayınız.",banka_otp
+syn:0003,normal,,"ISBANK: 5521 ile biten kartinizla TRENDYOL'dan yapacaginiz 1.249,90 TL tutarindaki alisveris icin 3D Secure sifreniz: 662018",banka_otp
+syn:0004,normal,,"Akbank Mobil'e yeni bir cihazdan giriş yapıldı (12.03 21:14). Bu siz değilseniz hemen Akbank Mobil'den ya da 0850 000 25 25'ten bize ulaşın.",banka_bildirim
+syn:0005,normal,,"Yapi Kredi: 4402 ile biten kartinizdan 13.03.2024 14:22'de MIGROS SANAL MARKET 386,45 TL harcama yapilmistir. Kullanilabilir limit: 18.613,55 TL",banka_harcama
+syn:0006,normal,,"Halkbank: TR** **** 4471 nolu hesabınıza 15.03.2024 tarihinde 24.350,00 TL emekli maaşı yatırılmıştır. İyi günlerde kullanın.",banka_maas
+syn:0007,normal,,"VakıfBank: Hesabınıza AYŞE YILMAZ tarafından 2.500,00 TL FAST ile gönderildi. Açıklama: Annemin ilaç parası",banka_havale
+syn:0008,normal,,"QNB: Kredi kartı ekstreniz kesildi. Dönem borcu: 7.842,30 TL, asgari ödeme: 3.136,92 TL, son ödeme tarihi: 25.03.2024. Detaylar QNB Mobil'de.",banka_ekstre
+syn:0009,normal,,"DenizBank: 3317 ile biten kartınızın son ödeme günü yarın. Ödenmemiş borç: 1.215,00 TL. Ödemenizi MobilDeniz'den yapabilirsiniz.",banka_hatirlatma
+syn:0010,normal,,"Enpara.com: 281907 tek kullanımlık şifrenizdir. Enpara.com bu şifreyi telefonla ya da mesajla asla sormaz.",banka_otp
+syn:0011,normal,,"TEB: Kartiniza 500,00 TL nakit avans islemi yapilmistir. Islem sizin tarafinizdan yapilmadiysa 0850 000 08 32 numarali hattimizi arayiniz.",banka_harcama
+syn:0012,normal,,"Kuveyt Türk: 9.000,00 TL tutarındaki kira ödemeniz düzenli ödeme talimatınızla gerçekleştirildi.",banka_talimat
+syn:0013,normal,,"ING: Hesabınızdan 1.870,40 TL tutarında elektrik faturası otomatik ödeme ile ödenmiştir.",banka_fatura
+syn:0014,normal,,"Papara: Hesabına Mehmet K. tarafından 350,00 TL gönderildi. Not: Pazar akşamı yemeğin payı",banka_havale
+syn:0015,normal,,"Garanti BBVA: Bonus kartinizin yeni sifresi basariyla olusturuldu. Bu islemi siz yapmadiysaniz Garanti BBVA Mobil uzerinden kartinizi gecici kapatabilirsiniz.",banka_bildirim
+syn:0016,normal,,"Ziraat Bankası: Kredi başvurunuz değerlendirmeye alınmıştır. Sonuç Ziraat Mobil'e ve kayıtlı e-posta adresinize iletilecektir.",banka_bildirim
+syn:0017,normal,,"ISBANK: 7720 ile biten kartiniz 03/27 tarihinde sona erecektir. Yeni kartiniz kayitli adresinize gonderilecektir.",banka_bildirim
+syn:0018,normal,,"Akbank: 28.03.2024 tarihinde vadesi dolan 50.000,00 TL tutarındaki vadeli mevduatınız aynı koşullarla yenilenmiştir. Brüt faiz: 1.972,60 TL",banka_bildirim
+syn:0019,normal,,"Yapı Kredi: World kartınızla bu ay 1.260 Worldpuan kazandınız. Toplam puanınız: 3.415",banka_bildirim
+syn:0020,normal,,"HALKBANK: 129745 sifresi ile 2.000,00 TL tutarindaki ATM'den kartsiz para cekme isleminizi 15 dakika icinde tamamlayabilirsiniz. Sifreyi kimseyle paylasmayin.",banka_otp
+syn:0021,normal,,"VakıfBank: Şubemizden yaptığınız 15.000,00 TL tutarındaki para çekme işlemi gerçekleştirilmiştir.",banka_harcama
+syn:0022,normal,,"Garanti BBVA: 9201 ile biten kartınızla yurt dışı internet alışverişi şu an kapalıdır. Açmak için Garanti BBVA Mobil > Kart Ayarları menüsünü kullanabilirsiniz.",banka_bildirim
+syn:0023,normal,,"DenizBank: 13.03.2024 15:40'ta hesabınızdan 3.200,00 TL EFT gönderilmiştir. Alıcı: KADİR ÖZ",banka_havale
+syn:0024,normal,,"QNB: Ziraat Bankasi'ndaki hesabinizdan QNB'deki hesabiniza 6.000,00 TL aktarim yapildi.",banka_havale
+syn:0025,normal,,"Enpara.com: Kredi kartı limitiniz isteğiniz doğrultusunda 25.000,00 TL olarak güncellendi.",banka_bildirim
+syn:0026,normal,,"Ziraat Bankası: Bankkart'ınızla 14.03.2024 tarihinde ECZANE ŞİFA'dan 214,50 TL harcama yapıldı.",banka_harcama
+syn:0027,normal,,"İş Bankası: Maximum kartınızın 3 taksitli 2.997,00 TL tutarındaki TEKNOSA alışverişi onaylanmıştır.",banka_harcama
+syn:0028,normal,,"AKBANK: Musteri hizmetlerimizle yaptiginiz gorusmeye istinaden 0850 000 25 25 hattimiz sizi aradi. Bankamiz hicbir zaman sifre, kart numarasi veya dogrulama kodu istemez.",banka_bildirim
+syn:0029,normal,,"Halkbank: Fatura talimatınız kapsamında Türk Telekom 649,00 TL ödemesi yapılamamıştır. Hesap bakiyeniz yetersiz.",banka_fatura
+syn:0030,normal,,"Kuveyt Türk: 640812 numaralı onay kodunuzla Mobil Şube şifre yenileme işleminizi tamamlayabilirsiniz. Kodu kimseyle paylaşmayınız.",banka_otp
+syn:0031,normal,,"Yapı Kredi: Bugün 10:00-12:00 arasında planlı bakım nedeniyle Yapı Kredi Mobil'de kısa süreli kesinti yaşanabilir. Anlayışınız için teşekkür ederiz.",banka_bildirim
+syn:0032,normal,,"VAKIFBANK: Kartiniz guvenliginiz icin 3 hatali sifre denemesi nedeniyle bloke edilmistir. Blokeyi Vakifbank Mobil'den ya da en yakin subeden kaldirabilirsiniz.",banka_bildirim
+syn:0033,normal,,"TEB: Bireysel ihtiyaç kredinizin 4. taksiti olan 2.140,75 TL hesabınızdan tahsil edilmiştir. Kalan taksit sayısı: 8",banka_kredi
+syn:0034,normal,,"Garanti BBVA: Hesabınıza 41.500,00 TL maaş ödemesi yapıldı. Garanti BBVA Mobil ile hemen görüntüleyin.",banka_maas
+syn:0035,normal,,"ING: Turuncu Hesap'ınıza bu ay 812,36 TL faiz işlendi.",banka_bildirim
+syn:0036,normal,,"Papara: Papara Card'ın ile A101'den yaptığın 157,25 TL harcama onaylandı. Bakiye: 1.042,75 TL",banka_harcama
+syn:0037,normal,,"Ziraat Bankasi: 0532 *** ** 18 numarali cep telefonunuz hesaplarinizda bildirim numarasi olarak tanimlanmistir.",banka_bildirim
+syn:0038,normal,,"İş Bankası: 14.03.2024 tarihli 1.500,00 TL'lik HGS otomatik yükleme talimatınız gerçekleşti.",banka_talimat
+syn:0039,normal,,"QNB: 3D Secure dogrulama kodunuz 503187. Islem tutari: 89,99 TL, isyeri: YEMEKSEPETI. Kodu kimseyle paylasmayiniz.",banka_otp
+syn:0040,normal,,"DenizBank: Bayram süresince şubelerimiz kapalı olacaktır. Bankacılık işlemlerinizi MobilDeniz'den ve ATM'lerimizden 7/24 yapabilirsiniz.",banka_bildirim
+syn:0041,normal,,"Akbank: Kredi kartı borcunuzun 4.500,00 TL'si hesabınızdan otomatik olarak ödenmiştir.",banka_ekstre
+syn:0042,normal,,"Enpara.com: Hesabından KİRA açıklamalı 12.000,00 TL tutarında havale SELMA DEMİR adlı kişiye gönderildi.",banka_havale
+syn:0043,normal,,"Halkbank: Emekli promosyon ödemesi olarak 12.000,00 TL hesabınıza yatırılmıştır. Detaylar için şubemizle görüşebilirsiniz.",banka_maas
+syn:0044,normal,,"Yapi Kredi: 274309 sifresi ile kartinizi Yapi Kredi Mobil'de aktive edebilirsiniz. Yapi Kredi sizden bu sifreyi asla telefonla istemez.",banka_otp
+syn:0045,normal,,"VakıfBank: 6.250,00 TL tutarındaki emekli maaşınız hesabınıza aktarılmıştır. Ek ödeme 3.000,00 TL ayrıca yatırılmıştır.",banka_maas
+syn:0046,normal,,"Garanti BBVA: Talep ettiğiniz hesap ekstresi kayıtlı e-posta adresinize gönderilmiştir.",banka_bildirim
+syn:0047,normal,,"Kuveyt Türk: Altın hesabınıza 2,5 gram altın alımı yapılmıştır. İşlem tutarı: 6.725,00 TL",banka_bildirim
+syn:0048,normal,,"ISBANK: Telefon numaraniz 14.03.2024 tarihinde subemizde guncellenmistir. Bu islemi siz yapmadiysaniz 0850 000 07 24'u arayiniz.",banka_bildirim
+syn:0049,normal,,"Ziraat Bankası: Bankkart Lira'nızla bu ay 48,30 TL kazandınız. Biriken Bankkart Lira'nız: 216,75",banka_bildirim
+syn:0050,normal,,"TEB: 15.03.2024 tarihinde vadesi gelen 1.115,00 TL tutarındaki KMH faiziniz hesabınızdan tahsil edilmiştir.",banka_kredi
