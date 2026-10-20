@@ -284,6 +284,7 @@ Uyarı satırına veya ilaç detayına dokununca "İlacınız bitmeden reçete i
 | Kırmızı | ⛔ + kırmızı zemin | "DİKKAT! Bu mesaj büyük ihtimalle dolandırıcılık." | "Linke tıklamayın, kimseye şifre veya kod söylemeyin, para göndermeyin." |
 | Sarı | ⚠️ + sarı zemin | "Bu mesajda şüpheli işaretler var." | "Emin olmadan işlem yapmayın, yakınınıza danışın." |
 | Yeşil | ✅ + yeşil zemin | "Belirgin bir tehlike işareti bulunmadı." | "Yine de para veya şifre isteyen mesajlara dikkat edin." |
+| Mavi (v2) | 📢 + mavi zemin | "Bu bir reklam / kampanya mesajı." | "Belirgin bir dolandırıcılık işareti görünmüyor. İstemiyorsanız mesajdaki "RET" yöntemiyle bu reklamları durdurabilirsiniz." |
 
 - Altında **"Neden?"** listesi: tetiklenen kuralların sade açıklamaları (en fazla 4).
 - Butonlar: **🔊 Sesli oku** (`expo-speech`, `language: 'tr-TR'`, yavaş hız ~0.85), **👨‍👩‍👧 Yakınıma sor** (mesaj metnini kayıtlı yakına `sms:` ile gönderme ekranı açar), **Ana Sayfa**.
@@ -292,19 +293,44 @@ Uyarı satırına veya ilaç detayına dokununca "İlacınız bitmeden reçete i
 ### Kurallar (`rules.ts`) — ham metin üzerinde, normalize edilmiş kopyayla eşleşir
 | Kural | Örnek tetikleyiciler | Kullanıcıya açıklama |
 |---|---|---|
-| `LINK` | http, www, alan adı kalıbı | "Mesajda bir internet bağlantısı var. Bankalar ve devlet kurumları SMS'teki bağlantıdan bilgi girmenizi istemez." |
+| `LINK` | http, www, alan adı kalıbı (resmi adresler ve e-posta adresleri hariç) | "Mesajda bir internet bağlantısı var. Bankalar ve devlet kurumları SMS'teki bağlantıdan bilgi girmenizi istemez." |
+| `FAKE_LINK` (v2) | adreste kurum adı ama resmi adres değil: `ptt-teslimat-takip.xyz`, `turkiye.gov.tr.iade-basvuru.com`, `https://ptt.gov.tr@bit.ly/..` | "Bağlantı adresi bir kurumun adını taklit ediyor ama o kurumun gerçek adresi değil." |
+| `OFFICIAL_LINK` (v2, bilgilendirici) | bütün linkler kamu kurumu adresi (`*.gov.tr`, `*.bel.tr`, `*.edu.tr`, `*.k12.tr`, `*.pol.tr`, `*.tsk.tr`) | "Mesajdaki bağlantı bir kamu kurumunun resmi adresi. Yine de bilgi girmeden önce adresin tam olarak aynı olduğunu kontrol edin." |
 | `SHORT_LINK` | bit.ly, tinyurl, cutt.ly, t.ly, rebrand.ly | "Bağlantı kısaltılmış; nereye gittiği gizleniyor." |
 | `URGENCY` | hemen, son gün, 24 saat, aksi takdirde, bloke, askıya, iptal edilecek | "Sizi acele ettirmeye çalışıyor. Dolandırıcılar düşünmenize fırsat vermek istemez." |
 | `IMPERSONATION` | e-devlet, ptt, kargo, banka adları, vergi, icra, sgk, emniyet, savcılık, masak, turkcell/vodafone/türk telekom | "Resmi bir kurum veya şirket adına yazılmış gibi görünüyor." |
-| `PRIZE` | kazandınız, hediye, ödül, çekiliş, iade, bonus, ücretsiz | "Ödül veya para iadesi vaat ediyor." |
+| `PRIZE` | kazandınız, kazanın, hediye, ödül, çekiliş, iade, bonus ("anket" tek başına değil) | "Ödül veya para iadesi vaat ediyor." |
 | `PERSONAL_INFO` | şifre, kart bilgi, cvv, tc kimlik, doğrulama/onay kodu | "Kişisel bilgilerinizi veya kodunuzu istiyor." |
 | `PAYMENT` | IBAN kalıbı, ödeme yapın, gümrük ücreti, borç | "Para göndermenizi veya ödeme yapmanızı istiyor." |
-| `GAMBLING` | bahis, casino, deneme bonusu, freespin | "Yasa dışı bahis reklamı olabilir." |
-| `OTP_INFO` (bilgilendirici) | "doğrulama kodunuz" + rakam | "Bu bir doğrulama kodu. Sizi arayan kişi banka görevlisi olsa bile bu kodu kimseye söylemeyin." |
+| `GAMBLING` | bahis, casino, deneme bonusu, freespin, canlı maç, hoşgeldin/kayıp/yatırım bonusu | "Yasa dışı bahis reklamı olabilir." |
+| `CALLBACK` | arayınız, irtibata geçin, bize ulaşın | "Sizden mesajdaki numarayı aramanızı istiyor. Kurumu aramanız gerekiyorsa numarayı mesajdan değil, resmi sitesinden bulun." |
+| `OTP_INFO` (bilgilendirici) | "doğrulama kodunuz / onay kod" + rakam | "Bu bir doğrulama kodu. Sizi arayan kişi banka görevlisi olsa bile bu kodu kimseye söylemeyin." |
+| `AD_MARKER` (v2) | SMS ret, RET yaz, İYS, Mersis, "almak istemiyorsanız" | "Mesajda yasal reklam işaretleri var (reklamı durdurma yöntemi veya şirket sicil numarası)." |
 
 Anahtar kelimeler normalize edilmiş metinde aranır, böylece Türkçe karaktersiz yazımlar da yakalanır ("hesabiniz bloke").
 
-### Karar mantığı (`decide.ts`)
+### Karar mantığı (`decide.ts`) — v2 (Ekim 2026)
+Model 3 olasılık verir: pD (dolandırıcılık), pR (reklam), pN (normal). Eşikler pD'ye uygulanır: T_HIGH = 0,40, T_LOW = 0,20 (doğrulama setinde normal + reklam yanlış alarmı kırmızıda ≤ %1, sarıda ≤ %3 olacak şekilde; alt sınırda kırpıldı).
+```
+YEŞİL   ← doğrulama kodu VEREN (istemeyen), bilinmeyen link içermeyen mesaj ∧ kural birleşimi yok
+YEŞİL   ← bütün linkleri kamu kurumu adresi ∧ para / şifre / arama / bahis / ödül yok
+REKLAM  ← yasal reklam işareti ∧ pD < T_LOW ∧ tehlike işareti yok
+KIRMIZI ← pD ≥ T_HIGH
+          veya kural birleşimi ∧ pR < 0,5 ∧ (pD ≥ 0,1 ∨ FAKE_LINK)
+REKLAM  ← pR ≥ 0,5 ∧ pD < T_LOW ∧ tehlike işareti yok ∧ bilinmeyen link yok
+SARI    ← pD ≥ T_LOW, ya da kural birleşimi, ya da güçlü tek işaret (LINK, SHORT_LINK, GAMBLING, FAKE_LINK),
+          ya da en az iki zayıf işaret ∧ pN < 0,5
+YEŞİL   ← diğer durumlar
+
+Kural birleşimi: LINK ∧ (kurum adı ∨ ödül ∨ acele ∨ kişisel bilgi)
+                 PAYMENT ∧ (acele ∨ (kurum adı ∧ iletişim kanalı))
+                 PERSONAL_INFO ∧ (acele ∨ (kurum adı ∧ iletişim kanalı))
+                 CALLBACK ∧ kurum adı ∧ acele            (iletişim kanalı = link, arama ya da acele)
+Tehlike işareti (Reklam denmesini engeller): kişisel bilgi isteği, bahis, FAKE_LINK, kısa link + ödül, ödeme + acele
+```
+Gerekçeler ve ölçümler §9.6 "Karar katmanı v2"de. Aşağıdaki v1 mantığı tarihçe için korunuyor.
+
+#### v1 (Aşama 5)
 ```
 KIRMIZI  ← p ≥ T_HIGH
            veya LINK ∧ (IMPERSONATION ∨ PRIZE ∨ URGENCY ∨ PERSONAL_INFO)
@@ -360,31 +386,33 @@ Python'da `\d` ve `\s` yerine açık karakter sınıfları kullanılır. `ml/tes
 - Hedef: test F1 ≥ 0.95, yanlış pozitif oranı ≤ %3 (yaşlıyı gereksiz korkutmamak için).
 
 ### 9.4 Dışa aktarma (`export_model.py`)
-`app/src/detector/model.json`:
+`app/src/detector/model.json` (v2, 3 sınıf; v1 tek `intercept` ve `[idf, coef]` kullanıyordu):
 ```json
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "createdAt": "...",
+  "model": "LogisticRegression multinomial C=10.0 (4_tr_sentetik)",
+  "classes": ["normal", "reklam", "dolandiricilik"],
   "ngramRange": [3, 5],
-  "intercept": -1.23,
-  "thresholds": { "high": 0.8, "low": 0.4 },
-  "features": { "ngram": [idf, coef], "...": [0, 0] }
+  "intercepts": [3.56, -1.74, -1.82],
+  "thresholds": { "high": 0.4, "low": 0.2 },
+  "features": { "ngram": [idf, coef_normal, coef_reklam, coef_dolandiricilik] }
 }
 ```
-- Sayılar 6 basamağa yuvarlanır. Hedef dosya boyutu < 1.5 MB (aşarsa `max_features` düşürülür).
-- `ml/exports/parity_vectors.json`: 200 test mesajı için `{ text, normalized, probability }`.
+- Sayılar 6 basamağa yuvarlanır. Boyut sınırı 1,2 MB; gerçekleşen 911 KB (20.000 n-gram).
+- `ml/exports/parity_vectors.json`: 198 mesaj için `{ text, normalized, probabilities }`; sklearn'e en büyük fark 2·10⁻⁷.
 
 ### 9.5 TS tarafı (birebir sklearn)
 - **`char_wb` n-gram:** Metin boşluklara göre bölünür. Her kelime `" " + w + " "` yapılır. Her n için kaydırarak n-gram alınır. sklearn'deki "kelime n'den kısaysa bir kez say" (`if offset == 0: break`) davranışı aynen uygulanır. Uzunluk hesabında `Array.from(w)` kullanılır.
 - **TF:** `1 + ln(count)` → `× idf` → L2 normalizasyon (yalnızca modelde olan n-gramlar üzerinden).
-- **Olasılık:** `z = intercept + Σ x_j·coef_j`, `p = 1 / (1 + e^(−z))`.
-- **Parity testi:** 200 vektörde `|p_ts − p_py| < 1e-4` ve `normalized` metinler birebir aynı.
+- **Olasılık (v2):** her sınıf için `z_k = intercept_k + Σ x_j·coef_jk`, softmax. (v1: `p = 1 / (1 + e^(−z))`.)
+- **Parity testi:** tüm vektörlerde her sınıf için `|p_ts − p_py| < 1e-4` ve `normalized` metinler birebir aynı.
 
 ### 9.6 Veri ve model v2 — reklam ≠ dolandırıcılık (Ekim 2026)
 
 **Neden:** v1 modeli Migros'un yasal kampanya SMS'ine %99 ile "dolandırıcılık" dedi. Ölçüm: TurkishSMSCollection ve Uysal'ın "spam" sınıfı (2.742 mesaj) büyük ölçüde **yasal ticari reklam** (mağaza/banka/operatör kampanyası); gerçek dolandırıcılık kalıbı birkaç yüz mesajda. v1 aslında bir **reklam dedektörü** oldu ve raporlanan F1 0,99 bu yüzden yanıltıcıydı. Aynı hata, aynı veri setini kullanan açık kaynak Türkçe projelerde de görülüyor; Türkçe'de gerçek SMS dolandırıcılığı içeren düzgün etiketli açık veri seti bulunamadı — bu çalışmanın özgün katkılarından biri.
 
-**Ara önlem (yapıldı):** yasal reklam işareti (SMS ret / RET yaz / İYS / Mersis) taşıyan ve dolandırıcılık işareti olmayan mesaj → mavi "📢 Reklam mesajı"; bankaların, kargo firmalarının, operatörlerin ve büyük mağazaların resmi alan adları (+ `*.gov.tr`) link/kurum taklidi sayılmaz.
+**Ara önlem (yapıldı; v2 karar katmanıyla değiştirildi, aşağıda):** yasal reklam işareti (SMS ret / RET yaz / İYS / Mersis) taşıyan ve dolandırıcılık işareti olmayan mesaj → mavi "📢 Reklam mesajı"; bankaların, kargo firmalarının, operatörlerin ve büyük mağazaların resmi alan adları (+ `*.gov.tr`) link/kurum taklidi sayılmaz.
 
 **Sınıflar (model):** `0 = normal`, `1 = reklam` (yasal ticari ileti), `2 = dolandırıcılık` (oltalama, sahte kurum/kargo/banka, sahte ödül/iade, kod/şifre/para isteme, yakın taklidi, yasa dışı bahis). Dolandırıcılığın **türü** model sınıfı değildir; açıklanabilir kurallarla belirlenir (📦 kargo, 🏛️ e-Devlet/icra/vergi, 🏦 banka/hesap, 🎁 ödül/iade, 🎰 bahis, 👨‍👩‍👧 yakın taklidi, 💰 yatırım/kripto). Kullanıcıya: kırmızı (dolandırıcılık + türü) / sarı (şüpheli: model kararsız) / yeşil (normal) / mavi (reklam).
 
@@ -409,11 +437,62 @@ Python'da `\d` ve `\s` yerine açık karakter sınıfları kullanılır. `ml/tes
 
 **Dürüstlük kuralları:** Çevrilmiş ve sentetik satırlar **yalnızca eğitimde**; test her zaman gerçek Türkçe mesajlarla. Her satırda `source, license, translated, synthetic` alanları; çevrilmiş veriye düşük örnek ağırlığı. Raporda çevirinin yapay zekâ ile yapıldığı açıkça yazılır.
 
-**Sızıntıya karşı ayırma:** Şablon gruplama (rakam/tarih/link soyutlanmış iskelet + benzerlik) — aynı şablon ya eğitimde ya testte (`GroupShuffleSplit`).
+**Sızıntıya karşı ayırma:** Şablon gruplama (rakam/tarih/link soyutlanmış iskelet + benzerlik) — aynı şablon ya eğitimde ya testte (uygulamada `StratifiedGroupKFold`, sınıf oranı korunarak).
 
-**Model:** 3 sınıflı lojistik regresyon (telefonda çevrimdışı, Python ↔ TS parity sürer) + açıklanabilir sinyaller (link resmi/bilinmeyen/kısa, yasal reklam işareti, IBAN, telefon, tutar, acele kelimeleri). Eşikler doğrulama setinde: **reklam/normal → dolandırıcılık yanlış alarmı ≤ %1**, gerçek dolandırıcılık yakalama oranı en yüksek.
+**Model (plan):** 3 sınıflı lojistik regresyon (telefonda çevrimdışı, Python ↔ TS parity sürer). Açıklanabilir sinyaller (link resmi/bilinmeyen/kısa, yasal reklam işareti, IBAN, acele) modele değil **kural katmanına** bırakıldı: model linkin adresini görmez (normalizasyon her linki `urltoken` yapar), linkin güvenilirliğine kurallar karar verir. Bu, parity'yi basit tutan bilinçli bir iş bölümü.
 
-**Ölçüm:** Altın test setinde sınıf başına kesinlik / yakalama / F1, karışıklık matrisi, hata analizi. **Ablasyon:** (1) yalnız TR, (2) + çeviri, (3) + sentetik — gerçek mesajlarda her eklemenin etkisi.
+**Ölçüm (plan):** Altın test setinde sınıf başına kesinlik / yakalama / F1, karışıklık matrisi, hata analizi. **Ablasyon:** (1) yalnız TR, (2) + çeviri, (3) + sentetik — gerçek mesajlarda her eklemenin etkisi.
+
+#### Yapılanlar ve sonuçlar (v2)
+
+**Veri hazırlığı:**
+- **Çeviri:** SmishTank, Mendeley ve UCI kuyruğundaki 2.095 mesaj 42 partide elden geçirildi → 555 dolandırıcılık, 66 reklam, 1.474 atlama (çoğu aynı şablonun tekrarı; ayrıca müstehcen, yalnızca link, Türk bağlamında karşılığı yok, etiketi belirsiz). Ayrıntı: `ml/data/translated/README.md`.
+- **Yeniden etiketleme:** TurkishSMSCollection + Uysal'daki 2.743 tekil "spam" → 2.694 reklam, 37 dolandırıcılık (bahis 14, sahte ödül 12, sahte sağlık ürünü/ücretli hat 6, "dava var mı, 11899'u arayın" 2, kargo 2, kredi 1), 4 normal (polis ve bankanın dolandırıcılık uyarıları), 8 atlama. Yasal reklam işareti olan 920 mesaj otomatik; 94 dolandırıcılık adayı ve ödül/arama/kredi kelimesi geçen 329 mesaj tek tek okundu, kalan reklamlardan 80'lik örneklem kontrol edildi. Elle dolandırıcılık denen mesajın isim/tutar değiştirilmiş kopyaları da yeniden incelemeye alınır. Ayrıntı: `ml/data/relabel/README.md`.
+- **Sentetik zor negatifler:** 440 meşru Türkçe mesaj (banka, kargo, kamu, sağlık, operatör, ulaşım, kişisel/aile; 40'ı linkli kargo bildirimi) yalnızca eğitim için yazıldı. Ayrıntı: `ml/data/synthetic/README.md`.
+- **Bölme:** gerçek mesajlar (5.365 tekil) karakter n-gram benzerliği ≥ 0,8 olan şablon gruplarına ayrıldı (4.885 grup) ve `StratifiedGroupKFold` ile ~%70/15/15 bölündü; doğrulama ve test yalnızca gerçek mesaj (her biri 767: 370 normal, 385 reklam, **12 dolandırıcılık**). Gerçek dışı satırlar yalnızca eğitimde; doğrulama/test metniyle birebir aynı olanlar çıkarılır.
+
+**Ablasyon (5 katlı şablon gruplamalı çapraz doğrulama, tüm 83 gerçek dolandırıcılık mesajıyla):** Tek testte 12 dolandırıcılık mesajı olduğu için (bir mesaj F1'i ~0,04 oynatır; iki etiket düzeltmesi tek bir test F1'ini 0,89'dan 0,96'ya çıkardı) yapılandırma karşılaştırması çapraz doğrulamayla yapıldı. Her satırda en iyi C:
+
+| Yapılandırma (örnek ağırlığı) | Makro F1 | Dolandırıcılık kesinliği | Yakalama | Ort. kesinlik (AP) | Eğitime girmeyen zor negatiflerde "dolandırıcılık" |
+|---|---|---|---|---|---|
+| 1. Yalnız TR | 0,908 | 0,79 | 0,71 | 0,83 | %33 |
+| 2. TR + çeviri (0,5) | 0,870 | 0,52 | 0,81 | 0,72 | %50 |
+| 3. TR + çeviri + sentetik (0,5) | 0,863 | 0,53 | 0,75 | 0,67 | %10 |
+| **4. TR + sentetik (1,0) — seçilen** | **0,907** | **0,79** | 0,70 | 0,81 | **%3** |
+
+- **Olumsuz bulgu (raporlanacak):** makine çevirisiyle yerelleştirilmiş yabancı dolandırıcılık verisi, hangi ağırlıkla eklenirse eklensin (0,05–0,5 denendi) gerçek Türkçe mesajlarda dolandırıcılık **kesinliğini** 0,79'dan 0,50–0,58'e düşürdü: model gerçek Türk reklamlarını dolandırıcılık sanmaya başladı (çevirilerdeki "Migros/Koçtaş + hediye + TL" dili Türk kampanyalarına çok benziyor). Çeviriler son modelde kullanılmadı; karar katmanının "görülmemiş dolandırıcılık" güvenlik testinde kullanıldı.
+- **Seçim kuralı (test setine bakılmadan):** CV makro F1'i en iyinin 0,005 yakınındaki adaylardan, eğitime girmeyen sentetik zor negatiflerde en az "dolandırıcılık" diyen. Bu ölçüt yapay zekâ ile yazılmış veri içerdiği için ayrıca belirtilir; gerçek veride 1 ve 4 eşdeğer.
+
+**Seçilen modelin test sonucu (767 gerçek mesaj, yalnızca model):** makro F1 0,947. Normal F1 0,993, reklam F1 0,991, dolandırıcılık kesinlik 0,75 / yakalama 1,00 (12/12). Kırmızı eşikte normal + reklam yanlış alarmı %0,5 (normal %0,3, reklam %0,8); sarı eşikte %2,0. Güven aralığı 12 dolandırıcılık mesajı yüzünden geniş; gelen kutusu mesajlarıyla yeniden ölçülecek.
+
+**v1 ile karşılaştırma (aynı test seti):** v1 kırmızı eşikte gerçek reklamların **%99,7'sini** dolandırıcılık sayıyordu (normal + reklam yanlış alarmı %51); v2'de %0,8. Eğitime girmeyen sentetik meşru mesajlarda kırmızı: v1 %27 → v2 %6.
+
+**Karar katmanı v2 (model + kurallar, uygulamanın kullanıcıya gösterdiği sonuç):** Kurallar tek başına karar verdiğinde gerçek reklamların 234/770'i kırmızıydı (link + "hediye", banka adı + link); bu kombinasyonların 263/268'inde model mesajın reklam olduğunu biliyordu, gerçek dolandırıcılıkta ise 13 kombinasyonun 11'inde model reklam demiyordu → kural kırmızısı model reklam demiyorsa verilir. Kurum adı meşru mesajlarda çok geçtiği için ödeme/şifre kelimesiyle birlikte ancak bir iletişim kanalı varsa kırmızı yapar. Model "Koçtaş'tan hediye kartı + link", "Migros anketi 1.000 TL" gibi sahte kampanyaları da reklam sanabildiğinden (görülmemiş çeviri dolandırıcılığının 100/555'i), **yasal reklam işareti olmayan ve bilinmeyen link içeren mesaja "Reklam" denmez**: 2021'den beri ticari SMS'te ret yöntemi zorunlu (6563 s. Kanun, İYS).
+
+| Grup (uygulamadaki sonuç) | v1 (model + kurallar) | v2 |
+|---|---|---|
+| Gerçek reklam (770) | 234 kırmızı, 159 sarı, 144 reklam | 7 kırmızı, 281 sarı, **478 reklam** |
+| Gerçek normal (676, kısa olmayan) | — | 666 yeşil, 6 sarı, 1 kırmızı, 3 reklam |
+| Gerçek dolandırıcılık (24) | 23 kırmızı, 1 yeşil | 21 kırmızı, 2 sarı, 1 yeşil |
+| Görülmemiş çeviri dolandırıcılık (555) | — | 305 kırmızı, 160 sarı, 32 reklam, 58 yeşil |
+| Sentetik meşru 001–008 (400) | 110 kırmızı, 134 sarı | 7 kırmızı, 12 sarı |
+
+- Gerçek reklamlardaki 281 sarı büyük ölçüde ret işareti taşımayan 2015 dönemi linkli reklamlar (İYS öncesi). Görülmemiş dolandırıcılıktaki 58 yeşil çoğunlukla linksiz "yanlış numara" açılışları ("Selam Burcu, uzun zaman oldu"); tek mesajdan yakalanmaları beklenemez. Kaçan tek gerçek dolandırıcılık: linksiz "terör soruşturması, parayı güvenli hesaba aktarın".
+- Sentetik meşru sonuçlarının %80'i eğitimde görülmüş mesajlar; yalnızca karşılaştırma için.
+
+**Telefonda (Expo Go, gerçek gelen kutusu) bulunan yanlış alarmlar ve düzeltmeler:**
+
+| Mesaj türü | Sorun | Düzeltme |
+|---|---|---|
+| Kariyer.net doğrulama kodu ("onay kod … paylaşma") | Model %44; "onay kod" ve "paylaşma" tanınmıyordu | Kısa kod kalıpları; kod veren, bilinmeyen link içermeyen mesaj yeşil |
+| İşe alım bilgilendirmesi (e-posta adresi içeren) | `ad@vodafone.com` link + kurum taklidi sayılıyordu | E-posta adresleri link değil (`x@y` link içindeyse korunur) |
+| İŞKUR iş ilanı (`esube.iskur.gov.tr`) | Model iş ilanı dilini sahte iş ilanına benzetiyordu | Yalnızca kamu kurumu linkli, para/şifre/arama/ödül istemeyen mesaj yeşil (YouTube/Kariyer.net gibi platformlar bu istisnayı almaz) |
+| Amazon teslimat + memnuniyet anketi linki | Model %83 (eğitimde linkli meşru kargo mesajı yoktu); "anket" ödül sayılıyordu | 40 linkli meşru kargo bildirimi eklenip yeniden eğitildi (%16); "anket" tek başına ödül değil. Sahte kargo yakalama değişmedi (60 → 61 kırmızı) |
+| İK platformu linkli değerlendirme bildirimi | Sarı | Doğru davranış: ad + giriş kodu + bilinmeyen link, sahte işe alım mesajıyla aynı biçimde |
+
+Her düzeltmeden sonra yukarıdaki gruplarla gerileme ölçümü yapıldı; ilk denemelerde bulunan iki yan etki (boşluksuz "geldi.Yarın" yazımının link sayılması, YouTube linkli sahte piyango mesajının yeşile dönmesi) commit öncesi düzeltildi. Testlerde kullanıcının mesajlarının yalnızca uydurma benzerleri var.
+
+**Sınırlılıklar:** (1) Gerçek Türkçe dolandırıcılık örneği az (83; testte 12) — kullanıcının gelen kutusu `ml/data/raw/inbox/` ile genişletilecek, nihai rakamlar ondan sonra. (2) Model linkin adresini görmez; bilinmeyen bir şirket adresi ancak kurallar ve metin diliyle değerlendirilir. (3) Tek mesajlık "yanlış numara" / sohbet açılışları (dolandırıcılığın ilk adımı) yakalanamaz. (4) Seçim ve bazı kurallar yapay zekâ ile yazılmış sentetik veride ölçüldü; raporda ayrıca belirtilir.
 
 **Dosyalar:** ham yabancı veri `ml/data/raw/foreign/<kaynak>/` (repoya girmez); çeviriler `ml/data/translated/*.csv` (kaynak lisansıyla birlikte, CC BY / CC BY-NC-SA koşullarına uygun olarak repoda); kullanıcı mesajları `ml/data/raw/inbox/` (repoya girmez).
 
