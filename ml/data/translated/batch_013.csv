@@ -1,0 +1,51 @@
+queue_id,label,scam_type,text_tr,note
+smishtank:968,dolandiricilik,diger,"Spor Salonuna Son! Diyete Son! Bu devrim niteliğindeki yeni keto hapı ile fazla kilolarınızdan kolayca kurtulun ve hedeflerinize ulaşın. Yatmadan önce 1 tane alın, siz uyurken çalışsın. Tükenmeden Size Özel Kutularınızı Alın",sahte sağlık ürünü; metin orijinalde kesik
+smishtank:969,dolandiricilik,is_ilani,"Merhaba. Bir FİRMA bölgenizde Gizli Müşteri olacak kişiler arıyor. İş, mağazalara gizlice girip değerlendirme yapmak ve ardından rapor vermekten ibaret, her görev için 4.000 TL alacaksınız (haftada 3 kez",$400→4.000 TL; metin orijinalde kesik
+smishtank:971,atla,,,müstehcen ima
+smishtank:972,atla,,,müstehcen ima
+smishtank:973,atla,,,şablona yakın (smishtank:305)
+smishtank:975,atla,,,yalnızca link
+smishtank:976,atla,,,yalnızca selam + link
+smishtank:977,dolandiricilik,banka_hesap,"Apple Kimliğiniz devre dışı bırakıldı. Bilgilerinizi güncellemeli ve şu adresteki adımları izlemelisiniz:""https://bit.ly/2ZqypQP"" AP-MSJ-UC5C68",
+smishtank:980,dolandiricilik,banka_hesap,"ALTERNATİFBANK: Bankacılık profilinizde bazı usulsüzlükler görüldü. İnternet bankacılığı profilinizi güncellemek için http://uyari-alternatifbank.com adresini ziyaret edin.",Comerica→Alternatifbank
+smishtank:983,dolandiricilik,odul,"SON BİLDİRİM: Kübra, lütfen TrendyolÖdül 4G34H6 gönderi kimliğinin ayrıntılarını buradan inceleyin: g3svc.info/0iSFCyr6Lb Paket: 1.300 TL bonus","Amazon→Trendyol; $130→1.300 TL; isim değiştirildi"
+smishtank:984,dolandiricilik,odul,"Hesap bakiye bildirimi: tanımlanamayan 1.309 TL gelen ödeme: e5sml.info/48GZ3swdBn Açıklama: Trendyol Ödül Programı","Amazon→Trendyol; $130.9→1.309 TL"
+smishtank:985,atla,,,şablona yakın (smishtank:921)
+smishtank:987,dolandiricilik,odul,"Ödül4Siz MSJ: Merhaba Hilal, 10.000 TL'lik hediye kartınızı almak için geri dönün. Buradan gidin: https://rwdz.us/jQ7V5u2w İptal için IPTAL yazın","1000 VISA→10.000 TL; isim değiştirildi"
+smishtank:989,dolandiricilik,banka_hesap,"QNB: AYŞE K. adlı kişiyi hesabınıza bağlamayı tamamlamak için E yazın. Buna hiç izin vermediyseniz hesabınızı güvenceye almak için https://qnb1online.com/ adresini ziyaret edin.",Citi→QNB; isim değiştirildi
+smishtank:995,atla,,,gerçek kurum anketi olabilir; etiket belirsiz
+smishtank:998,atla,,,şablon tekrarı (smishtank:412)
+smishtank:1000,dolandiricilik,diger,"Telefonunuza gizli verileriniz için risk oluşturan istenmeyen mesajlar yağıyor. Harekete geçin ve bunları kaldırın: wklnv.me/nK7NWdxQXN",sahte güvenlik uyarısı
+smishtank:1003,atla,,,şablona yakın (smishtank:545)
+smishtank:1005,dolandiricilik,banka_hesap,"Steam Kart Teslimat'tan 1 adet hediye kartı satın aldınız mı? EVET veya HAYIR yazın, EVET ise sipariş devam edecek. HAYIR ise sipariş reddedilecek.",sahte sipariş onayı (linksiz)
+smishtank:1009,atla,,,gerçek uygulama bildirimi olabilir; etiket belirsiz
+smishtank:1012,atla,,,şablona yakın (smishtank:508)
+smishtank:1013,dolandiricilik,banka_hesap,"Ekli güvenli bir mesajınız var. KUVEYT TÜRK MÜŞTERİ HİZMETLERİ#8906-4153 KT-MESAJ#8906-4153.pdf Ek medya içeriği bulunmaktadır. Lütfen mesajı ayrıntılı olarak kontrol edin",Navy FCU→Kuveyt Türk
+smishtank:1014,dolandiricilik,kargo,"Son gönderinizle ilgili bir sorun tespit ettik; geçersiz gönderi bilgisi. Teslimat adresinizi güncellemek için http://pttteslimatrd.ga/ adresine girin.",USPS→PTT
+smishtank:1016,dolandiricilik,kargo,"PTT-Paketiniz göndericiye iade ediliyor, adresiniz doğrulanamadı. Güncellemeyi buradan tamamlayın: https://is.gd/ERR1293",USPS→PTT
+smishtank:1017,atla,,,şablona yakın (smishtank:813)
+smishtank:1019,atla,,,şablona yakın (smishtank:358)
+smishtank:1020,atla,,,şablona yakın (smishtank:969)
+smishtank:1021,atla,,,şablona yakın (smishtank:287)
+smishtank:1022,atla,,,ABD'ye özgü toplu tazminat davası; Türk bağlamında karşılığı yok
+smishtank:1023,atla,,,ABD'ye özgü emlak ilanı
+smishtank:1024,atla,,,ABD'ye özgü emlak ilanı
+smishtank:1025,atla,,,şablona yakın (smishtank:813)
+smishtank:1026,atla,,,şablona yakın (smishtank:382)
+smishtank:1027,dolandiricilik,odul,"Size 6.545,70 TL'ye kadar borçlu olabiliriz. Yeni bir karar nedeniyle geçen yıl sizden fazla sigorta primi almış olabiliriz. İadeniz hazır - https://ucuzkasko.teminat4.me/XL1isumEsTX3","654.57→6.545,70 TL"
+smishtank:1029,dolandiricilik,yakin_romantik,"Merhaba iyi akşamlar yemek yedin mi? Akşam yemeğine çıkalım Hâlâ meşgul müsün? ;)",yanlış numara açılışı (linksiz)
+smishtank:1030,dolandiricilik,diger,"Fatma Yıldız'dan - Merhaba, bağış kampanyamı paylaşıp destek olursanız çok sevinirim, sadece ayakta kalmaya çalışıyorum.. Yardım edin https://gofund.me/8a078279",sahte bağış kampanyası; isim değiştirildi
+smishtank:1031,atla,,,şablon tekrarı (smishtank:950)
+smishtank:1033,dolandiricilik,odul,"Geç.en ay.ın fat.ura.sı alın.dı. Teşek.kür.ler! iş.te si.ze kü.çük bir he.di.ye: aUDk4.COm/Mrz178duBF",noktalı yazım hilesi korundu
+smishtank:1034,atla,,,ABD'ye özgü siyasi anket
+smishtank:1035,atla,,,şablona yakın (smishtank:412)
+smishtank:1038,atla,,,emlak alım teklifi; dolandırıcılık olduğu belirsiz
+smishtank:1041,atla,,,şablon tekrarı (smishtank:317)
+smishtank:1042,dolandiricilik,kargo,"Hatalı adres nedeniyle teslim edilemeyen acil kurye evrakınız var, lütfen kontrol edin https://rebrand.ly/tw0ajjr",
+smishtank:1043,atla,,,şablona yakın (smishtank:412)
+smishtank:1044,atla,,,şablona yakın (smishtank:292)
+smishtank:1047,dolandiricilik,abonelik_fatura,"Ne'tf!ix:658567 Abone!l!ğinizin süresi bugün doldu.Faturanızı ye_nilemek için buraya tıklayın //@risu.io/fTVXM",ünlem/alt çizgi yazım hilesi korundu
+smishtank:1048,atla,,,şablon tekrarı (smishtank:1047)
+smishtank:1049,atla,,,şablon tekrarı (smishtank:1047)
+smishtank:1050,dolandiricilik,edevlet_vergi,"MSJ_NO984196:GİB Beyannameniz GİB tarafından engellendi.Endişelenmeyin, düzeltmenize yardımcı olacağız. Bu bağlantıya tıklayın> // risu.io/e75CA",IRS→GİB
+smishtank:1051,dolandiricilik,banka_hesap,"(AM#ZON) 163975 HES4BINIZ K_ILITLENDI,faturanızı hemen düzeltin. //unusa.id/9rua",harf/rakam yazım hilesi korundu
