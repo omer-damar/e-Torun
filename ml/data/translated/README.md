@@ -26,5 +26,22 @@ Mendeley ve UCI kaynaklı satırlar **CC BY 4.0** (atıf).
 - Her parti `python -m src.translation_check` ile denetlenir (yabancı para / terim / İngilizce
   kalıntı, Türkçe olma, TR telefon biçimi, tekrar).
 
+## Sonuç (42 parti, kuyruğun tamamı)
+| | Satır |
+|---|---|
+| İşlenen | 2.095 (SmishTank 1.048, Mendeley 996, UCI 51) |
+| `dolandiricilik` | 555 |
+| `reklam` | 66 |
+| `atla` | 1.474 |
+
+Atlamaların çoğu **aynı şablonun tekrarıdır** (ör. "0900'lü hattı arayın, ödül kazandınız" Mendeley'de
+yüzlerce kez geçer); her şablondan bir iki örnek tutuldu ki model ezberlemesin. Geri kalanı müstehcen
+içerik, yalnızca link, Türk bağlamında karşılığı olmayan (ABD'ye özgü dava, emlak vb.) ya da etiketi
+belirsiz (gerçek kurum bildirimi olabilecek) mesajlardır. UCI'deki ek mesajların hepsi Mendeley
+şablonlarının tekrarı çıktı.
+
+Dolandırıcılık türleri: banka_hesap 158, odul 133, kargo 65, yakin_romantik 55, diger 49,
+edevlet_vergi 30, yatirim 17, abonelik_fatura 17, is_ilani 16, kredi 8, icra_dava 6, bahis 1.
+
 ## Kolonlar
 `queue_id, label (normal | reklam | dolandiricilik | atla), scam_type, text_tr, note`
