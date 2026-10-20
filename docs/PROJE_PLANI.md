@@ -510,12 +510,67 @@ Her düzeltmeden sonra yukarıdaki gruplarla gerileme ölçümü yapıldı; ilk 
 | Dokunma alanı | ≥ 64×64pt, butonlar arası ≥ 16pt boşluk |
 | Kontrast | ≥ 7:1 (WCAG AAA) |
 | Renk paleti | Arka plan `#FFFFFF`, metin `#111111`, birincil `#0B4F9C`, tehlike `#B00020`, uyarı arka planı `#FFF3C4` + metin `#5C4300`, başarı `#1B5E20` |
-| Dynamic Type | `allowFontScaling` açık, `maxFontSizeMultiplier` 1.4 (taşmaları önlemek için) |
-| VoiceOver | Tüm butonlarda Türkçe `accessibilityLabel` ve `accessibilityHint` |
+| Dynamic Type | iOS yazı büyütmesine uyulur, en az 1 en fazla 1.4 kat. Büyütmeyi sistem değil `AppText` hesaplar (`allowFontScaling={false}` + `useWindowDimensions().fontScale`): uygulama açıkken ayar değişince iOS metinleri yeniden ölçmüyor, kırpıyordu |
+| VoiceOver | Tüm butonlarda Türkçe `accessibilityLabel`, gerekirse `accessibilityHint`; her ekranda başlık (`accessibilityRole="header"`); emoji ve madde işaretleri okunmaz (`utils/a11y.ts` › `spokenText`) |
+| Duyurular | Sonradan beliren hata, onay ve uyarılar, sihirbazda adım değişimi, saat seçicide yeni saat, Aldım / Geri al `AccessibilityInfo.announceForAccessibility` ile okunur (iOS `accessibilityLiveRegion`'ı desteklemez) |
 | Dokunsal geri bildirim | Her ana butonda `expo-haptics` hafif titreşim |
-| Yasaklar | Küçük ikon-buton, yalnızca renkle anlam, kaydırma zorunluluğu, kaybolan uyarı, İngilizce terim |
+| Yasaklar | Küçük ikon-buton, yalnızca renkle anlam, kaydırma zorunluluğu, kaybolan uyarı, İngilizce terim, soluk/devre dışı buton (basınca ne yapılacağı söylenir) |
 
-**Ortak bileşenler:** `BigButton` (ikon + başlık + alt metin, varyantlar: primary/danger/neutral), `ScreenContainer` (güvenli alan + başlık + Ana Sayfa butonu), `ConfirmDialog` (büyük Evet/Hayır, yanlışlıkla basmayı önlemek için aralı), `TimePickerBig`, `RiskBadge`.
+**Ortak bileşenler:** `AppText`, `AppTextInput` (etiketli, kalıcı hata satırı), `BigButton` (ikon + başlık + alt metin, varyantlar: primary/danger/neutral), `OptionButton` (seçili durumu ✓ + "Seçili" yazısıyla), `ScreenContainer` (güvenli alan + başlık + Ana Sayfa butonu), `ConfirmDialog` (büyük Evet/Hayır, yanlışlıkla basmayı önlemek için aralı), `Notice` (kalıcı uyarı kutusu), `TimePickerBig` (+/− düğmeli, tekerleksiz). Risk seviyesi ayrı bir bileşen değil, sonuç ekranındaki `LEVEL_STYLE` ile çizilir.
+
+### 10.1 Denetim ve sonuçlar (Aşama 6, Ekim 2026)
+
+**A — Otomatik testler** (`app/__tests__/accessibility.test.tsx`, denetleyici `app/test-utils/a11yAudit.ts`, kontrast `src/theme/contrast.ts`):
+
+- **Kontrast:** WCAG 2.x göreli parlaklık formülüyle hesaplanır. Tüm renk çiftleri ve dört sonuç seviyesi ≥ 7:1.
+
+  | Çift | Oran |
+  |---|---|
+  | metin / zemin | 18.9 |
+  | beyaz / ana renk | 8.0 |
+  | beyaz / tehlike | 7.3 |
+  | uyarı metni / uyarı zemini | 8.4 |
+  | beyaz / başarı | 7.9 |
+  | ikincil metin / zemin | 12.6 |
+
+- **Ekran taraması:** 14 ekran durumu (sonuç kırmızı ve yeşil dahil) örnek verilerle çizilir. Ağaç dolaşılır ve şunlar denetlenir:
+  - her yazı ≥ 20pt;
+  - yazı ile arkasındaki zemin ≥ 7:1;
+  - basılabilir her öğede rol ve okunabilir ad;
+  - dokunma alanı ≥ 64pt;
+  - ekranda başlık;
+  - yazı kutusunda etiket;
+  - İngilizce terim yok.
+
+  Tarama sistem yazı ölçeği **1**'de yapılır (en kötü durum). Jest'in varsayılan ölçeği 2'dir; bu ölçekte yazılar 1.4 kat büyük ölçülür ve 20pt alt sınırı boşa çıkar.
+- **Öz-test:** Denetleyicinin küçük yazı, düşük kontrast, rolsüz/küçük buton ve başlıksız ekranı gerçekten yakaladığı ayrı bir testle doğrulanır.
+- **Sonuç:** İhlal çıkmadı. Aşama 1–5'te bileşenler (`AppText`, `BigButton`, `ScreenContainer`) kurallara göre yazıldığı için ekranlar kendiliğinden uyuyordu.
+
+**B — Ekran ekran inceleme** (otomatik testin göremediği VoiceOver davranışı). Bulunan ve düzeltilen sorunlar:
+
+| Sorun | Düzeltme |
+|---|---|
+| VoiceOver emojileri adıyla okuyordu ("kum saati Bekliyor", "uyarı işareti 1 ilacınız bitmek üzere") | `spokenText`: düz metinde ve buton etiketinde süs karakterleri atılır; sesli okuma da aynı kuralı kullanır (eski kural ⏳ ⏭️ ↩️ • ℹ️ işaretlerini kaçırıyordu) |
+| Doğrulama hatası, "mesaj bulunamadı", stok onayı, rehberden doldurma bilgisi iOS'ta okunmuyordu (`accessibilityLiveRegion` yalnızca Android) | `announce` / `useAnnounce`; `Notice`'a `announce` seçeneği (yalnızca sonradan beliren uyarılarda; ekranla açılan kalıcı uyarılar her girişte okunmasın) |
+| Kurulum ve ilaç ekleme sihirbazında İleri'ye basınca ekran değişiyor ama VoiceOver fark etmiyordu (buton yerinde kalıyor) | Yeni adımın adı ve sırası duyurulur ("Saat seçin. 2. adım, toplam 5") |
+| Saat seçicide + / − sonrası yeni saat söylenmiyordu | Her basışta "saat 9 tam" / "saat 8, 5 geçe" |
+| ALDIM / Geri al sonrası sessizlik | "Tansiyon ilacı alındı olarak işaretlendi. 10 saniye içinde geri alabilirsiniz." |
+| İlaç kartında durum iki kez okunuyordu (satır etiketi + ayrı durum yazısı) | Ayrı yazı ekran okuyucudan gizlendi |
+| Kutu boşken "Kontrol Et" soluk ve devre dışıydı; yaşlı kullanıcı nedenini anlamıyor, VoiceOver "soluk" diyordu | Buton her zaman etkin; basınca "Önce mesajı yapıştırın…" uyarısı |
+
+Testler: `app/__tests__/screenReader.test.tsx` (15 test). Toplam uygulama testi 273 → 315.
+
+**C — Elle test listesi:** [`docs/erisilebilirlik-kontrol-listesi.md`](erisilebilirlik-kontrol-listesi.md). İçerik:
+- VoiceOver ile ekran ekran 28 madde;
+- en büyük metin + "Çok büyük";
+- gri tonlama, kalın metin, kontrastı artır;
+- dokunma ve anlaşılırlık;
+- örnek mesajlar ve bulunan sorunlar tablosu.
+
+**Sınırlar:**
+- Otomatik tarama stil değerlerini ölçer, gerçek çizimi değil. Kırpılma, taşma ve odak sırası yalnızca telefonda görülür.
+- Duyuruların VoiceOver'da gerçekten okunduğu testte taklit edilir (`announceForAccessibility` çağrısı denetlenir). Asıl doğrulama C listesiyle iPhone'da yapılacaktır.
+- Sonuç ekranı sarı ve reklam seviyeleri ekran taramasına ayrıca alınmadı. Renk çiftleri kontrast testinde denetlenir, düzen kırmızı/yeşil ile aynıdır.
 
 ---
 
@@ -533,6 +588,8 @@ Her düzeltmeden sonra yukarıdaki gruplarla gerileme ölçümü yapıldı; ilk 
 - **Birim (Jest, `jest-expo`):** normalize, ngrams, tfidf, classify, rules, decide, schedule fonksiyonları, telefon doğrulama, weekday dönüşümü.
 - **Parity:** Python ↔ TS (bölüm 9.5).
 - **Python (pytest):** normalize örnekleri, export edilen JSON'un şeması.
+- **Erişilebilirlik (otomatik):** kontrast, ekran taraması ve ekran okuyucu davranışı (bölüm 10.1).
+- **Erişilebilirlik (elle):** `docs/erisilebilirlik-kontrol-listesi.md` (VoiceOver, büyük yazı, gri tonlama).
 - **Elle test kontrol listesi (iPhone):**
   - [ ] 2 dk sonraya kurulan bildirim uygulama kapalıyken geliyor
   - [ ] Bildirime dokununca doğru ekran açılıyor
