@@ -7,6 +7,7 @@ import { APP_NAME, NOT_OFFICIAL_NOTICE } from '@/appInfo';
 import { AppText, BigButton, ConfirmDialog, OptionButton, ScreenContainer } from '@/components';
 import { contactTitle, MAX_CONTACTS, type Contact } from '@/features/emergency/contacts';
 import { formatPhone } from '@/features/emergency/phone';
+import { aiServerUrl } from '@/features/messages/aiOpinion';
 import { useAppData } from '@/storage/AppDataProvider';
 import { borderWidth, colors, radius, spacing } from '@/theme';
 
@@ -87,12 +88,38 @@ export default function SettingsScreen() {
         <OptionButton label="Kapalı" selected={!settings.speechEnabled} onPress={() => updateSettings({ speechEnabled: false })} />
       </Section>
 
+      <Section title="Yapay zekâ ile kontrol">
+        <AppText color={colors.textSecondary}>
+          Açıkken mesaj sonucunun altında &quot;Yapay zekâya da sor&quot; butonu çıkar. Butona basarsanız mesaj, numaralar
+          ve kodlar gizlenerek internete gönderilir. Asıl kontrol her zaman bu telefonda yapılır.
+        </AppText>
+        <OptionButton
+          label="Açık"
+          description="İsterseniz ikinci görüş alabilirsiniz."
+          selected={settings.aiCheckEnabled}
+          onPress={() => updateSettings({ aiCheckEnabled: true })}
+          testID="ai-on"
+        />
+        <OptionButton
+          label="Kapalı"
+          description="Mesajlar hiçbir yere gönderilmez."
+          selected={!settings.aiCheckEnabled}
+          onPress={() => updateSettings({ aiCheckEnabled: false })}
+          testID="ai-off"
+        />
+        {settings.aiCheckEnabled && !aiServerUrl() ? (
+          <AppText color={colors.textSecondary}>Bu telefonda yapay zekâ bağlantısı ayarlanmamış; buton görünmez.</AppText>
+        ) : null}
+      </Section>
+
       <Section title="Hakkında">
         <AppText>
           {APP_NAME}, sürüm {Constants.expoConfig?.version ?? '1.0.0'}
         </AppText>
         <AppText>ℹ️ {NOT_OFFICIAL_NOTICE}</AppText>
-        <AppText>🔒 Verileriniz yalnızca bu telefonda saklanır. İnternete gönderilmez.</AppText>
+        <AppText>
+          🔒 Verileriniz yalnızca bu telefonda saklanır. Kişileriniz, ilaçlarınız ve ayarlarınız internete gönderilmez.
+        </AppText>
         <AppText>💊 İlaç dozunu doktorunuz belirler, bu uygulama yalnızca hatırlatır.</AppText>
       </Section>
 

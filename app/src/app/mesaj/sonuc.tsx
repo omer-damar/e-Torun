@@ -4,9 +4,11 @@ import { useEffect, useMemo, useState } from 'react';
 import { Alert, Linking, StyleSheet, View } from 'react-native';
 
 import { AppText, BigButton, Notice, OptionButton, ScreenContainer } from '@/components';
+import { AiSecondOpinion } from '@/components/AiSecondOpinion';
 import { decide, type RiskLevel } from '@/detector/decide';
 import { contactTitle } from '@/features/emergency/contacts';
 import { smsUrl } from '@/features/emergency/phone';
+import { aiServerUrl } from '@/features/messages/aiOpinion';
 import { buildAskRelativeSms, speechText } from '@/features/messages/askRelative';
 import { clearMessageToCheck, peekMessageToCheck } from '@/features/messages/messageBuffer';
 import { useAppData } from '@/storage/AppDataProvider';
@@ -116,6 +118,8 @@ export default function MessageResultScreen() {
           ))}
         </View>
       ) : null}
+
+      {settings.aiCheckEnabled && aiServerUrl() ? <AiSecondOpinion message={message} localLevel={decision.level} /> : null}
 
       {settings.speechEnabled ? (
         <BigButton

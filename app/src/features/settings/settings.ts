@@ -7,6 +7,8 @@ export type Settings = {
   onboardingDone: boolean;
   /** B6: ilacın bitmesine bu kadar gün kala uyarı verilir. */
   refillWarningDays: number;
+  /** D8: sonuç ekranında "Yapay zekâya da sor" butonu. Mesajı internete gönderdiği için varsayılan kapalı. */
+  aiCheckEnabled: boolean;
 };
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -15,6 +17,7 @@ export const DEFAULT_SETTINGS: Settings = {
   speechEnabled: true,
   onboardingDone: false,
   refillWarningDays: 10,
+  aiCheckEnabled: false,
 };
 
 export const MAX_NAME_LENGTH = 40;
@@ -35,5 +38,6 @@ export function parseSettings(raw: unknown): Settings | null {
       typeof raw.refillWarningDays === 'number' && raw.refillWarningDays >= 1 && raw.refillWarningDays <= 60
         ? Math.round(raw.refillWarningDays)
         : DEFAULT_SETTINGS.refillWarningDays,
+    aiCheckEnabled: raw.aiCheckEnabled === true,
   };
 }

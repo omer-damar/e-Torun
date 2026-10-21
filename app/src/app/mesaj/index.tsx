@@ -78,7 +78,8 @@ export default function MessageCheckScreen() {
         <BigButton icon="🧹" title="Temizle" variant="neutral" onPress={() => setText('')} testID="clear" />
       ) : null}
       <AppText color={colors.textSecondary}>
-        🔒 Mesaj yalnızca bu telefonda kontrol edilir, hiçbir yere gönderilmez ve kaydedilmez.
+        🔒 Mesaj bu telefonda kontrol edilir ve kaydedilmez. Sonuç ekranında &quot;Yapay zekâya da sor&quot; demedikçe
+        hiçbir yere gönderilmez.
       </AppText>
     </ScreenContainer>
   );
