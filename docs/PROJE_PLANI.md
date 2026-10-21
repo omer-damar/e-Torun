@@ -494,6 +494,15 @@ Her düzeltmeden sonra yukarıdaki gruplarla gerileme ölçümü yapıldı; ilk 
 
 **Sınırlılıklar:** (1) Gerçek Türkçe dolandırıcılık örneği az (83; testte 12) — kullanıcının gelen kutusu `ml/data/raw/inbox/` ile genişletilecek, nihai rakamlar ondan sonra. (2) Model linkin adresini görmez; bilinmeyen bir şirket adresi ancak kurallar ve metin diliyle değerlendirilir. (3) Tek mesajlık "yanlış numara" / sohbet açılışları (dolandırıcılığın ilk adımı) yakalanamaz. (4) Seçim ve bazı kurallar yapay zekâ ile yazılmış sentetik veride ölçüldü; raporda ayrıca belirtilir.
 
+**Altın test (gerçek gelen kutusu):** Kullanıcının kendi telefonundaki SMS'ler elle etiketlenir. Etiketler: `normal`, `reklam`, `dolandiricilik`, `emin_degilim`. Mesajlar `ml/data/raw/inbox/mesajlar.txt` dosyasına yazılır (repoya girmez); biçimi `ml/data/inbox_ornek.txt` gösterir.
+- Bu set eğitimde **kullanılmaz**, yalnızca ölçümdür.
+- Kuralların düzeltilmesinde bakılan mesajlar `ayarlandi` ile işaretlenir ve asıl ölçümden ayrı raporlanır (iyimser sayı vermemek için).
+- İki ölçüm yapılır:
+  - **uygulamanın kararı** (model + kurallar): `cd app && GOLD_INBOX=1 npx jest goldInbox` → `ml/reports/gold_inbox_app.json`;
+  - **yalnızca modeller** (v1 ve v2 karşılaştırması): `cd ml && python -m src.gold_inbox` → `ml/reports/gold_inbox_model.json`.
+- Repoya yalnızca toplu sayılar girer. Yanlış sınıflanan mesajlar gitignore'daki `ml/reports/misclassified_gold.csv`'ye yazılır.
+- Hata tanımı: kaçan dolandırıcılık (yeşil/reklam), normal mesaja sarı ya da kırmızı, reklama kırmızı.
+
 **Dosyalar:** ham yabancı veri `ml/data/raw/foreign/<kaynak>/` (repoya girmez); çeviriler `ml/data/translated/*.csv` (kaynak lisansıyla birlikte, CC BY / CC BY-NC-SA koşullarına uygun olarak repoda); kullanıcı mesajları `ml/data/raw/inbox/` (repoya girmez).
 
 ---

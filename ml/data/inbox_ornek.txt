@@ -1,0 +1,35 @@
+# e-Torun — altın test mesaj dosyası biçimi (örnek; buradaki mesajlar UYDURMADIR)
+#
+# Gerçek mesajlarınızı ml/data/raw/inbox/mesajlar.txt dosyasına aynı biçimde yazın.
+# O klasör .gitignore'dadır: repoya ve GitHub'a girmez. Bu örnek dosya ölçüme katılmaz.
+#
+# Kurallar:
+# - Her mesaj bir bloktur; bloklar yalnızca "---" olan bir satırla ayrılır.
+# - Bloğun ilk satırı etikettir: normal | reklam | dolandiricilik | emin_degilim
+#   (Türkçe harfle de yazılabilir: dolandırıcılık, emin değilim).
+# - Etiketin sonuna " ayarlandi" eklenirse mesaj ayrı raporlanır, asıl ölçüme girmez. Kuralları
+#   düzeltirken baktığımız mesajlar için (ör. telefonda daha önce denenen Kariyer.net, Vodafone,
+#   İŞKUR, Amazon mesajları).
+# - Etiketten sonraki satırlar mesajın kendisidir; birden çok satır olabilir.
+# - "#" ile başlayan satırlar yalnızca etiketten ÖNCE açıklama sayılır (mesaj "#" ile başlayabilir).
+#
+# Etiket rehberi:
+#   normal          kişisel mesaj, doğrulama kodu, kargo/banka/fatura bildirimi, randevu
+#   reklam          kampanya, indirim; genelde "Ret için ..." ya da sonda B001/B002 gibi kod olur
+#   dolandiricilik  sahte link, kurum taklidi, para/şifre/kod isteği, sahte ödül, bahis
+#   emin_degilim    karar veremediklerin; ölçüme girmez, ayrıca listelenir
+
+normal
+Anne akşam yemeğe geliyoruz, bir şey almamız lazım mı?
+---
+reklam
+Sonbahar indirimi başladı! Tüm ürünlerde %30 indirim. Ret için RET yazıp 3330'a gönderin. B002
+---
+dolandiricilik
+Sayın müşterimiz, hesabınız 24 saat içinde bloke edilecektir. Hemen doğrulayın: https://banka-dogrula.xyz/giris
+---
+normal ayarlandi
+Lütfen bu kodu kimseyle paylaşma. Kariyer.net onay kodun: 482913 B016
+---
+emin_degilim
+Merhaba, numaranızı yeni aldım, kaydeder misiniz?
