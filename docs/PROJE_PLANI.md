@@ -366,6 +366,10 @@ Asıl kontrol her zaman telefondaki modelle yapılır: anında sonuç verir, int
   - `server/` (Node, bağımlılıksız `node:http`, port 4100) çalışır. Anahtar `server/.env`'dedir.
   - Uygulama yalnızca sunucu adresini bilir (`EXPO_PUBLIC_LLM_URL`).
   - Tazelyx'in sunucusu ve anahtarı kullanılmaz; ayrı anahtar sayesinde kotalar birbirini tüketmez.
+- **Durum (21 Ekim 2026):** iPhone'da Expo Go ile denendi.
+  - Uydurma dolandırıcılık ve normal mesaj doğru sınıflandı (~1,5 sn, `gemini-flash-lite-latest`).
+  - Ayarlar'dan açıp kapatınca buton beklendiği gibi görünüp kayboluyor.
+  - Sunucu günlüğünde mesaj içeriği yok.
 - **Ölçüm (yapılacak):** Aynı mesajlarda telefondaki model ile yapay zekâ karşılaştırılacak: altın test, gerçek test seti örneği, sahte kargo. Ölçülecekler yakalama, yanlış alarm ve süre.
 
 ---
