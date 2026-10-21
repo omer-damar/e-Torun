@@ -567,9 +567,22 @@ Testler: `app/__tests__/screenReader.test.tsx` (15 test). Toplam uygulama testi 
 - dokunma ve anlaşılırlık;
 - örnek mesajlar ve bulunan sorunlar tablosu.
 
+**Elle test sonucu (21 Ekim 2026, geliştiricinin iPhone'u, Expo Go):** Bulunan sorun yok.
+
+| Bölüm | Denenen | Sonuç |
+|---|---|---|
+| 1. VoiceOver | Ana ekran, Bugünkü ilaçlarım, Mesaj kontrol, Sonuç (kırmızı), Acil Yardım, İlaç ekle (1.6–1.15, 1.18–1.24) | ✔ |
+| 2. Büyük yazı | En büyük sistem metni + "Çok büyük", tüm ekranlar | ✔ taşma/kırpılma yok |
+| 3. Gri tonlama | Sonuç seviyeleri yazıyla ayırt ediliyor | ✔ |
+
+Henüz denenmeyenler:
+- Kurulum sihirbazı VoiceOver ile (1.2–1.5): veri silmeyi gerektirir.
+- Stok, Son 7 gün ve Ayarlar ekranları (1.16, 1.17, 1.25, 1.26).
+- Dokunma (4. bölüm) ve anlaşılırlık (5. bölüm): saha testinde yaşlı kullanıcılarla değerlendirilecek.
+
 **Sınırlar:**
 - Otomatik tarama stil değerlerini ölçer, gerçek çizimi değil. Kırpılma, taşma ve odak sırası yalnızca telefonda görülür.
-- Duyuruların VoiceOver'da gerçekten okunduğu testte taklit edilir (`announceForAccessibility` çağrısı denetlenir). Asıl doğrulama C listesiyle iPhone'da yapılacaktır.
+- Duyuruların VoiceOver'da gerçekten okunduğu testte taklit edilir (`announceForAccessibility` çağrısı denetlenir). Asıl doğrulama C listesiyle iPhone'da yapıldı (yukarıdaki tablo).
 - Sonuç ekranı sarı ve reklam seviyeleri ekran taramasına ayrıca alınmadı. Renk çiftleri kontrast testinde denetlenir, düzen kırmızı/yeşil ile aynıdır.
 
 ---
@@ -596,8 +609,8 @@ Testler: `app/__tests__/screenReader.test.tsx` (15 test). Toplam uygulama testi 
   - [ ] İlaç silinince bildirimi de siliniyor
   - [ ] Stok uyarısı ve "ilacınız bitiyor" bildirimi doğru günde geliyor; "Yeni kutu aldım" sonrası kalkıyor
   - [ ] "Yakınımdan randevu iste" SMS uygulamasını doğru numara ve hazır metinle açıyor (iOS `sms:` gövde biçimi)
-  - [ ] Çok büyük yazı + iOS en büyük metin ayarında taşma yok
-  - [ ] VoiceOver ile 3 ana görev tamamlanabiliyor
+  - [x] Çok büyük yazı + iOS en büyük metin ayarında taşma yok (21 Eki 2026)
+  - [x] VoiceOver ile 3 ana görev tamamlanabiliyor (21 Eki 2026)
   - [ ] Uçak modunda her şey çalışıyor
   - [ ] 10 gerçek dolandırıcılık + 10 gerçek normal SMS doğru seviyede
   - [ ] Bildirim izni reddedilince uygulama çökmüyor, uyarı gösteriyor
