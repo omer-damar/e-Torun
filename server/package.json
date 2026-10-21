@@ -1,0 +1,14 @@
+{
+  "name": "etorun-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "e-Torun 'Yapay zekâya da sor' (D8) için küçük sunucu. Mesaj içeriğini loglamaz ve saklamaz.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.9"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/index.js",
+    "test": "node --test"
+  }
+}
