@@ -370,7 +370,36 @@ Asıl kontrol her zaman telefondaki modelle yapılır: anında sonuç verir, int
   - Uydurma dolandırıcılık ve normal mesaj doğru sınıflandı (~1,5 sn, `gemini-flash-lite-latest`).
   - Ayarlar'dan açıp kapatınca buton beklendiği gibi görünüp kayboluyor.
   - Sunucu günlüğünde mesaj içeriği yok.
-- **Ölçüm (yapılacak):** Aynı mesajlarda telefondaki model ile yapay zekâ karşılaştırılacak: altın test, gerçek test seti örneği, sahte kargo. Ölçülecekler yakalama, yanlış alarm ve süre.
+- **Karşılaştırma ölçümü — ARA SONUÇ (21 Ekim 2026).** Telefondaki karar (model v2 + kurallar) ve yapay zekâ, uygulamadakiyle aynı biçimde maskelenmiş aynı mesajlarda karşılaştırıldı.
+  - Betikler: `AI_COMPARE=1 npx jest aiCompare` (örneklem + telefondaki karar + maskeleme), `cd server && npm run compare` (sunucuya sorar, kaldığı yerden devam eder). Toplu sonuç: `ml/reports/ai_compare.json`.
+  - **Plan:** 66 mesaj:
+    - altın test 14;
+    - gerçek test setinden 12 dolandırıcılık, 15 normal, 15 reklam;
+    - çeviri dolandırıcılık 10 (5'i kargo).
+  - **Cevaplanan:** Ücretsiz günlük kota dolduğu için yalnızca **19** mesaj cevaplandı:
+    - altın testin 14'ü;
+    - gerçek dolandırıcılığın 5'i.
+
+    Gerçek normal ve reklam mesajlarının hiçbiri cevaplanmadı.
+
+  | Grup (cevaplanan) | Telefon | Yapay zekâ |
+  |---|---|---|
+  | Dolandırıcılık (14: gelen kutusu 9 + gerçek test 5) | 12 kırmızı, 2 sarı (**kaçan yok**) | 14 kırmızı (**kaçan yok**) |
+  | Normal (3, gelen kutusu) | 2 yeşil, 1 reklam | 1 yeşil, 2 reklam |
+  | Reklam (2, gelen kutusu) | 1 reklam, 1 sarı | 2 reklam |
+
+  - **Uyuşma:** 19 mesajın 16'sında iki yöntem aynı seviye grubunda. Farklar:
+    - telefonun sarı dediği 2 dolandırıcılığa yapay zekâ kırmızı dedi;
+    - telefonun sarı dediği 1 reklama yapay zekâ "reklam" dedi.
+  - **Süre:** Yapay zekâ cevabı medyan **4,5 sn**, en yavaş %10'da 8,7 sn ve üstü. Telefondaki karar anında.
+    - Ölçüm sırasında Google tarafı yoğundu (503, zaman aşımı); sakin anda tek istek ~1,5 sn sürüyordu.
+    - Telefon 15 sn bekler.
+  - **Sınırlar (bu ara sonuçtan çıkarılamayacaklar):**
+    - Asıl soru olan **normal mesajlarda yanlış alarm** karşılaştırması yapılamadı: elde yalnızca 3 normal mesaj var ve ikisi kural ayarlamasında kullanıldı.
+    - Örneklem çok küçük; sayılar oran olarak okunmamalı.
+    - Gelen kutusunun 3 mesajı telefondaki kurallar ayarlanırken incelendi (bölüm 9.6); bu mesajlarda telefon avantajlı.
+    - Yapay zekâ ise bu mesajları hiç görmedi.
+  - **Yapılacak:** Kota yenilenince eksik 33 mesaj sorulacak (öncelik gerçek 15 normal + 15 reklam). Tablo o zaman tamamlanacak.
 
 ---
 

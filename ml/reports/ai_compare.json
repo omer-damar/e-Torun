@@ -1,0 +1,375 @@
+{
+  "durum": "ara sonuç: kota doldu, 19/66 mesaj cevaplandı",
+  "planlanan": 66,
+  "cevaplanan": 19,
+  "olusturuldu": "2026-10-21",
+  "aciklama": "Telefondaki karar (model v2 + kurallar) ile sunucudaki yapay zekâ aynı maskelenmiş mesajlarda. Altın testte telefondaki kurallar 3 mesaja göre ayarlandı; \"altin_ayarlanmamis\" bu mesajları dışarıda bırakır.",
+  "mesaj_sayisi": 19,
+  "ulasilamadi": 0,
+  "sure_ms": {
+    "medyan": 4519,
+    "p90": 8743
+  },
+  "gruplar": {
+    "altin": {
+      "n": 14,
+      "etiket": {
+        "dolandiricilik": {
+          "telefon": {
+            "n": 9,
+            "red": 7,
+            "yellow": 2,
+            "ad": 0,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          },
+          "yapay_zeka": {
+            "n": 9,
+            "red": 9,
+            "yellow": 0,
+            "ad": 0,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          }
+        },
+        "normal": {
+          "telefon": {
+            "n": 3,
+            "red": 0,
+            "yellow": 0,
+            "ad": 1,
+            "green": 2,
+            "too_short": 0,
+            "ulasilamadi": 0
+          },
+          "yapay_zeka": {
+            "n": 3,
+            "red": 0,
+            "yellow": 0,
+            "ad": 2,
+            "green": 1,
+            "too_short": 0,
+            "ulasilamadi": 0
+          }
+        },
+        "reklam": {
+          "telefon": {
+            "n": 2,
+            "red": 0,
+            "yellow": 1,
+            "ad": 1,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          },
+          "yapay_zeka": {
+            "n": 2,
+            "red": 0,
+            "yellow": 0,
+            "ad": 2,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          }
+        }
+      },
+      "telefon": {
+        "dolandiricilik_kirmizi": 0.778,
+        "dolandiricilik_kirmizi_veya_sari": 1,
+        "normal_yanlis_alarm_kirmizi": 0,
+        "normal_yanlis_alarm_kirmizi_veya_sari": 0,
+        "reklam_reklam_olarak": 0.5,
+        "reklam_kirmizi": 0
+      },
+      "yapay_zeka": {
+        "dolandiricilik_kirmizi": 1,
+        "dolandiricilik_kirmizi_veya_sari": 1,
+        "normal_yanlis_alarm_kirmizi": 0,
+        "normal_yanlis_alarm_kirmizi_veya_sari": 0,
+        "reklam_reklam_olarak": 1,
+        "reklam_kirmizi": 0
+      },
+      "birlikte_en_az_biri_uyardi": {
+        "dolandiricilik_kirmizi": 0,
+        "dolandiricilik_kirmizi_veya_sari": 1,
+        "normal_yanlis_alarm_kirmizi": 0,
+        "normal_yanlis_alarm_kirmizi_veya_sari": 0,
+        "reklam_reklam_olarak": 0,
+        "reklam_kirmizi": 0
+      },
+      "ayni_seviye_grubu": 0.786
+    },
+    "gercek_test": {
+      "n": 5,
+      "etiket": {
+        "dolandiricilik": {
+          "telefon": {
+            "n": 5,
+            "red": 5,
+            "yellow": 0,
+            "ad": 0,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          },
+          "yapay_zeka": {
+            "n": 5,
+            "red": 5,
+            "yellow": 0,
+            "ad": 0,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          }
+        },
+        "normal": {
+          "telefon": {
+            "n": 0,
+            "red": 0,
+            "yellow": 0,
+            "ad": 0,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          },
+          "yapay_zeka": {
+            "n": 0,
+            "red": 0,
+            "yellow": 0,
+            "ad": 0,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          }
+        },
+        "reklam": {
+          "telefon": {
+            "n": 0,
+            "red": 0,
+            "yellow": 0,
+            "ad": 0,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          },
+          "yapay_zeka": {
+            "n": 0,
+            "red": 0,
+            "yellow": 0,
+            "ad": 0,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          }
+        }
+      },
+      "telefon": {
+        "dolandiricilik_kirmizi": 1,
+        "dolandiricilik_kirmizi_veya_sari": 1,
+        "normal_yanlis_alarm_kirmizi": null,
+        "normal_yanlis_alarm_kirmizi_veya_sari": null,
+        "reklam_reklam_olarak": null,
+        "reklam_kirmizi": null
+      },
+      "yapay_zeka": {
+        "dolandiricilik_kirmizi": 1,
+        "dolandiricilik_kirmizi_veya_sari": 1,
+        "normal_yanlis_alarm_kirmizi": null,
+        "normal_yanlis_alarm_kirmizi_veya_sari": null,
+        "reklam_reklam_olarak": null,
+        "reklam_kirmizi": null
+      },
+      "birlikte_en_az_biri_uyardi": {
+        "dolandiricilik_kirmizi": 0,
+        "dolandiricilik_kirmizi_veya_sari": 1,
+        "normal_yanlis_alarm_kirmizi": null,
+        "normal_yanlis_alarm_kirmizi_veya_sari": null,
+        "reklam_reklam_olarak": null,
+        "reklam_kirmizi": null
+      },
+      "ayni_seviye_grubu": 1
+    },
+    "altin_ayarlanmamis": {
+      "n": 11,
+      "etiket": {
+        "dolandiricilik": {
+          "telefon": {
+            "n": 9,
+            "red": 7,
+            "yellow": 2,
+            "ad": 0,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          },
+          "yapay_zeka": {
+            "n": 9,
+            "red": 9,
+            "yellow": 0,
+            "ad": 0,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          }
+        },
+        "normal": {
+          "telefon": {
+            "n": 1,
+            "red": 0,
+            "yellow": 0,
+            "ad": 1,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          },
+          "yapay_zeka": {
+            "n": 1,
+            "red": 0,
+            "yellow": 0,
+            "ad": 1,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          }
+        },
+        "reklam": {
+          "telefon": {
+            "n": 1,
+            "red": 0,
+            "yellow": 1,
+            "ad": 0,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          },
+          "yapay_zeka": {
+            "n": 1,
+            "red": 0,
+            "yellow": 0,
+            "ad": 1,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          }
+        }
+      },
+      "telefon": {
+        "dolandiricilik_kirmizi": 0.778,
+        "dolandiricilik_kirmizi_veya_sari": 1,
+        "normal_yanlis_alarm_kirmizi": 0,
+        "normal_yanlis_alarm_kirmizi_veya_sari": 0,
+        "reklam_reklam_olarak": 0,
+        "reklam_kirmizi": 0
+      },
+      "yapay_zeka": {
+        "dolandiricilik_kirmizi": 1,
+        "dolandiricilik_kirmizi_veya_sari": 1,
+        "normal_yanlis_alarm_kirmizi": 0,
+        "normal_yanlis_alarm_kirmizi_veya_sari": 0,
+        "reklam_reklam_olarak": 1,
+        "reklam_kirmizi": 0
+      },
+      "birlikte_en_az_biri_uyardi": {
+        "dolandiricilik_kirmizi": 0,
+        "dolandiricilik_kirmizi_veya_sari": 1,
+        "normal_yanlis_alarm_kirmizi": 0,
+        "normal_yanlis_alarm_kirmizi_veya_sari": 0,
+        "reklam_reklam_olarak": 0,
+        "reklam_kirmizi": 0
+      },
+      "ayni_seviye_grubu": 0.727
+    },
+    "tumu": {
+      "n": 19,
+      "etiket": {
+        "dolandiricilik": {
+          "telefon": {
+            "n": 14,
+            "red": 12,
+            "yellow": 2,
+            "ad": 0,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          },
+          "yapay_zeka": {
+            "n": 14,
+            "red": 14,
+            "yellow": 0,
+            "ad": 0,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          }
+        },
+        "normal": {
+          "telefon": {
+            "n": 3,
+            "red": 0,
+            "yellow": 0,
+            "ad": 1,
+            "green": 2,
+            "too_short": 0,
+            "ulasilamadi": 0
+          },
+          "yapay_zeka": {
+            "n": 3,
+            "red": 0,
+            "yellow": 0,
+            "ad": 2,
+            "green": 1,
+            "too_short": 0,
+            "ulasilamadi": 0
+          }
+        },
+        "reklam": {
+          "telefon": {
+            "n": 2,
+            "red": 0,
+            "yellow": 1,
+            "ad": 1,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          },
+          "yapay_zeka": {
+            "n": 2,
+            "red": 0,
+            "yellow": 0,
+            "ad": 2,
+            "green": 0,
+            "too_short": 0,
+            "ulasilamadi": 0
+          }
+        }
+      },
+      "telefon": {
+        "dolandiricilik_kirmizi": 0.857,
+        "dolandiricilik_kirmizi_veya_sari": 1,
+        "normal_yanlis_alarm_kirmizi": 0,
+        "normal_yanlis_alarm_kirmizi_veya_sari": 0,
+        "reklam_reklam_olarak": 0.5,
+        "reklam_kirmizi": 0
+      },
+      "yapay_zeka": {
+        "dolandiricilik_kirmizi": 1,
+        "dolandiricilik_kirmizi_veya_sari": 1,
+        "normal_yanlis_alarm_kirmizi": 0,
+        "normal_yanlis_alarm_kirmizi_veya_sari": 0,
+        "reklam_reklam_olarak": 1,
+        "reklam_kirmizi": 0
+      },
+      "birlikte_en_az_biri_uyardi": {
+        "dolandiricilik_kirmizi": 0,
+        "dolandiricilik_kirmizi_veya_sari": 1,
+        "normal_yanlis_alarm_kirmizi": 0,
+        "normal_yanlis_alarm_kirmizi_veya_sari": 0,
+        "reklam_reklam_olarak": 0,
+        "reklam_kirmizi": 0
+      },
+      "ayni_seviye_grubu": 0.842
+    }
+  }
+}
