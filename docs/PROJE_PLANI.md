@@ -67,8 +67,9 @@
 | D5 | Sonucu sesli okuma | P1 |
 | D6 | "Yakınıma sor" → mesajı yakına SMS ile iletme | P1 |
 | D7 | Dolandırıcılık türleri hakkında kısa bilgi kartları | P2 |
+| D8 | "Yapay zekâya da sor": isteğe bağlı ikinci görüş (bulut yapay zekâ, maskelenmiş mesaj, Ayarlar'da varsayılan kapalı) | P2 |
 
-**Kapsam dışı (bilinçli):** gelen SMS'leri otomatik okuma (iOS izin vermez), sunucu/bulut, kullanıcı hesabı, App Store yayını, Android'e özel özellikler, push bildirim.
+**Kapsam dışı (bilinçli):** gelen SMS'leri otomatik okuma (iOS izin vermez), veri saklayan sunucu/bulut (D8'in sunucusu hiçbir şey saklamaz), kullanıcı hesabı, App Store yayını, Android'e özel özellikler, push bildirim.
 
 ---
 
@@ -348,6 +349,24 @@ YEŞİL    ← diğer durumlar
   - İlk kural "herhangi bir kural → sarı" idi. Gerçek test setinde (806 mesaj, model + kurallar birlikte) günlük sohbetteki tek kelimeler ("hemen", "acil", "hediyeler için teşekkürler", "wifi şifresi") yanlış alarmı %1,3'ten **%4,3**'e çıkardı (hedef ≤ %3). Zayıf işaretler tek başına sarı yapmayacak şekilde değiştirildi → yanlış alarm **%1,4** (352 güvenli mesajda 5; kalanlar modelin kendi hataları). Şüpheli mesajların %99,5'i en az sarı (418'de 416; 411 kırmızı).
   - Ek kurallar: **CALLBACK** ("arayınız", "irtibata geçin" — uzlaştırma/hukuk bürosu tuzakları), link adresinde kurum adı (ptt-kargo.xyz, turkiye.gov.clskl.com) → IMPERSONATION, resmi `*.gov.tr` linkleri LINK sayılmaz, bankanın gerçek doğrulama kodu mesajı ("kimseyle paylaşmayın") "şifre istiyor" sayılmaz.
   - scam_tr'deki 46 gerçek dolandırıcılık mesajının 44'ü en az sarı (41 kırmızı). Not: model bu mesajların çoğunu eğitimde gördü; bu sayı daha çok kural katmanını ölçer.
+
+### D8 — "Yapay zekâya da sor" (isteğe bağlı ikinci görüş, Ekim 2026)
+Asıl kontrol her zaman telefondaki modelle yapılır: anında sonuç verir, internetsiz çalışır. Yapay zekâ yalnızca ikinci görüştür.
+
+- **Akış:**
+  1. Ayarlar › "Yapay zekâ ile kontrol" açıksa sonuç ekranında "Yapay zekâya da sor" butonu görünür. Altında "Mesaj internete gönderilir; numaralar ve kodlar gizlenir" yazar.
+  2. Mesaj telefonda maskelenir ve `server/`'a gönderilir.
+  3. Sunucu yapay zekâdan sabit bir JSON şemasıyla cevap ister: `{seviye, nedenler, tavsiye}`.
+  4. Cevap ayrı bir kartta gösterilir ("Yapay zekânın görüşü"). Kart çıkınca VoiceOver'da okunur.
+- **Çelişki kuralı:**
+  - Telefon kırmızı ya da sarı derken yapay zekâ "güvenli" derse telefondaki uyarı kalır. Kartta "Görüşler farklı. Emin değilseniz yakınınıza sorun." yazar.
+  - Telefon yeşil, yapay zekâ kırmızı derse kart uyarıyı gösterir. Telefondaki sonuç değişmez, kullanıcı ikisini de görür.
+- **Hata durumları:** İnternet yoksa, sunucu kapalıysa, zaman aşımında (15 sn), kota dolunca ya da şemaya uymayan cevapta "Yapay zekâya şu an ulaşılamadı" yazar. Telefondaki sonuç zaten ekrandadır.
+- **Mimari:**
+  - `server/` (Node, bağımlılıksız `node:http`, port 4100) çalışır. Anahtar `server/.env`'dedir.
+  - Uygulama yalnızca sunucu adresini bilir (`EXPO_PUBLIC_LLM_URL`).
+  - Tazelyx'in sunucusu ve anahtarı kullanılmaz; ayrı anahtar sayesinde kotalar birbirini tüketmez.
+- **Ölçüm (yapılacak):** Aynı mesajlarda telefondaki model ile yapay zekâ karşılaştırılacak: altın test, gerçek test seti örneği, sahte kargo. Ölçülecekler yakalama, yanlış alarm ve süre.
 
 ---
 
@@ -633,7 +652,15 @@ Henüz denenmeyenler:
 ---
 
 ## 11. Gizlilik, etik, güvenlik
-- Tüm veriler yalnızca cihazda. Ağ isteği yok, analitik yok, reklam yok (KVKK açısından en temiz yaklaşım; raporda vurgulanır).
+- Tüm veriler yalnızca cihazda. Analitik yok, reklam yok (KVKK açısından en temiz yaklaşım; raporda vurgulanır).
+- Tek ağ isteği isteğe bağlı **D8 "Yapay zekâya da sor"** (bölüm 8):
+  - Ayarlar'dan açılır, varsayılan **kapalı**; her seferinde kullanıcı kendisi başlatır.
+  - Butonun altında "Mesaj internete gönderilir" uyarısı durur.
+  - Gönderilmeden önce mesaj telefonda maskelenir: telefon numarası, IBAN, kart numarası, 4+ haneli sayı (kod, takip no) ve e-posta yer tutucuyla değişir. Link adresleri kalır.
+  - Sunucu (`server/`) mesajı yalnızca yapay zekâya iletir; loglamaz, saklamaz.
+  - Yapay zekâ sağlayıcısının veri politikası rapora yazılır.
+  - Kişiler, ilaçlar, ayarlar ve mesaj geçmişi hiçbir zaman gönderilmez.
+- Bulut yapay zekâ API anahtarı yalnızca sunucunun `.env` dosyasındadır. Uygulama paketine konan her değer okunabileceği için anahtar uygulamada yer almaz.
 - SMS içerikleri saklanmaz. Kontrol edilen mesaj ekrandan çıkınca bellekten atılır.
 - Uygulama tıbbi tavsiye vermez. Hakkında ekranına "İlaç dozunu doktorunuz belirler, bu uygulama yalnızca hatırlatır." notu konur.
 - **Ad ve resmiyet:** Uygulamanın adı "e-Torun" (önceki çalışma adı "Yanımda"). "e-" ön eki yasal olarak devlete ayrılmış değildir, ancak e-Devlet / e-Nabız'ı çağrıştırdığı için resmi kurum izlenimi verilmez: T.C. ibaresi, ay-yıldız, devlet logosu veya renkleri kullanılmaz; kurulumun ilk ekranında ve Hakkında'da "e-Torun bir devlet uygulaması değildir; gönüllü bir öğrenci projesidir" notu yer alır. Ticari yayın planlanırsa TÜRKPATENT'te 9. ve 42. sınıflarda marka araması yapılmalı (Ekim 2026 itibarıyla App Store TR'de aynı adlı uygulama yok).
