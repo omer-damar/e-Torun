@@ -130,16 +130,21 @@ export function hasRuleCombination(rules: RuleId[]): boolean {
 }
 
 /**
- * Bütün linkleri kamu kurumu adresi (…gov.tr, …bel.tr, …edu.tr) olan ve para, şifre/kod, ödül istemeyen,
- * "şu numarayı arayın" demeyen bilgilendirme. Dolandırıcılığın asıl yolu kapalı olduğu için model şüphelense
- * de yeşil. (Telefonda: İŞKUR'un esube.iskur.gov.tr linkli iş ilanı bildirimi modelden kırmızı alıyordu; iş
- * ilanı dili eğitimdeki sahte iş ilanlarına benziyor.) Şirket ve platform adresleri bu istisnayı almaz:
- * çeviri dolandırıcılık mesajlarında YouTube videosu ya da Kariyer.net adı geçen örnekler vardı.
+ * Bütün linkleri kamu kurumu (…gov.tr, …bel.tr, …edu.tr) ya da bildirim adresi (banka, kargo, operatör,
+ * mağaza; `NOTICE_DOMAINS`) olan ve para, şifre/kod, ödül istemeyen, "şu numarayı arayın" demeyen
+ * bilgilendirme. Dolandırıcılığın asıl yolu kapalı olduğu için model şüphelense de yeşil.
+ * - Telefonda: İŞKUR'un esube.iskur.gov.tr linkli iş ilanı bildirimi modelden kırmızı alıyordu.
+ * - Altın test: Yurtiçi (yurti.ci) ve Aras (aras.la) takip bildirimleri "linke tıklayın" dili yüzünden
+ *   kırmızı/sarı alıyordu.
+ * Platform adresleri (YouTube, Kariyer.net…) bu istisnayı almaz: içeriği herkes koyabilir. Yasal reklam
+ * işareti olan mesaj da almaz; o "Reklam" olarak gösterilir.
  */
 export function isOnlyOfficialLinkNotice(rules: RuleId[]): boolean {
   return (
     has(rules, 'OFFICIAL_LINK') &&
-    !['LINK', 'PERSONAL_INFO', 'PAYMENT', 'CALLBACK', 'GAMBLING', 'PRIZE'].some((id) => has(rules, id as RuleId))
+    !['LINK', 'PERSONAL_INFO', 'PAYMENT', 'CALLBACK', 'GAMBLING', 'PRIZE', 'AD_MARKER'].some((id) =>
+      has(rules, id as RuleId),
+    )
   );
 }
 

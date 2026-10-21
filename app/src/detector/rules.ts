@@ -39,7 +39,7 @@ export const RULE_EXPLANATIONS: Record<RuleId, string> = {
   OTP_INFO:
     'Bu bir doğrulama kodu. Sizi arayan kişi banka görevlisi olsa bile bu kodu kimseye söylemeyin.',
   OFFICIAL_LINK:
-    'Mesajdaki bağlantı bir kamu kurumunun resmi adresi. Yine de bilgi girmeden önce adresin tam olarak aynı olduğunu kontrol edin.',
+    'Mesajdaki bağlantı kurumun ya da şirketin kendi resmi adresi. Yine de bilgi girmeden önce adresin tam olarak aynı olduğunu kontrol edin.',
   AD_MARKER: 'Mesajda yasal reklam işaretleri var (reklamı durdurma yöntemi veya şirket sicil numarası).',
 };
 
@@ -151,35 +151,55 @@ function hostOf(url: string): string {
 }
 
 /**
- * Kurumların ve büyük şirketlerin kendi alan adları. Dolandırıcı bunları alamaz; taklitler
- * ("garantibbva-guvenlik.com", "ptt.gov.tr.xyz.com") bu adlarla BİTMEDİĞİ için yakalanır.
+ * Bildirim adresleri: şirketin kendi alan adları; sayfalardaki içeriği yalnızca şirketin kendisi yazar.
+ * Dolandırıcı bunları alamaz; taklitler ("garantibbva-guvenlik.com", "ptt.gov.tr.xyz.com") bu adlarla
+ * BİTMEDİĞİ için yakalanır. Mesajdaki bütün linkler bunlardansa mesaj kamu kurumu linki gibi değerlendirilir.
  * Liste bilinçli olarak kısa ve yalnızca yaygın, kesin adları içerir.
  */
-export const OFFICIAL_DOMAINS = [
+export const NOTICE_DOMAINS = [
   // Bankalar
   'garantibbva.com.tr', 'ziraatbank.com.tr', 'isbank.com.tr', 'akbank.com', 'yapikredi.com.tr', 'halkbank.com.tr',
   'vakifbank.com.tr', 'qnb.com.tr', 'denizbank.com', 'enpara.com', 'teb.com.tr', 'kuveytturk.com.tr', 'ingbank.com.tr',
   // Kargo
   'yurticikargo.com', 'araskargo.com.tr', 'mngkargo.com.tr', 'suratkargo.com.tr', 'hepsijet.com', 'trendyolexpress.com',
+  // Kargo firmalarının SMS'lerde kullandığı kendi kısa adresleri (gerçek takip bildirimlerinden)
+  'yurti.ci', 'aras.la',
   // Operatörler
   'turkcell.com.tr', 'vodafone.com.tr', 'vodafone.com', 'turktelekom.com.tr',
   // Alışveriş ve market
   'trendyol.com', 'hepsiburada.com', 'n11.com', 'amazon.com.tr', 'migros.com.tr', 'a101.com.tr', 'bim.com.tr',
-  'sokmarket.com.tr', 'getir.com', 'yemeksepeti.com', 'sahibinden.com',
-  // Doğrulama kodu gönderen yaygın hizmetler
-  'kariyer.net',
-  // Yakınların paylaştığı video, konum ve fotoğraf bağlantıları (adresler yalnızca bu şirketlere ait)
+  'sokmarket.com.tr', 'getir.com', 'yemeksepeti.com',
+] as const;
+
+/**
+ * Platform adresleri: alan adı şirketin ama içeriği herkes koyabilir (YouTube'da dolandırıcı video,
+ * Kariyer.net'te sahte ilan, Sahibinden'de sahte satıcı). Link "yabancı site" sayılmaz, ama mesaj
+ * bu yüzden güvenli de sayılmaz; karar metne ve modele kalır.
+ */
+export const PLATFORM_DOMAINS = [
+  'sahibinden.com', 'kariyer.net',
+  // Yakınların paylaştığı video, konum ve fotoğraf bağlantıları
   'youtube.com', 'youtu.be', 'google.com', 'maps.app.goo.gl', 'instagram.com', 'apple.com',
 ] as const;
+
+export const OFFICIAL_DOMAINS = [...NOTICE_DOMAINS, ...PLATFORM_DOMAINS] as const;
+
+function hostMatches(url: string, domains: readonly string[]): boolean {
+  const host = hostOf(url).replace(/^www\./, '');
+  return domains.some((domain) => host === domain || host.endsWith(`.${domain}`));
+}
 
 /**
  * Resmi adres: *.gov.tr, *.bel.tr, *.edu.tr, *.k12.tr, *.pol.tr, *.tsk.tr (dolandırıcılar bu uzantıları
  * alamaz) ya da OFFICIAL_DOMAINS'ten biri veya onun alt alan adı.
  */
 export function isOfficialLink(url: string): boolean {
-  if (isPublicInstitutionLink(url)) return true;
-  const host = hostOf(url).replace(/^www\./, '');
-  return OFFICIAL_DOMAINS.some((domain) => host === domain || host.endsWith(`.${domain}`));
+  return isPublicInstitutionLink(url) || hostMatches(url, OFFICIAL_DOMAINS);
+}
+
+/** İçeriği yalnızca gönderen kurumun yazdığı adres: kamu kurumu ya da bildirim adresi. */
+export function isTrustedSenderLink(url: string): boolean {
+  return isPublicInstitutionLink(url) || hostMatches(url, NOTICE_DOMAINS);
 }
 
 /**
@@ -211,7 +231,7 @@ function hasUnofficialLink(raw: string): boolean {
 const AD_MARKER = new RegExp(
   '(?:^| )(?:' +
     [
-      'mersis', 'mn num', 'sms ret', 'ret yaz', 'ret mg', 'iys', 'iptal icin', 'iptali icin', 'almak istemiyorsaniz',
+      'mersis', 'mn num', 'sms ret', 'smsret', 'ret yaz', 'ret mg', 'iys', 'iptal icin', 'iptali icin', 'almak istemiyorsaniz',
       'almak istemiyorsan', 'almamak icin', 'cikmak icin', 'cikis icin', 'listeden cik',
     ].join('|') +
     ')',
@@ -226,7 +246,7 @@ export function findRules(raw: string, normalized: string = normalize(raw)): Rul
   // ham metindeki kontrol de e-posta adreslerini ve resmi adresleri ayıklar.
   if (normalized.includes('urltoken')) {
     if (hasUnofficialLink(raw)) found.add('LINK');
-    else if (linksIn(raw).length > 0 && linksIn(raw).every(isPublicInstitutionLink)) found.add('OFFICIAL_LINK');
+    else if (linksIn(raw).length > 0 && linksIn(raw).every(isTrustedSenderLink)) found.add('OFFICIAL_LINK');
   }
   if (SHORT_LINK.test(raw)) {
     found.add('SHORT_LINK');

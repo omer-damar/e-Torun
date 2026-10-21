@@ -70,6 +70,42 @@ describe('ara önlem: yasal reklam', () => {
     expect(findRules('10TL FREE bonus, canli mac izle, 15dk cekim')).toContain('GAMBLING');
   });
 
+  it('kargo firmalarının kısa adresleri resmi; benzerleri değil (altın test, Ekim 2026)', () => {
+    expect(isOfficialLink('https://yurti.ci/ks/AbC123xyz')).toBe(true);
+    expect(isOfficialLink('http://aras.la/kvkk')).toBe(true);
+    expect(isOfficialLink('https://aras-la.xyz/Mo1')).toBe(false);
+    expect(isOfficialLink('https://yurtici.ci-takip.com/a')).toBe(false);
+    // Gerçek bildirime benzeyen uydurma metin: link artık "kurum taklidi" sayılmaz.
+    const rules = findRules(
+      'Kargonuz yola çıktı. Takip ve teslimat seçenekleri için: https://aras.la/Ab1Cd2 KVKK: http://aras.la/kvkk B016',
+    );
+    expect(rules).not.toContain('LINK');
+    expect(rules).not.toContain('FAKE_LINK');
+  });
+
+  it.each([
+    'Kargonuz yola çıktı. Takip ve teslimat seçenekleri için: https://aras.la/Ab1Cd2 KVKK: http://aras.la/kvkk B016',
+    '123456789012 nolu kargonuz gönderici müşterimizden teslim alınmıştır. Teslimat tercihlerinizi yönetmek için linke tıklayın. Takip Linki: https://yurti.ci/ks/AbCdEf123 B002',
+  ])('yalnızca kargo firmasının kendi adresiyle gelen bildirim yeşil: %s', (text) => {
+    expect(decide(text).level).toBe('green');
+  });
+
+  it('bildirim adresi istisnası ödül, kişisel bilgi ya da yabancı link varken uygulanmaz', () => {
+    expect(decide('Tebrikler! Kargo çekilişini kazandınız, ödülünüz için: https://aras.la/x1').level).not.toBe('green');
+    expect(decide('Kargonuz bekliyor, adres doğrulama için kart bilgilerinizi girin: https://aras.la/x1').level).not.toBe('green');
+    expect(decide('Kargonuz bekliyor: https://aras.la/x1 ödeme için: https://kargo-odeme.xyz/a').level).not.toBe('green');
+  });
+
+  it('platform adresleri (YouTube, Kariyer.net) bildirim adresi sayılmaz', () => {
+    expect(findRules('Videoyu izle: https://youtube.com/watch?v=abc')).not.toContain('OFFICIAL_LINK');
+    expect(findRules('İlan detayı: https://www.kariyer.net/is-ilani/123')).not.toContain('OFFICIAL_LINK');
+    expect(findRules('Siparişiniz yolda: https://www.hepsiburada.com/siparislerim')).toContain('OFFICIAL_LINK');
+  });
+
+  it('bitişik yazılmış "SMSRET" de yasal reklam işareti', () => {
+    expect(findRules('Kariyer fuarında buluşuyoruz, sen de katıl. SMSRET ornekfirma.co/ipt B136')).toContain('AD_MARKER');
+  });
+
   it('belediye, üniversite ve okul uzantıları resmi', () => {
     expect(isOfficialLink('https://www.ankara.bel.tr/odeme')).toBe(true);
     expect(isOfficialLink('ogrenci.ege.edu.tr')).toBe(true);

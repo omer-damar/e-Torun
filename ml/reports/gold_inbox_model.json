@@ -1,0 +1,70 @@
+{
+  "olusturuldu": "2026-10-21",
+  "kaynak": "data/raw/inbox/mesajlar.txt (repoya girmez)",
+  "aciklama": "Yalnızca model; kurallar ve karar katmanı dahil değil (bkz. gold_inbox_app.json).",
+  "esikler": {
+    "v1": {
+      "low": 0.3,
+      "high": 0.6745
+    },
+    "v2": {
+      "low": 0.2,
+      "high": 0.4
+    }
+  },
+  "mesaj_sayisi": 14,
+  "olculen": 11,
+  "ayarlanmis": 3,
+  "emin_degilim": 0,
+  "tekrar_atlanan": 0,
+  "gruplar": {
+    "normal": {
+      "n": 1,
+      "v1": {
+        "kirmizi": 1.0,
+        "sari_veya_kirmizi": 1.0
+      },
+      "v2": {
+        "kirmizi": 0.0,
+        "sari_veya_kirmizi": 0.0
+      },
+      "v2_en_olasi_sinif": {
+        "normal": 0,
+        "reklam": 1,
+        "dolandiricilik": 0
+      }
+    },
+    "reklam": {
+      "n": 1,
+      "v1": {
+        "kirmizi": 1.0,
+        "sari_veya_kirmizi": 1.0
+      },
+      "v2": {
+        "kirmizi": 0.0,
+        "sari_veya_kirmizi": 0.0
+      },
+      "v2_en_olasi_sinif": {
+        "normal": 0,
+        "reklam": 1,
+        "dolandiricilik": 0
+      }
+    },
+    "dolandiricilik": {
+      "n": 9,
+      "v1": {
+        "kirmizi": 1.0,
+        "sari_veya_kirmizi": 1.0
+      },
+      "v2": {
+        "kirmizi": 0.778,
+        "sari_veya_kirmizi": 0.889
+      },
+      "v2_en_olasi_sinif": {
+        "normal": 0,
+        "reklam": 2,
+        "dolandiricilik": 7
+      }
+    }
+  }
+}

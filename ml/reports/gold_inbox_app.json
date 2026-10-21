@@ -1,0 +1,84 @@
+{
+  "olusturuldu": "2026-10-21",
+  "kaynak": "ml/data/raw/inbox/mesajlar.txt (repoya girmez)",
+  "karar_katmani": "app/src/detector/decide.ts (model v2 + kurallar)",
+  "mesaj_sayisi": 14,
+  "tekrar_atlanan": 0,
+  "olcum": {
+    "normal": {
+      "n": 1,
+      "red": 0,
+      "yellow": 0,
+      "ad": 1,
+      "green": 0,
+      "too_short": 0
+    },
+    "reklam": {
+      "n": 1,
+      "red": 0,
+      "yellow": 1,
+      "ad": 0,
+      "green": 0,
+      "too_short": 0
+    },
+    "dolandiricilik": {
+      "n": 9,
+      "red": 7,
+      "yellow": 2,
+      "ad": 0,
+      "green": 0,
+      "too_short": 0
+    }
+  },
+  "ozet": {
+    "dolandiricilik_kirmizi": 0.778,
+    "dolandiricilik_kirmizi_veya_sari": 1,
+    "normal_yanlis_alarm_kirmizi": 0,
+    "normal_yanlis_alarm_kirmizi_veya_sari": 0,
+    "reklam_reklam_olarak": 0,
+    "reklam_kirmizi": 0
+  },
+  "ayarlanmis": {
+    "normal": {
+      "n": 2,
+      "red": 0,
+      "yellow": 0,
+      "ad": 0,
+      "green": 2,
+      "too_short": 0
+    },
+    "reklam": {
+      "n": 1,
+      "red": 0,
+      "yellow": 0,
+      "ad": 1,
+      "green": 0,
+      "too_short": 0
+    },
+    "dolandiricilik": {
+      "n": 0,
+      "red": 0,
+      "yellow": 0,
+      "ad": 0,
+      "green": 0,
+      "too_short": 0
+    },
+    "emin_degilim": {
+      "n": 0,
+      "red": 0,
+      "yellow": 0,
+      "ad": 0,
+      "green": 0,
+      "too_short": 0
+    }
+  },
+  "emin_degilim": {
+    "n": 0,
+    "red": 0,
+    "yellow": 0,
+    "ad": 0,
+    "green": 0,
+    "too_short": 0
+  },
+  "hata_sayisi": 0
+}

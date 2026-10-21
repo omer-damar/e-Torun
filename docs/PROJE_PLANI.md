@@ -295,7 +295,7 @@ Uyarı satırına veya ilaç detayına dokununca "İlacınız bitmeden reçete i
 |---|---|---|
 | `LINK` | http, www, alan adı kalıbı (resmi adresler ve e-posta adresleri hariç) | "Mesajda bir internet bağlantısı var. Bankalar ve devlet kurumları SMS'teki bağlantıdan bilgi girmenizi istemez." |
 | `FAKE_LINK` (v2) | adreste kurum adı ama resmi adres değil: `ptt-teslimat-takip.xyz`, `turkiye.gov.tr.iade-basvuru.com`, `https://ptt.gov.tr@bit.ly/..` | "Bağlantı adresi bir kurumun adını taklit ediyor ama o kurumun gerçek adresi değil." |
-| `OFFICIAL_LINK` (v2, bilgilendirici) | bütün linkler kamu kurumu adresi (`*.gov.tr`, `*.bel.tr`, `*.edu.tr`, `*.k12.tr`, `*.pol.tr`, `*.tsk.tr`) | "Mesajdaki bağlantı bir kamu kurumunun resmi adresi. Yine de bilgi girmeden önce adresin tam olarak aynı olduğunu kontrol edin." |
+| `OFFICIAL_LINK` (v2, bilgilendirici) | bütün linkler kamu kurumu adresi (`*.gov.tr`, `*.bel.tr`, `*.edu.tr`, `*.k12.tr`, `*.pol.tr`, `*.tsk.tr`) ya da **bildirim adresi** (banka, kargo, operatör, mağaza; `NOTICE_DOMAINS`). **Platform adresleri** (YouTube, Instagram, Google Haritalar, Kariyer.net, Sahibinden; `PLATFORM_DOMAINS`) "yabancı link" sayılmaz ama bu kuralı da tetiklemez, çünkü içeriği herkes koyabilir | "Mesajdaki bağlantı kurumun ya da şirketin kendi resmi adresi. Yine de bilgi girmeden önce adresin tam olarak aynı olduğunu kontrol edin." |
 | `SHORT_LINK` | bit.ly, tinyurl, cutt.ly, t.ly, rebrand.ly | "Bağlantı kısaltılmış; nereye gittiği gizleniyor." |
 | `URGENCY` | hemen, son gün, 24 saat, aksi takdirde, bloke, askıya, iptal edilecek | "Sizi acele ettirmeye çalışıyor. Dolandırıcılar düşünmenize fırsat vermek istemez." |
 | `IMPERSONATION` | e-devlet, ptt, kargo, banka adları, vergi, icra, sgk, emniyet, savcılık, masak, turkcell/vodafone/türk telekom | "Resmi bir kurum veya şirket adına yazılmış gibi görünüyor." |
@@ -313,7 +313,7 @@ Anahtar kelimeler normalize edilmiş metinde aranır, böylece Türkçe karakter
 Model 3 olasılık verir: pD (dolandırıcılık), pR (reklam), pN (normal). Eşikler pD'ye uygulanır: T_HIGH = 0,40, T_LOW = 0,20 (doğrulama setinde normal + reklam yanlış alarmı kırmızıda ≤ %1, sarıda ≤ %3 olacak şekilde; alt sınırda kırpıldı).
 ```
 YEŞİL   ← doğrulama kodu VEREN (istemeyen), bilinmeyen link içermeyen mesaj ∧ kural birleşimi yok
-YEŞİL   ← bütün linkleri kamu kurumu adresi ∧ para / şifre / arama / bahis / ödül yok
+YEŞİL   ← bütün linkleri kamu kurumu ya da bildirim adresi ∧ para / şifre / arama / bahis / ödül / reklam işareti yok
 REKLAM  ← yasal reklam işareti ∧ pD < T_LOW ∧ tehlike işareti yok
 KIRMIZI ← pD ≥ T_HIGH
           veya kural birleşimi ∧ pR < 0,5 ∧ (pD ≥ 0,1 ∨ FAKE_LINK)
@@ -502,6 +502,42 @@ Her düzeltmeden sonra yukarıdaki gruplarla gerileme ölçümü yapıldı; ilk 
   - **yalnızca modeller** (v1 ve v2 karşılaştırması): `cd ml && python -m src.gold_inbox` → `ml/reports/gold_inbox_model.json`.
 - Repoya yalnızca toplu sayılar girer. Yanlış sınıflanan mesajlar gitignore'daki `ml/reports/misclassified_gold.csv`'ye yazılır.
 - Hata tanımı: kaçan dolandırıcılık (yeşil/reklam), normal mesaja sarı ya da kırmızı, reklama kırmızı.
+
+**İlk altın test (21 Ekim 2026, 14 mesaj: 9 dolandırıcılık, 3 normal, 2 reklam).** Set küçük; oranlar değil sayılar verilir.
+
+| Grup | Öncesi (14 mesajın hepsi) | Sonrası: asıl ölçüm (11) | Sonrası: ayarlanan (3) |
+|---|---|---|---|
+| Dolandırıcılık | 9 → 7 kırmızı, 2 sarı (**kaçan yok**) | 9 → 7 kırmızı, 2 sarı | — |
+| Normal | 3 → **2 kırmızı**, 1 reklam | 1 → reklam | 2 → 2 yeşil |
+| Reklam | 2 → 2 sarı | 1 → sarı | 1 → reklam |
+
+Bulunan sorunlar ve düzeltmeler:
+- **İki gerçek kargo bildirimi yanlışlıkla kırmızıydı.** Yurtiçi ve Aras SMS'lerde kendi kısa adreslerini (`yurti.ci`, `aras.la`) kullanıyor.
+  - Bu adresler resmi listede yoktu. `aras.la` "kurum adını taklit eden link" sayılıyordu.
+  - Adresler eklendikten sonra da model "linke tıklayın, teslimat" dili yüzünden birini kırmızı, birini sarı buldu.
+  - Çözüm: resmi adresler ikiye ayrıldı.
+    - **Bildirim adresleri:** içeriği yalnızca şirket yazar (banka, kargo, operatör, mağaza).
+    - **Platform adresleri:** içeriği herkes koyabilir (YouTube, Kariyer.net…).
+  - Bütün linkleri kamu kurumu ya da bildirim adresi olan ve para, şifre, ödül, arama istemeyen mesaj artık yeşil. Önceden bu istisna yalnızca kamu adreslerine uygulanıyordu.
+- **"SMSRET" bitişik yazımı** yasal reklam işareti sayılmıyordu; eklendi.
+- Bu üç mesaj `ayarlandi` olarak işaretlendi. Kalan mesajlara düzeltme sırasında bakıldı, ama hiçbir kural onlara göre değiştirilmedi.
+
+Bu değişikliğin geniş setlerdeki etkisi (karar katmanı; yurti.ci/aras.la ve SMSRET eklendikten sonra, bildirim adresi ayrımından önce → sonra):
+
+| Set | Öncesi (kırmızı / sarı / reklam / yeşil) | Sonrası |
+|---|---|---|
+| Çeviri dolandırıcılık (555) | 305 / 160 / 32 / 58 | **aynı** |
+| Çeviri kargo dolandırıcılığı (65) | 61 / 3 / 0 / 1 | **aynı** |
+| Gerçek dolandırıcılık (83) | 80 / 2 / 0 / 1 | **aynı** |
+| Sentetik linkli kargo bildirimi (40, normal) | 4 / 12 / 0 / 24 | 1 / 10 / 0 / 29 |
+| Sentetik normal 001–008 (400) | 7 / 12 / 4 / 377 | aynı |
+| Gerçek normal (2.588) | 3 / 11 / 3 / 2.322 (+249 çok kısa) | aynı |
+| Gerçek reklam (2.694) | 8 / 1.001 / 1.678 / 7 | 8 / 999 / 1.607 / 80 |
+
+- **Yan etki (bilerek kabul edildi):** Reklam işareti taşımayan, linki bankanın ya da mağazanın kendi adresi olan 73 eski kampanya SMS'i "Reklam" yerine yeşil görünüyor.
+  - Gönderen gerçek şirket olduğu için bu bir güvenlik sorunu değil.
+  - Reklam işareti olanlar yine "Reklam" (istisna bu mesajlara uygulanmıyor).
+- **Bu düzeltme aynı mesajlara bakılarak yapıldı.** Asıl doğrulama, yeni ve işaretsiz mesajlar eklendiğinde yapılacak.
 
 **Dosyalar:** ham yabancı veri `ml/data/raw/foreign/<kaynak>/` (repoya girmez); çeviriler `ml/data/translated/*.csv` (kaynak lisansıyla birlikte, CC BY / CC BY-NC-SA koşullarına uygun olarak repoda); kullanıcı mesajları `ml/data/raw/inbox/` (repoya girmez).
 
