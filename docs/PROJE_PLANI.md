@@ -713,16 +713,16 @@ Henüz denenmeyenler:
 - **Erişilebilirlik (otomatik):** kontrast, ekran taraması ve ekran okuyucu davranışı (bölüm 10.1).
 - **Erişilebilirlik (elle):** `docs/erisilebilirlik-kontrol-listesi.md` (VoiceOver, büyük yazı, gri tonlama).
 - **Elle test kontrol listesi (iPhone):**
-  - [ ] 2 dk sonraya kurulan bildirim uygulama kapalıyken geliyor
-  - [ ] Bildirime dokununca doğru ekran açılıyor
-  - [ ] İlaç silinince bildirimi de siliniyor
+  - [x] 2 dk sonraya kurulan bildirim uygulama kapalıyken geliyor (24 Eki 2026)
+  - [x] Bildirime dokununca doğru ekran açılıyor (24 Eki 2026)
+  - [x] İlaç silinince bildirimi de siliniyor (24 Eki 2026)
   - [ ] Stok uyarısı ve "ilacınız bitiyor" bildirimi doğru günde geliyor; "Yeni kutu aldım" sonrası kalkıyor
-  - [ ] "Yakınımdan randevu iste" SMS uygulamasını doğru numara ve hazır metinle açıyor (iOS `sms:` gövde biçimi)
+  - [x] "Yakınımdan randevu iste" SMS uygulamasını doğru numara ve hazır metinle açıyor (iOS `sms:` gövde biçimi) (24 Eki 2026)
   - [x] Çok büyük yazı + iOS en büyük metin ayarında taşma yok (21 Eki 2026)
   - [x] VoiceOver ile 3 ana görev tamamlanabiliyor (21 Eki 2026)
-  - [ ] Uçak modunda her şey çalışıyor
+  - [x] Uçak modunda her şey çalışıyor (24 Eki 2026)
   - [ ] 10 gerçek dolandırıcılık + 10 gerçek normal SMS doğru seviyede
-  - [ ] Bildirim izni reddedilince uygulama çökmüyor, uyarı gösteriyor
+  - [x] Bildirim izni reddedilince uygulama çökmüyor, uyarı gösteriyor (24 Eki 2026)
 
 ---
 
