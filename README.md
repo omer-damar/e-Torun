@@ -22,6 +22,23 @@ Manisa Celal Bayar Üniversitesi Yazılım Mühendisliği, **Sosyal Sorumluluk**
 
 Ayrıntılı gereksinimler, mimari, ölçümler ve sonuçlar: [docs/PROJE_PLANI.md](docs/PROJE_PLANI.md)
 
+## Ekran görüntüleri
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/rapor/ekran/01-ana-ekran.png" width="200" alt="Ana ekran"><br>Ana ekran</td>
+    <td align="center"><img src="docs/rapor/ekran/02-bugunku-ilaclar.png" width="200" alt="Bugünkü ilaçlarım"><br>Bugünkü ilaçlarım</td>
+    <td align="center"><img src="docs/rapor/ekran/04-sonuc-yuksek-risk.png" width="200" alt="Sonuç: yüksek risk"><br>Dolandırıcılık: yüksek risk</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/rapor/ekran/06-sonuc-reklam.png" width="200" alt="Sonuç: reklam"><br>Yasal reklam mesajı</td>
+    <td align="center"><img src="docs/rapor/ekran/07-yapay-zekaya-sor.png" width="200" alt="Yapay zekâya da sor"><br>İsteğe bağlı: yapay zekâya sor</td>
+    <td align="center"><img src="docs/rapor/ekran/08-yapay-zeka-gorusu.png" width="200" alt="Yapay zekânın görüşü"><br>Yapay zekânın ikinci görüşü</td>
+  </tr>
+</table>
+
+Sağ alttaki dişli düğmesi Expo Go'ya aittir, uygulamanın parçası değildir.
+
 ## Gizlilik
 
 - Kişiler, ilaçlar, ayarlar ve kontrol edilen mesajlar **yalnızca telefonda** kalır. Hesap, analitik ve reklam yoktur.
