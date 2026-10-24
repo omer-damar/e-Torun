@@ -18,9 +18,6 @@ Erişilebilirlik önceliklidir:
 Manisa Celal Bayar Üniversitesi Yazılım Mühendisliği, **Sosyal Sorumluluk** dersi bireysel projesi.
 
 > **e-Torun bir devlet uygulaması değildir**; "e-" ön eki yalnızca adın parçasıdır.
-> (Önceki çalışma adı "Yanımda"; repo ve Expo proje kimliği `yanimda` olarak kaldı.)
-
-Ayrıntılı gereksinimler, mimari, ölçümler ve sonuçlar: [docs/PROJE_PLANI.md](docs/PROJE_PLANI.md)
 
 ## Ekran görüntüleri
 
