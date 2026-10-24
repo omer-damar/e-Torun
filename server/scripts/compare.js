@@ -75,8 +75,11 @@ function metrics(items) {
     ),
     telefon: summary('local'),
     yapay_zeka: summary('ai'),
-    // Uygulamadaki kural: telefondaki uyarı kalır, yapay zekâ ayrıca uyarabilir → en az biri uyardı mı?
-    birlikte_en_az_biri_uyardi: summary((it) => (warn(it.local) || warn(it.ai) ? 'yellow' : 'green')),
+    // Uygulamadaki kural: telefondaki uyarı kalır, yapay zekâ ayrıca uyarabilir → kullanıcının gördüğü en
+    // güçlü uyarı (kırmızı > sarı); uyarı yoksa telefondaki sonuç.
+    birlikte_en_az_biri_uyardi: summary((it) =>
+      it.local === 'red' || it.ai === 'red' ? 'red' : warn(it.local) || warn(it.ai) ? 'yellow' : it.local,
+    ),
     ayni_seviye_grubu: rate(answered.filter((it) => severity[it.local] === severity[it.ai]).length, answered.length),
   };
 }

@@ -370,36 +370,41 @@ Asıl kontrol her zaman telefondaki modelle yapılır: anında sonuç verir, int
   - Uydurma dolandırıcılık ve normal mesaj doğru sınıflandı (~1,5 sn, `gemini-flash-lite-latest`).
   - Ayarlar'dan açıp kapatınca buton beklendiği gibi görünüp kayboluyor.
   - Sunucu günlüğünde mesaj içeriği yok.
-- **Karşılaştırma ölçümü — ARA SONUÇ (21 Ekim 2026).** Telefondaki karar (model v2 + kurallar) ve yapay zekâ, uygulamadakiyle aynı biçimde maskelenmiş aynı mesajlarda karşılaştırıldı.
-  - Betikler: `AI_COMPARE=1 npx jest aiCompare` (örneklem + telefondaki karar + maskeleme), `cd server && npm run compare` (sunucuya sorar, kaldığı yerden devam eder). Toplu sonuç: `ml/reports/ai_compare.json`.
-  - **Plan:** 66 mesaj:
-    - altın test 14;
-    - gerçek test setinden 12 dolandırıcılık, 15 normal, 15 reklam;
-    - çeviri dolandırıcılık 10 (5'i kargo).
-  - **Cevaplanan:** Ücretsiz günlük kota dolduğu için yalnızca **19** mesaj cevaplandı:
-    - altın testin 14'ü;
-    - gerçek dolandırıcılığın 5'i.
+- **Karşılaştırma ölçümü (21–24 Ekim 2026).** Telefondaki karar (model v2 + kurallar) ve yapay zekâ, uygulamadakiyle aynı biçimde maskelenmiş aynı **66** mesajda karşılaştırıldı.
+  - Betikler ve sonuçlar:
+    - `AI_COMPARE=1 npx jest aiCompare`: sabit örneklem, telefondaki karar, maskeleme.
+    - `cd server && npm run compare`: sunucuya sorar, kaldığı yerden devam eder.
+    - Toplu sonuç: `ml/reports/ai_compare.json`.
+  - **Örneklem:**
+    - senin gelen kutun (altın test): 14;
+    - gerçek test seti: 12 dolandırıcılık, 15 normal, 15 reklam;
+    - çeviri dolandırıcılık: 10 (5'i kargo).
+  - **Cevaplanma:** İlk gün ücretsiz günlük kota doldu (19/66), kalanlar 24 Ekim'de soruldu. Sonuçta 66 mesajın hepsi cevaplandı, "ulaşılamadı" yok.
 
-    Gerçek normal ve reklam mesajlarının hiçbiri cevaplanmadı.
+  | Grup | Telefon (kırmızı / sarı / reklam / yeşil) | Yapay zekâ | En az biri uyardı (uygulamadaki gösterim) |
+  |---|---|---|---|
+  | Dolandırıcılık (31) | 27 / 3 / 0 / **1** | 30 / 0 / 0 / **1** | 30 / 31 |
+  | Normal (18) | 0 / 0 / 1 / 17 | 0 / 0 / 2 / 16 | **yanlış alarm 0 / 18** |
+  | Reklam (17) | 0 / 5 / 12 / 0 | **1** / 0 / 16 / 0 | 1 kırmızı, 4 sarı |
 
-  | Grup (cevaplanan) | Telefon | Yapay zekâ |
-  |---|---|---|
-  | Dolandırıcılık (14: gelen kutusu 9 + gerçek test 5) | 12 kırmızı, 2 sarı (**kaçan yok**) | 14 kırmızı (**kaçan yok**) |
-  | Normal (3, gelen kutusu) | 2 yeşil, 1 reklam | 1 yeşil, 2 reklam |
-  | Reklam (2, gelen kutusu) | 1 reklam, 1 sarı | 2 reklam |
-
-  - **Uyuşma:** 19 mesajın 16'sında iki yöntem aynı seviye grubunda. Farklar:
-    - telefonun sarı dediği 2 dolandırıcılığa yapay zekâ kırmızı dedi;
-    - telefonun sarı dediği 1 reklama yapay zekâ "reklam" dedi.
-  - **Süre:** Yapay zekâ cevabı medyan **4,5 sn**, en yavaş %10'da 8,7 sn ve üstü. Telefondaki karar anında.
-    - Ölçüm sırasında Google tarafı yoğundu (503, zaman aşımı); sakin anda tek istek ~1,5 sn sürüyordu.
-    - Telefon 15 sn bekler.
-  - **Sınırlar (bu ara sonuçtan çıkarılamayacaklar):**
-    - Asıl soru olan **normal mesajlarda yanlış alarm** karşılaştırması yapılamadı: elde yalnızca 3 normal mesaj var ve ikisi kural ayarlamasında kullanıldı.
-    - Örneklem çok küçük; sayılar oran olarak okunmamalı.
-    - Gelen kutusunun 3 mesajı telefondaki kurallar ayarlanırken incelendi (bölüm 9.6); bu mesajlarda telefon avantajlı.
-    - Yapay zekâ ise bu mesajları hiç görmedi.
-  - **Yapılacak:** Kota yenilenince eksik 33 mesaj sorulacak (öncelik gerçek 15 normal + 15 reklam). Tablo o zaman tamamlanacak.
+  - **Gerçek test seti** (eğitimde görülmemiş gerçek Türkçe mesajlar, 42):
+    - 12 dolandırıcılığın 12'sini ikisi de kırmızı buldu.
+    - 15 normalin 15'ine ikisi de yeşil dedi.
+    - 15 reklamda telefon 11 reklam + 4 sarı, yapay zekâ 14 reklam + 1 kırmızı verdi.
+  - **Uyuşma:** 66 mesajın 58'inde (%88) iki yöntem aynı seviye grubunda. Farkların çoğu, telefonun sarı dediğine yapay zekânın daha kesin bir şey demesi:
+    - 3 dolandırıcılıkta telefon sarı, yapay zekâ kırmızı;
+    - 4 reklamda telefon sarı, yapay zekâ "reklam".
+  - **İkisinin de kaçırdığı mesaj:** "Merhaba Zeynep, uzun zamandır görüşemedik, ben Elif, nasılsın?" (çeviri, yatırım/romantik dolandırıcılığın ilk adımı). Bu tek başına zararsız bir mesaj; bilinen sınır (bölüm 9.6).
+  - **Yapay zekânın tek yanlış alarmı:** Kısa linkli (bit.ly), ret işaretsiz bir elektrikli süpürge indirimi reklamına "kırmızı" dedi. Telefon "sarı" demişti. Uygulamada kullanıcı telefonun sarısını ve yapay zekânın "şüpheli buldu" kartını birlikte görür.
+  - **Süre:** Yapay zekâ cevabı medyan **5,2 sn**, en yavaş %10'da 8,2 sn ve üstü (zaman zaman Google tarafında 503 ve zaman aşımı oldu, yedek modele geçildi). Telefondaki karar anında ve internetsiz.
+  - **Sonuç:**
+    - Bu örneklemde iki yöntem dolandırıcılık yakalamada ve normal mesajlarda **aynı düzeyde**. Yapay zekâ reklamları daha iyi ayırt ediyor ve daha az "sarı" (kararsız) sonuç veriyor.
+    - Ama yavaş, internet istiyor, kotaya bağlı ve bir reklama yanlış kırmızı verdi.
+    - Bu yüzden asıl kontrolün telefonda kalıp yapay zekânın isteğe bağlı ikinci görüş olması doğru tasarım.
+  - **Sınırlar:**
+    - Örneklem küçük (66); sayılar oran olarak genellenmemeli.
+    - Altın testin 3 mesajı telefondaki kurallar ayarlanırken incelendi (bölüm 9.6). `ai_compare.json` › `altin_ayarlanmamis` bu mesajları dışarıda bırakır.
+    - Yapay zekânın cevabı modele ve güne göre değişebilir: ölçüm `gemini-flash-lite-latest` (43 cevap) ve yedekleri ile yapıldı.
 
 ---
 
