@@ -28,12 +28,17 @@ Ayrıntılı gereksinimler, mimari, ölçümler ve sonuçlar: [docs/PROJE_PLANI.
   <tr>
     <td align="center"><img src="docs/rapor/ekran/01-ana-ekran.png" width="200" alt="Ana ekran"><br>Ana ekran</td>
     <td align="center"><img src="docs/rapor/ekran/02-bugunku-ilaclar.png" width="200" alt="Bugünkü ilaçlarım"><br>Bugünkü ilaçlarım</td>
-    <td align="center"><img src="docs/rapor/ekran/04-sonuc-yuksek-risk.png" width="200" alt="Sonuç: yüksek risk"><br>Dolandırıcılık: yüksek risk</td>
+    <td align="center"><img src="docs/rapor/ekran/09-ilac-bildirimi.png" width="200" alt="İlaç saati bildirimi"><br>İlaç saati bildirimi</td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/rapor/ekran/06-sonuc-reklam.png" width="200" alt="Sonuç: reklam"><br>Yasal reklam mesajı</td>
-    <td align="center"><img src="docs/rapor/ekran/07-yapay-zekaya-sor.png" width="200" alt="Yapay zekâya da sor"><br>İsteğe bağlı: yapay zekâya sor</td>
-    <td align="center"><img src="docs/rapor/ekran/08-yapay-zeka-gorusu.png" width="200" alt="Yapay zekânın görüşü"><br>Yapay zekânın ikinci görüşü</td>
+    <td align="center"><img src="docs/rapor/ekran/03-acil-yardim.png" width="200" alt="Acil yardım"><br>Acil yardım</td>
+    <td align="center"><img src="docs/rapor/ekran/04-sonuc-yuksek-risk.png" width="200" alt="Dolandırıcılık: yüksek risk"><br>Dolandırıcılık: yüksek risk</td>
+    <td align="center"><img src="docs/rapor/ekran/05-sonuc-risk-yok.png" width="200" alt="Normal mesaj: risk yok"><br>Normal mesaj: risk yok</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/rapor/ekran/06-sonuc-reklam.png" width="200" alt="Yasal reklam mesajı"><br>Yasal reklam mesajı</td>
+    <td align="center"><img src="docs/rapor/ekran/07-yapay-zekaya-sor.png" width="200" alt="İsteğe bağlı: yapay zekâya sor"><br>İsteğe bağlı: yapay zekâya sor</td>
+    <td align="center"><img src="docs/rapor/ekran/08-yapay-zeka-gorusu.png" width="200" alt="Yapay zekânın ikinci görüşü"><br>Yapay zekânın ikinci görüşü</td>
   </tr>
 </table>
 

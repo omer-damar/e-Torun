@@ -47,5 +47,3 @@ Thumbs.db
 # Öğrenci numaralı ders raporu (yalnızca yerelde)
 docs/rapor/rapor.html
 docs/rapor/*.pdf
-docs/rapor/ekran/03-acil-yardim.png
-docs/rapor/ekran/05-sonuc-risk-yok.png
