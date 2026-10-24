@@ -133,6 +133,3 @@ Repodaki türetilmiş veriler:
 
 Kullanıcının kendi gelen kutusundan etiketlediği mesajlar (altın test) `ml/data/raw/inbox/` içinde kalır ve repoya girmez; repoda yalnızca toplu sayılar vardır.
 
-## Geliştirme
-
-Proje Claude Code (Anthropic) yardımıyla geliştirildi; çalışma akışı `docs/PROJE_PLANI.md` bölüm 16'da anlatılır.
