@@ -4,11 +4,11 @@
     "slug": "yanimda",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/etorun-icon.png",
     "scheme": "yanimda",
     "userInterfaceStyle": "light",
     "ios": {
-      "icon": "./assets/images/icon.png"
+      "icon": "./assets/images/etorun-icon.png"
     },
     "web": {
       "output": "static",
@@ -20,7 +20,7 @@
         "expo-splash-screen",
         {
           "backgroundColor": "#0F4C8A",
-          "image": "./assets/images/icon.png",
+          "image": "./assets/images/etorun-icon.png",
           "imageWidth": 140
         }
       ]
