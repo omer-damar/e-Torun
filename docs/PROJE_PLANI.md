@@ -99,7 +99,6 @@
 
 ```
 yanimda/
-├─ CLAUDE.md
 ├─ README.md
 ├─ .gitignore
 ├─ docs/
@@ -791,7 +790,7 @@ Hocanın isterlerine birebir: **tek PDF**, kısa tutulur (kapak + 1–3 sayfa).
 ---
 
 ## 16. Claude Code ile çalışma akışı
-1. `yanimda/` klasörünü aç. `CLAUDE.md` köke, bu dosya `docs/PROJE_PLANI.md` olarak gider. `git init` yap ve GitHub'da `omer-damar/yanimda` reposunu oluştur.
+1. `yanimda/` klasörünü aç; bu dosya `docs/PROJE_PLANI.md` olarak gider. `git init` yap ve GitHub'da `omer-damar/yanimda` reposunu oluştur.
 2. Her aşamayı **ayrı bir oturumda/görevde** ver. Büyük işlerde önce plan modunda plan iste, onaylayınca kodlat.
 3. Her aşama sonunda: testler + tip kontrolü + iPhone'da deneme + commit.
 

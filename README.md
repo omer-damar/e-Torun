@@ -33,7 +33,6 @@ Ayrıntılı gereksinimler, mimari, ölçümler ve sonuçlar: [docs/PROJE_PLANI.
 
 ```
 yanimda/
-├─ CLAUDE.md               # geliştirme kuralları
 ├─ docs/
 │  ├─ PROJE_PLANI.md       # gereksinimler, mimari, ölçümler, sonuçlar
 │  ├─ erisilebilirlik-kontrol-listesi.md   # iPhone'da elle erişilebilirlik testi

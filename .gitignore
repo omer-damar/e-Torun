@@ -43,3 +43,7 @@ coverage/
 Thumbs.db
 .vscode/
 .idea/
+
+# Öğrenci numaralı ders raporu (yalnızca yerelde)
+docs/rapor/rapor.html
+docs/rapor/*.pdf
