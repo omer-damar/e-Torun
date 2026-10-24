@@ -1,7 +1,13 @@
 import * as Notifications from 'expo-notifications';
 
 import type { Medication } from '@/features/medications/model';
-import { buildRequests, syncMedicationNotifications } from '@/features/medications/notifications';
+import {
+  buildRequests,
+  doseNotificationText,
+  possessiveMedicationName,
+  refillNotificationText,
+  syncMedicationNotifications,
+} from '@/features/medications/notifications';
 
 // Bellek içi sahte bildirim deposu: planlanan / iptal edilen bildirimleri gerçekten tutar.
 jest.mock('expo-notifications', () => {
@@ -58,7 +64,34 @@ describe('buildRequests', () => {
       { type: 'daily', hour: 8, minute: 0 },
       { type: 'daily', hour: 20, minute: 0 },
     ]);
-    expect(requests[0].content).toMatchObject({ title: '💊 İlaç saati', body: 'Tansiyon ilacı – 1 tablet' });
+    expect(requests[0].content).toMatchObject({
+      title: '💊 Tansiyon ilacı · 08:00',
+      body: 'Tansiyon ilacınızın saati geldi: 1 tablet (beyaz).\nSağlığınız için ilacınızı doğru dozda ve zamanında alın!',
+    });
+    expect(requests[1].content).toMatchObject({ title: '💊 Tansiyon ilacı · 20:00' });
+  });
+
+  it('ilaç adı "ilacı" ile bitmiyorsa "… ilacınızın"; doz yoksa yalnızca renk', () => {
+    expect(possessiveMedicationName('Beloc')).toBe('Beloc ilacınızın');
+    expect(possessiveMedicationName('Şeker İlacı ')).toBe('Şeker İlacınızın');
+    expect(doseNotificationText(med({ name: 'Coraspin', dose: '', color: 'sari' }), '09:00')).toEqual({
+      title: '💊 Coraspin · 09:00',
+      body: 'Coraspin ilacınızın saati geldi (sarı).\nSağlığınız için ilacınızı doğru dozda ve zamanında alın!',
+    });
+  });
+
+  it('"bitmek üzere" bildirimi aynı dille, randevuya yönlendirir', () => {
+    expect(refillNotificationText(med(), 10)).toEqual({
+      title: '💊 Tansiyon ilacı bitmek üzere',
+      body:
+        'İlacınız yaklaşık 10 gün içinde bitecek.\n' +
+        'Sağlığınız için ilacınız bitmeden reçete randevusu alın! Randevu için bu bildirime dokunun.',
+    });
+  });
+
+  it('renk değişince bildirim yeniden planlanır (metinde renk var)', () => {
+    const key = (m: Medication) => (buildRequests(m)[0].content.data as { key: string }).key;
+    expect(key(med({ color: 'sari' }))).not.toBe(key(med()));
   });
 
   it('belirli günler → gün başına WEEKLY, Expo gün numarasıyla (Pzt = 2, Paz = 1)', () => {

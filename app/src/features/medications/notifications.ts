@@ -10,7 +10,7 @@
 
 import * as Notifications from 'expo-notifications';
 
-import type { Medication } from './model';
+import { medColor, type Medication } from './model';
 import { parseTime, toExpoWeekday } from './schedule';
 import { getRefillReminderDate } from './stock';
 
@@ -48,8 +48,44 @@ export function configureNotificationHandler(): void {
   });
 }
 
+/** Bildirim metni bunlarla yazılır; biri değişince ilacın bildirimleri yeniden planlanır. */
 function medicationSignature(med: Medication): string {
-  return JSON.stringify([med.name, med.dose, med.times, med.days]);
+  return JSON.stringify([med.name, med.dose, med.color, med.times, med.days, NOTIFICATION_TEXT_VERSION]);
+}
+
+/** Metin değiştiğinde artırılır: telefondaki eski metinli bildirimler bir sonraki senkronda yenilenir. */
+const NOTIFICATION_TEXT_VERSION = 2;
+
+/** "Tansiyon ilacı" → "Tansiyon ilacınızın", "Beloc" → "Beloc ilacınızın". */
+export function possessiveMedicationName(name: string): string {
+  const trimmed = name.trim();
+  // Türkçe büyük harf ("İlacı") için toLocaleLowerCase; /i bayrağı "İ"yi "i" saymaz.
+  return /ilac[ıi]$/.test(trimmed.toLocaleLowerCase('tr')) ? `${trimmed.slice(0, -1)}ınızın` : `${trimmed} ilacınızın`;
+}
+
+/**
+ * İlaç saati bildirimi:
+ *   💊 Tansiyon ilacı · 08:00
+ *   Tansiyon ilacınızın saati geldi: 1 tablet (beyaz).
+ *   Sağlığınız için ilacınızı doğru dozda ve zamanında alın!
+ */
+export function doseNotificationText(med: Medication, time: string): { title: string; body: string } {
+  const color = med.color ? ` (${medColor(med.color).label.toLocaleLowerCase('tr')})` : '';
+  const dose = med.dose.trim() ? `: ${med.dose.trim()}${color}` : color;
+  return {
+    title: `💊 ${med.name.trim()} · ${time}`,
+    body: `${possessiveMedicationName(med.name)} saati geldi${dose}.\nSağlığınız için ilacınızı doğru dozda ve zamanında alın!`,
+  };
+}
+
+/** "İlacınız bitmek üzere" bildirimi; dokununca randevu ekranı açılır. */
+export function refillNotificationText(med: Medication, days: number): { title: string; body: string } {
+  return {
+    title: `💊 ${med.name.trim()} bitmek üzere`,
+    body:
+      `İlacınız yaklaşık ${days} gün içinde bitecek.\n` +
+      'Sağlığınız için ilacınız bitmeden reçete randevusu alın! Randevu için bu bildirime dokunun.',
+  };
 }
 
 /** Bir ilacın planlanacak bildirim istekleri (saf). Stok bildirimi yalnızca `options` verilirse. */
@@ -69,8 +105,7 @@ export function buildRequests(med: Medication, options?: SyncOptions): Request[]
           }));
     return triggers.map((trigger) => ({
       content: {
-        title: '💊 İlaç saati',
-        body: med.dose ? `${med.name} – ${med.dose}` : med.name,
+        ...doseNotificationText(med, time),
         sound: 'default',
         data: {
           type: DOSE_NOTIFICATION_TYPE,
@@ -87,8 +122,7 @@ export function buildRequests(med: Medication, options?: SyncOptions): Request[]
   if (!refillAt) return doses;
   const refill: Request = {
     content: {
-      title: '💊 İlacınız bitmek üzere',
-      body: `${med.name} yaklaşık ${options!.refillWarningDays} gün içinde bitecek. Reçete için randevu almayı unutmayın.`,
+      ...refillNotificationText(med, options!.refillWarningDays),
       sound: 'default',
       data: {
         type: REFILL_NOTIFICATION_TYPE,

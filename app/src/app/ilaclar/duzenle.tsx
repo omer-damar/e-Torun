@@ -217,7 +217,10 @@ export default function MedicationEditScreen() {
     case 'color':
       body = (
         <>
-          <AppText>Kutudaki ilacı tanımanıza yardımcı olur.</AppText>
+          <AppText>
+            Tabletin ya da kapsülün kendi rengi (kutunun değil). Birden fazla ilacınız varsa hangisini alacağınızı
+            rengine bakarak ayırt edersiniz; ilaç kartında ve hatırlatmada da yazar.
+          </AppText>
           {MED_COLORS.map((c) => (
             <OptionButton
               key={c.id}
