@@ -105,7 +105,6 @@ yanimda/
 ├─ docs/
 │  ├─ PROJE_PLANI.md
 │  ├─ rapor/                 # ekran görüntüleri, saha fotoğrafları, diyagramlar
-│  └─ kullanici-testi/       # onam metni, görev senaryoları, anket (kişisel veri yok)
 ├─ ml/
 │  ├─ requirements.txt
 │  ├─ data/
@@ -680,7 +679,7 @@ Testler: `app/__tests__/screenReader.test.tsx` (15 test). Toplam uygulama testi 
 Henüz denenmeyenler:
 - Kurulum sihirbazı VoiceOver ile (1.2–1.5): veri silmeyi gerektirir.
 - Stok, Son 7 gün ve Ayarlar ekranları (1.16, 1.17, 1.25, 1.26).
-- Dokunma (4. bölüm) ve anlaşılırlık (5. bölüm): saha testinde yaşlı kullanıcılarla değerlendirilecek.
+- Dokunma (4. bölüm) ve anlaşılırlık (5. bölüm): yakınlara gösterimde (bölüm 13) gözlenecek.
 
 **Sınırlar:**
 - Otomatik tarama stil değerlerini ölçer, gerçek çizimi değil. Kırpılma, taşma ve odak sırası yalnızca telefonda görülür.
@@ -703,7 +702,7 @@ Henüz denenmeyenler:
 - Uygulama tıbbi tavsiye vermez. Hakkında ekranına "İlaç dozunu doktorunuz belirler, bu uygulama yalnızca hatırlatır." notu konur.
 - **Ad ve resmiyet:** Uygulamanın adı "e-Torun" (önceki çalışma adı "Yanımda"). "e-" ön eki yasal olarak devlete ayrılmış değildir, ancak e-Devlet / e-Nabız'ı çağrıştırdığı için resmi kurum izlenimi verilmez: T.C. ibaresi, ay-yıldız, devlet logosu veya renkleri kullanılmaz; kurulumun ilk ekranında ve Hakkında'da "e-Torun bir devlet uygulaması değildir; gönüllü bir öğrenci projesidir" notu yer alır. Ticari yayın planlanırsa TÜRKPATENT'te 9. ve 42. sınıflarda marka araması yapılmalı (Ekim 2026 itibarıyla App Store TR'de aynı adlı uygulama yok).
 - Dolandırıcılık tespiti %100 değildir. Yeşil sonuçta da dikkat uyarısı bulunur.
-- Kullanıcı testinde: bilgilendirilmiş onam, isim yerine "K1, K2" kodu, fotoğraflarda yüz yok ya da açık izin var, test için uygulamaya gerçek ilaç bilgisi değil örnek veri girilir.
+- Yakınlara gösterimde: isim yerine "K1, K2" kodu, fotoğraflarda yüz yok ya da sözlü izin var, uygulamaya gerçek ilaç bilgisi değil örnek veri girilir.
 
 ---
 
@@ -728,20 +727,22 @@ Henüz denenmeyenler:
 ---
 
 ## 13. Saha uygulaması — "nerede, hangi zaman diliminde"
-Hocanın istediği "projenin nerede ve ne zaman gerçekleştiği" kısmı buradan çıkar.
+Hocanın isterleri sade: tek PDF, kısa tanıtım (nerede, hangi zaman diliminde), resimler/belgeler ve kapak. Resmi bir kullanıcı testi (onam formu, görev kâğıdı, anket) **istenmiyor**. Ama "gerçekleştiği yer ve zaman" için uygulamanın gerçekten yaşlı birilerine ulaştığını göstermek gerekir. Bunun için hafif bir saha uygulaması yeterli (Ekim 2026'da sadeleştirildi):
 
-- **Yer:** Gebze/Kocaeli. Aile büyükleri, komşular veya bir semt/cami derneği, muhtarlık ya da yaşlı merkezi.
-- **Zaman:** 30 Kasım – 6 Aralık 2026 haftası. Rapora net tarihler yazılır.
-- **Katılımcı:** 3–5 kişi, 60+ yaş.
-- **Hazırlık (`docs/kullanici-testi/`):** 1 sayfalık onam metni, görev kâğıdı, 5 soruluk anket (gülen yüz ölçekli, 1–5).
-- **Görevler** (uygulama senin iPhone'unda, örnek verilerle):
-  1. "Her akşam 20:00'de alınan 'Tansiyon ilacı'nı ekleyin."
-  2. "Gelen hatırlatmayı açıp 'Aldım' deyin." (2 dk sonrasına kurulmuş örnek bildirim)
-  3. "Kızınızı arayın." (kayıtlı kişi = senin numaran)
-  4. "Size gösterdiğim 3 mesajı kontrol edin." (1 normal, 2 dolandırıcılık)
-- **Ölçülecekler:** görev tamamlandı mı, süre, yardım gerekti mi, anket puanları, akılda kalan cümleler (anonim).
-- **Belgeler:** Fotoğraflar (eller + ekran, yüz yok), mümkünse kurum veya muhtarlıktan teşekkür/katılım yazısı, sonuç tablosu.
-- Test sonrası en az 2 iyileştirme yapılır ve raporda "geri bildirimle yapılan değişiklikler" olarak yer alır (sosyal sorumluluk projesinin güçlü kanıtı).
+- **Kim:** 2–3 yaşlı tanıdık (aile büyükleri, komşular).
+- **Ne yapılır:** Uygulama geliştiricinin iPhone'unda, örnek verilerle gösterilir ve birkaç şey denetilir:
+  - ilaç ekleme ve "Aldım";
+  - bir dolandırıcılık ve bir normal mesajı kontrol etme;
+  - Acil Yardım ekranı (112'ye basılmaz).
+- **Kanıt:**
+  - 3–4 fotoğraf: eller ve ekran görünür; yüz çıkacaksa sözlü izin alınır.
+  - Tarih ve yer.
+  - Her kişi için bir iki cümlelik anonim izlenim ("K1: yazıları rahat okudu").
+- **Gizlilik:** Uygulamaya gerçek ilaç ya da kişi bilgisi girilmez; fotoğraflarda gerçek numara görünmez.
+- **Geri bildirim:** Bir şeyde zorlanırlarsa küçük bir düzeltme yapılır ve raporda tek cümleyle yazılır.
+- **Yer / zaman:** Gebze/Kocaeli. Tarih, gösterim yapıldığında rapora yazılır.
+
+Not: Geliştirici iPhone'unda erişilebilirlik testi (VoiceOver, büyük yazı, gri tonlama) ve gerçek gelen kutusuyla altın test zaten yapıldı (bölüm 10.1, 9.6). Bunlar da "nerede, ne zaman" kanıtı olarak kullanılabilir.
 
 ---
 
@@ -754,24 +755,38 @@ Hocanın istediği "projenin nerede ve ne zaman gerçekleştiği" kısmı burada
 | 3 | 2–8 Kas | Kurulum sihirbazı, ayarlar, depolama katmanı, Acil Yardım modülü | A1–A3, C1–C2 |
 | 4 | 9–15 Kas | İlaç modülü + bildirimler + senkronizasyon + stok takibi ve randevu yönlendirmesi | B1–B4, B6–B7 |
 | 5 | 16–22 Kas | Dedektör TS (normalize, n-gram, tfidf, classify, rules, decide), parity testi, sonuç ekranı, sesli okuma, Yakınıma sor | D1–D6 |
-| 6 | 23–29 Kas | Erişilebilirlik cilası, elle test listesi, hata durumları, kullanıcı testi materyalleri | Test edilebilir sürüm |
-| 7 | 30 Kas–6 Ara | **Saha uygulaması**, fotoğraflar, geri bildirim, düzeltmeler | Test sonuçları |
-| 8 | 7–13 Ara | README, ekran görüntüleri, mimari diyagram, PDF rapor | **Teslim** |
+| 6 | 23–29 Kas | Erişilebilirlik cilası, elle test listesi, hata durumları | Test edilebilir sürüm |
+| 7 | 30 Kas–6 Ara | **Yakınlara gösterim** (2–3 yaşlı), fotoğraflar, küçük düzeltmeler | Fotoğraflar, tarih/yer |
+| 8 | 7–13 Ara | Ekran görüntüleri, tek PDF rapor | **Teslim** |
 | Tampon | 14–30 Ara | Gecikmeler için | — |
 
-Hızlı ilerlersen 3–5. haftalar sıkıştırılabilir ve saha testi Kasım ortasına çekilebilir.
+Geliştirme Ekim sonunda büyük ölçüde bitti; gösterim ve PDF daha erken yapılabilir.
 
 ---
 
 ## 15. Rapor (PDF) içeriği
-Hocanın 3 maddesine birebir karşılık gelecek şekilde, tek PDF dosyası:
+Hocanın isterlerine birebir: **tek PDF**, kısa tutulur (kapak + 1–3 sayfa).
 
-1. **Kapak:** Manisa Celal Bayar Üniversitesi · Hasan Ferdi Turgutlu Teknoloji Fakültesi · Yazılım Mühendisliği · Sosyal Sorumluluk Dersi · Proje adı ("e-Torun: Yaşlı Bireyler için Dijital Yardımcı Uygulama") · Ad Soyad · Öğrenci No: ______ · Dersi veren: Prof. Dr. Akın Özçift · Aralık 2026.
-2. **Projenin kısa tanıtımı:** problem ve kaynaklı istatistik, amaç, hedef kitle, özellikler, kullanılan teknolojiler, **nerede** (Gebze/Kocaeli, geliştirme + saha uygulaması yeri) ve **zaman dilimi** (Ekim–Aralık 2026, saha testi tarihleri).
-3. **Resimler ve belgeler:** ana ekran ve her modülden ekran görüntüleri, kırmızı/sarı/yeşil sonuç örnekleri, mimari diyagram, model karşılaştırma tablosu ve karışıklık matrisi, saha fotoğrafları, kullanıcı testi sonuç tablosu, varsa teşekkür yazısı, GitHub QR kodu.
-4. Sonuç, kazanımlar, geliştirme önerileri, kaynakça.
+1. **Kapak:**
+   - Manisa Celal Bayar Üniversitesi · Hasan Ferdi Turgutlu Teknoloji Fakültesi · Yazılım Mühendisliği · Sosyal Sorumluluk Dersi
+   - Proje adı: "e-Torun: Yaşlı Bireyler için Dijital Yardımcı Uygulama"
+   - Ad Soyad · Öğrenci No: ______ · Dersi veren: Prof. Dr. Akın Özçift · Aralık 2026
+2. **Kısa tanıtım (yarım–bir sayfa):**
+   - Problem: yaşlılarda ilaç unutma, acil durum, SMS dolandırıcılığı.
+   - Uygulamanın üç özelliği.
+   - İnternetsiz çalışma ve gizlilik.
+   - **Nerede:** Gebze/Kocaeli; geliştirme ve yakınlara gösterim.
+   - **Zaman dilimi:** Ekim–Aralık 2026 ve gösterim tarihleri.
+3. **Resimler ve belgeler:**
+   - Ana ekran ve her modülden birer ekran görüntüsü.
+   - Kırmızı / sarı / yeşil / reklam sonuç örnekleri.
+   - Yaşlı kullanıcılarla gösterim fotoğrafları.
+   - Bir iki küçük tablo (ör. telefondaki model ile yapay zekâ karşılaştırması, bölüm 8 D8).
 
-**Toplanacaklar listesi (süreç boyunca `docs/rapor/` içine):** her modülün ekran görüntüsü (iPhone yan tuş + ses açma) · ML grafikleri · saha fotoğrafları · anket sonuçları · kaynak linkleri.
+**Toplanacaklar (`docs/rapor/` içine):**
+- Her modülün ekran görüntüsü (iPhone yan tuş + ses açma).
+- Gösterim fotoğrafları.
+- Tarih ve yer notu.
 
 ---
 
